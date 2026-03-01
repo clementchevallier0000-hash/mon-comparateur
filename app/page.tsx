@@ -1,6 +1,14 @@
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Comparateur de logiciels SaaS pour TPE et PME françaises",
+  description: "Trouvez le meilleur logiciel pour votre entreprise parmi nos comparatifs indépendants. CRM, facturation, gestion de projet, SEO et automatisation.",
+  alternates: {
+    canonical: "https://mon-comparateur-git-main-clementchevallier0000-1477s-projects.vercel.app"
+  }
+};
 export default async function Home() {
   const { data: categories } = await supabase
     .from('categories')

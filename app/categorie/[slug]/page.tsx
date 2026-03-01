@@ -1,6 +1,23 @@
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
+import type { Metadata } from "next";
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  
+  const { data: categorie } = await supabase
+    .from('categories')
+    .select('*')
+    .eq('slug', slug)
+    .single()
 
+  return {
+    title: `Meilleur ${categorie?.nom} pour TPE et PME françaises`,
+    description: `Comparatif indépendant des meilleurs ${categorie?.nom}. Trouvez le logiciel adapté à votre entreprise parmi notre sélection testée et approuvée.`,
+    alternates: {
+      canonical: `https://mon-comparateur-git-main-clementchevallier0000-1477s-projects.vercel.app/categorie/${slug}`
+    }
+  }
+}
 export default async function CategoriePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
 

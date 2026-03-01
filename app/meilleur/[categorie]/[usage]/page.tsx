@@ -1,6 +1,31 @@
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
+import type { Metadata } from "next";
+export async function generateMetadata({ params }: { params: Promise<{ categorie: string, usage: string }> }): Promise<Metadata> {
+  const { categorie, usage } = await params
+  
+  const { data: cat } = await supabase
+    .from('categories')
+    .select('*')
+    .eq('slug', categorie)
+    .single()
 
+  const { data: cas } = await supabase
+    .from('cas_usage')
+    .select('*')
+    .eq('slug', usage)
+    .single()
+
+  const usageLabel = cas?.label || usage.replace(/-/g, ' ')
+
+  return {
+    title: `Meilleur ${cat?.nom} pour ${usageLabel} en 2025`,
+    description: `Comparatif des meilleurs ${cat?.nom} pour ${usageLabel}. Trouvez l'outil adapté à vos besoins parmi notre sélection indépendante et honnête.`,
+    alternates: {
+      canonical: `https://mon-comparateur-git-main-clementchevallier0000-1477s-projects.vercel.app/meilleur/${categorie}/${usage}`
+    }
+  }
+}
 export default async function MeilleurPage({ params }: { params: Promise<{ categorie: string, usage: string }> }) {
   const { categorie, usage } = await params
 
