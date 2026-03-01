@@ -54,7 +54,7 @@ export default async function MeilleurPage({ params }: { params: Promise<{ categ
           <p style={{ color: '#94a3b8', fontSize: '16px' }}>Comparatif indépendant — mis à jour en 2025</p>
         </div>
       </section>
-      <section style={{ padding: '40px 40px 80px' }}>
+      <section style={{ padding: '40px 40px 0' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             {outils?.map((outil, index) => (
@@ -82,9 +82,52 @@ export default async function MeilleurPage({ params }: { params: Promise<{ categ
               </div>
             ))}
           </div>
+
+          {cas?.contenu && (
+            <div style={{ marginTop: '40px', background: '#fff', borderRadius: '16px', padding: '48px', border: '1px solid #e2e8f0' }}>
+              <style>{`
+                .contenu h2 {
+                  font-size: 22px;
+                  font-weight: 700;
+                  color: #0f172a;
+                  margin-top: 36px;
+                  margin-bottom: 12px;
+                  letter-spacing: -0.5px;
+                }
+                .contenu h2:first-child { margin-top: 0; }
+                .contenu p {
+                  font-size: 15px;
+                  line-height: 1.8;
+                  color: #374151;
+                  margin-bottom: 16px;
+                }
+                .contenu h3 {
+                  font-size: 18px;
+                  font-weight: 600;
+                  color: #0f172a;
+                  margin-top: 28px;
+                  margin-bottom: 10px;
+                }
+                .contenu ul {
+                  margin-bottom: 16px;
+                  padding-left: 20px;
+                }
+                .contenu ul li {
+                  font-size: 15px;
+                  line-height: 1.8;
+                  color: #374151;
+                  margin-bottom: 6px;
+                }
+                .contenu strong { color: #0f172a; font-weight: 600; }
+                .contenu a { color: #2563eb; text-decoration: none; font-weight: 500; }
+              `}</style>
+              <div className="contenu" dangerouslySetInnerHTML={{ __html: cas.contenu }} />
+            </div>
+          )}
         </div>
       </section>
-      <footer style={{ background: '#fff', borderTop: '1px solid #e2e8f0', padding: '30px 40px', textAlign: 'center' }}>
+
+      <footer style={{ background: '#fff', borderTop: '1px solid #e2e8f0', padding: '30px 40px', marginTop: '80px', textAlign: 'center' }}>
         <p style={{ color: '#94a3b8', fontSize: '13px' }}>© 2025 SEOptimus · Comparateur indépendant de logiciels SaaS</p>
       </footer>
     </main>
