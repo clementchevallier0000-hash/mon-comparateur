@@ -3,152 +3,239 @@ import Link from 'next/link'
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Comparateur de logiciels SaaS pour TPE et PME françaises",
-  description: "Trouvez le meilleur logiciel pour votre entreprise parmi nos comparatifs indépendants. CRM, facturation, gestion de projet, SEO et automatisation.",
+  title: "SEOptimus — Comparateur de logiciels SaaS pour TPE et PME françaises",
+  description: "Comparez les meilleurs logiciels SaaS pour votre entreprise française. CRM, facturation, gestion de projet, SEO et automatisation. Comparatifs indépendants, honnêtes et mis à jour en 2025.",
   alternates: {
     canonical: "https://mon-comparateur-git-main-clementchevallier0000-1477s-projects.vercel.app"
   }
-};
+}
+
 export default async function Home() {
-  const { data: categories } = await supabase
-    .from('categories')
-    .select('*')
+  const { data: categories } = await supabase.from('categories').select('*')
 
   const icons: Record<string, string> = {
-    'crm': '🤝',
-    'facturation': '💰',
-    'gestion-de-projet': '📋',
-    'seo': '🔍',
-    'automatisation': '⚡',
+    'crm': '🤝', 'facturation': '💰', 'gestion-de-projet': '📋', 'seo': '🔍', 'automatisation': '⚡',
   }
-
-  const colors: Record<string, string> = {
-    'crm': '#f0f7ff',
-    'facturation': '#fff7ed',
-    'gestion-de-projet': '#f0fdf4',
-    'seo': '#fdf4ff',
-    'automatisation': '#fffbeb',
-  }
-
-  const accents: Record<string, string> = {
-    'crm': '#2563eb',
-    'facturation': '#ea580c',
-    'gestion-de-projet': '#16a34a',
-    'seo': '#9333ea',
-    'automatisation': '#d97706',
+  const colors: Record<string, { bg: string, accent: string, light: string }> = {
+    'crm': { bg: '#eff6ff', accent: '#2563eb', light: '#dbeafe' },
+    'facturation': { bg: '#fff7ed', accent: '#ea580c', light: '#fed7aa' },
+    'gestion-de-projet': { bg: '#f0fdf4', accent: '#16a34a', light: '#bbf7d0' },
+    'seo': { bg: '#fdf4ff', accent: '#9333ea', light: '#e9d5ff' },
+    'automatisation': { bg: '#fffbeb', accent: '#d97706', light: '#fde68a' },
   }
 
   return (
-    <main style={{ fontFamily: "'Inter', sans-serif", background: '#f8fafc', minHeight: '100vh' }}>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Cal+Sans&display=swap" rel="stylesheet" />
+    <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#ffffff', minHeight: '100vh' }}>
+      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Fraunces:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
+
+      <style>{`
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .cat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+        .cat-card { transition: all 0.2s ease; }
+        .cta-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(37,99,235,0.3); }
+        .cta-btn { transition: all 0.2s ease; }
+        .compare-link:hover { background: #f1f5f9; }
+        .compare-link { transition: background 0.15s ease; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-up { animation: fadeUp 0.6s ease forwards; }
+        .fade-up-2 { animation: fadeUp 0.6s ease 0.1s forwards; opacity: 0; }
+        .fade-up-3 { animation: fadeUp 0.6s ease 0.2s forwards; opacity: 0; }
+      `}</style>
 
       {/* Header */}
-      <header style={{ background: '#fff', borderBottom: '1px solid #e2e8f0', padding: '0 40px', position: 'sticky', top: 0, zIndex: 100 }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
-          <span style={{ fontSize: '20px', fontWeight: 700, color: '#0f172a' }}>
-            ⚡ SEOptimus
-          </span>
-          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-            <span style={{ background: '#f1f5f9', color: '#64748b', fontSize: '12px', fontWeight: 600, padding: '4px 10px', borderRadius: '999px' }}>
-              100% indépendant
-            </span>
+      <header style={{ background: '#fff', borderBottom: '1px solid #f1f5f9', padding: '0 48px', position: 'sticky', top: 0, zIndex: 100, backdropFilter: 'blur(10px)' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '68px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ fontSize: '22px' }}>⚡</span>
+            <span style={{ fontFamily: "'Fraunces', serif", fontSize: '20px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.5px' }}>SEOptimus</span>
           </div>
+          <nav style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
+            <Link href="#categories" style={{ color: '#64748b', fontSize: '14px', textDecoration: 'none', fontWeight: 500 }}>Catégories</Link>
+            <Link href="#methode" style={{ color: '#64748b', fontSize: '14px', textDecoration: 'none', fontWeight: 500 }}>Notre méthode</Link>
+            <span style={{ background: '#f0fdf4', color: '#16a34a', fontSize: '12px', fontWeight: 600, padding: '5px 12px', borderRadius: '999px', border: '1px solid #bbf7d0' }}>
+              ✓ 100% indépendant
+            </span>
+          </nav>
         </div>
       </header>
 
       {/* Hero */}
-      <section style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)', padding: '80px 40px', textAlign: 'center' }}>
-        <div style={{ maxWidth: '700px', margin: '0 auto' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.1)', borderRadius: '999px', padding: '6px 16px', marginBottom: '24px' }}>
-            <span style={{ width: '8px', height: '8px', background: '#4ade80', borderRadius: '50%', display: 'inline-block' }}></span>
-            <span style={{ color: '#94a3b8', fontSize: '13px', fontWeight: 500 }}>+50 logiciels comparés</span>
-          </div>
-          <h1 style={{ fontSize: '52px', fontWeight: 700, color: '#fff', lineHeight: 1.1, letterSpacing: '-1.5px', marginBottom: '20px' }}>
-            Le meilleur logiciel<br />pour votre entreprise
-          </h1>
-          <p style={{ color: '#94a3b8', fontSize: '18px', lineHeight: 1.6, marginBottom: '36px' }}>
-            Comparatifs honnêtes et indépendants pour TPE et PME françaises.
-          </p>
-          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '10px', padding: '12px 20px', textAlign: 'center' }}>
-              <div style={{ fontSize: '24px', fontWeight: 700, color: '#fff' }}>50+</div>
-              <div style={{ fontSize: '12px', color: '#64748b', marginTop: '2px' }}>Outils testés</div>
+      <section style={{ padding: '90px 48px 80px', background: 'linear-gradient(180deg, #f8fafc 0%, #ffffff 100%)', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', top: '-100px', right: '-100px', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(37,99,235,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', bottom: '-50px', left: '-50px', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(147,51,234,0.04) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ maxWidth: '780px' }}>
+            <div className="fade-up" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#fff', border: '1px solid #e2e8f0', borderRadius: '999px', padding: '6px 16px', marginBottom: '28px', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
+              <span style={{ width: '7px', height: '7px', background: '#22c55e', borderRadius: '50%', display: 'inline-block', boxShadow: '0 0 0 2px rgba(34,197,94,0.2)' }}></span>
+              <span style={{ color: '#475569', fontSize: '13px', fontWeight: 500 }}>Mis à jour en mars 2025 · 12 outils comparés</span>
             </div>
-            <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '10px', padding: '12px 20px', textAlign: 'center' }}>
-              <div style={{ fontSize: '24px', fontWeight: 700, color: '#fff' }}>5</div>
-              <div style={{ fontSize: '12px', color: '#64748b', marginTop: '2px' }}>Catégories</div>
-            </div>
-            <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '10px', padding: '12px 20px', textAlign: 'center' }}>
-              <div style={{ fontSize: '24px', fontWeight: 700, color: '#fff' }}>100%</div>
-              <div style={{ fontSize: '12px', color: '#64748b', marginTop: '2px' }}>Gratuit</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Categories */}
-      <section style={{ padding: '60px 40px 80px' }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '32px' }}>
-            <div>
-              <h2 style={{ fontSize: '28px', fontWeight: 700, color: '#0f172a', letterSpacing: '-0.5px' }}>Catégories</h2>
-              <p style={{ color: '#64748b', fontSize: '15px', marginTop: '4px' }}>Choisissez votre domaine</p>
-            </div>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '16px' }}>
-            {categories?.map((cat) => (
-              <Link href={`/categorie/${cat.slug}`} key={cat.id} style={{ textDecoration: 'none' }}>
-                <div style={{
-                  background: '#fff',
-                  border: '1px solid #e2e8f0',
-                  borderRadius: '16px',
-                  padding: '24px',
-                  cursor: 'pointer',
-                  transition: 'all 0.15s',
-                  display: 'flex',
-                  gap: '16px',
-                  alignItems: 'flex-start',
-                }}>
-                  <div style={{
-                    width: '52px',
-                    height: '52px',
-                    borderRadius: '12px',
-                    background: colors[cat.slug] || '#f1f5f9',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '24px',
-                    flexShrink: 0
-                  }}>
-                    {icons[cat.slug] || '📦'}
-                  </div>
-                  <div style={{ flex: 1 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                      <h3 style={{ fontSize: '17px', fontWeight: 600, color: '#0f172a' }}>{cat.nom}</h3>
-                      <span style={{ color: accents[cat.slug] || '#2563eb', fontSize: '18px' }}>→</span>
-                    </div>
-                    <p style={{ color: '#64748b', fontSize: '13px', marginTop: '4px', lineHeight: 1.5 }}>
-                      {cat.description}
-                    </p>
-                    <div style={{ marginTop: '12px', display: 'flex', gap: '6px' }}>
-                      <span style={{ background: colors[cat.slug] || '#f1f5f9', color: accents[cat.slug] || '#2563eb', fontSize: '11px', fontWeight: 600, padding: '3px 8px', borderRadius: '999px' }}>
-                        Voir les comparatifs
-                      </span>
-                    </div>
-                  </div>
-                </div>
+            <h1 className="fade-up-2" style={{ fontFamily: "'Fraunces', serif", fontSize: '62px', fontWeight: 800, color: '#0f172a', lineHeight: 1.05, letterSpacing: '-2px', marginBottom: '24px' }}>
+              Trouvez le logiciel<br />
+              <em style={{ fontStyle: 'italic', color: '#2563eb' }}>parfait</em> pour votre<br />
+              entreprise française.
+            </h1>
+            <p className="fade-up-3" style={{ fontSize: '19px', color: '#475569', lineHeight: 1.7, marginBottom: '40px', fontWeight: 300, maxWidth: '580px' }}>
+              Des comparatifs <strong style={{ fontWeight: 600, color: '#0f172a' }}>indépendants et honnêtes</strong> pour aider les TPE et PME françaises à choisir les bons outils. Zéro publicité, zéro biais.
+            </p>
+            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+              <Link href="#categories" className="cta-btn" style={{ background: '#2563eb', color: '#fff', padding: '14px 28px', borderRadius: '12px', textDecoration: 'none', fontSize: '15px', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                Voir les comparatifs →
               </Link>
+              <Link href="#methode" style={{ background: '#fff', color: '#0f172a', padding: '14px 28px', borderRadius: '12px', textDecoration: 'none', fontSize: '15px', fontWeight: 500, border: '1px solid #e2e8f0', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                Notre méthode
+              </Link>
+            </div>
+          </div>
+
+          {/* Stats */}
+          <div style={{ display: 'flex', gap: '40px', marginTop: '64px', paddingTop: '40px', borderTop: '1px solid #f1f5f9', flexWrap: 'wrap' }}>
+            {[
+              { number: '12+', label: 'Logiciels analysés', desc: 'Testés et comparés' },
+              { number: '5', label: 'Catégories', desc: 'CRM, facturation, SEO...' },
+              { number: '100%', label: 'Indépendant', desc: 'Aucun partenariat rémunéré' },
+              { number: '2025', label: 'Mis à jour', desc: 'Données fraîches' },
+            ].map((stat, i) => (
+              <div key={i}>
+                <div style={{ fontFamily: "'Fraunces', serif", fontSize: '32px', fontWeight: 800, color: '#0f172a', letterSpacing: '-1px' }}>{stat.number}</div>
+                <div style={{ fontSize: '14px', fontWeight: 600, color: '#0f172a', marginTop: '2px' }}>{stat.label}</div>
+                <div style={{ fontSize: '12px', color: '#94a3b8', marginTop: '2px' }}>{stat.desc}</div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Categories */}
+      <section id="categories" style={{ padding: '80px 48px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ marginBottom: '48px' }}>
+            <p style={{ fontSize: '12px', fontWeight: 700, color: '#2563eb', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '12px' }}>Catégories</p>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: '38px', fontWeight: 800, color: '#0f172a', letterSpacing: '-1px', marginBottom: '12px' }}>
+              Quel logiciel cherchez-vous ?
+            </h2>
+            <p style={{ fontSize: '16px', color: '#64748b', maxWidth: '500px', lineHeight: 1.6 }}>
+              Chaque catégorie regroupe nos comparatifs détaillés avec avis, prix et recommandations personnalisées.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '20px' }}>
+            {categories?.map((cat) => {
+              const c = colors[cat.slug] || { bg: '#f8fafc', accent: '#2563eb', light: '#e2e8f0' }
+              return (
+                <Link href={`/categorie/${cat.slug}`} key={cat.id} style={{ textDecoration: 'none' }}>
+                  <div className="cat-card" style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '20px', padding: '28px', cursor: 'pointer' }}>
+                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
+                      <div style={{ width: '56px', height: '56px', borderRadius: '16px', background: c.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '26px', flexShrink: 0, border: `1px solid ${c.light}` }}>
+                        {icons[cat.slug] || '📦'}
+                      </div>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
+                          <h3 style={{ fontSize: '17px', fontWeight: 700, color: '#0f172a' }}>{cat.nom}</h3>
+                          <span style={{ color: c.accent, fontSize: '18px', fontWeight: 300 }}>→</span>
+                        </div>
+                        <p style={{ fontSize: '13px', color: '#64748b', lineHeight: 1.6, marginBottom: '16px' }}>{cat.description}</p>
+                        <span style={{ display: 'inline-block', background: c.bg, color: c.accent, fontSize: '11px', fontWeight: 700, padding: '4px 10px', borderRadius: '999px', border: `1px solid ${c.light}` }}>
+                          Voir les comparatifs →
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Notre méthode */}
+      <section id="methode" style={{ padding: '80px 48px', background: '#f8fafc' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ marginBottom: '48px' }}>
+            <p style={{ fontSize: '12px', fontWeight: 700, color: '#2563eb', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '12px' }}>Notre méthode</p>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: '38px', fontWeight: 800, color: '#0f172a', letterSpacing: '-1px', marginBottom: '12px' }}>
+              Comment on compare ?
+            </h2>
+            <p style={{ fontSize: '16px', color: '#64748b', maxWidth: '500px', lineHeight: 1.6 }}>
+              Chaque outil est évalué selon les mêmes critères objectifs, sans influence commerciale.
+            </p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '20px' }}>
+            {[
+              { icon: '🔍', title: 'Analyse approfondie', desc: 'Chaque outil est testé pendant plusieurs semaines sur des cas d\'usage réels.' },
+              { icon: '💶', title: 'Transparence des prix', desc: 'Tous les tarifs sont vérifiés et mis à jour régulièrement. Pas de surprise.' },
+              { icon: '🎯', title: 'Adapté à votre profil', desc: 'Nos recommandations s\'adaptent à votre type d\'entreprise et vos besoins.' },
+              { icon: '🤝', title: 'Indépendance totale', desc: 'Aucun éditeur ne nous rémunère pour apparaître en tête de classement.' },
+            ].map((item, i) => (
+              <div key={i} style={{ background: '#fff', borderRadius: '16px', padding: '28px', border: '1px solid #e2e8f0' }}>
+                <div style={{ fontSize: '28px', marginBottom: '14px' }}>{item.icon}</div>
+                <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a', marginBottom: '8px' }}>{item.title}</h3>
+                <p style={{ fontSize: '14px', color: '#64748b', lineHeight: 1.6 }}>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ SEO */}
+      <section style={{ padding: '80px 48px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
+            <div>
+              <p style={{ fontSize: '12px', fontWeight: 700, color: '#2563eb', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '12px' }}>FAQ</p>
+              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: '38px', fontWeight: 800, color: '#0f172a', letterSpacing: '-1px', lineHeight: 1.1 }}>
+                Questions fréquentes
+              </h2>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
+              {[
+                { q: 'Comment choisir son logiciel SaaS ?', r: 'Définissez d\'abord vos besoins précis, votre budget mensuel et le nombre d\'utilisateurs. Nos comparatifs vous guident étape par étape selon votre profil.' },
+                { q: 'Les comparatifs sont-ils vraiment indépendants ?', r: 'Oui. SEOptimus ne perçoit aucune rémunération des éditeurs pour leur classement. Nos avis sont basés uniquement sur les tests et les retours utilisateurs.' },
+                { q: 'Les prix affichés sont-ils à jour ?', r: 'Nous mettons à jour les tarifs régulièrement. Vérifiez toujours le site officiel avant de vous abonner car les prix peuvent évoluer.' },
+                { q: 'Puis-je suggérer un outil à comparer ?', r: 'Absolument. Contactez-nous via notre formulaire et nous l\'intégrerons dans notre prochaine mise à jour si il correspond à notre sélection.' },
+              ].map((faq, i) => (
+                <div key={i} style={{ borderBottom: '1px solid #f1f5f9', padding: '20px 0' }}>
+                  <h3 style={{ fontSize: '15px', fontWeight: 600, color: '#0f172a', marginBottom: '8px' }}>{faq.q}</h3>
+                  <p style={{ fontSize: '14px', color: '#64748b', lineHeight: 1.7 }}>{faq.r}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA final */}
+      <section style={{ padding: '80px 48px', background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
+          <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: '44px', fontWeight: 800, color: '#fff', letterSpacing: '-1.5px', marginBottom: '16px' }}>
+            Prêt à trouver votre outil idéal ?
+          </h2>
+          <p style={{ fontSize: '17px', color: '#94a3b8', marginBottom: '36px', maxWidth: '500px', margin: '0 auto 36px', lineHeight: 1.6 }}>
+            Explorez nos comparatifs et faites le bon choix dès aujourd'hui.
+          </p>
+          <Link href="#categories" className="cta-btn" style={{ background: '#fff', color: '#0f172a', padding: '16px 36px', borderRadius: '12px', textDecoration: 'none', fontSize: '16px', fontWeight: 700, display: 'inline-block' }}>
+            Voir tous les comparatifs →
+          </Link>
+        </div>
+      </section>
+
       {/* Footer */}
-      <footer style={{ background: '#fff', borderTop: '1px solid #e2e8f0', padding: '30px 40px', textAlign: 'center' }}>
-        <p style={{ color: '#94a3b8', fontSize: '13px' }}>
-          © 2025 SEOptimus · Comparateur indépendant de logiciels SaaS pour entreprises françaises
-        </p>
+      <footer style={{ background: '#0a0f1a', padding: '40px 48px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ fontSize: '18px' }}>⚡</span>
+            <span style={{ fontFamily: "'Fraunces', serif", fontSize: '16px', fontWeight: 800, color: '#fff' }}>SEOptimus</span>
+          </div>
+          <p style={{ color: '#475569', fontSize: '13px' }}>
+            © 2025 SEOptimus · Comparateur indépendant de logiciels SaaS pour entreprises françaises
+          </p>
+          <div style={{ display: 'flex', gap: '24px' }}>
+            {categories?.map((cat) => (
+              <Link key={cat.id} href={`/categorie/${cat.slug}`} style={{ color: '#475569', fontSize: '13px', textDecoration: 'none' }}>
+                {cat.nom}
+              </Link>
+            ))}
+          </div>
+        </div>
       </footer>
     </main>
   )
