@@ -6,7 +6,7 @@ import LogoImg from '@/app/components/LogoImg'
 function getLogoUrl(lienAffilie: string): string | null {
   try {
     const hostname = new URL(lienAffilie).hostname.replace('www.', '')
-    return `https://logo.clearbit.com/${hostname}`
+    return `https://www.google.com/s2/favicons?domain=${hostname}&sz=64`
   } catch {
     return null
   }
@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const { data: categorie } = await supabase.from('categories').select('*').eq('slug', slug).single()
   return {
-    title: `Meilleur ${categorie?.nom} pour TPE et PME françaises`,
+    title: `${categorie?.h1 || `Meilleur ${categorie?.nom}`} pour TPE et PME françaises`,
     description: `Comparatif indépendant des meilleurs ${categorie?.nom}. Trouvez le logiciel adapté à votre entreprise parmi notre sélection testée et approuvée.`,
     alternates: { canonical: `https://mon-comparateur-git-main-clementchevallier0000-1477s-projects.vercel.app/categorie/${slug}` }
   }
@@ -43,7 +43,7 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
       <section style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)', padding: '50px 40px' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <h1 style={{ fontSize: '42px', fontWeight: 700, color: '#fff', letterSpacing: '-1px', marginBottom: '10px' }}>
-            Meilleur {categorie?.nom}
+            {categorie?.h1 || `Meilleur ${categorie?.nom}`}
           </h1>
           <p style={{ color: '#94a3b8', fontSize: '16px' }}>{categorie?.description}</p>
         </div>
@@ -79,8 +79,6 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
           </div>
         </div>
       </section>
-
-      {/* Carousel commenté temporairement pour debug */}
 
       {cas_usage && cas_usage.length > 0 && (
         <section style={{ padding: '40px 40px 20px' }}>
