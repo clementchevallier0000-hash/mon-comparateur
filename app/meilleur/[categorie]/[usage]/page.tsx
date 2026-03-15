@@ -64,8 +64,16 @@ export default async function MeilleurPage({ params }: { params: Promise<{ categ
                 )}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
                   <span style={{ fontSize: '13px', fontWeight: 700, color: '#94a3b8', width: '24px' }}>#{index + 1}</span>
-                  <div style={{ width: '48px', height: '48px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px' }}>📦</div>
-                  <div>
+<div style={{ width: '48px', height: '48px', background: '#fff', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: '1px solid #e2e8f0', flexShrink: 0 }}>
+  <img
+    src={`https://logo.clearbit.com/${new URL(outil.lien_affilie).hostname.replace('www.', '')}`}
+    alt={outil.nom}
+    width={32}
+    height={32}
+    style={{ objectFit: 'contain' }}
+    onError={(e) => { (e.target as HTMLImageElement).src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><text y="18" font-size="18">📦</text></svg>' }}
+  />
+</div>                  <div>
                     <h3 style={{ fontSize: '17px', fontWeight: 600, color: '#0f172a', marginBottom: '4px' }}>{outil.nom}</h3>
                     <p style={{ color: '#64748b', fontSize: '13px', lineHeight: 1.5, maxWidth: '500px' }}>{outil.description}</p>
                   </div>

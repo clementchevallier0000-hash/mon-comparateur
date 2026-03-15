@@ -16,18 +16,40 @@ const avantages: Record<string, string[]> = {
   'Pennylane': ['CRM + Comptabilité', 'Synchronisation bancaire', 'Idéal pour freelances', 'Pilotage financier complet'],
   'Freebe': ['Conçu pour freelances', 'Devis et factures intégrés', 'Très simple à prendre en main', 'Tarif accessible'],
   'Indy': ['Comptabilité automatisée', 'Idéal auto-entrepreneurs', 'Déclarations simplifiées', 'Gain de temps important'],
-  'Notion': ['Ultra flexible', 'Bases de données puissantes', 'Templates prêts à l\'emploi', 'Tout centraliser en un lieu'],
-  'Monday': ['Gestion d\'équipe visuelle', 'Tableaux de bord clairs', 'Intégrations nombreuses', 'Idéal pour PME'],
+  'Notion': ['Ultra flexible', 'Bases de données puissantes', "Templates prêts à l'emploi", 'Tout centraliser en un lieu'],
+  'Monday': ["Gestion d'équipe visuelle", 'Tableaux de bord clairs', 'Intégrations nombreuses', 'Idéal pour PME'],
   'Semrush': ['Référence du SEO mondial', 'Analyse concurrentielle', 'Audit technique complet', 'Suivi de positions'],
   'Ahrefs': ['Meilleure base de backlinks', 'Analyse de mots-clés précise', 'Exploration de contenu', 'Outil favori des experts'],
   'Make': ['Automatisation visuelle', 'Plus de 1000 intégrations', 'Scénarios complexes possibles', 'Très bon rapport qualité/prix'],
   'n8n': ['Open source', 'Auto-hébergeable', 'Gratuit en self-hosted', 'Flexibilité maximale'],
 }
 
-const emojis: Record<string, string> = {
-  'HubSpot CRM': '🤝', 'Axonaut': '🇫🇷', 'Pipedrive': '📊', 'Pennylane': '💰',
-  'Freebe': '🧾', 'Indy': '📒', 'Notion': '📝', 'Monday': '📋',
-  'Semrush': '🔍', 'Ahrefs': '🔗', 'Make': '⚡', 'n8n': '🔧',
+function getLogo(lienAffilie: string, size: number = 32) {
+  try {
+    const hostname = new URL(lienAffilie).hostname.replace('www.', '')
+    return `https://logo.clearbit.com/${hostname}`
+  } catch {
+    return null
+  }
+}
+
+function LogoImg({ lienAffilie, nom, size = 32 }: { lienAffilie: string, nom: string, size?: number }) {
+  const src = getLogo(lienAffilie, size)
+  if (!src) return <span style={{ fontSize: size * 0.7 }}>📦</span>
+  return (
+    <img
+      src={src}
+      alt={nom}
+      width={size}
+      height={size}
+      style={{ objectFit: 'contain' }}
+      onError={(e) => {
+        const el = e.target as HTMLImageElement
+        el.style.display = 'none'
+        el.parentElement!.innerHTML = '📦'
+      }}
+    />
+  )
 }
 
 export default function OutilsCarousel({ outils }: { outils: Outil[] }) {
@@ -42,26 +64,21 @@ export default function OutilsCarousel({ outils }: { outils: Outil[] }) {
   return (
     <div style={{ position: 'relative', padding: '20px 0 40px' }}>
       <style>{`
-        .outil-card-main {
-          transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .carousel-btn:hover {
-          background: #2563eb !important;
-          color: #fff !important;
-          border-color: #2563eb !important;
-        }
+        .outil-card-main { transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
+        .carousel-btn:hover { background: #2563eb !important; color: #fff !important; border-color: #2563eb !important; }
         .carousel-btn { transition: all 0.2s ease; }
         .dot-btn { transition: all 0.2s ease; cursor: pointer; border: none; }
       `}</style>
 
-      {/* Cards container */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '16px', justifyContent: 'center' }}>
 
-        {/* Prev card (peek) */}
+        {/* Prev card */}
         {total > 1 && (
           <div onClick={prev} style={{ cursor: 'pointer', flexShrink: 0 }}>
             <div style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '20px', padding: '24px', width: '200px', opacity: 0.4, transform: 'scale(0.92)', filter: 'blur(1px)', transition: 'all 0.35s ease' }}>
-              <div style={{ fontSize: '32px', marginBottom: '10px' }}>{emojis[outils[getIndex(-1)]?.nom] || '📦'}</div>
+              <div style={{ width: '40px', height: '40px', background: '#f8fafc', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px', border: '1px solid #e2e8f0' }}>
+                <LogoImg lienAffilie={outils[getIndex(-1)]?.lien_affilie} nom={outils[getIndex(-1)]?.nom} size={24} />
+              </div>
               <div style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>{outils[getIndex(-1)]?.nom}</div>
             </div>
           </div>
@@ -73,12 +90,15 @@ export default function OutilsCarousel({ outils }: { outils: Outil[] }) {
             ⭐ Recommandé
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
-            <div style={{ width: '64px', height: '64px', background: '#eff6ff', borderRadius: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '30px', border: '1px solid #dbeafe' }}>
-              {emojis[outils[current]?.nom] || '📦'}
+            <div style={{ width: '64px', height: '64px', background: '#fff', borderRadius: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid #e2e8f0', flexShrink: 0 }}>
+              <LogoImg lienAffilie={outils[current]?.lien_affilie} nom={outils[current]?.nom} size={40} />
             </div>
             <div>
               <h3 style={{ fontSize: '20px', fontWeight: 800, color: '#0f172a', marginBottom: '4px' }}>{outils[current]?.nom}</h3>
-              <div style={{ fontSize: '15px', fontWeight: 700, color: '#2563eb' }}>{outils[current]?.prix_mensuel}€ <span style={{ fontSize: '12px', color: '#94a3b8', fontWeight: 400 }}>/ mois</span></div>
+              <div style={{ fontSize: '15px', fontWeight: 700, color: '#2563eb' }}>
+                {outils[current]?.prix_mensuel === 0 ? 'Gratuit' : `${outils[current]?.prix_mensuel}€`}
+                {outils[current]?.prix_mensuel > 0 && <span style={{ fontSize: '12px', color: '#94a3b8', fontWeight: 400 }}> / mois</span>}
+              </div>
             </div>
           </div>
 
@@ -98,11 +118,13 @@ export default function OutilsCarousel({ outils }: { outils: Outil[] }) {
           </a>
         </div>
 
-        {/* Next card (peek) */}
+        {/* Next card */}
         {total > 1 && (
           <div onClick={next} style={{ cursor: 'pointer', flexShrink: 0 }}>
             <div style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '20px', padding: '24px', width: '200px', opacity: 0.4, transform: 'scale(0.92)', filter: 'blur(1px)', transition: 'all 0.35s ease' }}>
-              <div style={{ fontSize: '32px', marginBottom: '10px' }}>{emojis[outils[getIndex(1)]?.nom] || '📦'}</div>
+              <div style={{ width: '40px', height: '40px', background: '#f8fafc', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px', border: '1px solid #e2e8f0' }}>
+                <LogoImg lienAffilie={outils[getIndex(1)]?.lien_affilie} nom={outils[getIndex(1)]?.nom} size={24} />
+              </div>
               <div style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>{outils[getIndex(1)]?.nom}</div>
             </div>
           </div>
@@ -120,7 +142,6 @@ export default function OutilsCarousel({ outils }: { outils: Outil[] }) {
         <button className="carousel-btn" onClick={next} style={{ width: '40px', height: '40px', borderRadius: '50%', border: '1px solid #e2e8f0', background: '#fff', fontSize: '16px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#64748b' }}>→</button>
       </div>
 
-      {/* Counter */}
       <div style={{ textAlign: 'center', marginTop: '12px', fontSize: '13px', color: '#94a3b8' }}>
         {current + 1} / {total}
       </div>
