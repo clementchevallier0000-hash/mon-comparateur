@@ -6,7 +6,7 @@ import LogoImg from '@/app/components/LogoImg'
 function getLogoUrl(lienAffilie: string): string | null {
   try {
     const hostname = new URL(lienAffilie).hostname.replace('www.', '')
-    return `https://logo.clearbit.com/${hostname}`
+    return `https://www.google.com/s2/favicons?domain=${hostname}&sz=64`
   } catch {
     return null
   }
