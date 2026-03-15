@@ -13,6 +13,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
+function getLogoUrl(lienAffilie: string): string | null {
+  try {
+    const hostname = new URL(lienAffilie).hostname.replace('www.', '')
+    return `https://logo.clearbit.com/${hostname}`
+  } catch {
+    return null
+  }
+}
+
 export default async function CategoriePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const { data: categorie } = await supabase.from('categories').select('*').eq('slug', slug).single()
@@ -44,35 +53,41 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <h2 style={{ fontSize: '22px', fontWeight: 700, color: '#0f172a', marginBottom: '20px' }}>Tous les outils</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            {outils?.map((outil, index) => (
-              <div key={outil.id} style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '16px', padding: '24px 28px', display: 'flex', alignItems: 'center', gap: '24px', justifyContent: 'space-between' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                  <span style={{ fontSize: '13px', fontWeight: 700, color: '#94a3b8', width: '24px' }}>#{index + 1}</span>
-<div style={{ width: '48px', height: '48px', background: '#fff', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: '1px solid #e2e8f0', flexShrink: 0 }}>
-  <img
-    src={`https://logo.clearbit.com/${new URL(outil.lien_affilie).hostname.replace('www.', '')}`}
-    alt={outil.nom}
-    width={32}
-    height={32}
-    style={{ objectFit: 'contain' }}
-    onError={(e) => { (e.target as HTMLImageElement).src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><text y="18" font-size="18">📦</text></svg>' }}
-  />
-</div>                  <div>
-                    <h3 style={{ fontSize: '17px', fontWeight: 600, color: '#0f172a', marginBottom: '4px' }}>{outil.nom}</h3>
-                    <p style={{ color: '#64748b', fontSize: '13px', lineHeight: 1.5, maxWidth: '500px' }}>{outil.description}</p>
+            {outils?.map((outil, index) => {
+              const logoUrl = getLogoUrl(outil.lien_affilie)
+              return (
+                <div key={outil.id} style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '16px', padding: '24px 28px', display: 'flex', alignItems: 'center', gap: '24px', justifyContent: 'space-between' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                    <span style={{ fontSize: '13px', fontWeight: 700, color: '#94a3b8', width: '24px' }}>#{index + 1}</span>
+                    <div style={{ width: '48px', height: '48px', background: '#fff', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: '1px solid #e2e8f0', flexShrink: 0 }}>
+                      {logoUrl ? (
+                        <img
+                          src={logoUrl}
+                          alt={outil.nom}
+                          width={32}
+                          height={32}
+                          style={{ objectFit: 'contain' }}
+                          onError={(e) => { (e.target as HTMLImageElement).parentElement!.innerHTML = '📦' }}
+                        />
+                      ) : <span>📦</span>}
+                    </div>
+                    <div>
+                      <h3 style={{ fontSize: '17px', fontWeight: 600, color: '#0f172a', marginBottom: '4px' }}>{outil.nom}</h3>
+                      <p style={{ color: '#64748b', fontSize: '13px', lineHeight: 1.5, maxWidth: '500px' }}>{outil.description}</p>
+                    </div>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexShrink: 0 }}>
+                    <div style={{ textAlign: 'right' }}>
+                      <div style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a' }}>{outil.prix_mensuel === 0 ? 'Gratuit' : `${outil.prix_mensuel}€`}</div>
+                      {outil.prix_mensuel > 0 && <div style={{ fontSize: '11px', color: '#94a3b8' }}>/ mois</div>}
+                    </div>
+                    <a href={outil.lien_affilie} target="_blank" style={{ background: '#2563eb', color: '#fff', borderRadius: '10px', padding: '10px 20px', textDecoration: 'none', fontSize: '14px', fontWeight: 600, whiteSpace: 'nowrap' }}>
+                      Essayer →
+                    </a>
                   </div>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexShrink: 0 }}>
-                  <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a' }}>{outil.prix_mensuel}€</div>
-                    <div style={{ fontSize: '11px', color: '#94a3b8' }}>/ mois</div>
-                  </div>
-                  <a href={outil.lien_affilie} target="_blank" style={{ background: '#2563eb', color: '#fff', borderRadius: '10px', padding: '10px 20px', textDecoration: 'none', fontSize: '14px', fontWeight: 600, whiteSpace: 'nowrap' }}>
-                    Essayer →
-                  </a>
-                </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </section>
