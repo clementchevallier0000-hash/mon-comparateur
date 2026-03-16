@@ -16,7 +16,8 @@ export async function generateMetadata({ params }: { params: Promise<{ categorie
   const { categorie, usage } = await params
   const { data: cat } = await supabase.from('categories').select('*').eq('slug', categorie).single()
   const { data: cas } = await supabase.from('cas_usage').select('*').eq('slug', usage).single()
-  const usageLabel = cas?.label || usage.replace(/-/g, ' ')
+  const { data: typeEntreprise } = await supabase.from('types_entreprise').select('*').eq('slug', usage).single()
+  const usageLabel = cas?.label || typeEntreprise?.label || usage.replace(/-/g, ' ')
   return {
     title: `Meilleur ${cat?.nom} pour ${usageLabel} en 2025`,
     description: `Comparatif des meilleurs ${cat?.nom} pour ${usageLabel}. Trouvez l'outil adapté à vos besoins parmi notre sélection indépendante et honnête.`,
@@ -29,7 +30,9 @@ export default async function MeilleurPage({ params }: { params: Promise<{ categ
   const { data: cat } = await supabase.from('categories').select('*').eq('slug', categorie).single()
   const { data: outils } = await supabase.from('outils').select('*').eq('categorie_id', cat?.id)
   const { data: cas } = await supabase.from('cas_usage').select('*').eq('slug', usage).single()
-  const usageLabel = cas?.label || usage.replace(/-/g, ' ')
+  const { data: typeEntreprise } = await supabase.from('types_entreprise').select('*').eq('slug', usage).single()
+  const usageLabel = cas?.label || typeEntreprise?.label || usage.replace(/-/g, ' ')
+  const contenu = cas?.contenu || typeEntreprise?.contenu
 
   const schemaData = {
     "@context": "https://schema.org",
@@ -97,7 +100,7 @@ export default async function MeilleurPage({ params }: { params: Promise<{ categ
             ))}
           </div>
 
-          {cas?.contenu && (
+          {contenu && (
             <div style={{ marginTop: '40px', background: '#fff', borderRadius: '16px', padding: '48px', border: '1px solid #e2e8f0' }}>
               <style>{`
                 .contenu h2 { font-size: 22px; font-weight: 700; color: #0f172a; margin-top: 36px; margin-bottom: 12px; letter-spacing: -0.5px; }
@@ -109,7 +112,7 @@ export default async function MeilleurPage({ params }: { params: Promise<{ categ
                 .contenu strong { color: #0f172a; font-weight: 600; }
                 .contenu a { color: #2563eb; text-decoration: none; font-weight: 500; }
               `}</style>
-              <div className="contenu" dangerouslySetInnerHTML={{ __html: cas.contenu }} />
+              <div className="contenu" dangerouslySetInnerHTML={{ __html: contenu }} />
             </div>
           )}
         </div>
