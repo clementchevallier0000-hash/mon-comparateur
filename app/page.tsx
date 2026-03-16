@@ -3,7 +3,7 @@ import Link from 'next/link'
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "SEOptimus — Comparateur de logiciels SaaS pour TPE et PME françaises",
+  title: "TonMeilleurSaas — Comparateur de logiciels SaaS pour TPE et PME françaises",
   description: "Comparez les meilleurs logiciels SaaS pour votre entreprise française. CRM, facturation, gestion de projet, SEO et automatisation. Comparatifs indépendants, honnêtes et mis à jour en 2025.",
   alternates: {
     canonical: "https://mon-comparateur-git-main-clementchevallier0000-1477s-projects.vercel.app"
@@ -47,7 +47,7 @@ export default async function Home() {
         <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '68px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span style={{ fontSize: '22px' }}>⚡</span>
-            <span style={{ fontFamily: "'Fraunces', serif", fontSize: '20px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.5px' }}>SEOptimus</span>
+            <span style={{ fontFamily: "'Fraunces', serif", fontSize: '20px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.5px' }}>TonMeilleurSaas</span>
           </div>
           <nav style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
             <Link href="#categories" style={{ color: '#64748b', fontSize: '14px', textDecoration: 'none', fontWeight: 500 }}>Catégories</Link>
@@ -189,7 +189,7 @@ export default async function Home() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
               {[
                 { q: 'Comment choisir son logiciel SaaS ?', r: 'Définissez d\'abord vos besoins précis, votre budget mensuel et le nombre d\'utilisateurs. Nos comparatifs vous guident étape par étape selon votre profil.' },
-                { q: 'Les comparatifs sont-ils vraiment indépendants ?', r: 'Oui. SEOptimus ne perçoit aucune rémunération des éditeurs pour leur classement. Nos avis sont basés uniquement sur les tests et les retours utilisateurs.' },
+                { q: 'Les comparatifs sont-ils vraiment indépendants ?', r: 'Oui. TonMeilleurSaas ne perçoit aucune rémunération des éditeurs pour leur classement. Nos avis sont basés uniquement sur les tests et les retours utilisateurs.' },
                 { q: 'Les prix affichés sont-ils à jour ?', r: 'Nous mettons à jour les tarifs régulièrement. Vérifiez toujours le site officiel avant de vous abonner car les prix peuvent évoluer.' },
                 { q: 'Puis-je suggérer un outil à comparer ?', r: 'Absolument. Contactez-nous via notre formulaire et nous l\'intégrerons dans notre prochaine mise à jour si il correspond à notre sélection.' },
               ].map((faq, i) => (
@@ -223,10 +223,10 @@ export default async function Home() {
         <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span style={{ fontSize: '18px' }}>⚡</span>
-            <span style={{ fontFamily: "'Fraunces', serif", fontSize: '16px', fontWeight: 800, color: '#fff' }}>SEOptimus</span>
+            <span style={{ fontFamily: "'Fraunces', serif", fontSize: '16px', fontWeight: 800, color: '#fff' }}>TonMeilleurSaas</span>
           </div>
           <p style={{ color: '#475569', fontSize: '13px' }}>
-            © 2025 SEOptimus · Comparateur indépendant de logiciels SaaS pour entreprises françaises
+            © 2025 TonMeilleurSaas · Comparateur indépendant de logiciels SaaS pour entreprises françaises
           </p>
           <div style={{ display: 'flex', gap: '24px' }}>
             {categories?.map((cat) => (

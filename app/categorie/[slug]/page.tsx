@@ -35,7 +35,7 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
 
       <header style={{ background: '#fff', borderBottom: '1px solid #e2e8f0', padding: '0 40px', position: 'sticky', top: 0, zIndex: 100 }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
-          <Link href="/" style={{ textDecoration: 'none', fontSize: '20px', fontWeight: 700, color: '#0f172a' }}>⚡ SEOptimus</Link>
+          <Link href="/" style={{ textDecoration: 'none', fontSize: '20px', fontWeight: 700, color: '#0f172a' }}>⚡ TonMeilleurSaas</Link>
           <Link href="/" style={{ color: '#64748b', fontSize: '14px', textDecoration: 'none', fontWeight: 500 }}>← Retour</Link>
         </div>
       </header>
@@ -137,7 +137,7 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
       </section>
 
       <footer style={{ background: '#fff', borderTop: '1px solid #e2e8f0', padding: '30px 40px', textAlign: 'center' }}>
-        <p style={{ color: '#94a3b8', fontSize: '13px' }}>© 2025 SEOptimus · Comparateur indépendant de logiciels SaaS</p>
+        <p style={{ color: '#94a3b8', fontSize: '13px' }}>© 2025 TonMeilleurSaas · Comparateur indépendant de logiciels SaaS</p>
       </footer>
     </main>
   )

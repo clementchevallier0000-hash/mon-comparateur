@@ -3,24 +3,24 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "SEOptimus — Comparateur de logiciels SaaS pour TPE et PME françaises",
-    template: "%s | SEOptimus"
+    default: "TonMeilleurSaas — Comparateur de logiciels SaaS pour TPE et PME françaises",
+    template: "%s | TonMeilleurSaas"
   },
   description: "Comparez les meilleurs logiciels SaaS pour votre entreprise. CRM, facturation, gestion de projet, SEO et automatisation. Comparatifs indépendants et honnêtes.",
   keywords: ["comparateur logiciel", "meilleur CRM", "logiciel facturation", "SaaS france", "TPE PME"],
-  authors: [{ name: "SEOptimus" }],
-  creator: "SEOptimus",
+  authors: [{ name: "TonMeilleurSaas" }],
+  creator: "TonMeilleurSaas",
   openGraph: {
     type: "website",
     locale: "fr_FR",
     url: "https://mon-comparateur-git-main-clementchevallier0000-1477s-projects.vercel.app",
-    siteName: "SEOptimus",
-    title: "SEOptimus — Comparateur de logiciels SaaS pour TPE et PME françaises",
+    siteName: "TonMeilleurSaas",
+    title: "TonMeilleurSaas — Comparateur de logiciels SaaS pour TPE et PME françaises",
     description: "Comparez les meilleurs logiciels SaaS pour votre entreprise. Comparatifs indépendants et honnêtes.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SEOptimus — Comparateur de logiciels SaaS",
+    title: "TonMeilleurSaas — Comparateur de logiciels SaaS",
     description: "Comparez les meilleurs logiciels SaaS pour votre entreprise.",
   },
   robots: {
