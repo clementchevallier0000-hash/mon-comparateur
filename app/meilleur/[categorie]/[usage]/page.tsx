@@ -101,16 +101,22 @@ export default async function MeilleurPage({ params }: { params: Promise<{ categ
           </div>
 
           {contenu && (
-            <div style={{ marginTop: '40px', background: '#fff', borderRadius: '16px', padding: '48px', border: '1px solid #e2e8f0' }}>
+            <div style={{ marginTop: '40px', background: '#fff', borderRadius: '20px', padding: '56px', border: '1px solid #e2e8f0', boxShadow: '0 1px 8px rgba(0,0,0,0.04)' }}>
               <style>{`
-                .contenu h2 { font-size: 22px; font-weight: 700; color: #0f172a; margin-top: 36px; margin-bottom: 12px; letter-spacing: -0.5px; }
+                .contenu h2 { font-size: 24px; font-weight: 700; color: #0f172a; margin-top: 48px; margin-bottom: 16px; letter-spacing: -0.5px; padding-bottom: 12px; border-bottom: 2px solid #f1f5f9; }
                 .contenu h2:first-child { margin-top: 0; }
-                .contenu p { font-size: 15px; line-height: 1.8; color: #374151; margin-bottom: 16px; }
-                .contenu h3 { font-size: 18px; font-weight: 600; color: #0f172a; margin-top: 28px; margin-bottom: 10px; }
-                .contenu ul { margin-bottom: 16px; padding-left: 20px; }
-                .contenu ul li { font-size: 15px; line-height: 1.8; color: #374151; margin-bottom: 6px; }
+                .contenu h3 { font-size: 17px; font-weight: 700; color: #0f172a; margin-top: 32px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+                .contenu h3::before { content: ''; display: inline-block; width: 4px; height: 16px; background: #2563eb; border-radius: 2px; flex-shrink: 0; }
+                .contenu p { font-size: 15px; line-height: 1.9; color: #475569; margin-bottom: 16px; }
+                .contenu ul { margin-bottom: 20px; padding-left: 0; list-style: none; }
+                .contenu ul li { font-size: 15px; line-height: 1.8; color: #475569; margin-bottom: 8px; padding-left: 24px; position: relative; }
+                .contenu ul li::before { content: '→'; position: absolute; left: 0; color: #2563eb; font-weight: 600; }
                 .contenu strong { color: #0f172a; font-weight: 600; }
-                .contenu a { color: #2563eb; text-decoration: none; font-weight: 500; }
+                .contenu a { color: #2563eb; text-decoration: none; font-weight: 500; border-bottom: 1px solid #bfdbfe; }
+                .contenu table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+                .contenu table th { background: #f8fafc; padding: 12px 16px; text-align: left; font-size: 13px; font-weight: 700; color: #0f172a; border-bottom: 2px solid #e2e8f0; }
+                .contenu table td { padding: 12px 16px; font-size: 14px; color: #475569; border-bottom: 1px solid #f1f5f9; }
+                .contenu table tr:hover td { background: #f8fafc; }
               `}</style>
               <div className="contenu" dangerouslySetInnerHTML={{ __html: contenu }} />
             </div>
