@@ -1,6 +1,7 @@
 import HeroVisual from '@/app/components/HeroVisual'
 import AnimatedCounter from '@/app/components/AnimatedCounter'
 import MobileMenu from '@/app/components/MobileMenu'
+import ScrollAnimations from '@/app/components/ScrollAnimations'
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
 import type { Metadata } from "next";
@@ -37,6 +38,7 @@ export default async function Home() {
   return (
     <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#ffffff', minHeight: '100vh' }}>
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Fraunces:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
+      <ScrollAnimations />
 
       <style>{`
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -152,7 +154,7 @@ export default async function Home() {
               { target: 100, suffix: '%', label: 'Indépendant', desc: 'Aucun partenariat rémunéré' },
               { target: 2025, suffix: '', label: 'Mis à jour', desc: 'Données fraîches' },
             ].map((stat, i) => (
-              <div key={i} className="hero-stat">
+              <div key={i} className="hero-stat scroll-reveal" style={{ }}>
                 <div style={{ fontFamily: "'Fraunces', serif", fontSize: '32px', fontWeight: 800, color: '#0f172a', letterSpacing: '-1px' }}>
                   <AnimatedCounter target={stat.target} suffix={stat.suffix} />
                 </div>
@@ -167,7 +169,7 @@ export default async function Home() {
       {/* Categories */}
       <section id="categories" className="section-pad" style={{ padding: '80px 48px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div style={{ marginBottom: '48px' }}>
+          <div className="scroll-reveal" style={{ marginBottom: '48px' }}>
             <p style={{ fontSize: '12px', fontWeight: 700, color: '#2563eb', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '12px' }}>Catégories</p>
             <h2 className="section-title" style={{ fontFamily: "'Fraunces', serif", fontSize: '38px', fontWeight: 800, color: '#0f172a', letterSpacing: '-1px', marginBottom: '12px' }}>
               Quel logiciel cherchez-vous ?
@@ -177,11 +179,11 @@ export default async function Home() {
             </p>
           </div>
           <div className="cat-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '20px' }}>
-            {categories?.map((cat) => {
+            {categories?.map((cat, i) => {
               const c = colors[cat.slug] || { bg: '#f8fafc', accent: '#2563eb', light: '#e2e8f0' }
               return (
                 <Link href={`/categorie/${cat.slug}`} key={cat.id} style={{ textDecoration: 'none' }}>
-                  <div className="cat-card" style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '20px', padding: '28px', cursor: 'pointer', height: '100%' }}>
+                  <div className={`cat-card scroll-reveal stagger-${(i % 4) + 1}`} style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '20px', padding: '28px', cursor: 'pointer', height: '100%' }}>
                     <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
                       <div style={{ width: '56px', height: '56px', borderRadius: '16px', background: c.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '26px', flexShrink: 0, border: `1px solid ${c.light}` }}>
                         {icons[cat.slug] || '📦'}
@@ -208,7 +210,7 @@ export default async function Home() {
       {/* Comparatif rapide */}
       <section id="comparatif" className="section-pad" style={{ padding: '80px 48px', background: '#f8fafc' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div style={{ marginBottom: '48px' }}>
+          <div className="scroll-reveal" style={{ marginBottom: '48px' }}>
             <p style={{ fontSize: '12px', fontWeight: 700, color: '#2563eb', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '12px' }}>Comparatif rapide</p>
             <h2 className="section-title" style={{ fontFamily: "'Fraunces', serif", fontSize: '38px', fontWeight: 800, color: '#0f172a', letterSpacing: '-1px', marginBottom: '12px' }}>
               Les outils les mieux notés
@@ -220,7 +222,7 @@ export default async function Home() {
           <div className="comp-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px' }}>
             {comparatif.map((outil, i) => (
               <Link key={i} href={`/categorie/${outil.slug}`} style={{ textDecoration: 'none' }}>
-                <div className="comp-card" style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '20px', padding: '24px', height: '100%' }}>
+                <div className={`comp-card scroll-reveal stagger-${i + 1}`} style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '20px', padding: '24px', height: '100%' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
                     <span style={{ fontSize: '24px' }}>{outil.emoji}</span>
                     <div>
@@ -254,7 +256,7 @@ export default async function Home() {
       {/* Notre méthode */}
       <section id="methode" className="section-pad" style={{ padding: '80px 48px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div style={{ marginBottom: '48px' }}>
+          <div className="scroll-reveal" style={{ marginBottom: '48px' }}>
             <p style={{ fontSize: '12px', fontWeight: 700, color: '#2563eb', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '12px' }}>Notre méthode</p>
             <h2 className="section-title" style={{ fontFamily: "'Fraunces', serif", fontSize: '38px', fontWeight: 800, color: '#0f172a', letterSpacing: '-1px', marginBottom: '12px' }}>
               Comment on compare ?
@@ -270,7 +272,7 @@ export default async function Home() {
               { icon: '🎯', title: 'Adapté à votre profil', desc: "Nos recommandations s'adaptent à votre type d'entreprise et vos besoins." },
               { icon: '🤝', title: 'Indépendance totale', desc: 'Aucun éditeur ne nous rémunère pour apparaître en tête de classement.' },
             ].map((item, i) => (
-              <div key={i} className="method-item" style={{ background: '#fff', borderRadius: '16px', padding: '28px', border: '1px solid #e2e8f0' }}>
+              <div key={i} className={`method-item scroll-reveal stagger-${i + 1}`} style={{ background: '#fff', borderRadius: '16px', padding: '28px', border: '1px solid #e2e8f0' }}>
                 <div style={{ fontSize: '28px', marginBottom: '14px' }}>{item.icon}</div>
                 <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a', marginBottom: '8px' }}>{item.title}</h3>
                 <p style={{ fontSize: '14px', color: '#64748b', lineHeight: 1.6 }}>{item.desc}</p>
@@ -284,7 +286,7 @@ export default async function Home() {
       <section className="section-pad" style={{ padding: '80px 48px', background: '#f8fafc' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div className="faq-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
-            <div>
+            <div className="scroll-reveal-left">
               <p style={{ fontSize: '12px', fontWeight: 700, color: '#2563eb', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '12px' }}>FAQ</p>
               <h2 className="section-title" style={{ fontFamily: "'Fraunces', serif", fontSize: '38px', fontWeight: 800, color: '#0f172a', letterSpacing: '-1px', lineHeight: 1.1 }}>
                 Questions fréquentes
@@ -297,7 +299,7 @@ export default async function Home() {
                 { q: 'Les prix affichés sont-ils à jour ?', r: 'Nous mettons à jour les tarifs régulièrement. Vérifiez toujours le site officiel avant de vous abonner car les prix peuvent évoluer.' },
                 { q: 'Puis-je suggérer un outil à comparer ?', r: "Absolument. Contactez-nous et nous l'intégrerons dans notre prochaine mise à jour si il correspond à notre sélection." },
               ].map((faq, i) => (
-                <div key={i} style={{ borderBottom: '1px solid #e2e8f0', padding: '20px 0' }}>
+                <div key={i} className={`faq-item scroll-reveal stagger-${i + 1}`} style={{ borderBottom: '1px solid #e2e8f0', padding: '20px 0' }}>
                   <h3 style={{ fontSize: '15px', fontWeight: 600, color: '#0f172a', marginBottom: '8px' }}>{faq.q}</h3>
                   <p style={{ fontSize: '14px', color: '#64748b', lineHeight: 1.7 }}>{faq.r}</p>
                 </div>
@@ -311,7 +313,7 @@ export default async function Home() {
       <section className="content-section" style={{ padding: '80px 48px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ maxWidth: '860px', margin: '0 auto' }}>
-            <div className="content-inner" style={{ background: '#fff', borderRadius: '24px', padding: '56px', border: '1px solid #e2e8f0', boxShadow: '0 1px 8px rgba(0,0,0,0.04)' }}>
+            <div className="content-inner scroll-reveal" style={{ background: '#fff', borderRadius: '24px', padding: '56px', border: '1px solid #e2e8f0', boxShadow: '0 1px 8px rgba(0,0,0,0.04)' }}>
               <style>{`
                 .seo-content h2 { font-size: 24px; font-weight: 700; color: #0f172a; margin-top: 48px; margin-bottom: 16px; letter-spacing: -0.5px; padding-bottom: 12px; border-bottom: 2px solid #f1f5f9; }
                 .seo-content h2:first-child { margin-top: 0; }
@@ -384,13 +386,13 @@ export default async function Home() {
       <section className="cta-section" style={{ padding: '80px 48px', background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-100px', right: '-100px', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(37,99,235,0.2) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center', position: 'relative' }}>
-          <h2 className="cta-title" style={{ fontFamily: "'Fraunces', serif", fontSize: '44px', fontWeight: 800, color: '#fff', letterSpacing: '-1.5px', marginBottom: '16px' }}>
+          <h2 className="cta-title scroll-reveal" style={{ fontFamily: "'Fraunces', serif", fontSize: '44px', fontWeight: 800, color: '#fff', letterSpacing: '-1.5px', marginBottom: '16px' }}>
             Prêt à trouver votre outil idéal ?
           </h2>
-          <p style={{ fontSize: '17px', color: '#94a3b8', marginBottom: '36px', maxWidth: '500px', margin: '0 auto 36px', lineHeight: 1.6 }}>
+          <p className="scroll-reveal stagger-1" style={{ fontSize: '17px', color: '#94a3b8', marginBottom: '36px', maxWidth: '500px', margin: '0 auto 36px', lineHeight: 1.6 }}>
             Explorez nos comparatifs et faites le bon choix dès aujourd&apos;hui.
           </p>
-          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="scroll-reveal stagger-2" style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="#categories" className="cta-btn" style={{ background: '#fff', color: '#0f172a', padding: '16px 36px', borderRadius: '12px', textDecoration: 'none', fontSize: '16px', fontWeight: 700, display: 'inline-block' }}>
               Voir tous les comparatifs →
             </Link>
