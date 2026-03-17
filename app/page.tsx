@@ -1,3 +1,4 @@
+import HeroVisual from '@/app/components/HeroVisual'
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
 import type { Metadata } from "next";
@@ -38,8 +39,6 @@ export default async function Home() {
         .fade-up { animation: fadeUp 0.6s ease forwards; }
         .fade-up-2 { animation: fadeUp 0.6s ease 0.1s forwards; opacity: 0; }
         .fade-up-3 { animation: fadeUp 0.6s ease 0.2s forwards; opacity: 0; }
-        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
-        .hero-visual { animation: float 6s ease-in-out infinite; }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
@@ -114,60 +113,9 @@ export default async function Home() {
               </div>
             </div>
 
-            {/* Image fondue droite */}
-            <div className="hero-visual-wrap" style={{ flexShrink: 0, position: 'relative', width: '460px', height: '380px' }}>
-              <div className="hero-visual" style={{ position: 'relative', width: '100%', height: '100%' }}>
-                {/* Carte principale */}
-                <div style={{ position: 'absolute', top: '20px', left: '20px', right: '0', background: '#fff', borderRadius: '20px', padding: '24px', boxShadow: '0 20px 60px rgba(0,0,0,0.1)', border: '1px solid #e2e8f0' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-                    <div style={{ width: '40px', height: '40px', background: '#eff6ff', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px' }}>🤝</div>
-                    <div>
-                      <div style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>HubSpot CRM</div>
-                      <div style={{ fontSize: '12px', color: '#22c55e', fontWeight: 600 }}>✓ Gratuit</div>
-                    </div>
-                    <div style={{ marginLeft: 'auto', background: '#2563eb', color: '#fff', fontSize: '11px', fontWeight: 700, padding: '4px 10px', borderRadius: '999px' }}>⭐ #1</div>
-                  </div>
-                  {[
-                    { label: 'Facilité d\'utilisation', val: 95 },
-                    { label: 'Rapport qualité/prix', val: 98 },
-                    { label: 'Support client', val: 88 },
-                  ].map((item, i) => (
-                    <div key={i} style={{ marginBottom: '12px' }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-                        <span style={{ fontSize: '12px', color: '#64748b' }}>{item.label}</span>
-                        <span style={{ fontSize: '12px', fontWeight: 700, color: '#0f172a' }}>{item.val}%</span>
-                      </div>
-                      <div style={{ height: '6px', background: '#f1f5f9', borderRadius: '999px', overflow: 'hidden' }}>
-                        <div style={{ height: '100%', width: `${item.val}%`, background: 'linear-gradient(90deg, #2563eb, #60a5fa)', borderRadius: '999px' }} />
-                      </div>
-                    </div>
-                  ))}
-                  <div style={{ marginTop: '16px', display: 'flex', gap: '8px' }}>
-                    {['Pipeline', 'Email', 'Analytics', 'Mobile'].map((tag, i) => (
-                      <span key={i} style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '6px', padding: '3px 8px', fontSize: '11px', color: '#64748b', fontWeight: 500 }}>{tag}</span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Petite carte flottante */}
-                <div style={{ position: 'absolute', bottom: '10px', right: '-10px', background: '#fff', borderRadius: '14px', padding: '14px 18px', boxShadow: '0 8px 30px rgba(0,0,0,0.1)', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <span style={{ fontSize: '20px' }}>💰</span>
-                  <div>
-                    <div style={{ fontSize: '12px', fontWeight: 700, color: '#0f172a' }}>Pennylane</div>
-                    <div style={{ fontSize: '11px', color: '#64748b' }}>Facturation · 26€/mois</div>
-                  </div>
-                </div>
-
-                {/* Badge flottant */}
-                <div style={{ position: 'absolute', top: '0', right: '10px', background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '12px', padding: '10px 14px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <span style={{ fontSize: '14px' }}>✓</span>
-                  <span style={{ fontSize: '12px', fontWeight: 700, color: '#16a34a' }}>50+ outils comparés</span>
-                </div>
-              </div>
-
-              {/* Fondu sur les bords */}
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(248,250,252,0) 60%, rgba(248,250,252,0.3) 100%)', pointerEvents: 'none', borderRadius: '20px' }} />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(248,250,252,0) 70%, rgba(255,255,255,0.8) 100%)', pointerEvents: 'none', borderRadius: '20px' }} />
+            {/* Hero visuel interactif */}
+            <div className="hero-visual-wrap">
+              <HeroVisual />
             </div>
           </div>
 
