@@ -33,14 +33,32 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
     <main style={{ fontFamily: "'Inter', sans-serif", background: '#f8fafc', minHeight: '100vh' }}>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-      <header style={{ background: '#fff', borderBottom: '1px solid #e2e8f0', padding: '0 40px', position: 'sticky', top: 0, zIndex: 100 }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
-          <Link href="/" style={{ textDecoration: 'none', fontSize: '20px', fontWeight: 700, color: '#0f172a' }}>⚡ TonMeilleurSaas</Link>
+      <style>{`
+        @media (max-width: 768px) {
+          .cat-header { padding: 0 20px !important; }
+          .cat-hero { padding: 36px 20px !important; }
+          .cat-hero h1 { font-size: 28px !important; letter-spacing: -0.5px !important; }
+          .cat-section { padding: 28px 20px 16px !important; }
+          .cat-section-bottom { padding: 28px 20px 48px !important; }
+          .cat-contenu { padding: 0 20px !important; }
+          .cat-contenu-inner { padding: 28px !important; }
+          .outil-card { flex-direction: column !important; align-items: flex-start !important; gap: 16px !important; padding: 20px !important; }
+          .outil-card-left { width: 100% !important; }
+          .outil-card-right { width: 100% !important; flex-direction: row !important; justify-content: space-between !important; align-items: center !important; }
+          .outil-desc { max-width: 100% !important; }
+          .links-grid { grid-template-columns: 1fr !important; }
+          .footer-cat { padding: 24px 20px !important; }
+        }
+      `}</style>
+
+      <header style={{ background: '#fff', borderBottom: '1px solid #e2e8f0', position: 'sticky', top: 0, zIndex: 100 }}>
+        <div className="cat-header" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
+          <Link href="/" style={{ textDecoration: 'none', fontSize: '20px', fontWeight: 700, color: '#0f172a' }}>🚀 TonMeilleurSaaS</Link>
           <Link href="/" style={{ color: '#64748b', fontSize: '14px', textDecoration: 'none', fontWeight: 500 }}>← Retour</Link>
         </div>
       </header>
 
-      <section style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)', padding: '50px 40px' }}>
+      <section className="cat-hero" style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)', padding: '50px 40px' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <h1 style={{ fontSize: '42px', fontWeight: 700, color: '#fff', letterSpacing: '-1px', marginBottom: '10px' }}>
             {categorie?.h1 || `Meilleur ${categorie?.nom}`}
@@ -49,23 +67,23 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
         </div>
       </section>
 
-      <section style={{ padding: '40px 40px 20px' }}>
+      <section className="cat-section" style={{ padding: '40px 40px 20px' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <h2 style={{ fontSize: '22px', fontWeight: 700, color: '#0f172a', marginBottom: '20px' }}>Tous les outils</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             {outils?.map((outil, index) => (
-              <div key={outil.id} style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '16px', padding: '24px 28px', display: 'flex', alignItems: 'center', gap: '24px', justifyContent: 'space-between' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                  <span style={{ fontSize: '13px', fontWeight: 700, color: '#94a3b8', width: '24px' }}>#{index + 1}</span>
+              <div key={outil.id} className="outil-card" style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '16px', padding: '24px 28px', display: 'flex', alignItems: 'center', gap: '24px', justifyContent: 'space-between' }}>
+                <div className="outil-card-left" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                  <span style={{ fontSize: '13px', fontWeight: 700, color: '#94a3b8', width: '24px', flexShrink: 0 }}>#{index + 1}</span>
                   <div style={{ width: '48px', height: '48px', background: '#fff', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: '1px solid #e2e8f0', flexShrink: 0 }}>
                     <LogoImg src={getLogoUrl(outil.lien_affilie)} alt={outil.nom} />
                   </div>
                   <div>
                     <h3 style={{ fontSize: '17px', fontWeight: 600, color: '#0f172a', marginBottom: '4px' }}>{outil.nom}</h3>
-                    <p style={{ color: '#64748b', fontSize: '13px', lineHeight: 1.5, maxWidth: '500px' }}>{outil.description}</p>
+                    <p className="outil-desc" style={{ color: '#64748b', fontSize: '13px', lineHeight: 1.5, maxWidth: '500px' }}>{outil.description}</p>
                   </div>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexShrink: 0 }}>
+                <div className="outil-card-right" style={{ display: 'flex', alignItems: 'center', gap: '20px', flexShrink: 0 }}>
                   <div style={{ textAlign: 'right' }}>
                     <div style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a' }}>{outil.prix_mensuel === 0 ? 'Gratuit' : `${outil.prix_mensuel}€`}</div>
                     {outil.prix_mensuel > 0 && <div style={{ fontSize: '11px', color: '#94a3b8' }}>/ mois</div>}
@@ -81,10 +99,10 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
       </section>
 
       {cas_usage && cas_usage.length > 0 && (
-        <section style={{ padding: '40px 40px 20px' }}>
+        <section className="cat-section" style={{ padding: '40px 40px 20px' }}>
           <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
             <h2 style={{ fontSize: '22px', fontWeight: 700, color: '#0f172a', marginBottom: '20px' }}>Comparatifs par besoin</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '12px' }}>
+            <div className="links-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '12px' }}>
               {cas_usage.map((cas) => (
                 <Link key={cas.id} href={`/meilleur/${slug}/${cas.slug}`} style={{ textDecoration: 'none' }}>
                   <div style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '16px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -99,9 +117,9 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
       )}
 
       {categorie?.contenu && (
-        <section style={{ padding: '0 40px' }}>
+        <section className="cat-contenu" style={{ padding: '0 40px' }}>
           <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-            <div style={{ background: '#fff', borderRadius: '20px', padding: '56px', border: '1px solid #e2e8f0', boxShadow: '0 1px 8px rgba(0,0,0,0.04)' }}>
+            <div className="cat-contenu-inner" style={{ background: '#fff', borderRadius: '20px', padding: '56px', border: '1px solid #e2e8f0', boxShadow: '0 1px 8px rgba(0,0,0,0.04)' }}>
               <style>{`
                 .contenu-cat h2 { font-size: 24px; font-weight: 700; color: #0f172a; margin-top: 48px; margin-bottom: 16px; letter-spacing: -0.5px; padding-bottom: 12px; border-bottom: 2px solid #f1f5f9; }
                 .contenu-cat h2:first-child { margin-top: 0; }
@@ -120,10 +138,10 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
         </section>
       )}
 
-      <section style={{ padding: '40px 40px 80px' }}>
+      <section className="cat-section-bottom" style={{ padding: '40px 40px 80px' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <h2 style={{ fontSize: '22px', fontWeight: 700, color: '#0f172a', marginBottom: '20px' }}>Comparatifs par type d&apos;entreprise</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '12px' }}>
+          <div className="links-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '12px' }}>
             {types?.map((type) => (
               <Link key={type.id} href={`/meilleur/${slug}/${type.slug}`} style={{ textDecoration: 'none' }}>
                 <div style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '16px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -136,8 +154,8 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
         </div>
       </section>
 
-      <footer style={{ background: '#fff', borderTop: '1px solid #e2e8f0', padding: '30px 40px', textAlign: 'center' }}>
-        <p style={{ color: '#94a3b8', fontSize: '13px' }}>© 2025 TonMeilleurSaas · Comparateur indépendant de logiciels SaaS</p>
+      <footer className="footer-cat" style={{ background: '#fff', borderTop: '1px solid #e2e8f0', padding: '30px 40px', textAlign: 'center' }}>
+        <p style={{ color: '#94a3b8', fontSize: '13px' }}>© 2025 TonMeilleurSaaS · Comparateur indépendant de logiciels SaaS</p>
       </footer>
     </main>
   )
