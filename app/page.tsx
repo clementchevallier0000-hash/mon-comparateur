@@ -46,6 +46,8 @@ export default async function Home() {
         .cta-btn { transition: all 0.2s ease; }
         .comp-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); border-color: #2563eb !important; }
         .comp-card { transition: all 0.2s ease; cursor: pointer; }
+        .method-item { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .method-item:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
         .content-link { color: #2563eb; text-decoration: none; font-weight: 600; border-bottom: 1px solid #bfdbfe; transition: border-color 0.15s; }
         .content-link:hover { border-color: #2563eb; }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -143,7 +145,6 @@ export default async function Home() {
             </div>
           </div>
 
-          {/* Stats avec compteurs animés */}
           <div className="hero-stats" style={{ display: 'flex', gap: '40px', marginTop: '64px', paddingTop: '40px', borderTop: '1px solid #f1f5f9', flexWrap: 'wrap' }}>
             {[
               { target: 50, suffix: '+', label: 'Logiciels analysés', desc: 'Testés et comparés' },
@@ -269,10 +270,7 @@ export default async function Home() {
               { icon: '🎯', title: 'Adapté à votre profil', desc: "Nos recommandations s'adaptent à votre type d'entreprise et vos besoins." },
               { icon: '🤝', title: 'Indépendance totale', desc: 'Aucun éditeur ne nous rémunère pour apparaître en tête de classement.' },
             ].map((item, i) => (
-              <div key={i} style={{ background: '#fff', borderRadius: '16px', padding: '28px', border: '1px solid #e2e8f0', transition: 'transform 0.2s ease, box-shadow 0.2s ease' }}
-                onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-2px)'; (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 30px rgba(0,0,0,0.08)' }}
-                onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.transform = 'none'; (e.currentTarget as HTMLDivElement).style.boxShadow = 'none' }}
-              >
+              <div key={i} className="method-item" style={{ background: '#fff', borderRadius: '16px', padding: '28px', border: '1px solid #e2e8f0' }}>
                 <div style={{ fontSize: '28px', marginBottom: '14px' }}>{item.icon}</div>
                 <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a', marginBottom: '8px' }}>{item.title}</h3>
                 <p style={{ fontSize: '14px', color: '#64748b', lineHeight: 1.6 }}>{item.desc}</p>
