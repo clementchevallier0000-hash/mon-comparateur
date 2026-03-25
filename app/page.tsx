@@ -7,8 +7,8 @@ import Link from 'next/link'
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "TonMeilleurSaaS — Comparateur de logiciels SaaS pour TPE et PME françaises",
-  description: "Comparez les meilleurs logiciels SaaS pour votre entreprise française. CRM, facturation, gestion de projet, SEO et automatisation. Comparatifs indépendants, honnêtes et mis à jour en 2025.",
+  title: "Logiciel entreprise : les meilleurs logiciels pour TPE PME",
+  description: "Comparez les meilleurs logiciels entreprise pour votre société. CRM, facturation, gestion de projet, SEO et automatisation. Comparatifs indépendants, honnêtes et mis à jour en 2025.",
   alternates: {
     canonical: "https://ton-meilleur-saas.fr"
   }
@@ -126,9 +126,9 @@ export default async function Home() {
                 <span style={{ color: '#475569', fontSize: '13px', fontWeight: 500 }}>Mis à jour en 2025 · 50+ outils comparés</span>
               </div>
               <h1 className="fade-up-2 hero-title" style={{ fontFamily: "'Fraunces', serif", fontSize: '62px', fontWeight: 800, color: '#0f172a', lineHeight: 1.05, letterSpacing: '-2px', marginBottom: '24px' }}>
-                Trouvez le logiciel<br />
-                <em style={{ fontStyle: 'italic', color: '#2563eb' }}>parfait</em> pour votre<br />
-                entreprise française.
+                Logiciel entreprise :<br />
+                trouvez l&apos;<em style={{ fontStyle: 'italic' }}>outil idéal</em><br />
+                pour votre société.
               </h1>
               <p className="fade-up-3" style={{ fontSize: '19px', color: '#475569', lineHeight: 1.7, marginBottom: '40px', fontWeight: 300, maxWidth: '500px' }}>
                 Des comparatifs <strong style={{ fontWeight: 600, color: '#0f172a' }}>indépendants et honnêtes</strong> pour aider les TPE et PME françaises à choisir les bons outils. Zéro publicité, zéro biais.
