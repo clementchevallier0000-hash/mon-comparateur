@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://mon-comparateur-git-main-clementchevallier0000-1477s-projects.vercel.app/sitemap.xml',
+    sitemap: 'https://ton-meilleur-saas.fr/sitemap.xml',
   }
 }

@@ -2,7 +2,7 @@ import { supabase } from '@/lib/supabase'
 import { MetadataRoute } from 'next'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://mon-comparateur-git-main-clementchevallier0000-1477s-projects.vercel.app'
+  const baseUrl = 'https://ton-meilleur-saas.fr'
 
   const { data: categories } = await supabase.from('categories').select('slug')
   const { data: cas_usage } = await supabase.from('cas_usage').select('slug, categorie_id, categories(slug)')

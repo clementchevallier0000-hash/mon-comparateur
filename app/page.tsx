@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "TonMeilleurSaaS — Comparateur de logiciels SaaS pour TPE et PME françaises",
   description: "Comparez les meilleurs logiciels SaaS pour votre entreprise française. CRM, facturation, gestion de projet, SEO et automatisation. Comparatifs indépendants, honnêtes et mis à jour en 2025.",
   alternates: {
-    canonical: "https://mon-comparateur-git-main-clementchevallier0000-1477s-projects.vercel.app"
+    canonical: "https://ton-meilleur-saas.fr"
   }
 }
 

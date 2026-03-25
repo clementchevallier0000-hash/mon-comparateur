@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    url: "https://mon-comparateur-git-main-clementchevallier0000-1477s-projects.vercel.app",
+    url: "https://ton-meilleur-saas.fr",
     siteName: "TonMeilleurSaas",
     title: "TonMeilleurSaas — Comparateur de logiciels SaaS pour TPE et PME françaises",
     description: "Comparez les meilleurs logiciels SaaS pour votre entreprise. Comparatifs indépendants et honnêtes.",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: "https://mon-comparateur-git-main-clementchevallier0000-1477s-projects.vercel.app"
+    canonical: "https://ton-meilleur-saas.fr"
   }
 };
 

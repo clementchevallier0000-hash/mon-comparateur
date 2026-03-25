@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ categorie
   return {
     title: `Meilleur ${cat?.nom} pour ${usageLabel} en 2025`,
     description: `Comparatif des meilleurs ${cat?.nom} pour ${usageLabel}. Trouvez l'outil adapté à vos besoins parmi notre sélection indépendante et honnête.`,
-    alternates: { canonical: `https://mon-comparateur-git-main-clementchevallier0000-1477s-projects.vercel.app/meilleur/${categorie}/${usage}` }
+    alternates: { canonical: `https://ton-meilleur-saas.fr/meilleur/${categorie}/${usage}` }
   }
 }
 

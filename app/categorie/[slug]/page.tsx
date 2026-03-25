@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${categorie?.h1 || `Meilleur ${categorie?.nom}`} pour TPE et PME françaises`,
     description: `Comparatif indépendant des meilleurs ${categorie?.nom}. Trouvez le logiciel adapté à votre entreprise parmi notre sélection testée et approuvée.`,
-    alternates: { canonical: `https://mon-comparateur-git-main-clementchevallier0000-1477s-projects.vercel.app/categorie/${slug}` }
+    alternates: { canonical: `https://ton-meilleur-saas.fr/categorie/${slug}` }
   }
 }
 
