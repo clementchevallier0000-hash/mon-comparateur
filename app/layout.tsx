@@ -3,24 +3,27 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "TonMeilleurSaas — Comparateur de logiciels SaaS pour TPE et PME françaises",
-    template: "%s | TonMeilleurSaas"
+    default: "TonMeilleurSaaS — Comparateur de logiciels SaaS pour TPE et PME françaises",
+    template: "%s | TonMeilleurSaaS"
   },
   description: "Comparez les meilleurs logiciels SaaS pour votre entreprise. CRM, facturation, gestion de projet, SEO et automatisation. Comparatifs indépendants et honnêtes.",
   keywords: ["comparateur logiciel", "meilleur CRM", "logiciel facturation", "SaaS france", "TPE PME"],
-  authors: [{ name: "TonMeilleurSaas" }],
-  creator: "TonMeilleurSaas",
+  authors: [{ name: "TonMeilleurSaaS" }],
+  creator: "TonMeilleurSaaS",
+  verification: {
+    google: "1p1mubu9UVdh9XEATR4UtjuKIz47s6QRzXbxgbW9IyQ"
+  },
   openGraph: {
     type: "website",
     locale: "fr_FR",
     url: "https://ton-meilleur-saas.fr",
-    siteName: "TonMeilleurSaas",
-    title: "TonMeilleurSaas — Comparateur de logiciels SaaS pour TPE et PME françaises",
+    siteName: "TonMeilleurSaaS",
+    title: "TonMeilleurSaaS — Comparateur de logiciels SaaS pour TPE et PME françaises",
     description: "Comparez les meilleurs logiciels SaaS pour votre entreprise. Comparatifs indépendants et honnêtes.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "TonMeilleurSaas — Comparateur de logiciels SaaS",
+    title: "TonMeilleurSaaS — Comparateur de logiciels SaaS",
     description: "Comparez les meilleurs logiciels SaaS pour votre entreprise.",
   },
   robots: {
