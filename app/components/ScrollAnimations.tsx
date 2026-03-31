@@ -37,6 +37,16 @@ export default function ScrollAnimations() {
       .stagger-3 { transition-delay: 0.3s !important; }
       .stagger-4 { transition-delay: 0.4s !important; }
 
+      header {
+        transition: box-shadow 0.4s ease, background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease !important;
+      }
+      header.scrolled {
+        box-shadow: 0 4px 24px rgba(0,0,0,0.06), 0 1px 0 rgba(37,99,235,0.1) !important;
+        background: rgba(255,255,255,0.88) !important;
+        backdrop-filter: blur(24px) !important;
+        border-bottom: 1px solid rgba(37,99,235,0.12) !important;
+      }
+
       @keyframes gradientShift {
         0% { background-position: 0% 50%; }
         50% { background-position: 100% 50%; }
@@ -199,9 +209,21 @@ export default function ScrollAnimations() {
       observer.observe(el)
     })
 
+    const handleScroll = () => {
+      const header = document.querySelector('header')
+      if (!header) return
+      if (window.scrollY > 20) {
+        header.classList.add('scrolled')
+      } else {
+        header.classList.remove('scrolled')
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+
     return () => {
       observer.disconnect()
       document.head.removeChild(style)
+      window.removeEventListener('scroll', handleScroll)
     }
   }, [])
 
