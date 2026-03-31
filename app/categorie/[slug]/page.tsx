@@ -1,3 +1,4 @@
+import TopBanner from '@/app/components/TopBanner'
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
 import type { Metadata } from "next";
@@ -59,7 +60,7 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
           .footer-cat { padding: 24px 20px !important; }
         }
       `}</style>
-
+<TopBanner />
       <header style={{ background: '#fff', borderBottom: '1px solid #e2e8f0', position: 'sticky', top: 0, zIndex: 100 }}>
         <div className="cat-header" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
           <Link href="/" style={{ textDecoration: 'none', fontSize: '20px', fontWeight: 700, color: '#0f172a' }}>🚀 TonMeilleurSaaS</Link>
