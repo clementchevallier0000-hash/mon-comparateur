@@ -1,4 +1,3 @@
-import StickyHeader from '@/app/components/StickyHeader'
 import TopBanner from '@/app/components/TopBanner'
 import HeroVisual from '@/app/components/HeroVisual'
 import AnimatedCounter from '@/app/components/AnimatedCounter'
@@ -94,8 +93,9 @@ export default async function Home() {
           .comp-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
-<TopBanner />
- <StickyHeader />
+
+      <TopBanner />
+
       {/* Header */}
       <header style={{ background: 'rgba(255,255,255,0.95)', borderBottom: '1px solid #f1f5f9', position: 'sticky', top: 0, zIndex: 100, backdropFilter: 'blur(12px)' }}>
         <div className="header-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '68px' }}>
@@ -128,11 +128,11 @@ export default async function Home() {
                 <span style={{ width: '7px', height: '7px', background: '#22c55e', borderRadius: '50%', display: 'inline-block', boxShadow: '0 0 0 2px rgba(34,197,94,0.2)', animation: 'pulse 2s infinite' }}></span>
                 <span style={{ color: '#475569', fontSize: '13px', fontWeight: 500 }}>Mis à jour en 2025 · 50+ outils comparés</span>
               </div>
-             <h1 className="fade-up-2 hero-title" style={{ fontFamily: "'Fraunces', serif", fontSize: '62px', fontWeight: 800, color: '#0f172a', lineHeight: 1.05, letterSpacing: '-2px', marginBottom: '24px' }}>
-  Trouvez le logiciel<br />
-  entreprise <em style={{ fontStyle: 'italic' }}>idéal</em><br />
-  pour votre société.
-</h1>
+              <h1 className="fade-up-2 hero-title" style={{ fontFamily: "'Fraunces', serif", fontSize: '62px', fontWeight: 800, color: '#0f172a', lineHeight: 1.05, letterSpacing: '-2px', marginBottom: '24px' }}>
+                Trouvez le logiciel<br />
+                entreprise <em style={{ fontStyle: 'italic' }}>idéal</em><br />
+                pour votre société.
+              </h1>
               <p className="fade-up-3" style={{ fontSize: '19px', color: '#475569', lineHeight: 1.7, marginBottom: '40px', fontWeight: 300, maxWidth: '500px' }}>
                 Des comparatifs <strong style={{ fontWeight: 600, color: '#0f172a' }}>indépendants et honnêtes</strong> pour aider les TPE et PME françaises à choisir les bons outils. Zéro publicité, zéro biais.
               </p>
