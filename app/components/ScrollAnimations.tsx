@@ -41,7 +41,7 @@ export default function ScrollAnimations() {
         transition: box-shadow 0.4s ease, background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease !important;
       }
       header.scrolled {
-        box-shadow: 0 4px 24px rgba(0,0,0,0.06), 0 1px 0 rgba(37,99,235,0.1) !important;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.06) !important;
         background: rgba(255,255,255,0.88) !important;
         backdrop-filter: blur(24px) !important;
         border-bottom: 1px solid rgba(37,99,235,0.12) !important;
@@ -197,6 +197,22 @@ export default function ScrollAnimations() {
     `
     document.head.appendChild(style)
 
+    // Barre de progression de lecture
+    const progressBar = document.createElement('div')
+    progressBar.id = 'scroll-progress'
+    progressBar.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, #2563eb, #7c3aed, #ec4899);
+      z-index: 9999;
+      transition: width 0.1s ease;
+      pointer-events: none;
+    `
+    document.body.appendChild(progressBar)
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -210,20 +226,27 @@ export default function ScrollAnimations() {
     })
 
     const handleScroll = () => {
+      // Effet glassmorphism header
       const header = document.querySelector('header')
-      if (!header) return
-      if (window.scrollY > 20) {
-        header.classList.add('scrolled')
-      } else {
-        header.classList.remove('scrolled')
+      if (header) {
+        if (window.scrollY > 20) header.classList.add('scrolled')
+        else header.classList.remove('scrolled')
       }
+
+      // Barre de progression
+      const scrollTop = window.scrollY
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
+      progressBar.style.width = `${progress}%`
     }
+
     window.addEventListener('scroll', handleScroll)
 
     return () => {
       observer.disconnect()
       document.head.removeChild(style)
       window.removeEventListener('scroll', handleScroll)
+      if (document.body.contains(progressBar)) document.body.removeChild(progressBar)
     }
   }, [])
 
