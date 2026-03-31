@@ -1,3 +1,4 @@
+import TopBanner from '@/app/components/TopBanner'
 import HeroVisual from '@/app/components/HeroVisual'
 import AnimatedCounter from '@/app/components/AnimatedCounter'
 import MobileMenu from '@/app/components/MobileMenu'
@@ -92,7 +93,7 @@ export default async function Home() {
           .comp-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
-
+<TopBanner />
       {/* Header */}
       <header style={{ background: 'rgba(255,255,255,0.95)', borderBottom: '1px solid #f1f5f9', position: 'sticky', top: 0, zIndex: 100, backdropFilter: 'blur(12px)' }}>
         <div className="header-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '68px' }}>
