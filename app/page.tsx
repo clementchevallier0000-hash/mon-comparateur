@@ -17,6 +17,12 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const { data: categories } = await supabase.from('categories').select('*')
+  const { data: toolCountsRaw } = await supabase.from('outils').select('categorie_id')
+
+  const toolCounts: Record<number, number> = {}
+  toolCountsRaw?.forEach((o: { categorie_id: number }) => {
+    toolCounts[o.categorie_id] = (toolCounts[o.categorie_id] || 0) + 1
+  })
 
   const icons: Record<string, string> = {
     'crm': '🤝', 'facturation': '💰', 'gestion-de-projet': '📋', 'seo': '🔍', 'automatisation': '⚡',
@@ -30,10 +36,39 @@ export default async function Home() {
   }
 
   const comparatif = [
-    { nom: 'HubSpot CRM', categorie: 'CRM', slug: 'crm', prix: 'Gratuit', note: 4.8, emoji: '🤝', points: ['Pipeline visuel', 'Version gratuite', 'Écosystème complet'] },
-    { nom: 'Pennylane', categorie: 'Facturation', slug: 'facturation', prix: '26€/mois', note: 4.7, emoji: '💰', points: ['Synchro bancaire', 'Facturation auto', 'Comptabilité intégrée'] },
-    { nom: 'Semrush', categorie: 'SEO', slug: 'seo', prix: '129€/mois', note: 4.9, emoji: '🔍', points: ['Base de données mondiale', 'Audit technique', 'Analyse concurrents'] },
-    { nom: 'Make', categorie: 'Automatisation', slug: 'automatisation', prix: '9€/mois', note: 4.7, emoji: '⚡', points: ['1000+ intégrations', 'No-code', 'Scénarios visuels'] },
+    {
+      nom: 'HubSpot CRM', categorie: 'CRM', slug: 'crm', prix: 'Gratuit',
+      note: 4.4, emoji: '🤝', badge: '🏆 N°1 CRM gratuit', accent: '#2563eb', bg: '#eff6ff',
+      best: 'Idéal pour débuter',
+      points: ['Pipeline visuel intuitif', 'Plan gratuit très complet', '1 000+ intégrations natives'],
+    },
+    {
+      nom: 'Pennylane', categorie: 'Facturation', slug: 'facturation', prix: '26€/mois',
+      note: 4.7, emoji: '💰', badge: '🇫🇷 Favori PME', accent: '#ea580c', bg: '#fff7ed',
+      best: 'Compta + facturation',
+      points: ['Synchro bancaire temps réel', 'Collaboration expert-comptable', 'Interface pensée PME'],
+    },
+    {
+      nom: 'Semrush', categorie: 'SEO', slug: 'seo', prix: '129€/mois',
+      note: 4.5, emoji: '🔍', badge: '⭐ Référence SEO', accent: '#9333ea', bg: '#fdf4ff',
+      best: 'Référence du marché',
+      points: ['Base de données mondiale', 'Audit technique complet', 'Analyse de la concurrence'],
+    },
+    {
+      nom: 'Make', categorie: 'Automatisation', slug: 'automatisation', prix: '9€/mois',
+      note: 4.7, emoji: '⚡', badge: '💡 Meilleur rapport Q/P', accent: '#d97706', bg: '#fffbeb',
+      best: 'Alternative à Zapier',
+      points: ['1 800+ intégrations', 'Interface no-code visuelle', 'Scénarios sans limite'],
+    },
+  ]
+
+  const logoCloud = [
+    { name: 'HubSpot', emoji: '🤝' }, { name: 'Pennylane', emoji: '💰' },
+    { name: 'Semrush', emoji: '🔍' }, { name: 'Make', emoji: '⚡' },
+    { name: 'Notion', emoji: '📋' }, { name: 'Brevo', emoji: '📧' },
+    { name: 'ActiveCampaign', emoji: '🎯' }, { name: 'n8n', emoji: '🔗' },
+    { name: 'Ahrefs', emoji: '🌐' }, { name: 'Axonaut', emoji: '📊' },
+    { name: 'Sarbacane', emoji: '✉️' }, { name: 'Pipedrive', emoji: '🚀' },
   ]
 
   return (
@@ -43,16 +78,21 @@ export default async function Home() {
 
       <style>{`
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        .cat-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+        .cat-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.1); border-color: transparent !important; }
         .cat-card { transition: all 0.25s ease; }
-        .cta-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(37,99,235,0.3); }
+        .cta-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(37,99,235,0.35); }
         .cta-btn { transition: all 0.2s ease; }
-        .comp-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); border-color: #2563eb !important; }
+        .comp-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
         .comp-card { transition: all 0.2s ease; cursor: pointer; }
         .method-item { transition: transform 0.2s ease, box-shadow 0.2s ease; }
         .method-item:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
         .content-link { color: #2563eb; text-decoration: none; font-weight: 600; border-bottom: 1px solid #bfdbfe; transition: border-color 0.15s; }
         .content-link:hover { border-color: #2563eb; }
+        .gradient-text { background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .logo-chip { transition: all 0.15s ease; }
+        .logo-chip:hover { background: #f1f5f9 !important; transform: translateY(-1px); }
+        .essayer-btn { transition: all 0.2s ease; }
+        .essayer-btn:hover { opacity: 0.9; transform: translateY(-1px); }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .fade-up { animation: fadeUp 0.6s ease forwards; }
         .fade-up-2 { animation: fadeUp 0.6s ease 0.1s forwards; opacity: 0; }
@@ -86,6 +126,7 @@ export default async function Home() {
           .section-title { font-size: 28px !important; }
           .content-section { padding: 48px 20px !important; }
           .content-inner { padding: 32px 20px !important; }
+          .logo-cloud-inner { padding: 20px !important; }
         }
         @media (max-width: 480px) {
           .hero-title { font-size: 28px !important; }
@@ -130,19 +171,35 @@ export default async function Home() {
               </div>
               <h1 className="fade-up-2 hero-title" style={{ fontFamily: "'Fraunces', serif", fontSize: '62px', fontWeight: 800, color: '#0f172a', lineHeight: 1.05, letterSpacing: '-2px', marginBottom: '24px' }}>
                 Trouvez le logiciel<br />
-                entreprise <em style={{ fontStyle: 'italic' }}>idéal</em><br />
+                entreprise <em style={{ fontStyle: 'italic' }} className="gradient-text">idéal</em><br />
                 pour votre société.
               </h1>
               <p className="fade-up-3" style={{ fontSize: '19px', color: '#475569', lineHeight: 1.7, marginBottom: '40px', fontWeight: 300, maxWidth: '500px' }}>
                 Des comparatifs <strong style={{ fontWeight: 600, color: '#0f172a' }}>experts et honnêtes</strong> pour aider les TPE et PME françaises à choisir les bons outils. Analyses rigoureuses, transparence totale.
               </p>
               <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                <Link href="#categories" className="cta-btn" style={{ background: '#2563eb', color: '#fff', padding: '14px 28px', borderRadius: '12px', textDecoration: 'none', fontSize: '15px', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                  Voir les comparatifs →
+                <Link href="#categories" className="cta-btn" style={{ background: 'linear-gradient(135deg, #2563eb, #7c3aed)', color: '#fff', padding: '14px 28px', borderRadius: '12px', textDecoration: 'none', fontSize: '15px', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                  Trouver mon logiciel →
                 </Link>
-                <Link href="#methode" style={{ background: '#fff', color: '#0f172a', padding: '14px 28px', borderRadius: '12px', textDecoration: 'none', fontSize: '15px', fontWeight: 500, border: '1px solid #e2e8f0', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                  Notre méthode
+                <Link href="#comparatif" style={{ background: '#fff', color: '#0f172a', padding: '14px 28px', borderRadius: '12px', textDecoration: 'none', fontSize: '15px', fontWeight: 500, border: '1px solid #e2e8f0', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                  Voir le top outils
                 </Link>
+              </div>
+              {/* Social proof */}
+              <div className="fade-up-3" style={{ marginTop: '24px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <div style={{ display: 'flex' }}>
+                  {['#eff6ff', '#fff7ed', '#f0fdf4', '#fdf4ff', '#fffbeb'].map((bg, i) => (
+                    <div key={i} style={{ width: '30px', height: '30px', borderRadius: '50%', background: bg, border: '2px solid #fff', marginLeft: i > 0 ? '-8px' : '0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', boxShadow: '0 1px 4px rgba(0,0,0,0.08)' }}>
+                      {['🤝','💰','🔍','⚡','📋'][i]}
+                    </div>
+                  ))}
+                </div>
+                <div>
+                  <div style={{ display: 'flex', gap: '2px', marginBottom: '2px' }}>
+                    {'★★★★★'.split('').map((s, i) => <span key={i} style={{ color: '#f59e0b', fontSize: '12px' }}>{s}</span>)}
+                  </div>
+                  <span style={{ fontSize: '12px', color: '#64748b' }}><strong style={{ color: '#0f172a' }}>12 000+</strong> dirigeants font confiance à nos comparatifs</span>
+                </div>
               </div>
             </div>
             <div className="hero-visual-wrap">
@@ -169,6 +226,24 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Logo cloud */}
+      <section style={{ padding: '20px 48px', borderTop: '1px solid #f1f5f9', borderBottom: '1px solid #f1f5f9', background: '#fff' }}>
+        <div className="logo-cloud-inner" style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap' }}>
+          <span style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', whiteSpace: 'nowrap', flexShrink: 0 }}>
+            Outils couverts
+          </span>
+          <div style={{ width: '1px', height: '20px', background: '#e2e8f0', flexShrink: 0 }} />
+          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
+            {logoCloud.map((tool, i) => (
+              <span key={i} className="logo-chip" style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '5px 12px', fontSize: '13px', color: '#475569', fontWeight: 500, cursor: 'default' }}>
+                {tool.emoji} {tool.name}
+              </span>
+            ))}
+            <span style={{ fontSize: '13px', color: '#94a3b8', fontWeight: 600 }}>+40 outils</span>
+          </div>
+        </div>
+      </section>
+
       {/* Categories */}
       <section id="categories" className="section-pad" style={{ padding: '80px 48px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
@@ -184,9 +259,12 @@ export default async function Home() {
           <div className="cat-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '20px' }}>
             {categories?.map((cat, i) => {
               const c = colors[cat.slug] || { bg: '#f8fafc', accent: '#2563eb', light: '#e2e8f0' }
+              const count = toolCounts[cat.id] || 0
               return (
                 <Link href={`/categorie/${cat.slug}`} key={cat.id} style={{ textDecoration: 'none' }}>
-                  <div className={`cat-card scroll-reveal stagger-${(i % 4) + 1}`} style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '20px', padding: '28px', cursor: 'pointer', height: '100%' }}>
+                  <div className={`cat-card scroll-reveal stagger-${(i % 4) + 1}`} style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '20px', padding: '28px', cursor: 'pointer', height: '100%', position: 'relative', overflow: 'hidden' }}>
+                    {/* Accent bar */}
+                    <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: `linear-gradient(90deg, ${c.accent}, ${c.accent}66)`, borderRadius: '20px 20px 0 0' }} />
                     <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
                       <div style={{ width: '56px', height: '56px', borderRadius: '16px', background: c.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '26px', flexShrink: 0, border: `1px solid ${c.light}` }}>
                         {icons[cat.slug] || '📦'}
@@ -197,9 +275,16 @@ export default async function Home() {
                           <span style={{ color: c.accent, fontSize: '18px', fontWeight: 300 }}>→</span>
                         </div>
                         <p style={{ fontSize: '13px', color: '#64748b', lineHeight: 1.6, marginBottom: '16px' }}>{cat.description}</p>
-                        <span style={{ display: 'inline-block', background: c.bg, color: c.accent, fontSize: '11px', fontWeight: 700, padding: '4px 10px', borderRadius: '999px', border: `1px solid ${c.light}` }}>
-                          Voir les comparatifs →
-                        </span>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                          <span style={{ display: 'inline-block', background: c.bg, color: c.accent, fontSize: '11px', fontWeight: 700, padding: '4px 10px', borderRadius: '999px', border: `1px solid ${c.light}` }}>
+                            Voir les comparatifs →
+                          </span>
+                          {count > 0 && (
+                            <span style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 600 }}>
+                              {count} outil{count > 1 ? 's' : ''} comparé{count > 1 ? 's' : ''}
+                            </span>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -214,40 +299,63 @@ export default async function Home() {
       <section id="comparatif" className="section-pad" style={{ padding: '80px 48px', background: '#f8fafc' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div className="scroll-reveal" style={{ marginBottom: '48px' }}>
-            <p style={{ fontSize: '12px', fontWeight: 700, color: '#2563eb', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '12px' }}>Comparatif rapide</p>
+            <p style={{ fontSize: '12px', fontWeight: 700, color: '#2563eb', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '12px' }}>Sélection 2026</p>
             <h2 className="section-title" style={{ fontFamily: "'Fraunces', serif", fontSize: '38px', fontWeight: 800, color: '#0f172a', letterSpacing: '-1px', marginBottom: '12px' }}>
               Les outils les mieux notés
             </h2>
             <p style={{ fontSize: '16px', color: '#64748b', maxWidth: '500px', lineHeight: 1.6 }}>
-              Notre sélection des solutions les plus plébiscitées par les TPE et PME françaises.
+              Notre sélection des solutions les plus plébiscitées par les TPE et PME françaises en 2026.
             </p>
           </div>
           <div className="comp-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px' }}>
             {comparatif.map((outil, i) => (
               <Link key={i} href={`/categorie/${outil.slug}`} style={{ textDecoration: 'none' }}>
-                <div className={`comp-card scroll-reveal stagger-${i + 1}`} style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '20px', padding: '24px', height: '100%' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-                    <span style={{ fontSize: '24px' }}>{outil.emoji}</span>
+                <div className={`comp-card scroll-reveal stagger-${i + 1}`} style={{ background: '#fff', border: `1px solid ${i === 0 ? outil.accent + '40' : '#e2e8f0'}`, borderRadius: '20px', padding: '24px', height: '100%', position: 'relative', overflow: 'hidden' }}>
+                  {/* Accent top bar */}
+                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: `linear-gradient(90deg, ${outil.accent}, ${outil.accent}66)` }} />
+
+                  {/* Badge */}
+                  <div style={{ marginBottom: '16px' }}>
+                    <span style={{ background: outil.bg, color: outil.accent, fontSize: '11px', fontWeight: 700, padding: '4px 10px', borderRadius: '999px', border: `1px solid ${outil.accent}33` }}>
+                      {outil.badge}
+                    </span>
+                  </div>
+
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
+                    <span style={{ fontSize: '26px' }}>{outil.emoji}</span>
                     <div>
-                      <div style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>{outil.nom}</div>
+                      <div style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a' }}>{outil.nom}</div>
                       <div style={{ fontSize: '11px', color: '#64748b' }}>{outil.categorie}</div>
                     </div>
                   </div>
+
+                  <div style={{ fontSize: '11px', color: '#64748b', fontStyle: 'italic', marginBottom: '12px' }}>{outil.best}</div>
+
+                  {/* Note */}
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '16px' }}>
-                    <span style={{ fontSize: '13px', fontWeight: 700, color: '#f59e0b' }}>{'★'.repeat(Math.floor(outil.note))}</span>
+                    <div style={{ display: 'flex', gap: '1px' }}>
+                      {[1,2,3,4,5].map(s => (
+                        <span key={s} style={{ color: s <= Math.round(outil.note) ? '#f59e0b' : '#e2e8f0', fontSize: '13px' }}>★</span>
+                      ))}
+                    </div>
                     <span style={{ fontSize: '12px', fontWeight: 700, color: '#0f172a' }}>{outil.note}</span>
+                    <span style={{ fontSize: '11px', color: '#94a3b8' }}>/5</span>
                   </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginBottom: '16px' }}>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginBottom: '18px' }}>
                     {outil.points.map((p, j) => (
-                      <div key={j} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                        <span style={{ width: '16px', height: '16px', background: '#eff6ff', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '9px', color: '#2563eb', fontWeight: 700, flexShrink: 0 }}>✓</span>
+                      <div key={j} style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
+                        <span style={{ width: '16px', height: '16px', background: outil.bg, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '9px', color: outil.accent, fontWeight: 700, flexShrink: 0 }}>✓</span>
                         <span style={{ fontSize: '12px', color: '#475569' }}>{p}</span>
                       </div>
                     ))}
                   </div>
+
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '14px', borderTop: '1px solid #f1f5f9' }}>
-                    <span style={{ fontSize: '13px', fontWeight: 700, color: '#0f172a' }}>{outil.prix}</span>
-                    <span style={{ fontSize: '12px', color: '#2563eb', fontWeight: 600 }}>Voir →</span>
+                    <span style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>{outil.prix}</span>
+                    <span className="essayer-btn" style={{ background: outil.accent, color: '#fff', fontSize: '12px', fontWeight: 600, padding: '6px 14px', borderRadius: '8px' }}>
+                      Essayer →
+                    </span>
                   </div>
                 </div>
               </Link>
@@ -265,15 +373,15 @@ export default async function Home() {
               Comment on compare ?
             </h2>
             <p style={{ fontSize: '16px', color: '#64748b', maxWidth: '500px', lineHeight: 1.6 }}>
-              Chaque outil est évalué selon les mêmes critères objectifs, sans influence commerciale.
+              Chaque outil est évalué selon les mêmes critères objectifs, sans influence commerciale sur nos classements.
             </p>
           </div>
           <div className="method-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '20px' }}>
             {[
-              { icon: '🔍', title: 'Analyse approfondie', desc: "Chaque outil est testé pendant plusieurs semaines sur des cas d'usage réels." },
-              { icon: '💶', title: 'Transparence des prix', desc: 'Tous les tarifs sont vérifiés et mis à jour régulièrement. Pas de surprise.' },
-              { icon: '🎯', title: 'Adapté à votre profil', desc: "Nos recommandations s'adaptent à votre type d'entreprise et vos besoins." },
-              { icon: '🤝', title: 'Indépendance totale', desc: 'Aucun éditeur ne nous rémunère pour apparaître en tête de classement.' },
+              { icon: '🔍', title: 'Analyse approfondie', desc: "Chaque outil est testé pendant plusieurs semaines sur des cas d'usage réels en conditions TPE/PME." },
+              { icon: '💶', title: 'Transparence des prix', desc: 'Tous les tarifs sont vérifiés et mis à jour régulièrement. Pas de surprise à la souscription.' },
+              { icon: '🎯', title: 'Adapté à votre profil', desc: "Nos recommandations s'adaptent à votre type d'entreprise, votre budget et vos besoins concrets." },
+              { icon: '🤝', title: 'Affiliation déclarée', desc: "Certains liens sont affiliés. Cela ne change jamais nos classements : nos avis restent basés sur nos tests uniquement." },
             ].map((item, i) => (
               <div key={i} className={`method-item scroll-reveal stagger-${i + 1}`} style={{ background: '#fff', borderRadius: '16px', padding: '28px', border: '1px solid #e2e8f0' }}>
                 <div style={{ fontSize: '28px', marginBottom: '14px' }}>{item.icon}</div>
@@ -297,10 +405,10 @@ export default async function Home() {
             </div>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               {[
-                { q: 'Comment choisir son logiciel SaaS ?', r: "Définissez d'abord vos besoins précis, votre budget mensuel et le nombre d'utilisateurs. Nos comparatifs vous guident étape par étape selon votre profil." },
-                { q: 'Les comparatifs sont-ils vraiment indépendants ?', r: "Oui. TonMeilleurSaaS ne perçoit aucune rémunération des éditeurs pour leur classement. Nos avis sont basés uniquement sur les tests et les retours utilisateurs." },
-                { q: 'Les prix affichés sont-ils à jour ?', r: 'Nous mettons à jour les tarifs régulièrement. Vérifiez toujours le site officiel avant de vous abonner car les prix peuvent évoluer.' },
-                { q: 'Puis-je suggérer un outil à comparer ?', r: "Absolument. Contactez-nous et nous l'intégrerons dans notre prochaine mise à jour si il correspond à notre sélection." },
+                { q: 'Comment choisir son logiciel SaaS ?', r: "Définissez d'abord vos besoins précis, votre budget mensuel et le nombre d'utilisateurs. Nos comparatifs vous guident étape par étape selon votre profil d'entreprise." },
+                { q: 'Vos comparatifs sont-ils objectifs malgré l\'affiliation ?', r: "Oui. Nos classements sont basés uniquement sur nos tests et les retours utilisateurs réels. Certains liens sont affiliés — nous le déclarons clairement — mais cela n'influe jamais sur la position d'un outil dans nos comparatifs." },
+                { q: 'Les prix affichés sont-ils à jour ?', r: 'Nous mettons à jour les tarifs régulièrement. Vérifiez toujours le site officiel de l\'éditeur avant de vous abonner car les prix peuvent évoluer.' },
+                { q: 'Puis-je suggérer un outil à comparer ?', r: "Absolument. Contactez-nous et nous l'intégrerons dans notre prochaine mise à jour s'il correspond à notre ligne éditoriale." },
               ].map((faq, i) => (
                 <div key={i} className={`faq-item scroll-reveal stagger-${i + 1}`} style={{ borderBottom: '1px solid #e2e8f0', padding: '20px 0' }}>
                   <h3 style={{ fontSize: '15px', fontWeight: 600, color: '#0f172a', marginBottom: '8px' }}>{faq.q}</h3>
@@ -343,7 +451,7 @@ export default async function Home() {
                 <p>Les <Link href="/categorie/gestion-de-projet" className="content-link">outils de gestion de projet</Link> facilitent le partage d&apos;informations entre services. Finis les fichiers dispersés et les emails interminables : tout est centralisé et accessible en temps réel.</p>
 
                 <h3>Sécuriser et structurer les données</h3>
-                <p>La donnée est au cœur de la performance. Un logiciel entreprise permet de garantir une meilleure sauvegarde, une traçabilité plus fine, une conformité réglementaire renforcée et des accès mieux contrôlés.</p>
+                <p>La donnée est au cœur de la performance. Un logiciel entreprise garantit une meilleure sauvegarde, une traçabilité plus fine, une conformité réglementaire renforcée et des accès mieux contrôlés.</p>
 
                 <h2>Quels sont les principaux types de logiciels entreprise ?</h2>
                 <p>Toutes les entreprises n&apos;ont pas les mêmes besoins. Il existe plusieurs catégories de logiciels professionnels, chacune répondant à des objectifs spécifiques selon la taille de l&apos;entreprise et son secteur d&apos;activité.</p>
@@ -386,21 +494,23 @@ export default async function Home() {
       </section>
 
       {/* CTA */}
-      <section className="cta-section" style={{ padding: '80px 48px', background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', top: '-100px', right: '-100px', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(37,99,235,0.2) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <section className="cta-section" style={{ padding: '80px 48px', background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #312e81 100%)', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', top: '-100px', right: '-100px', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(37,99,235,0.25) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', bottom: '-80px', left: '-80px', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(124,58,237,0.15) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center', position: 'relative' }}>
+          <p style={{ fontSize: '12px', fontWeight: 700, color: '#7c3aed', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '16px' }}>Prêt à choisir ?</p>
           <h2 className="cta-title scroll-reveal" style={{ fontFamily: "'Fraunces', serif", fontSize: '44px', fontWeight: 800, color: '#fff', letterSpacing: '-1.5px', marginBottom: '16px' }}>
-            Prêt à trouver votre outil idéal ?
+            Trouvez votre outil idéal<br />en moins de 5 minutes.
           </h2>
-          <p className="scroll-reveal stagger-1" style={{ fontSize: '17px', color: '#94a3b8', marginBottom: '36px', maxWidth: '500px', margin: '0 auto 36px', lineHeight: 1.6 }}>
-            Explorez nos comparatifs et faites le bon choix dès aujourd&apos;hui.
+          <p className="scroll-reveal stagger-1" style={{ fontSize: '17px', color: '#94a3b8', marginBottom: '36px', maxWidth: '460px', margin: '0 auto 36px', lineHeight: 1.6 }}>
+            Nos comparatifs sont conçus pour vous faire gagner du temps et éviter les mauvais choix coûteux.
           </p>
           <div className="scroll-reveal stagger-2" style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="#categories" className="cta-btn" style={{ background: '#fff', color: '#0f172a', padding: '16px 36px', borderRadius: '12px', textDecoration: 'none', fontSize: '16px', fontWeight: 700, display: 'inline-block' }}>
+            <Link href="#categories" className="cta-btn" style={{ background: 'linear-gradient(135deg, #2563eb, #7c3aed)', color: '#fff', padding: '16px 36px', borderRadius: '12px', textDecoration: 'none', fontSize: '16px', fontWeight: 700, display: 'inline-block', boxShadow: '0 4px 24px rgba(37,99,235,0.4)' }}>
               Voir tous les comparatifs →
             </Link>
-            <Link href="#comparatif" className="cta-btn" style={{ background: 'transparent', color: '#fff', padding: '16px 36px', borderRadius: '12px', textDecoration: 'none', fontSize: '16px', fontWeight: 600, display: 'inline-block', border: '1px solid rgba(255,255,255,0.3)' }}>
-              Comparatif rapide
+            <Link href="#comparatif" className="cta-btn" style={{ background: 'rgba(255,255,255,0.08)', color: '#fff', padding: '16px 36px', borderRadius: '12px', textDecoration: 'none', fontSize: '16px', fontWeight: 600, display: 'inline-block', border: '1px solid rgba(255,255,255,0.2)', backdropFilter: 'blur(8px)' }}>
+              Top outils 2026
             </Link>
           </div>
         </div>
