@@ -2,6 +2,7 @@ import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
 import type { Metadata } from "next";
 import LogoImg from '@/app/components/LogoImg'
+import ScrollAnimations from '@/app/components/ScrollAnimations'
 
 function getLogoUrl(lienAffilie: string): string | null {
   try {
@@ -12,6 +13,24 @@ function getLogoUrl(lienAffilie: string): string | null {
   }
 }
 
+const catColors: Record<string, { accent: string, bg: string, light: string, gradient: string }> = {
+  'crm':               { accent: '#2563eb', bg: '#eff6ff', light: '#dbeafe', gradient: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #1e40af 100%)' },
+  'facturation':       { accent: '#ea580c', bg: '#fff7ed', light: '#fed7aa', gradient: 'linear-gradient(135deg, #0f172a 0%, #431407 50%, #9a3412 100%)' },
+  'gestion-de-projet': { accent: '#16a34a', bg: '#f0fdf4', light: '#bbf7d0', gradient: 'linear-gradient(135deg, #0f172a 0%, #052e16 50%, #166534 100%)' },
+  'seo':               { accent: '#9333ea', bg: '#fdf4ff', light: '#e9d5ff', gradient: 'linear-gradient(135deg, #0f172a 0%, #2e1065 50%, #6b21a8 100%)' },
+  'automatisation':    { accent: '#d97706', bg: '#fffbeb', light: '#fde68a', gradient: 'linear-gradient(135deg, #0f172a 0%, #451a03 50%, #92400e 100%)' },
+}
+
+const catIcons: Record<string, string> = {
+  'crm': '🤝', 'facturation': '💰', 'gestion-de-projet': '📋', 'seo': '🔍', 'automatisation': '⚡',
+}
+
+const rankConfig: Record<number, { emoji: string, label: string, labelColor: string, labelBg: string, labelBorder: string, borderColor: string }> = {
+  0: { emoji: '🥇', label: '🏆 Meilleur choix', labelColor: '#854d0e', labelBg: '#fefce8', labelBorder: '#fde047', borderColor: '#fbbf24' },
+  1: { emoji: '🥈', label: '🥈 2ème choix',     labelColor: '#374151', labelBg: '#f9fafb', labelBorder: '#d1d5db', borderColor: '#9ca3af' },
+  2: { emoji: '🥉', label: '🥉 3ème choix',     labelColor: '#92400e', labelBg: '#fff7ed', labelBorder: '#fcd34d', borderColor: '#f59e0b' },
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ categorie: string, usage: string }> }): Promise<Metadata> {
   const { categorie, usage } = await params
   const { data: cat } = await supabase.from('categories').select('*').eq('slug', categorie).single()
@@ -20,7 +39,7 @@ export async function generateMetadata({ params }: { params: Promise<{ categorie
   const usageLabel = cas?.label || typeEntreprise?.label || usage.replace(/-/g, ' ')
   return {
     title: `Meilleur ${cat?.nom} pour ${usageLabel} en 2026`,
-    description: `Comparatif des meilleurs ${cat?.nom} pour ${usageLabel}. Trouvez l'outil adapté à vos besoins parmi notre sélection experte et honnête.`,
+    description: `Comparatif expert des meilleurs ${cat?.nom} pour ${usageLabel}. Trouvez l'outil idéal parmi notre sélection testée et approuvée en 2026.`,
     alternates: { canonical: `https://ton-meilleur-saas.fr/meilleur/${categorie}/${usage}` }
   }
 }
@@ -34,12 +53,17 @@ export default async function MeilleurPage({ params }: { params: Promise<{ categ
   const usageLabel = cas?.label || typeEntreprise?.label || usage.replace(/-/g, ' ')
   const contenu = cas?.contenu || typeEntreprise?.contenu
 
+  const c = catColors[categorie] || { accent: '#2563eb', bg: '#eff6ff', light: '#dbeafe', gradient: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)' }
+  const icon = catIcons[categorie] || '📦'
+  const outilCount = outils?.length || 0
+  const gratuitCount = outils?.filter(o => o.prix_mensuel === 0).length || 0
+
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     "name": `Meilleur ${cat?.nom} pour ${usageLabel}`,
     "description": `Comparatif des meilleurs ${cat?.nom} pour ${usageLabel}`,
-    "numberOfItems": outils?.length || 0,
+    "numberOfItems": outilCount,
     "itemListElement": outils?.map((outil, index) => ({
       "@type": "ListItem",
       "position": index + 1,
@@ -50,99 +74,249 @@ export default async function MeilleurPage({ params }: { params: Promise<{ categ
   }
 
   return (
-    <main style={{ fontFamily: "'Inter', sans-serif", background: '#f8fafc', minHeight: '100vh' }}>
+    <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#f8fafc', minHeight: '100vh', overflowX: 'hidden' }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
+      <ScrollAnimations />
 
       <style>{`
+        .outil-row-m { transition: all 0.25s ease; }
+        .outil-row-m:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); transform: translateY(-2px); }
+        .essayer-btn-m { transition: all 0.2s ease; }
+        .essayer-btn-m:hover { opacity: 0.85; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+
         @media (max-width: 768px) {
-          .meilleur-header { padding: 0 20px !important; }
-          .meilleur-hero { padding: 36px 20px !important; }
-          .meilleur-hero h1 { font-size: 26px !important; letter-spacing: -0.5px !important; }
-          .meilleur-section { padding: 28px 20px 0 !important; }
-          .meilleur-contenu { padding: 28px !important; }
-          .meilleur-footer { padding: 24px 20px !important; margin-top: 48px !important; }
-          .outil-card-m { flex-direction: column !important; align-items: flex-start !important; padding: 20px !important; gap: 16px !important; }
-          .outil-left-m { width: 100% !important; }
+          .m-header { padding: 0 16px !important; }
+          .m-hero { padding: 28px 16px 32px !important; }
+          .m-hero h1 { font-size: 24px !important; letter-spacing: -0.5px !important; }
+          .m-hero p { font-size: 14px !important; margin-bottom: 20px !important; }
+          .m-hero-stats { gap: 14px !important; flex-wrap: wrap !important; }
+          .m-section { padding: 24px 16px 16px !important; }
+          .m-contenu-wrap { padding: 0 16px !important; }
+          .m-contenu { padding: 24px 16px !important; }
+          .m-footer { padding: 20px 16px !important; flex-direction: column !important; align-items: flex-start !important; gap: 10px !important; }
+          .m-breadcrumb { display: none !important; }
+          .outil-card-m { flex-direction: column !important; align-items: flex-start !important; padding: 16px !important; gap: 12px !important; }
+          .outil-left-m { width: 100% !important; padding-left: 0 !important; }
           .outil-right-m { width: 100% !important; flex-direction: row !important; justify-content: space-between !important; align-items: center !important; }
-          .outil-desc-m { max-width: 100% !important; }
-          .contenu table { display: block !important; overflow-x: auto !important; }
+          .outil-desc-m { max-width: 100% !important; font-size: 12px !important; }
+          .outil-badges-m { flex-wrap: wrap !important; }
+          .m-cta { padding: 40px 16px !important; }
+          .m-cta h2 { font-size: 24px !important; }
         }
       `}</style>
 
-      <header style={{ background: '#fff', borderBottom: '1px solid #e2e8f0', position: 'sticky', top: 0, zIndex: 100 }}>
-        <div className="meilleur-header" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
-          <Link href="/" style={{ textDecoration: 'none', fontSize: '20px', fontWeight: 700, color: '#0f172a' }}>🚀 TonMeilleurSaaS</Link>
-          <Link href={`/categorie/${categorie}`} style={{ color: '#64748b', fontSize: '14px', textDecoration: 'none', fontWeight: 500 }}>← Retour</Link>
+      {/* Header */}
+      <header style={{ background: 'rgba(255,255,255,0.95)', borderBottom: '1px solid #f1f5f9', position: 'sticky', top: 0, zIndex: 100, backdropFilter: 'blur(12px)' }}>
+        <div className="m-header" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
+          <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <span style={{ fontSize: '20px' }}>🚀</span>
+            <span style={{ fontFamily: "'Fraunces', serif", fontSize: '18px', fontWeight: 800, color: '#0f172a' }}>TonMeilleurSaaS</span>
+          </Link>
+          <div className="m-breadcrumb" style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#64748b' }}>
+            <Link href="/" style={{ color: '#64748b', textDecoration: 'none', fontWeight: 500 }}>Accueil</Link>
+            <span>›</span>
+            <Link href={`/categorie/${categorie}`} style={{ color: '#64748b', textDecoration: 'none', fontWeight: 500 }}>{cat?.nom}</Link>
+            <span>›</span>
+            <span style={{ color: '#0f172a', fontWeight: 600 }}>{usageLabel}</span>
+          </div>
         </div>
       </header>
 
-      <section className="meilleur-hero" style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)', padding: '50px 40px' }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-          <h1 style={{ fontSize: '42px', fontWeight: 700, color: '#fff', letterSpacing: '-1px', marginBottom: '10px' }}>
-            Meilleur {cat?.nom} pour {usageLabel}
-          </h1>
-          <p style={{ color: '#94a3b8', fontSize: '16px' }}>Comparatif expert — mis à jour en 2026</p>
-        </div>
-      </section>
+      {/* Hero */}
+      <section className="m-hero" style={{ background: c.gradient, padding: '52px 40px 44px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', top: '-100px', right: '-100px', width: '500px', height: '500px', background: `radial-gradient(circle, ${c.accent}30 0%, transparent 70%)`, pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', bottom: '-80px', left: '-80px', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative' }}>
 
-      <section className="meilleur-section" style={{ padding: '40px 40px 0' }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            {outils?.map((outil, index) => (
-              <div key={outil.id} className="outil-card-m" style={{ background: '#fff', border: index === 0 ? '2px solid #2563eb' : '1px solid #e2e8f0', borderRadius: '16px', padding: '24px 28px', display: 'flex', alignItems: 'center', gap: '24px', justifyContent: 'space-between', position: 'relative' }}>
-                {index === 0 && (
-                  <div style={{ position: 'absolute', top: '-12px', left: '24px', background: '#2563eb', color: '#fff', fontSize: '11px', fontWeight: 700, padding: '3px 10px', borderRadius: '999px' }}>⭐ Meilleur choix</div>
-                )}
-                <div className="outil-left-m" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                  <span style={{ fontSize: '13px', fontWeight: 700, color: '#94a3b8', width: '24px', flexShrink: 0 }}>#{index + 1}</span>
-                  <div style={{ width: '48px', height: '48px', background: '#fff', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: '1px solid #e2e8f0', flexShrink: 0 }}>
-                    <LogoImg src={getLogoUrl(outil.lien_affilie)} alt={outil.nom} />
-                  </div>
-                  <div>
-                    <h3 style={{ fontSize: '17px', fontWeight: 600, color: '#0f172a', marginBottom: '4px' }}>{outil.nom}</h3>
-                    <p className="outil-desc-m" style={{ color: '#64748b', fontSize: '13px', lineHeight: 1.5, maxWidth: '500px' }}>{outil.description}</p>
-                  </div>
+          {/* Badge live */}
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '999px', padding: '5px 14px', marginBottom: '18px', backdropFilter: 'blur(8px)' }}>
+            <span style={{ width: '6px', height: '6px', background: '#4ade80', borderRadius: '50%', display: 'inline-block' }} />
+            <span style={{ color: 'rgba(255,255,255,0.85)', fontSize: '12px', fontWeight: 500 }}>Comparatif expert · Mis à jour en 2026</span>
+          </div>
+
+          <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: '42px', fontWeight: 800, color: '#fff', letterSpacing: '-1.5px', marginBottom: '12px', lineHeight: 1.1 }}>
+            Meilleur {cat?.nom}<br />
+            <span style={{ opacity: 0.75 }}>pour {usageLabel}</span>
+          </h1>
+          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px', maxWidth: '500px', lineHeight: 1.6, marginBottom: '28px' }}>
+            Sélection des {outilCount} meilleurs outils {cat?.nom} adaptés aux besoins des {usageLabel}s. Avis basés sur des tests réels.
+          </p>
+
+          {/* Stats */}
+          <div className="m-hero-stats" style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
+            {[
+              { val: `${outilCount}`, label: 'outils testés', icon: '📊' },
+              ...(gratuitCount > 0 ? [{ val: `${gratuitCount}`, label: 'version gratuite', icon: '🆓' }] : []),
+              { val: '2026', label: 'données à jour', icon: '✅' },
+            ].map((stat, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '9px' }}>
+                <div style={{ width: '32px', height: '32px', background: 'rgba(255,255,255,0.1)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', border: '1px solid rgba(255,255,255,0.15)', flexShrink: 0 }}>
+                  {stat.icon}
                 </div>
-                <div className="outil-right-m" style={{ display: 'flex', alignItems: 'center', gap: '20px', flexShrink: 0 }}>
-                  <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a' }}>{outil.prix_mensuel === 0 ? 'Gratuit' : `${outil.prix_mensuel}€`}</div>
-                    {outil.prix_mensuel > 0 && <div style={{ fontSize: '11px', color: '#94a3b8' }}>/ mois</div>}
-                  </div>
-                  <a href={outil.lien_affilie} target="_blank" style={{ background: '#2563eb', color: '#fff', borderRadius: '10px', padding: '10px 20px', textDecoration: 'none', fontSize: '14px', fontWeight: 600, whiteSpace: 'nowrap' }}>
-                    Essayer →
-                  </a>
+                <div>
+                  <div style={{ fontFamily: "'Fraunces', serif", fontSize: '18px', fontWeight: 800, color: '#fff', lineHeight: 1 }}>{stat.val}</div>
+                  <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.5)', fontWeight: 500 }}>{stat.label}</div>
                 </div>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
+      {/* Liste des outils */}
+      <section className="m-section" style={{ padding: '44px 40px 24px' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: '22px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.5px' }}>
+              {icon} Notre sélection pour {usageLabel}
+            </h2>
+            <span style={{ fontSize: '12px', color: '#94a3b8', fontWeight: 600, flexShrink: 0 }}>{outilCount} outil{outilCount > 1 ? 's' : ''}</span>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {outils?.map((outil, index) => {
+              const rank = rankConfig[index]
+              const isFree = outil.prix_mensuel === 0
+              const isTop = index === 0
+              const borderLeft = rank ? `4px solid ${rank.borderColor}` : '1px solid #e2e8f0'
+
+              return (
+                <div
+                  key={outil.id}
+                  className="outil-card-m outil-row-m scroll-reveal"
+                  style={{
+                    background: '#fff',
+                    border: isTop ? `2px solid ${c.accent}33` : '1px solid #e2e8f0',
+                    borderLeft,
+                    borderRadius: '16px',
+                    padding: '20px 24px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '20px',
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  <div className="outil-left-m" style={{ display: 'flex', alignItems: 'center', gap: '14px', flex: 1, minWidth: 0 }}>
+                    {/* Rang */}
+                    <div style={{ width: '26px', textAlign: 'center', flexShrink: 0 }}>
+                      {rank
+                        ? <span style={{ fontSize: '18px' }}>{rank.emoji}</span>
+                        : <span style={{ fontSize: '11px', fontWeight: 700, color: '#cbd5e1' }}>#{index + 1}</span>
+                      }
+                    </div>
+
+                    {/* Logo */}
+                    <div style={{ width: '44px', height: '44px', background: c.bg, borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: `1px solid ${c.light}`, flexShrink: 0 }}>
+                      <LogoImg src={getLogoUrl(outil.lien_affilie)} alt={outil.nom} />
+                    </div>
+
+                    {/* Texte */}
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div className="outil-badges-m" style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '4px', flexWrap: 'wrap' }}>
+                        <h3 style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a', whiteSpace: 'nowrap' }}>{outil.nom}</h3>
+                        {rank && (
+                          <span style={{ fontSize: '10px', fontWeight: 700, padding: '2px 7px', borderRadius: '999px', background: rank.labelBg, color: rank.labelColor, border: `1px solid ${rank.labelBorder}`, whiteSpace: 'nowrap' }}>
+                            {rank.label}
+                          </span>
+                        )}
+                        {isFree && (
+                          <span style={{ fontSize: '10px', fontWeight: 700, padding: '2px 7px', borderRadius: '999px', background: '#f0fdf4', color: '#16a34a', border: '1px solid #bbf7d0', whiteSpace: 'nowrap' }}>
+                            Gratuit
+                          </span>
+                        )}
+                      </div>
+                      <p className="outil-desc-m" style={{ color: '#64748b', fontSize: '13px', lineHeight: 1.5, wordBreak: 'break-word' }}>
+                        {outil.description}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="outil-right-m" style={{ display: 'flex', alignItems: 'center', gap: '14px', flexShrink: 0 }}>
+                    <div style={{ textAlign: 'right' }}>
+                      <div style={{ fontSize: '17px', fontWeight: 800, color: '#0f172a', fontFamily: "'Fraunces', serif", whiteSpace: 'nowrap' }}>
+                        {isFree ? 'Gratuit' : `${outil.prix_mensuel}€`}
+                      </div>
+                      {!isFree && <div style={{ fontSize: '10px', color: '#94a3b8', fontWeight: 500 }}>/ mois</div>}
+                    </div>
+                    <a
+                      href={outil.lien_affilie}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="essayer-btn-m"
+                      style={{ background: isTop ? c.accent : '#0f172a', color: '#fff', borderRadius: '10px', padding: '9px 18px', textDecoration: 'none', fontSize: '13px', fontWeight: 700, whiteSpace: 'nowrap', display: 'block' }}
+                    >
+                      Essayer →
+                    </a>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+
+          {/* Contenu SEO */}
           {contenu && (
-            <div className="meilleur-contenu" style={{ marginTop: '40px', background: '#fff', borderRadius: '20px', padding: '56px', border: '1px solid #e2e8f0', boxShadow: '0 1px 8px rgba(0,0,0,0.04)' }}>
-              <style>{`
-                .contenu h2 { font-size: 24px; font-weight: 700; color: #0f172a; margin-top: 48px; margin-bottom: 16px; letter-spacing: -0.5px; padding-bottom: 12px; border-bottom: 2px solid #f1f5f9; }
-                .contenu h2:first-child { margin-top: 0; }
-                .contenu h3 { font-size: 17px; font-weight: 700; color: #0f172a; margin-top: 32px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-                .contenu h3::before { content: ''; display: inline-block; width: 4px; height: 16px; background: #2563eb; border-radius: 2px; flex-shrink: 0; }
-                .contenu p { font-size: 15px; line-height: 1.9; color: #475569; margin-bottom: 16px; }
-                .contenu ul { margin-bottom: 20px; padding-left: 0; list-style: none; }
-                .contenu ul li { font-size: 15px; line-height: 1.8; color: #475569; margin-bottom: 8px; padding-left: 24px; position: relative; }
-                .contenu ul li::before { content: '→'; position: absolute; left: 0; color: #2563eb; font-weight: 600; }
-                .contenu strong { color: #0f172a; font-weight: 600; }
-                .contenu a { color: #2563eb; text-decoration: none; font-weight: 500; border-bottom: 1px solid #bfdbfe; }
-                .contenu table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
-                .contenu table th { background: #f8fafc; padding: 12px 16px; text-align: left; font-size: 13px; font-weight: 700; color: #0f172a; border-bottom: 2px solid #e2e8f0; }
-                .contenu table td { padding: 12px 16px; font-size: 14px; color: #475569; border-bottom: 1px solid #f1f5f9; }
-                .contenu table tr:hover td { background: #f8fafc; }
-              `}</style>
-              <div className="contenu" dangerouslySetInnerHTML={{ __html: contenu }} />
+            <div className="m-contenu-wrap" style={{ marginTop: '36px' }}>
+              <div className="m-contenu scroll-reveal" style={{ background: '#fff', borderRadius: '20px', padding: '48px', border: '1px solid #e2e8f0', boxShadow: '0 1px 8px rgba(0,0,0,0.04)' }}>
+                <style>{`
+                  .contenu-m h2 { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 800; color: #0f172a; margin-top: 44px; margin-bottom: 14px; letter-spacing: -0.5px; padding-bottom: 10px; border-bottom: 2px solid #f1f5f9; }
+                  .contenu-m h2:first-child { margin-top: 0; }
+                  .contenu-m h3 { font-size: 16px; font-weight: 700; color: #0f172a; margin-top: 28px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+                  .contenu-m h3::before { content: ''; display: inline-block; width: 4px; height: 15px; background: linear-gradient(180deg, ${c.accent}, #7c3aed); border-radius: 2px; flex-shrink: 0; }
+                  .contenu-m p { font-size: 15px; line-height: 1.85; color: #475569; margin-bottom: 14px; }
+                  .contenu-m ul { margin-bottom: 18px; padding-left: 0; list-style: none; }
+                  .contenu-m ul li { font-size: 14px; line-height: 1.8; color: #475569; margin-bottom: 7px; padding-left: 22px; position: relative; word-break: break-word; }
+                  .contenu-m ul li::before { content: '→'; position: absolute; left: 0; color: ${c.accent}; font-weight: 600; }
+                  .contenu-m strong { color: #0f172a; font-weight: 600; }
+                  .contenu-m a { color: ${c.accent}; text-decoration: none; font-weight: 500; border-bottom: 1px solid ${c.light}; }
+                  .contenu-m table { width: 100%; border-collapse: collapse; margin-bottom: 24px; display: block; overflow-x: auto; }
+                  .contenu-m table th { background: #f8fafc; padding: 10px 14px; text-align: left; font-size: 13px; font-weight: 700; color: #0f172a; border-bottom: 2px solid #e2e8f0; white-space: nowrap; }
+                  .contenu-m table td { padding: 10px 14px; font-size: 13px; color: #475569; border-bottom: 1px solid #f1f5f9; }
+                `}</style>
+                <div className="contenu-m" dangerouslySetInnerHTML={{ __html: contenu }} />
+              </div>
             </div>
           )}
         </div>
       </section>
 
-      <footer className="meilleur-footer" style={{ background: '#fff', borderTop: '1px solid #e2e8f0', padding: '30px 40px', marginTop: '80px', textAlign: 'center' }}>
-        <p style={{ color: '#94a3b8', fontSize: '13px' }}>© 2026 TonMeilleurSaaS · Comparateur expert de logiciels SaaS</p>
+      {/* CTA retour catégorie */}
+      <section className="m-cta" style={{ padding: '56px 40px', background: c.gradient, position: 'relative', overflow: 'hidden', marginTop: '56px' }}>
+        <div style={{ position: 'absolute', top: '-60px', right: '-60px', width: '300px', height: '300px', background: `radial-gradient(circle, ${c.accent}25 0%, transparent 70%)`, pointerEvents: 'none' }} />
+        <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative', textAlign: 'center' }}>
+          <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: '30px', fontWeight: 800, color: '#fff', letterSpacing: '-1px', marginBottom: '12px' }}>
+            Voir tous les {cat?.nom}
+          </h2>
+          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '15px', marginBottom: '28px' }}>
+            Comparez l&apos;ensemble de notre sélection {cat?.nom} sans filtre.
+          </p>
+          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link
+              href={`/categorie/${categorie}`}
+              style={{ background: '#fff', color: '#0f172a', padding: '12px 28px', borderRadius: '12px', textDecoration: 'none', fontSize: '14px', fontWeight: 700, display: 'inline-block' }}
+            >
+              Voir tous les {cat?.nom} →
+            </Link>
+            <Link
+              href="/"
+              style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', padding: '12px 28px', borderRadius: '12px', textDecoration: 'none', fontSize: '14px', fontWeight: 600, display: 'inline-block', border: '1px solid rgba(255,255,255,0.2)' }}
+            >
+              Toutes les catégories
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="m-footer" style={{ background: '#0a0f1a', padding: '28px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
+        <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <span style={{ fontSize: '16px' }}>🚀</span>
+          <span style={{ fontFamily: "'Fraunces', serif", fontSize: '15px', fontWeight: 800, color: '#fff' }}>TonMeilleurSaaS</span>
+        </Link>
+        <p style={{ color: '#475569', fontSize: '13px' }}>© 2026 TonMeilleurSaaS · Comparateur expert de logiciels SaaS</p>
+        <Link href={`/categorie/${categorie}`} style={{ color: '#64748b', fontSize: '13px', textDecoration: 'none', fontWeight: 500 }}>
+          ← {cat?.nom}
+        </Link>
       </footer>
     </main>
   )
