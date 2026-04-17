@@ -19,8 +19,8 @@ export async function generateMetadata({ params }: { params: Promise<{ categorie
   const { data: typeEntreprise } = await supabase.from('types_entreprise').select('*').eq('slug', usage).single()
   const usageLabel = cas?.label || typeEntreprise?.label || usage.replace(/-/g, ' ')
   return {
-    title: `Meilleur ${cat?.nom} pour ${usageLabel} en 2025`,
-    description: `Comparatif des meilleurs ${cat?.nom} pour ${usageLabel}. Trouvez l'outil adapté à vos besoins parmi notre sélection indépendante et honnête.`,
+    title: `Meilleur ${cat?.nom} pour ${usageLabel} en 2026`,
+    description: `Comparatif des meilleurs ${cat?.nom} pour ${usageLabel}. Trouvez l'outil adapté à vos besoins parmi notre sélection experte et honnête.`,
     alternates: { canonical: `https://ton-meilleur-saas.fr/meilleur/${categorie}/${usage}` }
   }
 }
@@ -82,7 +82,7 @@ export default async function MeilleurPage({ params }: { params: Promise<{ categ
           <h1 style={{ fontSize: '42px', fontWeight: 700, color: '#fff', letterSpacing: '-1px', marginBottom: '10px' }}>
             Meilleur {cat?.nom} pour {usageLabel}
           </h1>
-          <p style={{ color: '#94a3b8', fontSize: '16px' }}>Comparatif indépendant — mis à jour en 2025</p>
+          <p style={{ color: '#94a3b8', fontSize: '16px' }}>Comparatif expert — mis à jour en 2026</p>
         </div>
       </section>
 
@@ -142,7 +142,7 @@ export default async function MeilleurPage({ params }: { params: Promise<{ categ
       </section>
 
       <footer className="meilleur-footer" style={{ background: '#fff', borderTop: '1px solid #e2e8f0', padding: '30px 40px', marginTop: '80px', textAlign: 'center' }}>
-        <p style={{ color: '#94a3b8', fontSize: '13px' }}>© 2025 TonMeilleurSaaS · Comparateur indépendant de logiciels SaaS</p>
+        <p style={{ color: '#94a3b8', fontSize: '13px' }}>© 2026 TonMeilleurSaaS · Comparateur expert de logiciels SaaS</p>
       </footer>
     </main>
   )

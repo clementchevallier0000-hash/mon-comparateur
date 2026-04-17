@@ -165,7 +165,7 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
       </section>
 
       <footer className="footer-cat" style={{ background: '#0a0f1a', borderTop: '1px solid #e2e8f0', padding: '30px 40px', textAlign: 'center' }}>
-        <p style={{ color: '#475569', fontSize: '13px' }}>© 2025 TonMeilleurSaaS · Comparateur indépendant de logiciels SaaS</p>
+        <p style={{ color: '#475569', fontSize: '13px' }}>© 2026 TonMeilleurSaaS · Comparateur expert de logiciels SaaS</p>
       </footer>
     </main>
   )

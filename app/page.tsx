@@ -9,7 +9,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Logiciel entreprise : les meilleurs logiciels pour TPE PME",
-  description: "Comparez les meilleurs logiciels entreprise pour votre société. CRM, facturation, gestion de projet, SEO et automatisation. Comparatifs indépendants, honnêtes et mis à jour en 2025.",
+  description: "Comparez les meilleurs logiciels entreprise pour votre société. CRM, facturation, gestion de projet, SEO et automatisation. Comparatifs experts, honnêtes et mis à jour en 2026.",
   alternates: {
     canonical: "https://ton-meilleur-saas.fr"
   }
@@ -108,7 +108,7 @@ export default async function Home() {
             <Link href="#comparatif" style={{ color: '#64748b', fontSize: '14px', textDecoration: 'none', fontWeight: 500 }}>Comparatif</Link>
             <Link href="#methode" style={{ color: '#64748b', fontSize: '14px', textDecoration: 'none', fontWeight: 500 }}>Notre méthode</Link>
             <span style={{ background: '#f0fdf4', color: '#16a34a', fontSize: '12px', fontWeight: 600, padding: '5px 12px', borderRadius: '999px', border: '1px solid #bbf7d0' }}>
-              ✓ 100% indépendant
+              ✓ Comparatif expert & transparent
             </span>
           </nav>
           <div className="mobile-menu-btn" style={{ display: 'none' }}>
@@ -126,7 +126,7 @@ export default async function Home() {
             <div className="hero-text" style={{ maxWidth: '580px', flexShrink: 0 }}>
               <div className="fade-up" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#fff', border: '1px solid #e2e8f0', borderRadius: '999px', padding: '6px 16px', marginBottom: '28px', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
                 <span style={{ width: '7px', height: '7px', background: '#22c55e', borderRadius: '50%', display: 'inline-block', boxShadow: '0 0 0 2px rgba(34,197,94,0.2)', animation: 'pulse 2s infinite' }}></span>
-                <span style={{ color: '#475569', fontSize: '13px', fontWeight: 500 }}>Mis à jour en 2025 · 50+ outils comparés</span>
+                <span style={{ color: '#475569', fontSize: '13px', fontWeight: 500 }}>Mis à jour en 2026 · 50+ outils comparés</span>
               </div>
               <h1 className="fade-up-2 hero-title" style={{ fontFamily: "'Fraunces', serif", fontSize: '62px', fontWeight: 800, color: '#0f172a', lineHeight: 1.05, letterSpacing: '-2px', marginBottom: '24px' }}>
                 Trouvez le logiciel<br />
@@ -134,7 +134,7 @@ export default async function Home() {
                 pour votre société.
               </h1>
               <p className="fade-up-3" style={{ fontSize: '19px', color: '#475569', lineHeight: 1.7, marginBottom: '40px', fontWeight: 300, maxWidth: '500px' }}>
-                Des comparatifs <strong style={{ fontWeight: 600, color: '#0f172a' }}>indépendants et honnêtes</strong> pour aider les TPE et PME françaises à choisir les bons outils. Zéro publicité, zéro biais.
+                Des comparatifs <strong style={{ fontWeight: 600, color: '#0f172a' }}>experts et honnêtes</strong> pour aider les TPE et PME françaises à choisir les bons outils. Analyses rigoureuses, transparence totale.
               </p>
               <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                 <Link href="#categories" className="cta-btn" style={{ background: '#2563eb', color: '#fff', padding: '14px 28px', borderRadius: '12px', textDecoration: 'none', fontSize: '15px', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
@@ -154,8 +154,8 @@ export default async function Home() {
             {[
               { target: 50, suffix: '+', label: 'Logiciels analysés', desc: 'Testés et comparés' },
               { target: 5, suffix: '', label: 'Catégories', desc: 'CRM, facturation, SEO...' },
-              { target: 100, suffix: '%', label: 'Indépendant', desc: 'Aucun partenariat rémunéré' },
-              { target: 2025, suffix: '', label: 'Mis à jour', desc: 'Données fraîches' },
+              { target: 100, suffix: '%', label: 'Objectif', desc: 'Avis sans compromis' },
+              { target: 2026, suffix: '', label: 'Mis à jour', desc: 'Données fraîches' },
             ].map((stat, i) => (
               <div key={i} className="hero-stat scroll-reveal" style={{ }}>
                 <div style={{ fontFamily: "'Fraunces', serif", fontSize: '32px', fontWeight: 800, color: '#0f172a', letterSpacing: '-1px' }}>
@@ -414,7 +414,7 @@ export default async function Home() {
             <span style={{ fontFamily: "'Fraunces', serif", fontSize: '16px', fontWeight: 800, color: '#fff' }}>TonMeilleurSaaS</span>
           </div>
           <p style={{ color: '#475569', fontSize: '13px' }}>
-            © 2025 TonMeilleurSaaS · Comparateur indépendant de logiciels SaaS
+            © 2026 TonMeilleurSaaS · Comparateur expert de logiciels SaaS
           </p>
           <div className="footer-links" style={{ display: 'flex', gap: '24px' }}>
             {categories?.map((cat) => (
