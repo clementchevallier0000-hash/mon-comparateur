@@ -31,6 +31,116 @@ const rankConfig: Record<number, { emoji: string, label: string, labelColor: str
   2: { emoji: '🥉', label: '🥉 3ème choix',     labelColor: '#92400e', labelBg: '#fff7ed', labelBorder: '#fcd34d', borderColor: '#f59e0b' },
 }
 
+// Ancres maillage interne : sous-catégorie → catégorie parente (unique par page)
+const subToCatAnchors: Record<string, Record<string, string>> = {
+  crm: {
+    'gratuit':              'Voir le comparatif CRM complet',
+    'moins-de-20-euros':    'Accéder à tout le classement CRM',
+    'simple':               'Explorer toutes les solutions CRM',
+    'freelance':            'Retour au comparatif CRM général',
+    'auto-entrepreneur':    'Voir tous les CRM comparés',
+    'tpe':                  "Découvrir l'ensemble des CRM testés",
+    'pme':                  'Comparatif CRM sans restriction',
+    'startup':              'Tous les CRM de notre sélection',
+    'artisan':              'Consulter le classement CRM complet',
+    'professions-liberales':'Notre sélection CRM intégrale',
+  },
+  facturation: {
+    'facturation-gratuit':        'Voir tout le comparatif facturation',
+    'facturation-moins-20-euros': 'Accéder au classement facturation complet',
+    'debutant':                   'Explorer toutes les solutions de facturation',
+    'freelance':                  'Retour au comparatif facturation',
+    'auto-entrepreneur':          'Voir tous les logiciels de facturation',
+    'tpe':                        'Découvrir notre sélection facturation',
+    'pme':                        'Comparatif facturation sans filtre',
+    'startup':                    'Tous les logiciels de facturation testés',
+    'artisan':                    'Classement facturation complet',
+    'professions-liberales':      'Notre sélection facturation intégrale',
+  },
+  'gestion-de-projet': {
+    'freelance':            'Voir tout le comparatif gestion de projet',
+    'auto-entrepreneur':    'Accéder au classement complet',
+    'tpe':                  'Explorer tous les outils de projet',
+    'pme':                  'Retour au comparatif gestion de projet',
+    'startup':              'Voir notre sélection complète',
+    'artisan':              'Tous les logiciels de gestion testés',
+    'professions-liberales':'Comparatif gestion de projet sans filtre',
+  },
+  seo: {
+    'freelance':            'Voir tout le comparatif SEO',
+    'auto-entrepreneur':    'Accéder au classement SEO complet',
+    'tpe':                  'Explorer tous les outils SEO',
+    'pme':                  'Retour au comparatif SEO',
+    'startup':              'Voir notre sélection SEO complète',
+    'artisan':              'Tous les outils SEO comparés',
+    'professions-liberales':'Comparatif SEO sans filtre',
+  },
+  automatisation: {
+    'freelance':            "Voir tout le comparatif automatisation",
+    'auto-entrepreneur':    'Accéder au classement automatisation',
+    'tpe':                  "Explorer tous les outils d'automatisation",
+    'pme':                  'Retour au comparatif automatisation',
+    'startup':              'Notre sélection automatisation complète',
+    'artisan':              "Tous les logiciels d'automatisation testés",
+    'professions-liberales':"Comparatif automatisation sans filtre",
+  },
+}
+
+// Ancres maillage interne : sous-catégorie → sous-catégories pairs (unique par cible)
+const peerAnchors: Record<string, Record<string, string>> = {
+  crm: {
+    'gratuit':              'Les alternatives CRM entièrement gratuites',
+    'moins-de-20-euros':    'Les CRM à moins de 20€ par mois',
+    'simple':               'Les CRM les plus rapides à prendre en main',
+    'freelance':            'Comparatif CRM pour indépendants',
+    'auto-entrepreneur':    'Gérer ses prospects en micro-entreprise',
+    'tpe':                  'Les CRM pour très petites structures',
+    'pme':                  'Solutions CRM pour PME françaises',
+    'startup':              'Outils CRM pour jeunes entreprises',
+    'artisan':              'Suivi client dans le secteur artisanal',
+    'professions-liberales':'Gestion clientèle pour professions libérales',
+  },
+  facturation: {
+    'facturation-gratuit':        'Logiciels de facturation sans frais',
+    'facturation-moins-20-euros': 'Facturation à coût maîtrisé (− 20€)',
+    'debutant':                   'Première solution de facturation intuitive',
+    'freelance':                  'Facturer ses clients en indépendant',
+    'auto-entrepreneur':          'Factures conformes pour micro-entrepreneurs',
+    'tpe':                        'Facturation pour petites structures',
+    'pme':                        'Logiciel de facturation pour PME',
+    'startup':                    'Facturation scalable pour startup',
+    'artisan':                    'Devis et facturation dans le bâtiment',
+    'professions-liberales':      'Honoraires et notes de frais en libéral',
+  },
+  'gestion-de-projet': {
+    'freelance':            'Gestion de projets pour indépendants',
+    'auto-entrepreneur':    'Organisation en auto-entrepreneur',
+    'tpe':                  'Outil de projet pour équipe réduite',
+    'pme':                  "Piloter les projets d'une PME",
+    'startup':              'Gestion de projet agile pour startup',
+    'artisan':              'Organisation des chantiers artisanaux',
+    'professions-liberales':'Suivi des dossiers en profession libérale',
+  },
+  seo: {
+    'freelance':            'SEO pour les consultants indépendants',
+    'auto-entrepreneur':    'Référencement pour auto-entrepreneurs',
+    'tpe':                  'Améliorer son SEO en petite entreprise',
+    'pme':                  'Outils SEO pour PME françaises',
+    'startup':              'Croissance organique pour startup',
+    'artisan':              'Référencement local pour artisans',
+    'professions-liberales':'Visibilité Google pour professions libérales',
+  },
+  automatisation: {
+    'freelance':            'Automatisation pour freelances',
+    'auto-entrepreneur':    'Automatiser en auto-entrepreneur',
+    'tpe':                  "Automatisation des tâches en TPE",
+    'pme':                  "Automatiser les workflows d'une PME",
+    'startup':              'Automatiser sa startup dès le lancement',
+    'artisan':              'Automatisation admin pour artisans',
+    'professions-liberales':'Automatiser son activité libérale',
+  },
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ categorie: string, usage: string }> }): Promise<Metadata> {
   const { categorie, usage } = await params
   const { data: cat } = await supabase.from('categories').select('*').eq('slug', categorie).single()
@@ -52,6 +162,14 @@ export default async function MeilleurPage({ params }: { params: Promise<{ categ
   const { data: typeEntreprise } = await supabase.from('types_entreprise').select('*').eq('slug', usage).single()
   const usageLabel = cas?.label || typeEntreprise?.label || usage.replace(/-/g, ' ')
   const contenu = cas?.contenu || typeEntreprise?.contenu
+
+  // Pairs pour le maillage interne
+  const { data: peerCas } = cas
+    ? await supabase.from('cas_usage').select('id,label,slug').eq('categorie_id', cat?.id).neq('id', cas.id)
+    : { data: null }
+  const { data: peerTypes } = typeEntreprise
+    ? await supabase.from('types_entreprise').select('id,label,slug').neq('id', typeEntreprise.id)
+    : { data: null }
 
   const c = catColors[categorie] || { accent: '#2563eb', bg: '#eff6ff', light: '#dbeafe', gradient: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)' }
   const icon = catIcons[categorie] || '📦'
@@ -84,6 +202,8 @@ export default async function MeilleurPage({ params }: { params: Promise<{ categ
         .outil-row-m:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); transform: translateY(-2px); }
         .essayer-btn-m { transition: all 0.2s ease; }
         .essayer-btn-m:hover { opacity: 0.85; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+        .link-card-m { transition: all 0.2s ease; }
+        .link-card-m:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-color: ${c.accent} !important; }
 
         @media (max-width: 768px) {
           .m-header { padding: 0 16px !important; }
@@ -280,6 +400,53 @@ export default async function MeilleurPage({ params }: { params: Promise<{ categ
         </div>
       </section>
 
+      {/* Maillage interne : guides similaires */}
+      {(peerCas?.length || peerTypes?.length) ? (
+        <section className="m-section" style={{ padding: '32px 40px 8px' }}>
+          <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+            <div style={{ marginBottom: '16px' }}>
+              <p style={{ fontSize: '11px', fontWeight: 700, color: c.accent, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '6px' }}>
+                {peerCas ? 'Comparatifs par besoin' : 'Comparatifs par profil'}
+              </p>
+              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: '22px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.5px' }}>
+                {peerCas ? `Autres guides ${cat?.nom}` : `${cat?.nom} pour d'autres profils`}
+              </h2>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '10px' }}>
+              {(peerCas || peerTypes || []).map((peer) => (
+                <Link key={peer.id} href={`/meilleur/${categorie}/${peer.slug}`} style={{ textDecoration: 'none' }}>
+                  <div className="link-card-m" style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '14px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px', transition: 'all 0.2s ease' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
+                      <div style={{ width: '28px', height: '28px', background: c.bg, borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', flexShrink: 0, border: `1px solid ${c.light}` }}>
+                        {peerCas ? '🎯' : '🏢'}
+                      </div>
+                      <span style={{ fontSize: '13px', fontWeight: 600, color: '#0f172a', lineHeight: 1.3, wordBreak: 'break-word' }}>
+                        {peerAnchors[categorie]?.[peer.slug] || peer.label}
+                      </span>
+                    </div>
+                    <span style={{ color: c.accent, fontSize: '16px', flexShrink: 0 }}>→</span>
+                  </div>
+                </Link>
+              ))}
+              {/* Lien retour catégorie dans la grille */}
+              <Link href={`/categorie/${categorie}`} style={{ textDecoration: 'none' }}>
+                <div className="link-card-m" style={{ background: c.bg, border: `1px solid ${c.light}`, borderRadius: '12px', padding: '14px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px', transition: 'all 0.2s ease' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
+                    <div style={{ width: '28px', height: '28px', background: '#fff', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', flexShrink: 0, border: `1px solid ${c.light}` }}>
+                      📊
+                    </div>
+                    <span style={{ fontSize: '13px', fontWeight: 600, color: c.accent, lineHeight: 1.3 }}>
+                      {subToCatAnchors[categorie]?.[usage] || `Voir tous les ${cat?.nom}`}
+                    </span>
+                  </div>
+                  <span style={{ color: c.accent, fontSize: '16px', flexShrink: 0 }}>→</span>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       {/* CTA retour catégorie */}
       <section className="m-cta" style={{ padding: '56px 40px', background: c.gradient, position: 'relative', overflow: 'hidden', marginTop: '56px' }}>
         <div style={{ position: 'absolute', top: '-60px', right: '-60px', width: '300px', height: '300px', background: `radial-gradient(circle, ${c.accent}25 0%, transparent 70%)`, pointerEvents: 'none' }} />
@@ -295,7 +462,7 @@ export default async function MeilleurPage({ params }: { params: Promise<{ categ
               href={`/categorie/${categorie}`}
               style={{ background: '#fff', color: '#0f172a', padding: '12px 28px', borderRadius: '12px', textDecoration: 'none', fontSize: '14px', fontWeight: 700, display: 'inline-block' }}
             >
-              Voir tous les {cat?.nom} →
+              {subToCatAnchors[categorie]?.[usage] || `Voir tous les ${cat?.nom}`} →
             </Link>
             <Link
               href="/"

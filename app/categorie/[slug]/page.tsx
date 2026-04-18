@@ -31,6 +31,60 @@ const rankConfig: Record<number, { emoji: string, label: string, labelColor: str
   2: { emoji: '🥉', label: '🥉 3ème choix',     labelColor: '#92400e', labelBg: '#fff7ed', labelBorder: '#fcd34d', borderColor: '#f59e0b' },
 }
 
+const catToSubAnchors: Record<string, Record<string, string>> = {
+  crm: {
+    'gratuit':              'Comparer les CRM sans abonnement',
+    'moins-de-20-euros':    'Trouver un CRM à moins de 20€ par mois',
+    'simple':               'Découvrir les CRM les plus intuitifs',
+    'freelance':            'Quel CRM choisir quand on est freelance ?',
+    'auto-entrepreneur':    'Gérer sa clientèle en auto-entrepreneur',
+    'tpe':                  'CRM adapté aux très petites entreprises',
+    'pme':                  'Logiciel CRM pour PME en croissance',
+    'startup':              'CRM pensé pour les startups ambitieuses',
+    'artisan':              'Suivre sa clientèle quand on est artisan',
+    'professions-liberales':'Relation client pour professions libérales',
+  },
+  facturation: {
+    'facturation-gratuit':          'Facturer ses clients sans abonnement',
+    'facturation-moins-20-euros':   'Logiciels de facturation à petit prix',
+    'debutant':                     'Commencer à facturer en toute simplicité',
+    'freelance':                    'Gérer ses factures quand on est freelance',
+    'auto-entrepreneur':            'Facturation conforme pour auto-entrepreneur',
+    'tpe':                          'Solution de facturation pour TPE',
+    'pme':                          'Logiciel de facturation pour PME',
+    'startup':                      'Facturation flexible pour startup',
+    'artisan':                      'Devis et factures spécialisés artisans',
+    'professions-liberales':        'Facturer ses honoraires en toute conformité',
+  },
+  'gestion-de-projet': {
+    'freelance':            'Organiser ses projets clients en freelance',
+    'auto-entrepreneur':    'Piloter ses missions en auto-entrepreneur',
+    'tpe':                  'Gestion de projet pour très petite équipe',
+    'pme':                  'Outil de projet pour PME française',
+    'startup':              'Piloter une startup avec un logiciel de projet',
+    'artisan':              'Planifier et suivre ses chantiers',
+    'professions-liberales':'Gérer ses dossiers clients en libéral',
+  },
+  seo: {
+    'freelance':            'Outils SEO pour consultant freelance',
+    'auto-entrepreneur':    'Référencer son site en auto-entrepreneur',
+    'tpe':                  'SEO accessible pour petite entreprise',
+    'pme':                  'Stratégie SEO pour PME ambitieuse',
+    'startup':              "Accélérer la croissance organique de sa startup",
+    'artisan':              "Améliorer sa visibilité locale en artisan",
+    'professions-liberales':"Être trouvé sur Google en profession libérale",
+  },
+  automatisation: {
+    'freelance':            'Automatiser ses tâches répétitives en freelance',
+    'auto-entrepreneur':    "Gagner du temps grâce à l'automatisation",
+    'tpe':                  "Automatiser les processus d'une TPE",
+    'pme':                  "Logiciel d'automatisation pour PME",
+    'startup':              'Automatiser sa startup pour scaler plus vite',
+    'artisan':              "Gagner du temps sur l'administratif artisanal",
+    'professions-liberales':"Automatiser les tâches d'un cabinet libéral",
+  },
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
   const { data: categorie } = await supabase.from('categories').select('*').eq('slug', slug).single()
@@ -249,7 +303,7 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
                         {icon}
                       </div>
                       <span style={{ fontSize: '13px', fontWeight: 600, color: '#0f172a', lineHeight: 1.3, wordBreak: 'break-word' }}>
-                        Meilleur {categorie?.nom} {cas.label}
+                        {catToSubAnchors[slug]?.[cas.slug] || `Meilleur ${categorie?.nom} ${cas.label}`}
                       </span>
                     </div>
                     <span style={{ color: c.accent, fontSize: '16px', flexShrink: 0 }}>→</span>
@@ -305,7 +359,7 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
                       🏢
                     </div>
                     <span style={{ fontSize: '13px', fontWeight: 600, color: '#0f172a', lineHeight: 1.3, wordBreak: 'break-word' }}>
-                      Meilleur {categorie?.nom} pour {type.label}
+                      {catToSubAnchors[slug]?.[type.slug] || `Meilleur ${categorie?.nom} pour ${type.label}`}
                     </span>
                   </div>
                   <span style={{ color: c.accent, fontSize: '16px', flexShrink: 0 }}>→</span>
