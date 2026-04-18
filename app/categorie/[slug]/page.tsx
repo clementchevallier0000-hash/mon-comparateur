@@ -3,6 +3,7 @@ import Link from 'next/link'
 import type { Metadata } from "next";
 import LogoImg from '@/app/components/LogoImg'
 import ScrollAnimations from '@/app/components/ScrollAnimations'
+import SearchModal from '@/app/components/SearchModal'
 
 function getLogoUrl(lienAffilie: string): string | null {
   try {
@@ -150,10 +151,13 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
             <span style={{ fontSize: '20px' }}>🚀</span>
             <span style={{ fontFamily: "'Fraunces', serif", fontSize: '18px', fontWeight: 800, color: '#0f172a' }}>TonMeilleurSaaS</span>
           </Link>
-          <div className="breadcrumb" style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#64748b' }}>
-            <Link href="/" style={{ color: '#64748b', textDecoration: 'none', fontWeight: 500 }}>Accueil</Link>
-            <span>›</span>
-            <span style={{ color: '#0f172a', fontWeight: 600 }}>{categorie?.nom}</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <div className="breadcrumb" style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#64748b' }}>
+              <Link href="/" style={{ color: '#64748b', textDecoration: 'none', fontWeight: 500 }}>Accueil</Link>
+              <span>›</span>
+              <span style={{ color: '#0f172a', fontWeight: 600 }}>{categorie?.nom}</span>
+            </div>
+            <SearchModal />
           </div>
         </div>
       </header>

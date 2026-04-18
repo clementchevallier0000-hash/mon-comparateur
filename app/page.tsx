@@ -2,6 +2,7 @@ import TopBanner from '@/app/components/TopBanner'
 import HeroVisual from '@/app/components/HeroVisual'
 import AnimatedCounter from '@/app/components/AnimatedCounter'
 import MobileMenu from '@/app/components/MobileMenu'
+import SearchModal from '@/app/components/SearchModal'
 import ScrollAnimations from '@/app/components/ScrollAnimations'
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
@@ -152,6 +153,7 @@ export default async function Home() {
               ✓ Comparatif expert & transparent
             </span>
           </nav>
+          <SearchModal />
           <div className="mobile-menu-btn" style={{ display: 'none' }}>
             <MobileMenu />
           </div>
