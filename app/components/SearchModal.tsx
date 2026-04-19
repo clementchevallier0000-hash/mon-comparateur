@@ -282,9 +282,14 @@ export default function SearchModal() {
               />
               <button
                 onClick={() => setOpen(false)}
-                style={{ background:'#f1f5f9', border:'none', borderRadius:'6px', padding:'4px 8px', cursor:'pointer', color:'#94a3b8', fontSize:'11px', fontWeight:700, letterSpacing:'0.5px', flexShrink:0 }}
+                aria-label="Fermer"
+                style={{ background:'#f1f5f9', border:'none', borderRadius:'8px', padding:'6px', cursor:'pointer', color:'#94a3b8', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0, transition:'all 0.15s ease' }}
+                onMouseEnter={e => { e.currentTarget.style.background='#e2e8f0'; e.currentTarget.style.color='#475569' }}
+                onMouseLeave={e => { e.currentTarget.style.background='#f1f5f9'; e.currentTarget.style.color='#94a3b8' }}
               >
-                ESC
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M18 6 6 18M6 6l12 12"/>
+                </svg>
               </button>
             </div>
 
