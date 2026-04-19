@@ -4,6 +4,8 @@ import SearchModal from '@/app/components/SearchModal'
 import MobileMenu from '@/app/components/MobileMenu'
 import type { Metadata } from 'next'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Blog — Guides et conseils logiciels SaaS pour TPE/PME',
   description: 'Guides pratiques, comparatifs et conseils pour choisir les meilleurs logiciels SaaS. CRM, facturation, SEO, automatisation : on décrypte tout pour les TPE et PME françaises.',

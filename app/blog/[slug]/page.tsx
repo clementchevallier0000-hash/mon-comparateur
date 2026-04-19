@@ -5,6 +5,8 @@ import MobileMenu from '@/app/components/MobileMenu'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
+export const dynamic = 'force-dynamic'
+
 const catColors: Record<string, { accent: string; bg: string; emoji: string; name: string; slug: string }> = {
   'crm':               { accent: '#2563eb', bg: '#eff6ff', emoji: '🤝', name: 'CRM',               slug: 'crm' },
   'facturation':       { accent: '#ea580c', bg: '#fff7ed', emoji: '💰', name: 'Facturation',       slug: 'facturation' },
