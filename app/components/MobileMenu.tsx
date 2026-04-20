@@ -34,6 +34,9 @@ export default function MobileMenu() {
               </Link>
             ))}
             <div style={{ borderTop: '1px solid #f1f5f9', marginTop: '8px', paddingTop: '12px', display: 'flex', gap: '8px' }}>
+              <Link href="/blog" onClick={() => setOpen(false)} style={{ flex: 1, textDecoration: 'none', padding: '10px', borderRadius: '8px', fontSize: '14px', fontWeight: 600, color: '#0f172a', textAlign: 'center', border: '1px solid #e2e8f0', background: '#f8fafc' }}>
+                📝 Blog
+              </Link>
               <Link href="#methode" onClick={() => setOpen(false)} style={{ flex: 1, textDecoration: 'none', padding: '10px', borderRadius: '8px', fontSize: '14px', fontWeight: 500, color: '#64748b', textAlign: 'center', border: '1px solid #e2e8f0' }}>
                 Notre méthode
               </Link>
