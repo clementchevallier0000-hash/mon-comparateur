@@ -140,6 +140,7 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
           .links-grid { grid-template-columns: 1fr !important; }
           .footer-cat { padding: 20px 16px !important; flex-direction: column !important; gap: 12px !important; align-items: flex-start !important; }
           .breadcrumb { display: none !important; }
+          .boutique-link { display: none !important; }
           .section-header { margin-bottom: 16px !important; }
         }
       `}</style>
@@ -157,6 +158,7 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
               <span>›</span>
               <span style={{ color: '#0f172a', fontWeight: 600 }}>{categorie?.nom}</span>
             </div>
+            <Link href="/boutique" style={{ fontSize: '13px', fontWeight: 700, color: '#d97706', textDecoration: 'none', background: '#fffbeb', padding: '5px 12px', borderRadius: '8px', border: '1px solid #fde68a', whiteSpace: 'nowrap' }} className="boutique-link">🛍️ Boutique</Link>
             <SearchModal />
           </div>
         </div>

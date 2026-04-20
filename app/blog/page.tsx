@@ -70,6 +70,7 @@ export default async function BlogPage() {
           <nav className="header-nav">
             <Link href="/" style={{ color:'#64748b', fontSize:'14px', textDecoration:'none', fontWeight:500 }}>Accueil</Link>
             <Link href="/blog" style={{ color:'#0f172a', fontSize:'14px', textDecoration:'none', fontWeight:700 }}>Blog</Link>
+            <Link href="/boutique" style={{ color:'#d97706', fontSize:'14px', textDecoration:'none', fontWeight:700 }}>🛍️ Boutique</Link>
             {Object.entries(catColors).map(([slug, c]) => (
               <Link key={slug} href={`/categorie/${slug}`} style={{ color:'#64748b', fontSize:'14px', textDecoration:'none', fontWeight:500 }}>{c.name}</Link>
             ))}

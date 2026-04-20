@@ -217,6 +217,7 @@ export default async function MeilleurPage({ params }: { params: Promise<{ categ
           .m-contenu { padding: 24px 16px !important; }
           .m-footer { padding: 20px 16px !important; flex-direction: column !important; align-items: flex-start !important; gap: 10px !important; }
           .m-breadcrumb { display: none !important; }
+          .boutique-link { display: none !important; }
           .outil-card-m { flex-direction: column !important; align-items: flex-start !important; padding: 16px !important; gap: 12px !important; }
           .outil-left-m { width: 100% !important; padding-left: 0 !important; }
           .outil-right-m { width: 100% !important; flex-direction: row !important; justify-content: space-between !important; align-items: center !important; }
@@ -242,6 +243,7 @@ export default async function MeilleurPage({ params }: { params: Promise<{ categ
               <span>›</span>
               <span style={{ color: '#0f172a', fontWeight: 600 }}>{usageLabel}</span>
             </div>
+            <Link href="/boutique" style={{ fontSize: '13px', fontWeight: 700, color: '#d97706', textDecoration: 'none', background: '#fffbeb', padding: '5px 12px', borderRadius: '8px', border: '1px solid #fde68a', whiteSpace: 'nowrap' }} className="boutique-link">🛍️ Boutique</Link>
             <SearchModal />
           </div>
         </div>
