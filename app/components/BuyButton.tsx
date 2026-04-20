@@ -9,19 +9,27 @@ interface BuyButtonProps {
 
 export default function BuyButton({ accentColor, style, className }: BuyButtonProps) {
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   const handleBuy = async () => {
     setLoading(true)
+    setError('')
     try {
       const res = await fetch('/api/checkout', { method: 'POST' })
-      const { url } = await res.json()
-      window.location.href = url
-    } catch {
+      const data = await res.json()
+      if (data.url) {
+        window.location.href = data.url
+      } else {
+        setError(data.error || 'Erreur inconnue')
+        setLoading(false)
+      }
+    } catch (e) {
+      setError('Erreur réseau : ' + String(e))
       setLoading(false)
     }
   }
 
-  return (
+  return (<>
     <button
       onClick={handleBuy}
       disabled={loading}
@@ -45,5 +53,6 @@ export default function BuyButton({ accentColor, style, className }: BuyButtonPr
     >
       {loading ? 'Redirection...' : 'Acheter maintenant →'}
     </button>
-  )
+    {error && <p style={{ color: 'red', fontSize: '13px', marginTop: '8px', textAlign: 'center' }}>{error}</p>}
+  </>)
 }
