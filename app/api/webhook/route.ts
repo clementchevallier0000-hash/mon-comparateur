@@ -15,8 +15,8 @@ export async function POST(req: NextRequest) {
   }
 
   if (event.type === 'checkout.session.completed') {
-    const session = event.data.object as Stripe.CheckoutSession
-    console.log(`✅ Paiement reçu — session ${session.id} — ${session.customer_email}`)
+    const session = event.data.object
+    console.log(`✅ Paiement reçu — session ${session.id}`)
   }
 
   return NextResponse.json({ received: true })
