@@ -16,9 +16,22 @@ export const metadata: Metadata = {
   }
 }
 
+const catColors: Record<string, { accent: string; bg: string; emoji: string }> = {
+  'crm':               { accent: '#2563eb', bg: '#eff6ff', emoji: '🤝' },
+  'facturation':       { accent: '#ea580c', bg: '#fff7ed', emoji: '💰' },
+  'gestion-de-projet': { accent: '#16a34a', bg: '#f0fdf4', emoji: '📋' },
+  'seo':               { accent: '#9333ea', bg: '#fdf4ff', emoji: '🔍' },
+  'automatisation':    { accent: '#d97706', bg: '#fffbeb', emoji: '⚡' },
+}
+
 export default async function Home() {
   const { data: categories } = await supabase.from('categories').select('*')
   const { data: toolCountsRaw } = await supabase.from('outils').select('categorie_id')
+  const { data: latestArticles } = await supabase
+    .from('articles')
+    .select('id,slug,titre,description,categorie_slug,temps_lecture,date_publication')
+    .order('date_publication', { ascending: false })
+    .limit(3)
 
   const toolCounts: Record<number, number> = {}
   toolCountsRaw?.forEach((o: { categorie_id: number }) => {
@@ -103,6 +116,7 @@ export default async function Home() {
         .bg-blob { animation: bgMove 15s ease-in-out infinite; }
         .bg-blob-2 { animation: bgMove 20s ease-in-out infinite reverse; }
         .mobile-menu-btn { display: none; }
+        .article-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.08) !important; }
 
         @media (max-width: 768px) {
           .hero-section { padding: 60px 20px 48px !important; }
@@ -128,6 +142,7 @@ export default async function Home() {
           .content-section { padding: 48px 20px !important; }
           .content-inner { padding: 32px 20px !important; }
           .logo-cloud-inner { padding: 20px !important; }
+          .blog-preview-grid { grid-template-columns: 1fr !important; }
         }
         @media (max-width: 480px) {
           .hero-title { font-size: 28px !important; }
@@ -494,6 +509,42 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      {/* Derniers articles */}
+      {latestArticles && latestArticles.length > 0 && (
+        <section style={{ padding: '80px 48px', background: '#f8fafc' }}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px', flexWrap: 'wrap', gap: '12px' }}>
+              <div>
+                <p style={{ fontSize: '12px', fontWeight: 700, color: '#2563eb', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '8px' }}>Nos guides</p>
+                <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: '32px', fontWeight: 800, color: '#0f172a', letterSpacing: '-1px', margin: 0 }}>Derniers articles du blog</h2>
+              </div>
+              <Link href="/blog" style={{ textDecoration: 'none', fontSize: '14px', fontWeight: 600, color: '#2563eb', background: '#eff6ff', padding: '10px 20px', borderRadius: '8px', border: '1px solid #dbeafe', whiteSpace: 'nowrap' }}>
+                Voir tous les articles →
+              </Link>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }} className="blog-preview-grid">
+              {latestArticles.map((article) => {
+                const cat = catColors[article.categorie_slug] || { accent: '#2563eb', bg: '#eff6ff', emoji: '📝' }
+                return (
+                  <Link key={article.id} href={`/blog/${article.slug}`} style={{ textDecoration: 'none', background: '#fff', borderRadius: '16px', border: '1px solid #e2e8f0', padding: '24px', display: 'flex', flexDirection: 'column', gap: '12px', transition: 'transform 0.2s, box-shadow 0.2s' }} className="article-card">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <span style={{ fontSize: '18px' }}>{cat.emoji}</span>
+                      <span style={{ fontSize: '12px', fontWeight: 700, color: cat.accent, background: cat.bg, padding: '3px 10px', borderRadius: '20px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                        {article.categorie_slug.replace(/-/g, ' ')}
+                      </span>
+                      <span style={{ fontSize: '12px', color: '#94a3b8', marginLeft: 'auto' }}>{article.temps_lecture} min</span>
+                    </div>
+                    <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a', lineHeight: 1.4, margin: 0 }}>{article.titre}</h3>
+                    <p style={{ fontSize: '14px', color: '#64748b', lineHeight: 1.5, margin: 0, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{article.description}</p>
+                    <span style={{ fontSize: '13px', fontWeight: 600, color: cat.accent, marginTop: 'auto' }}>Lire l&apos;article →</span>
+                  </Link>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       <section className="cta-section" style={{ padding: '80px 48px', background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #312e81 100%)', position: 'relative', overflow: 'hidden' }}>
