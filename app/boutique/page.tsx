@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import MobileMenu from '@/app/components/MobileMenu'
 import SearchModal from '@/app/components/SearchModal'
+import BuyButton from '@/app/components/BuyButton'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -23,7 +24,6 @@ const products = [
     description: 'Téléchargez et importez en 2 clics. Chaque workflow est documenté, testé et prêt à configurer avec vos propres credentials.',
     price: 39,
     originalPrice: null,
-    buyUrl: 'https://tonmeilleurSaaS.lemonsqueezy.com/buy/VOTRE_ID_PRODUIT',
     includes: [
       { icon: '🎯', text: 'Prospection LinkedIn → CRM HubSpot (automatique)' },
       { icon: '📬', text: 'Relance factures impayées J+7 / J+14 / J+30' },
@@ -167,13 +167,7 @@ export default function BoutiquePage() {
                     <div style={{ fontSize: '48px', fontWeight: 800, color: '#0f172a', fontFamily: "'Fraunces', serif", lineHeight: 1 }}>{product.price}€</div>
                     <div style={{ fontSize: '13px', color: '#94a3b8', marginTop: '6px' }}>paiement unique · accès à vie</div>
                   </div>
-                  <Link
-                    href={product.buyUrl}
-                    className="buy-btn"
-                    style={{ display: 'block', width: '100%', background: `linear-gradient(135deg, ${product.accentColor}, #ea580c)`, color: '#fff', textDecoration: 'none', padding: '16px', borderRadius: '12px', textAlign: 'center', fontSize: '16px', fontWeight: 700, boxShadow: '0 4px 20px rgba(217,119,6,0.35)' }}
-                  >
-                    Acheter maintenant →
-                  </Link>
+                  <BuyButton accentColor={product.accentColor} className="buy-btn" />
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#64748b' }}>
                       <span>🔒</span><span>Paiement sécurisé (Stripe)</span>
