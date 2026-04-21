@@ -142,15 +142,67 @@ const peerAnchors: Record<string, Record<string, string>> = {
   },
 }
 
+function slugHash(a: string, b: string): number {
+  let h = 0
+  for (const c of a + b) { h = Math.imul(31, h) + c.charCodeAt(0) | 0 }
+  return Math.abs(h)
+}
+
+function normalizeUsage(label: string): string {
+  return label.replace(/^pour\s+/i, '')
+}
+
+function buildMetaTitle(nom: string, usageRaw: string, seed: number): string {
+  const usage = normalizeUsage(usageRaw)
+  const base = nom.length + usage.length
+  const veryShort = [
+    `Meilleur ${nom} pour ${usage} 2026`,
+    `${nom} pour ${usage} — Guide 2026`,
+    `Top ${nom} pour ${usage} 2026`,
+    `${nom} pour ${usage} : sélection 2026`,
+    `Quel ${nom} pour ${usage} en 2026 ?`,
+  ]
+  const short = [
+    `Meilleur ${nom} pour ${usage} en 2026`,
+    `${nom} pour ${usage} : notre sélection 2026`,
+    `Quel ${nom} choisir pour ${usage} ? 2026`,
+    `${nom} pour ${usage} — Quelle solution en 2026 ?`,
+    `Top ${nom} pour ${usage} — Avis experts 2026`,
+  ]
+  const long = [
+    `Meilleur ${nom} pour ${usage} — Comparatif 2026`,
+    `Top ${nom} pour ${usage} : lequel choisir en 2026 ?`,
+    `${nom} pour ${usage} : comparatif et avis 2026`,
+    `Quel ${nom} pour ${usage} ? Notre sélection 2026`,
+    `Les meilleurs ${nom} pour ${usage} — Guide 2026`,
+  ]
+  const pool = base > 34 ? veryShort : base > 22 ? short : long
+  return pool[seed % pool.length]
+}
+
+function buildMetaDescription(nom: string, usageRaw: string, seed: number): string {
+  const usage = normalizeUsage(usageRaw)
+  const templates = [
+    `Vous cherchez le meilleur ${nom} pour ${usage} ? Découvrez notre comparatif 2026 : outils testés, prix, avis et recommandation personnalisée.`,
+    `Quel ${nom} choisir pour ${usage} en 2026 ? On a sélectionné et testé les meilleures solutions pour vous faire gagner du temps et de l'argent.`,
+    `Comparatif ${nom} pour ${usage} : notre sélection experte 2026. Fonctionnalités, tarifs et verdict pour chaque outil — sans jargon inutile.`,
+    `Top des ${nom} pour ${usage} en 2026. Trouvez l'outil idéal en moins de 5 minutes grâce à notre comparatif honnête et mis à jour.`,
+    `${nom} pour ${usage} : on a testé les meilleures solutions du marché en 2026. Comparatif complet, prix détaillés et recommandation selon votre profil.`,
+  ]
+  return templates[seed % templates.length]
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ categorie: string, usage: string }> }): Promise<Metadata> {
   const { categorie, usage } = await params
   const { data: cat } = await supabase.from('categories').select('*').eq('slug', categorie).single()
   const { data: cas } = await supabase.from('cas_usage').select('*').eq('slug', usage).single()
   const { data: typeEntreprise } = await supabase.from('types_entreprise').select('*').eq('slug', usage).single()
   const usageLabel = cas?.label || typeEntreprise?.label || usage.replace(/-/g, ' ')
+  const nom = cat?.nom || categorie
+  const seed = slugHash(categorie, usage)
   return {
-    title: `Meilleur ${cat?.nom} pour ${usageLabel} en 2026`,
-    description: `Comparatif expert des meilleurs ${cat?.nom} pour ${usageLabel}. Trouvez l'outil idéal parmi notre sélection testée et approuvée en 2026.`,
+    title: buildMetaTitle(nom, usageLabel, seed),
+    description: buildMetaDescription(nom, usageLabel, seed),
     alternates: { canonical: `https://ton-meilleur-saas.fr/meilleur/${categorie}/${usage}` }
   }
 }
