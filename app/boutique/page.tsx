@@ -40,6 +40,35 @@ const products = [
     tag: 'Automatisation',
     tagColor: '#d97706',
   },
+  {
+    id: 'audit-saas',
+    badge: '🎯 Recommandé',
+    badgeColor: '#2563eb',
+    badgeBg: '#eff6ff',
+    emoji: '🔍',
+    accentColor: '#2563eb',
+    accentBg: '#eff6ff',
+    accentLight: '#dbeafe',
+    title: 'Audit SaaS personnalisé — La stack idéale pour votre business',
+    description: 'Remplissez un formulaire de 5 minutes. Je vous envoie une recommandation complète et personnalisée de votre stack SaaS idéale sous 48h.',
+    price: 79,
+    originalPrice: null,
+    includes: [
+      { icon: '📋', text: 'Analyse de votre situation actuelle (outils, budget, équipe)' },
+      { icon: '🎯', text: 'Recommandation de votre stack SaaS idéale par poste' },
+      { icon: '💰', text: 'Estimation du coût total et des économies potentielles' },
+      { icon: '⚡', text: 'Identification des automatisations prioritaires pour vous' },
+      { icon: '🗺️', text: 'Plan de migration pas à pas si vous changez d\'outils' },
+    ],
+    bonus: [
+      'Réponse sous 48h par email',
+      'Échange de suivi inclus (15 min)',
+      'Comparatif personnalisé en PDF',
+    ],
+    format: 'Formulaire 5 min · Audit livré sous 48h',
+    tag: 'Conseil',
+    tagColor: '#2563eb',
+  },
 ]
 
 const faq = [
@@ -167,7 +196,7 @@ export default function BoutiquePage() {
                     <div style={{ fontSize: '48px', fontWeight: 800, color: '#0f172a', fontFamily: "'Fraunces', serif", lineHeight: 1 }}>{product.price}€</div>
                     <div style={{ fontSize: '13px', color: '#94a3b8', marginTop: '6px' }}>paiement unique · accès à vie</div>
                   </div>
-                  <BuyButton accentColor={product.accentColor} className="buy-btn" />
+                  <BuyButton accentColor={product.accentColor} product={product.id} className="buy-btn" />
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#64748b' }}>
                       <span>🔒</span><span>Paiement sécurisé (Stripe)</span>

@@ -3,11 +3,12 @@ import { useState } from 'react'
 
 interface BuyButtonProps {
   accentColor: string
+  product: string
   style?: React.CSSProperties
   className?: string
 }
 
-export default function BuyButton({ accentColor, style, className }: BuyButtonProps) {
+export default function BuyButton({ accentColor, product, style, className }: BuyButtonProps) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
@@ -15,7 +16,7 @@ export default function BuyButton({ accentColor, style, className }: BuyButtonPr
     setLoading(true)
     setError('')
     try {
-      const res = await fetch('/api/checkout', { method: 'POST' })
+      const res = await fetch('/api/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ product }) })
       const data = await res.json()
       if (data.url) {
         window.location.href = data.url

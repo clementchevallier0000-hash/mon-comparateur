@@ -10,11 +10,15 @@ const supabaseAdmin = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 )
 
-const PRODUCT_FILES: Record<string, { bucket: string; path: string; label: string }> = {
+const PRODUCT_FILES: Record<string, { bucket?: string; path?: string; label: string; tallyUrl?: string }> = {
   'n8n-pack': {
     bucket: 'ressources',
     path: 'n8n-pack.zip',
     label: 'Pack N8N — 5 Workflows clé en main',
+  },
+  'audit-saas': {
+    label: 'Audit SaaS personnalisé',
+    tallyUrl: 'https://tally.so/r/xXNWG9',
   },
 }
 
@@ -28,6 +32,7 @@ export default async function SuccessPage({
   if (!session_id) redirect('/boutique')
 
   let downloadUrl: string | null = null
+  let tallyUrl: string | null = null
   let customerEmail = ''
   let productLabel = ''
   let error = false
@@ -42,14 +47,13 @@ export default async function SuccessPage({
     const file = PRODUCT_FILES[productKey]
     productLabel = file?.label || productKey
 
-    if (file) {
+    if (file?.tallyUrl) {
+      tallyUrl = file.tallyUrl
+    } else if (file?.bucket && file?.path) {
       const { data, error: signError } = await supabaseAdmin.storage
         .from(file.bucket)
-        .createSignedUrl(file.path, 3600) // lien valable 1 heure
-
-      if (!signError && data) {
-        downloadUrl = data.signedUrl
-      }
+        .createSignedUrl(file.path, 3600)
+      if (!signError && data) downloadUrl = data.signedUrl
     }
   } catch {
     error = true
@@ -85,7 +89,24 @@ export default async function SuccessPage({
               </p>
             )}
 
-            {downloadUrl ? (
+            {tallyUrl ? (
+              <div style={{ marginBottom: '32px' }}>
+                <p style={{ fontSize: '15px', color: '#374151', lineHeight: 1.6, marginBottom: '20px' }}>
+                  Remplis le formulaire ci-dessous — je t&apos;envoie ton audit personnalisé par email sous <strong>48h</strong>.
+                </p>
+                <a
+                  href={tallyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ display: 'inline-block', background: 'linear-gradient(135deg, #2563eb, #7c3aed)', color: '#fff', textDecoration: 'none', padding: '16px 32px', borderRadius: '12px', fontSize: '16px', fontWeight: 700, boxShadow: '0 4px 20px rgba(37,99,235,0.35)', marginBottom: '12px' }}
+                >
+                  📋 Remplir le formulaire d&apos;audit →
+                </a>
+                <p style={{ fontSize: '12px', color: '#94a3b8' }}>
+                  Répond en 5 min · Audit reçu sous 48h par email
+                </p>
+              </div>
+            ) : downloadUrl ? (
               <div style={{ marginBottom: '32px' }}>
                 <a
                   href={downloadUrl}
