@@ -152,6 +152,26 @@ function normalizeUsage(label: string): string {
   return label.replace(/^pour\s+/i, '')
 }
 
+function buildH1(nom: string, usageRaw: string, seed: number): { line1: string; line2: string } {
+  const usage = normalizeUsage(usageRaw)
+  const base = nom.length + usage.length
+  const templates: [string, string][] = base > 34 ? [
+    [`Meilleur ${nom}`, `pour ${usage} 2026`],
+    [`${nom} pour ${usage}`, `notre sélection 2026`],
+    [`Quel ${nom}`, `pour ${usage} ?`],
+    [`Top ${nom}`, `pour ${usage} 2026`],
+    [`${nom}`, `pour ${usage} — 2026`],
+  ] : [
+    [`Quel est le meilleur ${nom}`, `pour ${usage} en 2026 ?`],
+    [`${nom} pour ${usage} :`, `notre sélection des meilleurs outils`],
+    [`Les meilleurs outils ${nom}`, `pour ${usage} en 2026`],
+    [`Comparatif ${nom} pour ${usage} :`, `lequel est fait pour vous ?`],
+    [`${nom} pour ${usage} :`, `on a testé les meilleures solutions`],
+  ]
+  // offset +2 pour garantir que H1 ≠ meta title (qui utilise seed % 5)
+  return { line1: templates[(seed + 2) % templates.length][0], line2: templates[(seed + 2) % templates.length][1] }
+}
+
 function buildMetaTitle(nom: string, usageRaw: string, seed: number): string {
   const usage = normalizeUsage(usageRaw)
   const base = nom.length + usage.length
@@ -214,6 +234,7 @@ export default async function MeilleurPage({ params }: { params: Promise<{ categ
   const { data: cas } = await supabase.from('cas_usage').select('*').eq('slug', usage).single()
   const { data: typeEntreprise } = await supabase.from('types_entreprise').select('*').eq('slug', usage).single()
   const usageLabel = cas?.label || typeEntreprise?.label || usage.replace(/-/g, ' ')
+  const nom = cat?.nom || categorie
   const contenu = cas?.contenu || typeEntreprise?.contenu
 
   // Pairs pour le maillage interne
@@ -314,8 +335,8 @@ export default async function MeilleurPage({ params }: { params: Promise<{ categ
           </div>
 
           <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: '42px', fontWeight: 800, color: '#fff', letterSpacing: '-1.5px', marginBottom: '12px', lineHeight: 1.1 }}>
-            Meilleur {cat?.nom}<br />
-            <span style={{ opacity: 0.75 }}>pour {usageLabel}</span>
+            {buildH1(nom, usageLabel, slugHash(categorie, usage)).line1}<br />
+            <span style={{ opacity: 0.75 }}>{buildH1(nom, usageLabel, slugHash(categorie, usage)).line2}</span>
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px', maxWidth: '500px', lineHeight: 1.6, marginBottom: '28px' }}>
             Sélection des {outilCount} meilleurs outils {cat?.nom} adaptés aux besoins des {usageLabel}s. Avis basés sur des tests réels.
