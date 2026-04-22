@@ -587,6 +587,8 @@ export default async function Home() {
               </Link>
             ))}
             <Link href="/mentions-legales" style={{ color: '#475569', fontSize: '13px', textDecoration: 'none' }}>Mentions légales</Link>
+            <Link href="/politique-de-confidentialite" style={{ color: '#475569', fontSize: '13px', textDecoration: 'none' }}>Confidentialité</Link>
+            <Link href="/cgv" style={{ color: '#475569', fontSize: '13px', textDecoration: 'none' }}>CGV</Link>
           </div>
         </div>
       </footer>

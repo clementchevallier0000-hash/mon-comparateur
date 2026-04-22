@@ -385,6 +385,8 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
         <p style={{ color: '#475569', fontSize: '13px' }}>© 2026 TonMeilleurSaaS · Comparateur expert de logiciels SaaS</p>
         <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
           <Link href="/mentions-legales" style={{ color: '#64748b', fontSize: '13px', textDecoration: 'none' }}>Mentions légales</Link>
+          <Link href="/politique-de-confidentialite" style={{ color: '#64748b', fontSize: '13px', textDecoration: 'none' }}>Confidentialité</Link>
+          <Link href="/cgv" style={{ color: '#64748b', fontSize: '13px', textDecoration: 'none' }}>CGV</Link>
           <Link href="/" style={{ color: '#64748b', fontSize: '13px', textDecoration: 'none', fontWeight: 500 }}>← Accueil</Link>
         </div>
       </footer>

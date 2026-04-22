@@ -3,10 +3,15 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Mentions légales — TonMeilleurSaaS',
-  description: 'Mentions légales, politique de confidentialité et conditions générales de vente de TonMeilleurSaaS.',
+  description: 'Mentions légales du site TonMeilleurSaaS : éditeur, hébergeur, propriété intellectuelle et liens d\'affiliation.',
   alternates: { canonical: 'https://ton-meilleur-saas.fr/mentions-legales' },
   robots: { index: false },
 }
+
+const linkStyle = { color: '#6366f1', textDecoration: 'none' }
+const sectionStyle = { background: '#fff', borderRadius: '16px', padding: '28px 32px', border: '1px solid #e2e8f0' }
+const h2Style = { fontSize: '18px', fontWeight: 700, color: '#0f172a', marginBottom: '16px' }
+const textStyle = { fontSize: '15px', color: '#374151', lineHeight: 1.7 }
 
 export default function MentionsLegales() {
   return (
@@ -15,7 +20,6 @@ export default function MentionsLegales() {
 
       <div style={{ maxWidth: '760px', margin: '0 auto' }}>
 
-        {/* Header */}
         <div style={{ marginBottom: '40px' }}>
           <Link href="/" style={{ fontSize: '14px', color: '#64748b', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px', marginBottom: '24px' }}>
             ← Retour au site
@@ -26,94 +30,126 @@ export default function MentionsLegales() {
           <p style={{ fontSize: '14px', color: '#94a3b8' }}>Dernière mise à jour : avril 2026</p>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+        {/* Nav vers les autres pages légales */}
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '36px' }}>
+          {[
+            { href: '/mentions-legales', label: 'Mentions légales', active: true },
+            { href: '/politique-de-confidentialite', label: 'Confidentialité & Cookies', active: false },
+            { href: '/cgv', label: 'CGV', active: false },
+          ].map(({ href, label, active }) => (
+            <Link key={href} href={href} style={{
+              fontSize: '13px', fontWeight: 600, padding: '8px 16px', borderRadius: '999px', textDecoration: 'none',
+              background: active ? '#0f172a' : '#fff',
+              color: active ? '#fff' : '#64748b',
+              border: active ? '1px solid #0f172a' : '1px solid #e2e8f0',
+            }}>{label}</Link>
+          ))}
+        </div>
 
-          {/* Éditeur */}
-          <section style={{ background: '#fff', borderRadius: '16px', padding: '28px 32px', border: '1px solid #e2e8f0' }}>
-            <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a', marginBottom: '16px' }}>1. Éditeur du site</h2>
-            <div style={{ fontSize: '15px', color: '#374151', lineHeight: 1.8, display: 'flex', flexDirection: 'column', gap: '4px' }}>
-              <p><strong>Site :</strong> TonMeilleurSaaS</p>
-              <p><strong>URL :</strong> https://ton-meilleur-saas.fr</p>
-              <p><strong>Éditeur :</strong> Clément Chevallier</p>
-              <p><strong>Statut :</strong> Auto-entrepreneur</p>
-              <p><strong>SIRET :</strong> À COMPLÉTER</p>
-              <p><strong>Adresse :</strong> À COMPLÉTER</p>
-              <p><strong>Email :</strong> contact@ton-meilleur-saas.fr</p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+
+          <section style={sectionStyle}>
+            <h2 style={h2Style}>1. Éditeur du site</h2>
+            <div style={{ ...textStyle, display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              <p>Le site <strong>TonMeilleurSaaS</strong> (accessible à l'adresse <strong>https://ton-meilleur-saas.fr</strong>) est édité par :</p>
+              <div style={{ background: '#f8fafc', borderRadius: '10px', padding: '16px 20px', marginTop: '8px', display: 'flex', flexDirection: 'column', gap: '4px', border: '1px solid #e2e8f0' }}>
+                <p><strong>Nom :</strong> Clément Chevallier</p>
+                <p><strong>Statut juridique :</strong> Auto-entrepreneur (micro-entreprise)</p>
+                <p><strong>SIRET :</strong> À COMPLÉTER</p>
+                <p><strong>Adresse :</strong> À COMPLÉTER</p>
+                <p><strong>Email :</strong> <a href="mailto:contact@ton-meilleur-saas.fr" style={linkStyle}>contact@ton-meilleur-saas.fr</a></p>
+              </div>
+              <p style={{ marginTop: '8px', fontSize: '14px', color: '#64748b' }}>
+                Conformément à l'article 6 de la loi n°2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique (LCEN), les informations ci-dessus sont mises à disposition de tout visiteur du site.
+              </p>
             </div>
           </section>
 
-          {/* Hébergeur */}
-          <section style={{ background: '#fff', borderRadius: '16px', padding: '28px 32px', border: '1px solid #e2e8f0' }}>
-            <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a', marginBottom: '16px' }}>2. Hébergement</h2>
-            <div style={{ fontSize: '15px', color: '#374151', lineHeight: 1.8, display: 'flex', flexDirection: 'column', gap: '4px' }}>
-              <p><strong>Hébergeur :</strong> Vercel Inc.</p>
-              <p><strong>Adresse :</strong> 340 Pine Street, Suite 701, San Francisco, CA 94104, États-Unis</p>
-              <p><strong>Site :</strong> https://vercel.com</p>
-            </div>
-          </section>
-
-          {/* Propriété intellectuelle */}
-          <section style={{ background: '#fff', borderRadius: '16px', padding: '28px 32px', border: '1px solid #e2e8f0' }}>
-            <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a', marginBottom: '16px' }}>3. Propriété intellectuelle</h2>
-            <p style={{ fontSize: '15px', color: '#374151', lineHeight: 1.7 }}>
-              L&apos;ensemble du contenu de ce site (textes, comparatifs, guides, visuels) est la propriété exclusive de TonMeilleurSaaS. Toute reproduction, même partielle, est interdite sans autorisation écrite préalable.
+          <section style={sectionStyle}>
+            <h2 style={h2Style}>2. Directeur de la publication</h2>
+            <p style={textStyle}>
+              Le directeur de la publication est <strong>Clément Chevallier</strong>, en sa qualité d'éditeur du site, joignable à l'adresse <a href="mailto:contact@ton-meilleur-saas.fr" style={linkStyle}>contact@ton-meilleur-saas.fr</a>.
             </p>
           </section>
 
-          {/* Liens affiliés */}
-          <section style={{ background: '#fff', borderRadius: '16px', padding: '28px 32px', border: '1px solid #e2e8f0' }}>
-            <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a', marginBottom: '16px' }}>4. Liens d&apos;affiliation</h2>
-            <p style={{ fontSize: '15px', color: '#374151', lineHeight: 1.7 }}>
-              Certains liens présents sur ce site sont des liens affiliés. Si vous souscrivez à un service via ces liens, TonMeilleurSaaS peut percevoir une commission, sans coût supplémentaire pour vous. Cette rémunération n&apos;influence pas nos classements ni nos avis, qui restent indépendants et honnêtes.
-            </p>
+          <section style={sectionStyle}>
+            <h2 style={h2Style}>3. Hébergement</h2>
+            <div style={{ ...textStyle, display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              <p>Le site est hébergé par :</p>
+              <div style={{ background: '#f8fafc', borderRadius: '10px', padding: '16px 20px', marginTop: '8px', display: 'flex', flexDirection: 'column', gap: '4px', border: '1px solid #e2e8f0' }}>
+                <p><strong>Société :</strong> Vercel Inc.</p>
+                <p><strong>Siège social :</strong> 340 Pine Street, Suite 701, San Francisco, CA 94104, États-Unis</p>
+                <p><strong>Site web :</strong> <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" style={linkStyle}>https://vercel.com</a></p>
+              </div>
+            </div>
           </section>
 
-          {/* Données personnelles */}
-          <section style={{ background: '#fff', borderRadius: '16px', padding: '28px 32px', border: '1px solid #e2e8f0' }}>
-            <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a', marginBottom: '16px' }}>5. Données personnelles (RGPD)</h2>
-            <div style={{ fontSize: '15px', color: '#374151', lineHeight: 1.7, display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <section style={sectionStyle}>
+            <h2 style={h2Style}>4. Propriété intellectuelle</h2>
+            <div style={{ ...textStyle, display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <p>
-                TonMeilleurSaaS collecte uniquement les données nécessaires au traitement de vos commandes (email, informations de paiement via Stripe). Ces données ne sont jamais revendues à des tiers.
+                L'ensemble des éléments constituant ce site (structure, textes, comparatifs, guides, méthodologies, visuels, logos, données) est la propriété exclusive de TonMeilleurSaaS, sauf mention contraire expresse.
               </p>
               <p>
-                <strong>Responsable du traitement :</strong> Clément Chevallier — contact@ton-meilleur-saas.fr
+                Ces éléments sont protégés par les dispositions du Code de la propriété intellectuelle et notamment par le droit d'auteur. Toute reproduction, représentation, modification, publication, transmission ou dénaturation, totale ou partielle, du site ou de son contenu, par quelque procédé que ce soit, est interdite sans l'autorisation écrite préalable de TonMeilleurSaaS.
               </p>
               <p>
-                <strong>Durée de conservation :</strong> Les données de commande sont conservées 3 ans conformément aux obligations légales.
-              </p>
-              <p>
-                Conformément au RGPD, vous disposez d&apos;un droit d&apos;accès, de rectification et de suppression de vos données. Pour exercer ces droits, contactez-nous à contact@ton-meilleur-saas.fr.
-              </p>
-              <p>
-                <strong>Paiements :</strong> Les transactions sont gérées par Stripe Inc. TonMeilleurSaaS ne stocke aucune donnée bancaire.
+                Les marques, logos et noms commerciaux des logiciels SaaS présentés sur ce site appartiennent à leurs éditeurs respectifs. Leur mention sur TonMeilleurSaaS s'inscrit dans un cadre comparatif et informatif, sans lien commercial avec lesdits éditeurs, sauf indication contraire (voir section liens d'affiliation ci-dessous).
               </p>
             </div>
           </section>
 
-          {/* CGV */}
-          <section style={{ background: '#fff', borderRadius: '16px', padding: '28px 32px', border: '1px solid #e2e8f0' }}>
-            <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a', marginBottom: '16px' }}>6. Conditions générales de vente</h2>
-            <div style={{ fontSize: '15px', color: '#374151', lineHeight: 1.7, display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              <p><strong>Produits vendus :</strong> Ressources numériques (workflows, guides) et prestations de conseil (audit SaaS).</p>
-              <p><strong>Prix :</strong> Indiqués en euros TTC sur la boutique. Paiement unique, accès à vie pour les ressources numériques.</p>
-              <p><strong>Livraison :</strong> Les ressources numériques sont livrées instantanément par email après confirmation du paiement. L&apos;audit SaaS est livré sous 48h ouvrées.</p>
-              <p><strong>Droit de rétractation :</strong> Conformément à l&apos;article L221-28 du Code de la consommation, le droit de rétractation ne s&apos;applique pas aux contenus numériques fournis immédiatement après achat. Cependant, si vous n&apos;êtes pas satisfait, contactez-nous sous 14 jours et nous trouverons une solution.</p>
-              <p><strong>Réclamations :</strong> contact@ton-meilleur-saas.fr</p>
+          <section style={sectionStyle}>
+            <h2 style={h2Style}>5. Liens d'affiliation</h2>
+            <div style={{ ...textStyle, display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <p>
+                TonMeilleurSaaS est un site comparateur qui participe à des programmes d'affiliation. Certains liens présents sur ce site, notamment les boutons «&nbsp;Essayer gratuitement&nbsp;» ou «&nbsp;Voir l'offre&nbsp;», sont des liens affiliés.
+              </p>
+              <p>
+                Si vous souscrivez à un abonnement ou achetez un produit via ces liens, TonMeilleurSaaS peut percevoir une commission de la part de l'éditeur du logiciel concerné. Cette commission est sans coût supplémentaire pour vous : vous payez le même prix que si vous aviez accédé directement au site de l'éditeur.
+              </p>
+              <p>
+                <strong>Indépendance éditoriale :</strong> Cette rémunération potentielle n'influence en aucune façon nos classements, nos notes, ni nos avis. Les comparatifs et recommandations publiés sur TonMeilleurSaaS sont basés uniquement sur une analyse objective des fonctionnalités, tarifs et retours utilisateurs. Tout lien affilié est clairement identifié comme tel.
+              </p>
             </div>
           </section>
 
-          {/* Cookies */}
-          <section style={{ background: '#fff', borderRadius: '16px', padding: '28px 32px', border: '1px solid #e2e8f0' }}>
-            <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a', marginBottom: '16px' }}>7. Cookies</h2>
-            <p style={{ fontSize: '15px', color: '#374151', lineHeight: 1.7 }}>
-              Ce site utilise uniquement des cookies techniques nécessaires à son fonctionnement (session, préférences). Aucun cookie publicitaire ou de tracking tiers n&apos;est utilisé.
+          <section style={sectionStyle}>
+            <h2 style={h2Style}>6. Limitation de responsabilité</h2>
+            <div style={{ ...textStyle, display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <p>
+                TonMeilleurSaaS s'efforce de maintenir les informations publiées sur le site aussi précises et à jour que possible. Toutefois, les caractéristiques, tarifs et disponibilités des logiciels SaaS présentés sont susceptibles d'évoluer sans préavis de la part de leurs éditeurs.
+              </p>
+              <p>
+                TonMeilleurSaaS ne saurait être tenu responsable des erreurs ou omissions éventuelles dans le contenu du site, ni des dommages directs ou indirects résultant de l'utilisation des informations présentées ou des liens vers des sites tiers.
+              </p>
+            </div>
+          </section>
+
+          <section style={sectionStyle}>
+            <h2 style={h2Style}>7. Droit applicable</h2>
+            <p style={textStyle}>
+              Le présent site et ses mentions légales sont régis par le droit français. En cas de litige, et après tentative de résolution amiable, les tribunaux français seront seuls compétents.
             </p>
           </section>
 
         </div>
 
-        <p style={{ fontSize: '13px', color: '#94a3b8', textAlign: 'center', marginTop: '40px' }}>
-          Pour toute question : contact@ton-meilleur-saas.fr
+        {/* Liens vers autres pages légales */}
+        <div style={{ marginTop: '48px', padding: '24px 28px', background: '#f1f5f9', borderRadius: '16px', border: '1px solid #e2e8f0' }}>
+          <p style={{ fontSize: '14px', fontWeight: 600, color: '#0f172a', marginBottom: '12px' }}>Documents légaux complémentaires</p>
+          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+            <Link href="/politique-de-confidentialite" style={{ fontSize: '14px', color: '#6366f1', textDecoration: 'none', fontWeight: 500 }}>
+              → Politique de confidentialité &amp; Cookies
+            </Link>
+            <Link href="/cgv" style={{ fontSize: '14px', color: '#6366f1', textDecoration: 'none', fontWeight: 500 }}>
+              → Conditions Générales de Vente
+            </Link>
+          </div>
+        </div>
+
+        <p style={{ fontSize: '13px', color: '#94a3b8', textAlign: 'center', marginTop: '32px' }}>
+          Pour toute question : <a href="mailto:contact@ton-meilleur-saas.fr" style={{ color: '#94a3b8' }}>contact@ton-meilleur-saas.fr</a>
         </p>
       </div>
     </main>
