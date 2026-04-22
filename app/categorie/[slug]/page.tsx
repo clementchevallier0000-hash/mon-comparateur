@@ -383,7 +383,10 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
           <span style={{ fontFamily: "'Fraunces', serif", fontSize: '15px', fontWeight: 800, color: '#fff' }}>TonMeilleurSaaS</span>
         </Link>
         <p style={{ color: '#475569', fontSize: '13px' }}>© 2026 TonMeilleurSaaS · Comparateur expert de logiciels SaaS</p>
-        <Link href="/" style={{ color: '#64748b', fontSize: '13px', textDecoration: 'none', fontWeight: 500 }}>← Accueil</Link>
+        <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+          <Link href="/mentions-legales" style={{ color: '#64748b', fontSize: '13px', textDecoration: 'none' }}>Mentions légales</Link>
+          <Link href="/" style={{ color: '#64748b', fontSize: '13px', textDecoration: 'none', fontWeight: 500 }}>← Accueil</Link>
+        </div>
       </footer>
     </main>
   )

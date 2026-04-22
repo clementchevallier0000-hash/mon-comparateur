@@ -580,12 +580,13 @@ export default async function Home() {
           <p style={{ color: '#475569', fontSize: '13px' }}>
             © 2026 TonMeilleurSaaS · Comparateur expert de logiciels SaaS
           </p>
-          <div className="footer-links" style={{ display: 'flex', gap: '24px' }}>
+          <div className="footer-links" style={{ display: 'flex', gap: '24px', alignItems: 'center', flexWrap: 'wrap' }}>
             {categories?.map((cat) => (
               <Link key={cat.id} href={`/categorie/${cat.slug}`} style={{ color: '#475569', fontSize: '13px', textDecoration: 'none' }}>
                 {cat.nom}
               </Link>
             ))}
+            <Link href="/mentions-legales" style={{ color: '#475569', fontSize: '13px', textDecoration: 'none' }}>Mentions légales</Link>
           </div>
         </div>
       </footer>
