@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 const products = [
   {
-    id: 'n8n-pack-tpe',
+    id: 'n8n-pack',
     badge: '🔥 Best-seller',
     badgeColor: '#ea580c',
     badgeBg: '#fff7ed',
