@@ -8,6 +8,10 @@ const PRODUCTS: Record<string, { priceId: string; description: string }> = {
     priceId: process.env.STRIPE_PRICE_N8N!,
     description: 'Pack N8N — 5 Workflows clé en main',
   },
+  'n8n-pack-tpe': {
+    priceId: process.env.STRIPE_PRICE_N8N!,
+    description: 'Pack N8N — 5 Workflows clé en main',
+  },
   'audit-saas': {
     priceId: process.env.STRIPE_PRICE_AUDIT!,
     description: 'Audit SaaS personnalisé',
