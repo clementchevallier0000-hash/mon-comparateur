@@ -1,4 +1,5 @@
 import TopBanner from '@/app/components/TopBanner'
+import NewsletterForm from '@/app/components/NewsletterForm'
 import HeroVisual from '@/app/components/HeroVisual'
 import AnimatedCounter from '@/app/components/AnimatedCounter'
 import MobileMenu from '@/app/components/MobileMenu'
@@ -546,6 +547,30 @@ export default async function Home() {
           </div>
         </section>
       )}
+
+      {/* Newsletter */}
+      <section style={{ padding: '80px 48px', background: 'linear-gradient(135deg, #fffbeb 0%, #fff7ed 50%, #fef3c7 100%)', borderTop: '1px solid #fde68a', borderBottom: '1px solid #fde68a' }}>
+        <div style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#fef9c3', border: '1px solid #fde68a', borderRadius: '999px', padding: '6px 16px', marginBottom: '20px' }}>
+            <span style={{ fontSize: '14px' }}>🎁</span>
+            <span style={{ fontSize: '12px', fontWeight: 700, color: '#92400e', letterSpacing: '1px', textTransform: 'uppercase' }}>Cadeau gratuit</span>
+          </div>
+          <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: '36px', fontWeight: 800, color: '#0f172a', letterSpacing: '-1px', marginBottom: '12px', lineHeight: 1.15 }}>
+            Recevez le guide<br /><span style={{ color: '#d97706' }}>Stack SaaS TPE/PME</span> gratuitement
+          </h2>
+          <p style={{ fontSize: '16px', color: '#64748b', marginBottom: '12px', lineHeight: 1.65 }}>
+            Les 10 outils indispensables pour automatiser votre business — sélectionnés parmi 50+ alternatives testées.
+          </p>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '32px', flexWrap: 'wrap' }}>
+            {['📘 Guide PDF 7 pages', '🏷️ -10% sur la boutique', '📬 1 conseil SaaS/semaine'].map(item => (
+              <span key={item} style={{ fontSize: '13px', color: '#374151', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '4px' }}>
+                {item}
+              </span>
+            ))}
+          </div>
+          <NewsletterForm />
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="cta-section" style={{ padding: '80px 48px', background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #312e81 100%)', position: 'relative', overflow: 'hidden' }}>
