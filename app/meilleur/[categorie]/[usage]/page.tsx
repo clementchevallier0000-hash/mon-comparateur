@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import LogoImg from '@/app/components/LogoImg'
 import ScrollAnimations from '@/app/components/ScrollAnimations'
 import SearchModal from '@/app/components/SearchModal'
+import AffiliateButton from '@/app/components/AffiliateButton'
 
 function getLogoUrl(lienAffilie: string): string | null {
   try {
@@ -243,6 +244,10 @@ export default async function MeilleurPage({ params }: { params: Promise<{ categ
         .essayer-btn-m:hover { opacity: 0.85; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
         .link-card-m { transition: all 0.2s ease; }
         .link-card-m:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-color: ${c.accent} !important; }
+        .top-card-m { transition: all 0.2s ease; }
+        .top-card-m:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.1); transform: translateY(-3px); }
+        .compact-card-m { transition: all 0.2s ease; }
+        .compact-card-m:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); transform: translateY(-1px); border-color: ${c.accent}44 !important; }
 
         @media (max-width: 768px) {
           .m-header { padding: 0 16px !important; }
@@ -251,16 +256,13 @@ export default async function MeilleurPage({ params }: { params: Promise<{ categ
           .m-hero p { font-size: 14px !important; margin-bottom: 20px !important; }
           .m-hero-stats { gap: 14px !important; flex-wrap: wrap !important; }
           .m-section { padding: 24px 16px 16px !important; }
+          .m-top3-grid { grid-template-columns: 1fr !important; }
+          .m-rest-grid { grid-template-columns: 1fr !important; }
           .m-contenu-wrap { padding: 0 16px !important; }
           .m-contenu { padding: 24px 16px !important; }
           .m-footer { padding: 20px 16px !important; flex-direction: column !important; align-items: flex-start !important; gap: 10px !important; }
           .m-breadcrumb { display: none !important; }
           .boutique-link { display: none !important; }
-          .outil-card-m { flex-direction: column !important; align-items: flex-start !important; padding: 16px !important; gap: 12px !important; }
-          .outil-left-m { width: 100% !important; padding-left: 0 !important; }
-          .outil-right-m { width: 100% !important; flex-direction: row !important; justify-content: space-between !important; align-items: center !important; }
-          .outil-desc-m { max-width: 100% !important; font-size: 12px !important; }
-          .outil-badges-m { flex-wrap: wrap !important; }
           .m-cta { padding: 40px 16px !important; }
           .m-cta h2 { font-size: 24px !important; }
         }
@@ -331,92 +333,102 @@ export default async function MeilleurPage({ params }: { params: Promise<{ categ
       {/* Liste des outils */}
       <section className="m-section" style={{ padding: '44px 40px 24px' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
             <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: '22px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.5px' }}>
               {icon} Notre sélection pour {usageLabel}
             </h2>
             <span style={{ fontSize: '12px', color: '#94a3b8', fontWeight: 600, flexShrink: 0 }}>{outilCount} outil{outilCount > 1 ? 's' : ''}</span>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            {outils?.map((outil, index) => {
-              const rank = rankConfig[index]
-              const isFree = outil.prix_mensuel === 0
-              const isTop = index === 0
-              const borderLeft = rank ? `4px solid ${rank.borderColor}` : '1px solid #e2e8f0'
-
-              return (
-                <div
-                  key={outil.id}
-                  className="outil-card-m outil-row-m scroll-reveal"
-                  style={{
-                    background: '#fff',
-                    border: isTop ? `2px solid ${c.accent}33` : '1px solid #e2e8f0',
-                    borderLeft,
-                    borderRadius: '16px',
-                    padding: '20px 24px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '20px',
-                    justifyContent: 'space-between',
-                  }}
-                >
-                  <div className="outil-left-m" style={{ display: 'flex', alignItems: 'center', gap: '14px', flex: 1, minWidth: 0 }}>
-                    {/* Rang */}
-                    <div style={{ width: '26px', textAlign: 'center', flexShrink: 0 }}>
-                      {rank
-                        ? <span style={{ fontSize: '18px' }}>{rank.emoji}</span>
-                        : <span style={{ fontSize: '11px', fontWeight: 700, color: '#cbd5e1' }}>#{index + 1}</span>
-                      }
-                    </div>
-
-                    {/* Logo */}
-                    <div style={{ width: '44px', height: '44px', background: c.bg, borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: `1px solid ${c.light}`, flexShrink: 0 }}>
-                      <LogoImg src={getLogoUrl(outil.lien_affilie)} alt={outil.nom} />
-                    </div>
-
-                    {/* Texte */}
-                    <div style={{ flex: 1, minWidth: 0 }}>
-                      <div className="outil-badges-m" style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '4px', flexWrap: 'wrap' }}>
-                        <h3 style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a', whiteSpace: 'nowrap' }}>{outil.nom}</h3>
+          {/* Top 3 — grandes cards visuelles */}
+          {outils && outils.length > 0 && (
+            <div className="m-top3-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '16px' }}>
+              {outils.slice(0, 3).map((outil, index) => {
+                const rank = rankConfig[index]
+                const isFree = outil.prix_mensuel === 0
+                return (
+                  <Link key={outil.id} href={outil.slug ? `/outils/${outil.slug}` : '#'} style={{ textDecoration: 'none' }}>
+                    <div className="outil-row-m top-card-m" style={{
+                      background: '#fff',
+                      border: index === 0 ? `2px solid ${c.accent}44` : '1px solid #e2e8f0',
+                      borderTop: `4px solid ${rank?.borderColor || c.accent}`,
+                      borderRadius: '16px',
+                      padding: '20px',
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '12px',
+                    }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                         {rank && (
-                          <span style={{ fontSize: '10px', fontWeight: 700, padding: '2px 7px', borderRadius: '999px', background: rank.labelBg, color: rank.labelColor, border: `1px solid ${rank.labelBorder}`, whiteSpace: 'nowrap' }}>
+                          <span style={{ fontSize: '10px', fontWeight: 700, padding: '3px 8px', borderRadius: '999px', background: rank.labelBg, color: rank.labelColor, border: `1px solid ${rank.labelBorder}` }}>
                             {rank.label}
                           </span>
                         )}
-                        {isFree && (
-                          <span style={{ fontSize: '10px', fontWeight: 700, padding: '2px 7px', borderRadius: '999px', background: '#f0fdf4', color: '#16a34a', border: '1px solid #bbf7d0', whiteSpace: 'nowrap' }}>
-                            Gratuit
-                          </span>
-                        )}
+                        <span style={{ fontSize: '20px', marginLeft: 'auto' }}>{rank?.emoji || `#${index + 1}`}</span>
                       </div>
-                      <p className="outil-desc-m" style={{ color: '#64748b', fontSize: '13px', lineHeight: 1.5, wordBreak: 'break-word' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <div style={{ width: '44px', height: '44px', background: c.bg, borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: `1px solid ${c.light}`, flexShrink: 0 }}>
+                          <LogoImg src={getLogoUrl(outil.lien_affilie)} alt={outil.nom} />
+                        </div>
+                        <div>
+                          <h3 style={{ fontSize: '15px', fontWeight: 800, color: '#0f172a', marginBottom: '2px' }}>{outil.nom}</h3>
+                          <span style={{ fontSize: '16px', fontWeight: 800, color: c.accent, fontFamily: "'Fraunces', serif" }}>
+                            {isFree ? 'Gratuit' : `${outil.prix_mensuel}€`}
+                            {!isFree && <span style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 500 }}>/mois</span>}
+                          </span>
+                        </div>
+                      </div>
+                      <p style={{ fontSize: '12px', color: '#64748b', lineHeight: 1.6, flex: 1, display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
                         {outil.description}
                       </p>
-                    </div>
-                  </div>
-
-                  <div className="outil-right-m" style={{ display: 'flex', alignItems: 'center', gap: '14px', flexShrink: 0 }}>
-                    <div style={{ textAlign: 'right' }}>
-                      <div style={{ fontSize: '17px', fontWeight: 800, color: '#0f172a', fontFamily: "'Fraunces', serif", whiteSpace: 'nowrap' }}>
-                        {isFree ? 'Gratuit' : `${outil.prix_mensuel}€`}
+                      <div style={{ display: 'flex', gap: '8px', marginTop: 'auto' }}>
+                        <span style={{ flex: 1, background: c.bg, color: c.accent, border: `1px solid ${c.light}`, borderRadius: '8px', padding: '8px 10px', fontSize: '11px', fontWeight: 700, textAlign: 'center' }}>
+                          Voir l&apos;avis →
+                        </span>
+                        <AffiliateButton href={outil.lien_affilie} isTop={index === 0} accent={c.accent} />
                       </div>
-                      {!isFree && <div style={{ fontSize: '10px', color: '#94a3b8', fontWeight: 500 }}>/ mois</div>}
                     </div>
-                    <a
-                      href={outil.lien_affilie}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="essayer-btn-m"
-                      style={{ background: isTop ? c.accent : '#0f172a', color: '#fff', borderRadius: '10px', padding: '9px 18px', textDecoration: 'none', fontSize: '13px', fontWeight: 700, whiteSpace: 'nowrap', display: 'block' }}
-                    >
-                      Essayer →
-                    </a>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
+                  </Link>
+                )
+              })}
+            </div>
+          )}
+
+          {/* Reste — grille 2 colonnes compacte */}
+          {outils && outils.length > 3 && (
+            <>
+              <p style={{ fontSize: '11px', fontWeight: 700, color: '#94a3b8', letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '12px', marginTop: '8px' }}>
+                Autres alternatives
+              </p>
+              <div className="m-rest-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}>
+                {outils.slice(3).map((outil, index) => {
+                  const isFree = outil.prix_mensuel === 0
+                  const realIndex = index + 3
+                  return (
+                    <Link key={outil.id} href={outil.slug ? `/outils/${outil.slug}` : '#'} style={{ textDecoration: 'none', minWidth: 0 }}>
+                      <div className="outil-row-m compact-card-m" style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '12px 14px', display: 'flex', alignItems: 'center', gap: '10px', overflow: 'hidden' }}>
+                        <span style={{ fontSize: '11px', fontWeight: 700, color: '#cbd5e1', width: '18px', flexShrink: 0, textAlign: 'center' }}>#{realIndex + 1}</span>
+                        <div style={{ width: '32px', height: '32px', background: c.bg, borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: `1px solid ${c.light}`, flexShrink: 0 }}>
+                          <LogoImg src={getLogoUrl(outil.lien_affilie)} alt={outil.nom} />
+                        </div>
+                        <div style={{ flex: 1, minWidth: 0, overflow: 'hidden' }}>
+                          <p style={{ fontSize: '13px', fontWeight: 700, color: '#0f172a', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginBottom: '1px' }}>{outil.nom}</p>
+                          <p style={{ fontSize: '11px', color: '#64748b', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', margin: 0 }}>{outil.description}</p>
+                        </div>
+                        <div style={{ flexShrink: 0, textAlign: 'right' }}>
+                          <p style={{ fontSize: '13px', fontWeight: 800, color: '#0f172a', fontFamily: "'Fraunces', serif", whiteSpace: 'nowrap' }}>{isFree ? 'Gratuit' : `${outil.prix_mensuel}€`}</p>
+                          {!isFree && <p style={{ fontSize: '10px', color: '#94a3b8', margin: 0 }}>/mois</p>}
+                        </div>
+                        <span style={{ color: c.accent, fontSize: '14px', flexShrink: 0 }}>→</span>
+                      </div>
+                    </Link>
+                  )
+                })}
+              </div>
+            </>
+          )}
+
 
           {/* Contenu SEO */}
           {contenu && (

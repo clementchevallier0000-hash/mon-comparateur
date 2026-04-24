@@ -66,7 +66,7 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
   const inconvenients: string[] = outil.inconvenients ?? []
 
   return (
-    <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#f8fafc', minHeight: '100vh' }}>
+    <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#f8fafc', minHeight: '100vh', overflowX: 'hidden' }}>
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
       <ScrollAnimations />
 
@@ -89,6 +89,7 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
           .alt-grid { grid-template-columns: 1fr !important; }
           .outil-footer { padding: 20px 16px !important; flex-direction: column !important; gap: 12px !important; }
           .breadcrumb-mob { display: none !important; }
+          .outil-header > div { gap: 8px !important; }
         }
       `}</style>
 
