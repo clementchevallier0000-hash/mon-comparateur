@@ -293,7 +293,7 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
                   const isFree = outil.prix_mensuel === 0
                   const realIndex = index + 3
                   return (
-                    <Link key={outil.id} href={outil.slug ? `/outils/${outil.slug}` : '#'} style={{ textDecoration: 'none' }}>
+                    <Link key={outil.id} href={outil.slug ? `/outils/${outil.slug}` : '#'} style={{ textDecoration: 'none', minWidth: 0 }}>
                       <div className="outil-row compact-card" style={{
                         background: '#fff',
                         border: '1px solid #e2e8f0',
@@ -301,26 +301,27 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
                         padding: '14px 16px',
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '12px',
+                        gap: '10px',
+                        overflow: 'hidden',
                       }}>
-                        <span style={{ fontSize: '11px', fontWeight: 700, color: '#cbd5e1', width: '20px', flexShrink: 0, textAlign: 'center' }}>#{realIndex + 1}</span>
-                        <div style={{ width: '36px', height: '36px', background: c.bg, borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: `1px solid ${c.light}`, flexShrink: 0 }}>
+                        <span style={{ fontSize: '11px', fontWeight: 700, color: '#cbd5e1', width: '18px', flexShrink: 0, textAlign: 'center' }}>#{realIndex + 1}</span>
+                        <div style={{ width: '34px', height: '34px', background: c.bg, borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: `1px solid ${c.light}`, flexShrink: 0 }}>
                           <LogoImg src={getLogoUrl(outil.lien_affilie)} alt={outil.nom} />
                         </div>
-                        <div style={{ flex: 1, minWidth: 0 }}>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '2px', flexWrap: 'wrap' }}>
-                            <span style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>{outil.nom}</span>
-                            {isFree && <span style={{ fontSize: '10px', fontWeight: 700, padding: '1px 6px', borderRadius: '999px', background: '#f0fdf4', color: '#16a34a', border: '1px solid #bbf7d0' }}>Gratuit</span>}
+                        <div style={{ flex: 1, minWidth: 0, overflow: 'hidden' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginBottom: '2px' }}>
+                            <span style={{ fontSize: '13px', fontWeight: 700, color: '#0f172a', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{outil.nom}</span>
+                            {isFree && <span style={{ fontSize: '10px', fontWeight: 700, padding: '1px 6px', borderRadius: '999px', background: '#f0fdf4', color: '#16a34a', border: '1px solid #bbf7d0', flexShrink: 0 }}>Gratuit</span>}
                           </div>
-                          <p style={{ fontSize: '12px', color: '#64748b', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{outil.description}</p>
+                          <p style={{ fontSize: '12px', color: '#64748b', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', margin: 0 }}>{outil.description}</p>
                         </div>
                         <div style={{ flexShrink: 0, textAlign: 'right' }}>
-                          <div style={{ fontSize: '14px', fontWeight: 800, color: '#0f172a', fontFamily: "'Fraunces', serif", whiteSpace: 'nowrap' }}>
+                          <div style={{ fontSize: '13px', fontWeight: 800, color: '#0f172a', fontFamily: "'Fraunces', serif", whiteSpace: 'nowrap' }}>
                             {isFree ? 'Gratuit' : `${outil.prix_mensuel}€`}
                           </div>
                           {!isFree && <div style={{ fontSize: '10px', color: '#94a3b8' }}>/mois</div>}
                         </div>
-                        <span style={{ color: c.accent, fontSize: '16px', flexShrink: 0 }}>→</span>
+                        <span style={{ color: c.accent, fontSize: '14px', flexShrink: 0 }}>→</span>
                       </div>
                     </Link>
                   )
