@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import LogoImg from '@/app/components/LogoImg'
 import ScrollAnimations from '@/app/components/ScrollAnimations'
 import SearchModal from '@/app/components/SearchModal'
+import AffiliateButton from '@/app/components/AffiliateButton'
 
 function getLogoUrl(lienAffilie: string): string | null {
   try {
@@ -218,8 +219,12 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
               const borderLeft = rank ? `4px solid ${rank.borderColor}` : '1px solid #e2e8f0'
 
               return (
-                <div
+                <Link
                   key={outil.id}
+                  href={outil.slug ? `/outils/${outil.slug}` : '#'}
+                  style={{ textDecoration: 'none' }}
+                >
+                <div
                   className="outil-card outil-row scroll-reveal"
                   style={{
                     background: '#fff',
@@ -273,17 +278,10 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
                       </div>
                       {!isFree && <div style={{ fontSize: '10px', color: '#94a3b8', fontWeight: 500 }}>/ mois</div>}
                     </div>
-                    <a
-                      href={outil.lien_affilie}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="essayer-btn"
-                      style={{ background: isTop ? c.accent : '#0f172a', color: '#fff', borderRadius: '10px', padding: '9px 18px', textDecoration: 'none', fontSize: '13px', fontWeight: 700, whiteSpace: 'nowrap', display: 'block' }}
-                    >
-                      Essayer →
-                    </a>
+                    <AffiliateButton href={outil.lien_affilie} isTop={isTop} accent={c.accent} />
                   </div>
                 </div>
+                </Link>
               )
             })}
           </div>
