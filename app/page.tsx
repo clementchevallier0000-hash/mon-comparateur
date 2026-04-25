@@ -205,21 +205,17 @@ export default async function Home() {
                   Voir le top outils
                 </Link>
               </div>
-              {/* Social proof */}
-              <div className="fade-up-3" style={{ marginTop: '24px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <div style={{ display: 'flex' }}>
-                  {['#eff6ff', '#fff7ed', '#f0fdf4', '#fdf4ff', '#fffbeb'].map((bg, i) => (
-                    <div key={i} style={{ width: '30px', height: '30px', borderRadius: '50%', background: bg, border: '2px solid #fff', marginLeft: i > 0 ? '-8px' : '0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', boxShadow: '0 1px 4px rgba(0,0,0,0.08)' }}>
-                      {['🤝','💰','🔍','⚡','📋'][i]}
-                    </div>
-                  ))}
-                </div>
-                <div>
-                  <div style={{ display: 'flex', gap: '2px', marginBottom: '2px' }}>
-                    {'★★★★★'.split('').map((s, i) => <span key={i} style={{ color: '#f59e0b', fontSize: '12px' }}>{s}</span>)}
-                  </div>
-                  <span style={{ fontSize: '12px', color: '#64748b' }}><strong style={{ color: '#0f172a' }}>12 000+</strong> dirigeants font confiance à nos comparatifs</span>
-                </div>
+              {/* Badges éditoriaux */}
+              <div className="fade-up-3" style={{ marginTop: '24px', display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                {[
+                  { icon: '🔍', text: '50+ outils testés' },
+                  { icon: '🤝', text: 'Affiliation déclarée' },
+                  { icon: '🇫🇷', text: 'Fait en France' },
+                ].map((badge, i) => (
+                  <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '999px', padding: '5px 12px', fontSize: '12px', color: '#475569', fontWeight: 500 }}>
+                    {badge.icon} {badge.text}
+                  </span>
+                ))}
               </div>
             </div>
             <div className="hero-visual-wrap">
