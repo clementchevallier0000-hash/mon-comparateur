@@ -66,7 +66,7 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
   const inconvenients: string[] = outil.inconvenients ?? []
 
   return (
-    <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#f8fafc', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#f8fafc', minHeight: '100vh' }}>
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
       <ScrollAnimations />
 
@@ -82,7 +82,7 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
           .outil-header { padding: 0 16px !important; }
           .outil-hero { padding: 28px 16px 32px !important; flex-direction: column !important; gap: 20px !important; }
           .outil-hero-right { width: 100% !important; }
-          .outil-hero h1 { font-size: 28px !important; }
+          .outil-h1 { font-size: 28px !important; }
           .outil-body { padding: 24px 16px !important; }
           .outil-grid { grid-template-columns: 1fr !important; }
           .pros-cons-grid { grid-template-columns: 1fr !important; }
@@ -136,7 +136,7 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
               <LogoImg src={getLogoUrl(outil.lien_affilie)} alt={outil.nom} />
             </div>
             <div>
-              <h1 className="outil-hero" style={{ fontFamily: "'Fraunces', serif", fontSize: '36px', fontWeight: 800, color: '#fff', letterSpacing: '-1px', lineHeight: 1.1, marginBottom: '4px' }}>
+              <h1 className="outil-h1" style={{ fontFamily: "'Fraunces', serif", fontSize: '36px', fontWeight: 800, color: '#fff', letterSpacing: '-1px', lineHeight: 1.1, marginBottom: '4px' }}>
                 {outil.nom}
               </h1>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
