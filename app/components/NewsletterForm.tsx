@@ -79,8 +79,16 @@ export default function NewsletterForm() {
 
   return (
     <form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '480px', margin: '0 auto' }}>
+      <style>{`
+        .nl-row { display: flex; gap: 8px; }
+        .nl-btn { padding: 14px 20px; border-radius: 12px; border: none; color: #fff; font-size: 15px; font-weight: 700; white-space: nowrap; font-family: 'DM Sans', sans-serif; }
+        @media (max-width: 520px) {
+          .nl-row { flex-direction: column; }
+          .nl-btn { width: 100%; }
+        }
+      `}</style>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-        <div style={{ display: 'flex', gap: '8px' }}>
+        <div className="nl-row">
           <input
             type="email"
             value={email}
@@ -91,17 +99,16 @@ export default function NewsletterForm() {
               flex: 1, padding: '14px 18px', borderRadius: '12px',
               border: '2px solid #e2e8f0', fontSize: '15px',
               outline: 'none', color: '#0f172a', background: '#fff',
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'DM Sans', sans-serif", minWidth: 0,
             }}
           />
           <button
             type="submit"
             disabled={loading}
+            className="nl-btn"
             style={{
-              padding: '14px 20px', borderRadius: '12px', border: 'none',
               background: loading ? '#94a3b8' : 'linear-gradient(135deg, #d97706, #b45309)',
-              color: '#fff', fontSize: '15px', fontWeight: 700,
-              cursor: loading ? 'not-allowed' : 'pointer', whiteSpace: 'nowrap',
+              cursor: loading ? 'not-allowed' : 'pointer',
               boxShadow: loading ? 'none' : '0 4px 16px rgba(217,119,6,0.4)',
             }}
           >

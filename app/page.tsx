@@ -144,6 +144,7 @@ export default async function Home() {
           .content-inner { padding: 32px 20px !important; }
           .logo-cloud-inner { padding: 20px !important; }
           .blog-preview-grid { grid-template-columns: 1fr !important; }
+          .newsletter-section { padding: 60px 20px !important; }
         }
         @media (max-width: 480px) {
           .hero-title { font-size: 28px !important; }
@@ -549,7 +550,7 @@ export default async function Home() {
       )}
 
       {/* Newsletter */}
-      <section style={{ padding: '80px 48px', background: 'linear-gradient(135deg, #fffbeb 0%, #fff7ed 50%, #fef3c7 100%)', borderTop: '1px solid #fde68a', borderBottom: '1px solid #fde68a' }}>
+      <section className="newsletter-section" style={{ padding: '80px 48px', background: 'linear-gradient(135deg, #fffbeb 0%, #fff7ed 50%, #fef3c7 100%)', borderTop: '1px solid #fde68a', borderBottom: '1px solid #fde68a' }}>
         <div style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#fef9c3', border: '1px solid #fde68a', borderRadius: '999px', padding: '6px 16px', marginBottom: '20px' }}>
             <span style={{ fontSize: '14px' }}>🎁</span>

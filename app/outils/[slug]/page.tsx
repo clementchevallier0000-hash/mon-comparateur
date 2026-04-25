@@ -121,7 +121,8 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
       </header>
 
       {/* Hero */}
-      <section className="outil-hero" style={{ background: c.gradient, padding: '48px 40px', display: 'flex', alignItems: 'flex-start', gap: '48px', maxWidth: '1100px', margin: '0 auto', position: 'relative' }}>
+      <div style={{ background: c.gradient, overflow: 'hidden', position: 'relative' }}>
+      <section className="outil-hero" style={{ padding: '48px 40px', display: 'flex', alignItems: 'flex-start', gap: '48px', maxWidth: '1100px', margin: '0 auto', position: 'relative' }}>
         <div style={{ flex: 1 }}>
           {/* Breadcrumb */}
           {categorie && (
@@ -213,6 +214,7 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
           )}
         </div>
       </section>
+      </div>
 
       {/* Contenu principal */}
       <div className="outil-body" style={{ maxWidth: '1100px', margin: '0 auto', padding: '40px 40px' }}>
