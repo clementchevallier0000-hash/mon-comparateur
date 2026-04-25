@@ -77,20 +77,6 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
         .alt-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); border-color: ${c.accent}44 !important; }
         .back-link { transition: color 0.15s; }
         .back-link:hover { color: ${c.accent} !important; }
-
-        @media (max-width: 768px) {
-          .outil-header { padding: 0 16px !important; }
-          .outil-hero { padding: 28px 16px 32px !important; flex-direction: column !important; gap: 20px !important; }
-          .outil-hero-right { width: 100% !important; }
-          .outil-h1 { font-size: 28px !important; }
-          .outil-body { padding: 24px 16px !important; }
-          .outil-grid { grid-template-columns: 1fr !important; }
-          .pros-cons-grid { grid-template-columns: 1fr !important; }
-          .alt-grid { grid-template-columns: 1fr !important; }
-          .outil-footer { padding: 20px 16px !important; flex-direction: column !important; gap: 12px !important; }
-          .breadcrumb-mob { display: none !important; }
-          .outil-header > div { gap: 8px !important; }
-        }
       `}</style>
 
       {/* Header */}
