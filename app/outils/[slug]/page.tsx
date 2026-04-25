@@ -81,13 +81,13 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
 
       {/* Header */}
       <header style={{ background: 'rgba(255,255,255,0.95)', borderBottom: '1px solid #f1f5f9', position: 'sticky', top: 0, zIndex: 100, backdropFilter: 'blur(12px)' }}>
-        <div className="outil-header" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
+        <div className="outil-header flex items-center justify-between px-4 md:px-10" style={{ maxWidth: '1100px', margin: '0 auto', height: '64px' }}>
           <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}>
             <span style={{ fontSize: '20px' }}>🚀</span>
             <span style={{ fontFamily: "'Fraunces', serif", fontSize: '18px', fontWeight: 800, color: '#0f172a' }}>TonMeilleurSaaS</span>
           </Link>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <div className="breadcrumb-mob" style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: '#64748b' }}>
+            <div className="breadcrumb-mob hidden md:flex items-center" style={{ gap: '6px', fontSize: '13px', color: '#64748b' }}>
               <Link href="/" style={{ color: '#64748b', textDecoration: 'none', fontWeight: 500 }}>Accueil</Link>
               <span>›</span>
               {categorie && (
@@ -108,7 +108,7 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
 
       {/* Hero */}
       <div style={{ background: c.gradient, overflow: 'hidden', position: 'relative' }}>
-      <section className="outil-hero" style={{ padding: '48px 40px', display: 'flex', alignItems: 'flex-start', gap: '48px', maxWidth: '1100px', margin: '0 auto', position: 'relative' }}>
+      <section className="outil-hero flex flex-col items-start gap-5 px-4 pt-7 pb-8 md:flex-row md:gap-12 md:px-10 md:pt-12 md:pb-12" style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative' }}>
         <div style={{ flex: 1 }}>
           {/* Breadcrumb */}
           {categorie && (
@@ -173,7 +173,7 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
         </div>
 
         {/* CTA Card */}
-        <div className="outil-hero-right" style={{ width: '280px', flexShrink: 0, background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '20px', padding: '24px', backdropFilter: 'blur(12px)' }}>
+        <div className="outil-hero-right w-full md:w-[280px] md:shrink-0" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '20px', padding: '24px', backdropFilter: 'blur(12px)' }}>
           <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', marginBottom: '16px', textAlign: 'center' }}>
             Testé et approuvé par notre équipe
           </p>
@@ -203,8 +203,8 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
       </div>
 
       {/* Contenu principal */}
-      <div className="outil-body" style={{ maxWidth: '1100px', margin: '0 auto', padding: '40px 40px' }}>
-        <div className="outil-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: '28px', alignItems: 'start' }}>
+      <div className="outil-body px-4 py-6 md:px-10 md:py-10" style={{ maxWidth: '1100px', margin: '0 auto' }}>
+        <div className="outil-grid grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_340px] items-start" style={{ gap: '28px' }}>
 
           {/* Colonne principale */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
@@ -234,7 +234,7 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
                 <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: '20px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.5px', marginBottom: '20px' }}>
                   Points forts & points faibles
                 </h2>
-                <div className="pros-cons-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                <div className="pros-cons-grid grid grid-cols-1 md:grid-cols-2" style={{ gap: '16px' }}>
                   {avantages.length > 0 && (
                     <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '12px', padding: '18px' }}>
                       <p style={{ fontSize: '13px', fontWeight: 700, color: '#15803d', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -409,13 +409,13 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
       </div>
 
       {/* Footer */}
-      <footer className="outil-footer" style={{ background: '#0a0f1a', padding: '28px 40px', marginTop: '40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
+      <footer className="outil-footer flex flex-col gap-3 px-4 py-5 md:flex-row md:justify-between md:items-center md:px-10 md:py-7 flex-wrap" style={{ background: '#0a0f1a', marginTop: '40px' }}>
         <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}>
           <span style={{ fontSize: '16px' }}>🚀</span>
           <span style={{ fontFamily: "'Fraunces', serif", fontSize: '15px', fontWeight: 800, color: '#fff' }}>TonMeilleurSaaS</span>
         </Link>
         <p style={{ color: '#475569', fontSize: '13px' }}>© 2026 TonMeilleurSaaS · Comparateur expert de logiciels SaaS</p>
-        <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '12px 20px', alignItems: 'center', flexWrap: 'wrap' }}>
           <Link href="/mentions-legales" style={{ color: '#64748b', fontSize: '13px', textDecoration: 'none' }}>Mentions légales</Link>
           <Link href="/politique-de-confidentialite" style={{ color: '#64748b', fontSize: '13px', textDecoration: 'none' }}>Confidentialité</Link>
           <Link href="/cgv" style={{ color: '#64748b', fontSize: '13px', textDecoration: 'none' }}>CGV</Link>
