@@ -275,162 +275,170 @@ const faq = [
 
 export default function BoutiquePage() {
   return (
-    <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#fff', minHeight: '100vh' }}>
-      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800&family=Fraunces:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
+    <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#f8fafc', minHeight: '100vh' }}>
+      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800&family=Fraunces:wght@700;800;900&display=swap" rel="stylesheet" />
 
       <style>{`
-        * { margin:0; padding:0; box-sizing:border-box; }
-        .header-nav { display:flex; gap:32px; align-items:center; }
-        .mobile-menu-btn { display:none; }
-        .product-card { transition: transform 0.2s, box-shadow 0.2s; }
-        .product-card:hover { transform: translateY(-4px); box-shadow: 0 24px 64px rgba(0,0,0,0.1); }
-        .buy-btn { transition: opacity 0.15s, transform 0.15s; }
-        .buy-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-        .faq-item { border-bottom: 1px solid #f1f5f9; padding: 20px 0; }
-        @media (max-width: 768px) {
+        .product-card { transition: transform 0.18s ease, box-shadow 0.18s ease; background: #fff; }
+        .product-card:hover { transform: translateY(-4px); box-shadow: 0 20px 56px rgba(0,0,0,0.1) !important; }
+        .boutique-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .faq-item { border-bottom: 1px solid #e2e8f0; padding: 22px 0; }
+        @media (max-width: 860px) {
+          .boutique-grid { grid-template-columns: 1fr; }
+          .boutique-wrap { padding: 32px 20px 64px !important; }
+          .boutique-hero { padding: 48px 20px 40px !important; }
+          .boutique-faq { padding: 48px 20px !important; }
+          .boutique-footer { padding: 28px 20px !important; }
           .header-inner { padding: 0 20px !important; }
-          .header-nav { display: none !important; }
-          .mobile-menu-btn { display: flex !important; }
-          .boutique-hero { padding: 48px 20px !important; }
-          .boutique-grid { grid-template-columns: 1fr !important; }
-          .boutique-section { padding: 48px 20px !important; }
-          .product-inner { flex-direction: column !important; }
-          .product-price-col { width: 100% !important; }
         }
       `}</style>
 
-      {/* Header */}
-      <header style={{ background: 'rgba(255,255,255,0.95)', borderBottom: '1px solid #f1f5f9', position: 'sticky', top: 0, zIndex: 100, backdropFilter: 'blur(12px)' }}>
-        <div className="header-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '68px' }}>
+      {/* ── Header ── */}
+      <header style={{ background: 'rgba(255,255,255,0.96)', borderBottom: '1px solid #e2e8f0', position: 'sticky', top: 0, zIndex: 100, backdropFilter: 'blur(16px)' }}>
+        <div className="header-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
           <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
-            <span style={{ fontSize: '22px' }}>🚀</span>
-            <span style={{ fontFamily: "'Fraunces', serif", fontSize: '20px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.5px' }}>TonMeilleurSaaS</span>
+            <span style={{ fontFamily: "'Fraunces', serif", fontSize: '20px', fontWeight: 800, color: '#0f172a' }}>TonMeilleurSaaS</span>
           </Link>
-          <nav className="header-nav">
-            <Link href="/" style={{ color: '#64748b', fontSize: '14px', textDecoration: 'none', fontWeight: 500 }}>Accueil</Link>
-            <Link href="/blog" style={{ color: '#64748b', fontSize: '14px', textDecoration: 'none', fontWeight: 500 }}>Blog</Link>
-            <Link href="/boutique" style={{ color: '#d97706', fontSize: '14px', textDecoration: 'none', fontWeight: 700 }}>🛍️ Boutique</Link>
-          </nav>
-          <SearchModal />
-          <div className="mobile-menu-btn" style={{ display: 'none' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <SearchModal />
             <MobileMenu />
           </div>
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="boutique-hero" style={{ padding: '72px 48px 56px', background: 'linear-gradient(135deg, #fffbeb 0%, #fff7ed 100%)', borderBottom: '1px solid #fde68a' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
-          <p style={{ fontSize: '12px', fontWeight: 700, color: '#d97706', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '16px' }}>Ressources premium</p>
-          <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: '48px', fontWeight: 800, color: '#0f172a', letterSpacing: '-2px', marginBottom: '16px', lineHeight: 1.1 }}>
+      {/* ── Hero ── */}
+      <section className="boutique-hero" style={{ padding: '64px 40px 48px', background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #1e40af 100%)', color: '#fff', textAlign: 'center' }}>
+        <div style={{ maxWidth: '600px', margin: '0 auto' }}>
+          <p style={{ fontSize: '12px', fontWeight: 700, color: 'rgba(255,255,255,0.6)', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '14px' }}>Ressources premium</p>
+          <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(36px,5vw,52px)', fontWeight: 900, letterSpacing: '-2px', marginBottom: '14px', lineHeight: 1.1 }}>
             La boutique
           </h1>
-          <p style={{ fontSize: '18px', color: '#64748b', maxWidth: '520px', margin: '0 auto', lineHeight: 1.6 }}>
-            Des workflows, templates et guides prêts à l&apos;emploi pour automatiser votre business et gagner du temps dès aujourd&apos;hui.
+          <p style={{ fontSize: '17px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.6, marginBottom: '28px' }}>
+            Workflows N8N, templates, prompts et guides — prêts à l&apos;emploi, livrés instantanément.
           </p>
-        </div>
-      </section>
-
-      {/* Produits */}
-      <section className="boutique-section" style={{ padding: '64px 48px', background: '#fff' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '32px' }}>
-          {products.map((product) => (
-            <div key={product.id} className="product-card" style={{ border: '2px solid #fde68a', borderRadius: '20px', overflow: 'hidden', background: '#fff', boxShadow: '0 4px 24px rgba(0,0,0,0.06)' }}>
-              {/* Badge top */}
-              <div style={{ background: product.accentBg, padding: '12px 28px', display: 'flex', alignItems: 'center', gap: '8px', borderBottom: '1px solid #fde68a' }}>
-                <span style={{ fontSize: '12px', fontWeight: 700, color: product.badgeColor, background: product.badgeBg, padding: '3px 10px', borderRadius: '999px', border: `1px solid ${product.accentLight}` }}>{product.badge}</span>
-                <span style={{ fontSize: '12px', color: product.tagColor, fontWeight: 600 }}>{product.tag}</span>
-                <span style={{ marginLeft: 'auto', fontSize: '13px', color: '#64748b' }}>{product.format}</span>
-              </div>
-
-              {/* Corps */}
-              <div className="product-inner" style={{ display: 'flex', gap: '0', alignItems: 'stretch' }}>
-                {/* Détails */}
-                <div style={{ flex: 1, padding: '32px 36px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-                    <span style={{ fontSize: '32px' }}>{product.emoji}</span>
-                    <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: '24px', fontWeight: 800, color: '#0f172a', lineHeight: 1.3 }}>{product.title}</h2>
-                  </div>
-                  <p style={{ fontSize: '15px', color: '#64748b', lineHeight: 1.6, marginBottom: '24px' }}>{product.description}</p>
-
-                  <p style={{ fontSize: '12px', fontWeight: 700, color: '#0f172a', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '12px' }}>Ce qui est inclus</p>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '24px' }}>
-                    {product.includes.map((item, i) => (
-                      <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                        <span style={{ fontSize: '16px', flexShrink: 0 }}>{item.icon}</span>
-                        <span style={{ fontSize: '14px', color: '#374151', lineHeight: 1.5 }}>{item.text}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div style={{ background: '#f8fafc', borderRadius: '10px', padding: '14px 18px' }}>
-                    <p style={{ fontSize: '12px', fontWeight: 700, color: '#64748b', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Bonus inclus</p>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                      {product.bonus.map((b, i) => (
-                        <span key={i} style={{ fontSize: '13px', color: '#374151' }}>✓ {b}</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Prix & CTA */}
-                <div className="product-price-col" style={{ width: '280px', flexShrink: 0, borderLeft: '1px solid #f1f5f9', padding: '32px 28px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '20px', background: '#fafafa' }}>
-                  <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '48px', fontWeight: 800, color: '#0f172a', fontFamily: "'Fraunces', serif", lineHeight: 1 }}>{product.price}€</div>
-                    <div style={{ fontSize: '13px', color: '#94a3b8', marginTop: '6px' }}>paiement unique · accès à vie</div>
-                  </div>
-                  <BuyButton accentColor={product.accentColor} product={product.id} className="buy-btn" />
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#64748b' }}>
-                      <span>🔒</span><span>Paiement sécurisé (Stripe)</span>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#64748b' }}>
-                      <span>⚡</span><span>Livraison instantanée par email</span>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#64748b' }}>
-                      <span>↩️</span><span>Remboursé si non satisfait 14j</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-
-          {/* Calculateur gratuit */}
-          <div style={{ background: 'linear-gradient(135deg, #0f172a, #1e3a5f)', borderRadius: '20px', padding: '40px', textAlign: 'center', color: '#fff' }}>
-            <p style={{ fontSize: '28px', marginBottom: '12px' }}>🧮</p>
-            <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: '22px', fontWeight: 800, marginBottom: '8px' }}>Outil gratuit : calculez vos dépenses SaaS</h3>
-            <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.7)', maxWidth: '480px', margin: '0 auto 24px', lineHeight: 1.6 }}>
-              Entrez vos abonnements, détectez les doublons et voyez vos économies potentielles — en 30 secondes, sans inscription.
-            </p>
-            <Link href="/calculateur-saas" style={{ display: 'inline-block', textDecoration: 'none', fontSize: '15px', fontWeight: 700, color: '#0f172a', background: '#fff', padding: '14px 28px', borderRadius: '12px' }}>
-              Accéder au calculateur gratuit →
-            </Link>
+          <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            {['🔒 Paiement Stripe sécurisé', '⚡ Livraison instantanée', '↩️ Remboursé sous 14 jours'].map((t, i) => (
+              <span key={i} style={{ fontSize: '13px', color: 'rgba(255,255,255,0.65)', fontWeight: 500 }}>{t}</span>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="boutique-section" style={{ padding: '64px 48px', background: '#f8fafc' }}>
-        <div style={{ maxWidth: '720px', margin: '0 auto' }}>
-          <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: '32px', fontWeight: 800, color: '#0f172a', letterSpacing: '-1px', marginBottom: '40px', textAlign: 'center' }}>Questions fréquentes</h2>
+      {/* ── Grille produits ── */}
+      <div className="boutique-wrap" style={{ maxWidth: '1200px', margin: '0 auto', padding: '48px 40px 80px' }}>
+        <div className="boutique-grid">
+          {products.map((product) => (
+            <div key={product.id} className="product-card" style={{ borderRadius: '18px', overflow: 'hidden', boxShadow: '0 2px 16px rgba(0,0,0,0.06)', display: 'flex', flexDirection: 'column' }}>
+
+              {/* Barre couleur accent */}
+              <div style={{ height: '5px', background: product.accentColor }} />
+
+              {/* Corps */}
+              <div style={{ padding: '24px 26px', flex: 1, display: 'flex', flexDirection: 'column', gap: '16px' }}>
+
+                {/* Badge + tag */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{ fontSize: '11px', fontWeight: 700, color: product.badgeColor, background: product.badgeBg, padding: '3px 10px', borderRadius: '999px' }}>
+                    {product.badge}
+                  </span>
+                  <span style={{ fontSize: '11px', color: product.tagColor, fontWeight: 600, marginLeft: 'auto' }}>
+                    {product.tag}
+                  </span>
+                </div>
+
+                {/* Emoji + titre */}
+                <div>
+                  <div style={{ fontSize: '32px', marginBottom: '8px', lineHeight: 1 }}>{product.emoji}</div>
+                  <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: '19px', fontWeight: 800, color: '#0f172a', lineHeight: 1.3 }}>
+                    {product.title}
+                  </h2>
+                </div>
+
+                {/* Description */}
+                <p style={{ fontSize: '13px', color: '#64748b', lineHeight: 1.6 }}>
+                  {product.description}
+                </p>
+
+                {/* Bullets */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
+                  {product.includes.map((item, i) => (
+                    <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+                      <span style={{ fontSize: '13px', flexShrink: 0, marginTop: '1px', color: product.accentColor }}>✓</span>
+                      <span style={{ fontSize: '13px', color: '#374151', lineHeight: 1.45 }}>{item.text}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Bonus */}
+                <div style={{ background: '#f8fafc', borderRadius: '10px', padding: '12px 14px', marginTop: 'auto' }}>
+                  {product.bonus.map((b, i) => (
+                    <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '6px', marginBottom: i < product.bonus.length - 1 ? '4px' : 0 }}>
+                      <span style={{ fontSize: '11px', color: '#94a3b8', flexShrink: 0, marginTop: '2px' }}>★</span>
+                      <span style={{ fontSize: '12px', color: '#64748b' }}>{b}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Format */}
+                <p style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 500 }}>{product.format}</p>
+              </div>
+
+              {/* Footer prix + CTA */}
+              <div style={{ padding: '18px 26px 22px', borderTop: '1px solid #f1f5f9', background: '#fafafa', display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+                    <span style={{ fontFamily: "'Fraunces', serif", fontSize: '32px', fontWeight: 900, color: '#0f172a', lineHeight: 1 }}>
+                      {product.price}€
+                    </span>
+                    {product.originalPrice && (
+                      <span style={{ fontSize: '15px', color: '#94a3b8', textDecoration: 'line-through' }}>
+                        {product.originalPrice}€
+                      </span>
+                    )}
+                  </div>
+                  <p style={{ fontSize: '11px', color: '#94a3b8', marginTop: '2px' }}>paiement unique · accès à vie</p>
+                </div>
+                <BuyButton accentColor={product.accentColor} product={product.id} className="buy-btn" />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* ── CTA calculateur ── */}
+        <div style={{ marginTop: '48px', background: 'linear-gradient(135deg, #0f172a, #1e3a5f)', borderRadius: '20px', padding: '40px', textAlign: 'center', color: '#fff' }}>
+          <p style={{ fontSize: '28px', marginBottom: '10px' }}>🧮</p>
+          <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: '22px', fontWeight: 800, marginBottom: '8px' }}>
+            Outil gratuit — calculez vos dépenses SaaS
+          </h3>
+          <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.65)', maxWidth: '440px', margin: '0 auto 20px', lineHeight: 1.6 }}>
+            Entrez vos abonnements, détectez les doublons et voyez vos économies potentielles en 30 secondes.
+          </p>
+          <Link href="/calculateur-saas" style={{ display: 'inline-block', textDecoration: 'none', fontSize: '14px', fontWeight: 700, color: '#0f172a', background: '#fff', padding: '12px 24px', borderRadius: '10px' }}>
+            Accéder gratuitement →
+          </Link>
+        </div>
+      </div>
+
+      {/* ── FAQ ── */}
+      <section className="boutique-faq" style={{ padding: '64px 40px', background: '#fff', borderTop: '1px solid #e2e8f0' }}>
+        <div style={{ maxWidth: '680px', margin: '0 auto' }}>
+          <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: '28px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.5px', marginBottom: '32px', textAlign: 'center' }}>
+            Questions fréquentes
+          </h2>
           {faq.map((item, i) => (
             <div key={i} className="faq-item">
-              <p style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a', marginBottom: '8px' }}>{item.q}</p>
-              <p style={{ fontSize: '14px', color: '#64748b', lineHeight: 1.6 }}>{item.a}</p>
+              <p style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a', marginBottom: '6px' }}>{item.q}</p>
+              <p style={{ fontSize: '14px', color: '#64748b', lineHeight: 1.65 }}>{item.a}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Footer */}
-      <footer style={{ background: '#0a0f1a', padding: '32px 48px' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
-            <span style={{ fontSize: '18px' }}>🚀</span>
-            <span style={{ fontFamily: "'Fraunces', serif", fontSize: '16px', fontWeight: 800, color: '#fff' }}>TonMeilleurSaaS</span>
-          </Link>
-          <p style={{ color: '#475569', fontSize: '13px' }}>© 2026 TonMeilleurSaaS · Comparateur expert de logiciels SaaS</p>
+      {/* ── Footer ── */}
+      <footer className="boutique-footer" style={{ background: '#0a0f1a', padding: '28px 40px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
+          <span style={{ fontFamily: "'Fraunces', serif", fontSize: '16px', fontWeight: 800, color: '#fff' }}>TonMeilleurSaaS</span>
+          <p style={{ color: '#475569', fontSize: '13px' }}>© 2026 · Comparateur expert de logiciels SaaS</p>
           <div style={{ display: 'flex', gap: '20px' }}>
             <Link href="/blog" style={{ color: '#475569', fontSize: '13px', textDecoration: 'none' }}>Blog</Link>
             <Link href="/boutique" style={{ color: '#d97706', fontSize: '13px', textDecoration: 'none', fontWeight: 600 }}>Boutique</Link>
