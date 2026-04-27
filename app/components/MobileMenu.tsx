@@ -40,6 +40,9 @@ export default function MobileMenu() {
               <Link href="/boutique" onClick={() => setOpen(false)} style={{ flex: 1, textDecoration: 'none', padding: '10px', borderRadius: '8px', fontSize: '14px', fontWeight: 700, color: '#d97706', textAlign: 'center', border: '1px solid #fde68a', background: '#fffbeb' }}>
                 🛍️ Boutique
               </Link>
+              <Link href="/calculateur-saas" onClick={() => setOpen(false)} style={{ flex: 1, textDecoration: 'none', padding: '10px', borderRadius: '8px', fontSize: '14px', fontWeight: 600, color: '#2563eb', textAlign: 'center', border: '1px solid #bfdbfe', background: '#eff6ff' }}>
+                🧮 Calcul
+              </Link>
             </div>
           </div>
         </div>
