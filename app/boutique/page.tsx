@@ -42,8 +42,6 @@ const faq = [
 export default function BoutiquePage() {
   return (
     <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#f8fafc', minHeight: '100vh' }}>
-      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800&family=Fraunces:wght@700;800;900&display=swap" rel="stylesheet" />
-
       <style>{`
         .product-card { transition: transform 0.18s ease, box-shadow 0.18s ease; background: #fff; }
         .product-card:hover { transform: translateY(-4px); box-shadow: 0 20px 56px rgba(0,0,0,0.1) !important; }
