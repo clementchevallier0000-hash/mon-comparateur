@@ -19,10 +19,6 @@
   }
 }
 
-html {
-  overflow-x: hidden;
-}
-
 body {
   overflow-x: hidden;
   background: var(--background);
@@ -30,16 +26,14 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ── Page outil /outils/[slug] – mobile ── */
+/* ── Page outil – desktop overrides ── */
+@media (min-width: 769px) {
+  .outil-hero { gap: 48px !important; }
+  .outil-h1 { font-size: 36px !important; }
+}
+
+/* ── Page outil – mobile safety net ── */
 @media (max-width: 768px) {
-  .outil-header { padding: 0 16px !important; }
-  .outil-header > div { gap: 8px !important; }
-  .outil-hero { padding: 28px 16px 32px !important; flex-direction: column !important; gap: 20px !important; }
-  .outil-hero-right { width: 100% !important; flex-shrink: 1 !important; }
   .outil-h1 { font-size: 28px !important; }
-  .outil-body { padding: 24px 16px !important; }
-  .outil-grid { grid-template-columns: 1fr !important; }
-  .pros-cons-grid { grid-template-columns: 1fr !important; }
-  .outil-footer { padding: 20px 16px !important; flex-direction: column !important; gap: 12px !important; }
   .breadcrumb-mob { display: none !important; }
 }

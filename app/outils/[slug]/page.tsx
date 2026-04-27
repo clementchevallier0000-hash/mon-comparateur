@@ -108,8 +108,8 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
 
       {/* Hero */}
       <div style={{ background: c.gradient, overflow: 'hidden', position: 'relative' }}>
-      <section className="outil-hero flex flex-col items-start gap-5 px-4 pt-7 pb-8 md:flex-row md:gap-12 md:px-10 md:pt-12 md:pb-12" style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative' }}>
-        <div style={{ flex: 1 }}>
+      <section className="outil-hero px-4 pt-7 pb-8 md:px-10 md:pt-12 md:pb-12" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start', gap: '20px', maxWidth: '1100px', margin: '0 auto', position: 'relative' }}>
+        <div style={{ flex: '1 1 300px', minWidth: 0 }}>
           {/* Breadcrumb */}
           {categorie && (
             <Link href={`/categorie/${catSlug}`} className="back-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: 'rgba(255,255,255,0.55)', textDecoration: 'none', marginBottom: '20px', fontWeight: 500 }}>
@@ -173,7 +173,7 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
         </div>
 
         {/* CTA Card */}
-        <div className="outil-hero-right w-full md:w-[280px] md:shrink-0" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '20px', padding: '24px', backdropFilter: 'blur(12px)' }}>
+        <div className="outil-hero-right" style={{ width: 'min(280px, 100%)', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '20px', padding: '24px', backdropFilter: 'blur(12px)' }}>
           <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', marginBottom: '16px', textAlign: 'center' }}>
             Testé et approuvé par notre équipe
           </p>
@@ -204,10 +204,10 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
 
       {/* Contenu principal */}
       <div className="outil-body px-4 py-6 md:px-10 md:py-10" style={{ maxWidth: '1100px', margin: '0 auto' }}>
-        <div className="outil-grid grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_340px] items-start" style={{ gap: '28px' }}>
+        <div className="outil-grid" style={{ display: 'flex', flexWrap: 'wrap', gap: '28px', alignItems: 'flex-start' }}>
 
           {/* Colonne principale */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <div style={{ flex: '1 1 360px', minWidth: 0, display: 'flex', flexDirection: 'column', gap: '24px' }}>
 
             {/* Description complète */}
             {outil.description && (
@@ -328,7 +328,7 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
           </div>
 
           {/* Colonne latérale */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', position: 'sticky', top: '84px' }}>
+          <div style={{ width: 'min(340px, 100%)', display: 'flex', flexDirection: 'column', gap: '16px', position: 'sticky', top: '84px' }}>
 
             {/* CTA principal */}
             <div style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '16px', padding: '24px', boxShadow: '0 2px 12px rgba(0,0,0,0.05)' }}>
