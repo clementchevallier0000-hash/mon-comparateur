@@ -3,6 +3,7 @@ import MobileMenu from '@/app/components/MobileMenu'
 import SearchModal from '@/app/components/SearchModal'
 import BuyButton from '@/app/components/BuyButton'
 import type { Metadata } from 'next'
+import { products } from './products'
 
 export const metadata: Metadata = {
   title: 'Boutique — Workflows N8N, RGPD & Ressources premium | TonMeilleurSaaS',
@@ -10,241 +11,6 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://ton-meilleur-saas.fr/boutique' },
 }
 
-const products = [
-  {
-    id: 'n8n-pack',
-    badge: '🔥 Best-seller',
-    badgeColor: '#ea580c',
-    badgeBg: '#fff7ed',
-    emoji: '⚡',
-    accentColor: '#d97706',
-    accentBg: '#fffbeb',
-    accentLight: '#fde68a',
-    title: 'Pack N8N — 5 Workflows clé en main pour TPE/PME',
-    description: 'Téléchargez et importez en 2 clics. Chaque workflow est documenté, testé et prêt à configurer avec vos propres credentials.',
-    price: 39,
-    originalPrice: null,
-    includes: [
-      { icon: '🎯', text: 'Prospection LinkedIn → CRM HubSpot (automatique)' },
-      { icon: '📬', text: 'Relance factures impayées J+7 / J+14 / J+30' },
-      { icon: '🔍', text: 'Veille concurrentielle IA (RSS + GPT-4)' },
-      { icon: '🤝', text: 'Onboarding client 3 emails séquentiels' },
-      { icon: '📊', text: 'Rapport Google Analytics hebdo analysé par IA' },
-    ],
-    bonus: [
-      'README d\'installation pas à pas',
-      'Support par email 30 jours',
-      'Mises à jour gratuites à vie',
-    ],
-    format: '5 fichiers JSON · Import N8N direct',
-    tag: 'Automatisation',
-    tagColor: '#d97706',
-  },
-  {
-    id: 'audit-saas',
-    badge: '🎯 Recommandé',
-    badgeColor: '#2563eb',
-    badgeBg: '#eff6ff',
-    emoji: '🔍',
-    accentColor: '#2563eb',
-    accentBg: '#eff6ff',
-    accentLight: '#dbeafe',
-    title: 'Audit SaaS personnalisé — La stack idéale pour votre business',
-    description: 'Remplissez un formulaire de 5 minutes. Je vous envoie une recommandation complète et personnalisée de votre stack SaaS idéale sous 48h.',
-    price: 79,
-    originalPrice: null,
-    includes: [
-      { icon: '📋', text: 'Analyse de votre situation actuelle (outils, budget, équipe)' },
-      { icon: '🎯', text: 'Recommandation de votre stack SaaS idéale par poste' },
-      { icon: '💰', text: 'Estimation du coût total et des économies potentielles' },
-      { icon: '⚡', text: 'Identification des automatisations prioritaires pour vous' },
-      { icon: '🗺️', text: 'Plan de migration pas à pas si vous changez d\'outils' },
-    ],
-    bonus: [
-      'Réponse sous 48h par email',
-      'Échange de suivi inclus (15 min)',
-      'Comparatif personnalisé en PDF',
-    ],
-    format: 'Formulaire 5 min · Audit livré sous 48h',
-    tag: 'Conseil',
-    tagColor: '#2563eb',
-  },
-  {
-    id: 'rgpd-pack',
-    badge: '🛡️ Indispensable',
-    badgeColor: '#7c3aed',
-    badgeBg: '#faf5ff',
-    emoji: '🔐',
-    accentColor: '#7c3aed',
-    accentBg: '#faf5ff',
-    accentLight: '#e9d5ff',
-    title: 'Pack RGPD complet pour TPE — Mise en conformité clé en main',
-    description: '6 templates juridiques rédigés par des experts, prêts à personnaliser. Soyez en conformité RGPD en moins d\'une journée — sans avocat, sans jargon.',
-    price: 59,
-    originalPrice: 149,
-    includes: [
-      { icon: '📄', text: 'Politique de confidentialité (site web + mentions légales)' },
-      { icon: '📝', text: 'CGV / CGU personnalisables (prestations de services)' },
-      { icon: '📋', text: 'Registre des traitements de données (format Excel + Notion)' },
-      { icon: '✉️', text: 'Template email de notification violation de données (CNIL)' },
-      { icon: '🤝', text: 'Contrat sous-traitant RGPD (DPA) pour vos prestataires SaaS' },
-      { icon: '✅', text: 'Checklist mise en conformité en 10 étapes commentées' },
-    ],
-    bonus: [
-      'Formats Word (.docx) modifiables + PDF final',
-      'Guide CNIL simplifié — ce qui est obligatoire pour une TPE',
-      'Mise à jour incluse si la réglementation évolue',
-    ],
-    format: '6 templates · Word + PDF · Livraison instantanée',
-    tag: 'Juridique',
-    tagColor: '#7c3aed',
-  },
-  {
-    id: 'fidelisation-pack',
-    badge: '🌱 Nouveau',
-    badgeColor: '#16a34a',
-    badgeBg: '#f0fdf4',
-    emoji: '🔄',
-    accentColor: '#16a34a',
-    accentBg: '#f0fdf4',
-    accentLight: '#bbf7d0',
-    title: 'Système de fidélisation client N8N — 5 workflows pour ne jamais perdre un client',
-    description: 'Des workflows N8N qui tournent tout seuls : onboarding automatique, détection des clients inactifs, anniversaires, feedback post-mission et relances intelligentes.',
-    price: 99,
-    originalPrice: null,
-    includes: [
-      { icon: '🚀', text: 'Onboarding automatique : séquence J0 → J7 → J30 → J60' },
-      { icon: '⚠️', text: 'Détection client "à risque" : alerte si inactif depuis 60 jours' },
-      { icon: '🎂', text: 'Email d\'anniversaire client : fidélisation passive sans effort' },
-      { icon: '⭐', text: 'Feedback automatique post-prestation + collecte avis Google' },
-      { icon: '💌', text: 'Relance intelligente : up-sell / cross-sell au bon moment' },
-    ],
-    bonus: [
-      'README détaillé + vidéo de configuration (15 min)',
-      'Compatibles Gmail, Outlook, HubSpot, Airtable, Notion',
-      'Support email 30 jours inclus',
-    ],
-    format: '5 fichiers JSON N8N · Import en 2 clics',
-    tag: 'Automatisation',
-    tagColor: '#16a34a',
-  },
-  {
-    id: 'ai-agents-pack',
-    badge: '🤖 Exclusif',
-    badgeColor: '#0ea5e9',
-    badgeBg: '#f0f9ff',
-    emoji: '🧠',
-    accentColor: '#0ea5e9',
-    accentBg: '#f0f9ff',
-    accentLight: '#bae6fd',
-    title: 'Pack AI Agents N8N — 4 agents IA qui travaillent à votre place',
-    description: '4 agents autonomes basés sur N8N + GPT-4 : prospection, création de contenu, veille concurrentielle et qualification de leads — tout en pilotage automatique.',
-    price: 129,
-    originalPrice: null,
-    includes: [
-      { icon: '🎯', text: 'Agent Prospection : trouve des leads → qualification GPT-4 → email personnalisé auto' },
-      { icon: '✍️', text: 'Agent Contenu : topic → brief SEO → article complet → reformatage réseaux' },
-      { icon: '🔭', text: 'Agent Veille : RSS + news → résumé IA → digest hebdo dans votre boîte mail' },
-      { icon: '💬', text: 'Agent Support : email entrant → classification → réponse auto ou escalade humaine' },
-    ],
-    bonus: [
-      'Guide configuration OpenAI API (clé + modèles + coûts)',
-      'README par agent + exemple de résultats réels',
-      'Compatibles N8N Cloud et N8N self-hosted',
-    ],
-    format: '4 fichiers JSON N8N · Nécessite une clé OpenAI',
-    tag: 'Intelligence Artificielle',
-    tagColor: '#0ea5e9',
-  },
-  {
-    id: 'notion-templates',
-    badge: '📐 Best value',
-    badgeColor: '#6366f1',
-    badgeBg: '#eef2ff',
-    emoji: '🗂️',
-    accentColor: '#6366f1',
-    accentBg: '#eef2ff',
-    accentLight: '#c7d2fe',
-    title: 'Templates Notion — Gérez votre agence ou activité freelance',
-    description: '8 templates Notion clé en main pour piloter votre business au quotidien : CRM clients, suivi missions, facturation, roadmap, base de connaissances et plus.',
-    price: 29,
-    originalPrice: null,
-    includes: [
-      { icon: '🤝', text: 'CRM clients léger : prospects, relances, historique en un coup d\'œil' },
-      { icon: '📋', text: 'Suivi de missions : brief, livrables, deadlines, avancement' },
-      { icon: '💶', text: 'Tableau de bord facturation : devis, factures, encaissements du mois' },
-      { icon: '🗺️', text: 'Roadmap produit / service : backlog, priorités, planning trimestriel' },
-      { icon: '🧠', text: 'Base de connaissances : SOPs, processus internes, onboarding' },
-      { icon: '📅', text: 'Planning hebdomadaire : agenda, tâches prioritaires, revue de semaine' },
-    ],
-    bonus: [
-      'Vidéo de prise en main (20 min) — personnalisez en 1 heure',
-      'Variantes agence ET freelance solo incluses',
-      'Mises à jour gratuites à vie',
-    ],
-    format: '8 templates Notion · Duplication en 1 clic',
-    tag: 'Organisation',
-    tagColor: '#6366f1',
-  },
-  {
-    id: 'prompts-pack',
-    badge: '⚡ Accès immédiat',
-    badgeColor: '#ec4899',
-    badgeBg: '#fdf2f8',
-    emoji: '💬',
-    accentColor: '#ec4899',
-    accentBg: '#fdf2f8',
-    accentLight: '#fbcfe8',
-    title: 'Kit 100 Prompts métiers — GPT prêts à l\'emploi pour votre équipe',
-    description: '100 prompts GPT-4 organisés par métier, testés et optimisés. Votre équipe gagne du temps dès la première utilisation — aucune expertise IA requise.',
-    price: 19,
-    originalPrice: null,
-    includes: [
-      { icon: '💼', text: '25 prompts Commercial : emails de prospection, objections, relances, comptes rendus' },
-      { icon: '👥', text: '20 prompts RH : offres d\'emploi, onboarding, évaluations, réponses candidats' },
-      { icon: '⚖️', text: '20 prompts Juridique : résumés de contrats, clauses types, analyse de risques' },
-      { icon: '📣', text: '20 prompts Marketing : posts réseaux, articles, newsletters, fiches produits' },
-      { icon: '🔧', text: '15 prompts Gestion : comptes rendus, reporting, synthèses de réunion' },
-    ],
-    bonus: [
-      'Fiche mémo "comment bien prompter" (1 page)',
-      'Compatible ChatGPT, Claude, Gemini — tous les modèles',
-      'Mises à jour trimestrielles incluses',
-    ],
-    format: 'PDF illustré + Notion partageable · 100 prompts copiables',
-    tag: 'Productivité IA',
-    tagColor: '#ec4899',
-  },
-  {
-    id: 'mini-audit',
-    badge: '🎯 Scalable',
-    badgeColor: '#f59e0b',
-    badgeBg: '#fffbeb',
-    emoji: '⚡',
-    accentColor: '#f59e0b',
-    accentBg: '#fffbeb',
-    accentLight: '#fde68a',
-    title: 'Mini-audit IA personnalisé — Votre plan d\'action en 5 minutes',
-    description: 'Remplissez un formulaire de 5 minutes. Un rapport PDF personnalisé par IA vous est envoyé dans la minute : axes prioritaires, outils recommandés, quick wins immédiats.',
-    price: 29,
-    originalPrice: null,
-    includes: [
-      { icon: '📝', text: 'Formulaire de 12 questions sur votre activité, équipe et outils actuels' },
-      { icon: '🤖', text: 'Analyse IA de votre situation (GPT-4) — rapport personnalisé, pas un template générique' },
-      { icon: '🎯', text: '3 axes prioritaires d\'amélioration avec effort / impact estimés' },
-      { icon: '🛠️', text: 'Stack SaaS recommandée pour votre profil spécifique (avec liens comparatifs)' },
-      { icon: '⚡', text: '3 quick wins à mettre en place cette semaine — concrets et actionnables' },
-    ],
-    bonus: [
-      'Livraison par email en moins de 2 minutes',
-      'Rapport au format PDF — partageable avec votre équipe',
-      'Basé sur 50+ critères analysés par notre IA',
-    ],
-    format: 'Formulaire 5 min · PDF personnalisé livré sous 2 min',
-    tag: 'Audit IA',
-    tagColor: '#f59e0b',
-  },
-]
 
 const faq = [
   {
@@ -379,8 +145,13 @@ export default function BoutiquePage() {
                   ))}
                 </div>
 
-                {/* Format */}
-                <p style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 500 }}>{product.format}</p>
+                {/* Format + lien détail */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
+                  <p style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 500 }}>{product.format}</p>
+                  <Link href={`/boutique/${product.id}`} style={{ fontSize: '12px', color: product.accentColor, fontWeight: 600, textDecoration: 'none' }}>
+                    Voir le détail →
+                  </Link>
+                </div>
               </div>
 
               {/* Footer prix + CTA */}
