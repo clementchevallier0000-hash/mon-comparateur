@@ -5,8 +5,8 @@ import BuyButton from '@/app/components/BuyButton'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Boutique — Workflows N8N & Ressources premium | TonMeilleurSaaS',
-  description: 'Téléchargez nos workflows N8N prêts à l\'emploi et nos ressources premium pour automatiser votre business. Livrés instantanément.',
+  title: 'Boutique — Workflows N8N, RGPD & Ressources premium | TonMeilleurSaaS',
+  description: 'Workflows N8N, pack RGPD, système de fidélisation client et AI Agents — des ressources prêtes à l\'emploi pour automatiser et sécuriser votre TPE.',
   alternates: { canonical: 'https://ton-meilleur-saas.fr/boutique' },
 }
 
@@ -69,24 +69,119 @@ const products = [
     tag: 'Conseil',
     tagColor: '#2563eb',
   },
+  {
+    id: 'rgpd-pack',
+    badge: '🛡️ Indispensable',
+    badgeColor: '#7c3aed',
+    badgeBg: '#faf5ff',
+    emoji: '🔐',
+    accentColor: '#7c3aed',
+    accentBg: '#faf5ff',
+    accentLight: '#e9d5ff',
+    title: 'Pack RGPD complet pour TPE — Mise en conformité clé en main',
+    description: '6 templates juridiques rédigés par des experts, prêts à personnaliser. Soyez en conformité RGPD en moins d\'une journée — sans avocat, sans jargon.',
+    price: 59,
+    originalPrice: 149,
+    includes: [
+      { icon: '📄', text: 'Politique de confidentialité (site web + mentions légales)' },
+      { icon: '📝', text: 'CGV / CGU personnalisables (prestations de services)' },
+      { icon: '📋', text: 'Registre des traitements de données (format Excel + Notion)' },
+      { icon: '✉️', text: 'Template email de notification violation de données (CNIL)' },
+      { icon: '🤝', text: 'Contrat sous-traitant RGPD (DPA) pour vos prestataires SaaS' },
+      { icon: '✅', text: 'Checklist mise en conformité en 10 étapes commentées' },
+    ],
+    bonus: [
+      'Formats Word (.docx) modifiables + PDF final',
+      'Guide CNIL simplifié — ce qui est obligatoire pour une TPE',
+      'Mise à jour incluse si la réglementation évolue',
+    ],
+    format: '6 templates · Word + PDF · Livraison instantanée',
+    tag: 'Juridique',
+    tagColor: '#7c3aed',
+  },
+  {
+    id: 'fidelisation-pack',
+    badge: '🌱 Nouveau',
+    badgeColor: '#16a34a',
+    badgeBg: '#f0fdf4',
+    emoji: '🔄',
+    accentColor: '#16a34a',
+    accentBg: '#f0fdf4',
+    accentLight: '#bbf7d0',
+    title: 'Système de fidélisation client N8N — 5 workflows pour ne jamais perdre un client',
+    description: 'Des workflows N8N qui tournent tout seuls : onboarding automatique, détection des clients inactifs, anniversaires, feedback post-mission et relances intelligentes.',
+    price: 99,
+    originalPrice: null,
+    includes: [
+      { icon: '🚀', text: 'Onboarding automatique : séquence J0 → J7 → J30 → J60' },
+      { icon: '⚠️', text: 'Détection client "à risque" : alerte si inactif depuis 60 jours' },
+      { icon: '🎂', text: 'Email d\'anniversaire client : fidélisation passive sans effort' },
+      { icon: '⭐', text: 'Feedback automatique post-prestation + collecte avis Google' },
+      { icon: '💌', text: 'Relance intelligente : up-sell / cross-sell au bon moment' },
+    ],
+    bonus: [
+      'README détaillé + vidéo de configuration (15 min)',
+      'Compatibles Gmail, Outlook, HubSpot, Airtable, Notion',
+      'Support email 30 jours inclus',
+    ],
+    format: '5 fichiers JSON N8N · Import en 2 clics',
+    tag: 'Automatisation',
+    tagColor: '#16a34a',
+  },
+  {
+    id: 'ai-agents-pack',
+    badge: '🤖 Exclusif',
+    badgeColor: '#0ea5e9',
+    badgeBg: '#f0f9ff',
+    emoji: '🧠',
+    accentColor: '#0ea5e9',
+    accentBg: '#f0f9ff',
+    accentLight: '#bae6fd',
+    title: 'Pack AI Agents N8N — 4 agents IA qui travaillent à votre place',
+    description: '4 agents autonomes basés sur N8N + GPT-4 : prospection, création de contenu, veille concurrentielle et qualification de leads — tout en pilotage automatique.',
+    price: 129,
+    originalPrice: null,
+    includes: [
+      { icon: '🎯', text: 'Agent Prospection : trouve des leads → qualification GPT-4 → email personnalisé auto' },
+      { icon: '✍️', text: 'Agent Contenu : topic → brief SEO → article complet → reformatage réseaux' },
+      { icon: '🔭', text: 'Agent Veille : RSS + news → résumé IA → digest hebdo dans votre boîte mail' },
+      { icon: '💬', text: 'Agent Support : email entrant → classification → réponse auto ou escalade humaine' },
+    ],
+    bonus: [
+      'Guide configuration OpenAI API (clé + modèles + coûts)',
+      'README par agent + exemple de résultats réels',
+      'Compatibles N8N Cloud et N8N self-hosted',
+    ],
+    format: '4 fichiers JSON N8N · Nécessite une clé OpenAI',
+    tag: 'Intelligence Artificielle',
+    tagColor: '#0ea5e9',
+  },
 ]
 
 const faq = [
   {
-    q: 'Comment recevoir le pack après achat ?',
-    a: 'Instantanément. Un lien de téléchargement vous est envoyé par email dès la confirmation du paiement.'
+    q: 'Comment recevoir mes fichiers après achat ?',
+    a: 'Instantanément. Un lien de téléchargement vous est envoyé par email dès la confirmation du paiement Stripe. Aucune attente.'
   },
   {
-    q: 'Il me faut quoi pour utiliser ces workflows ?',
-    a: 'Une instance N8N (cloud ou self-hosted), et les comptes sur les services utilisés (HubSpot, Gmail, Google Sheets, OpenAI…). Tout est détaillé dans le README.'
+    q: 'Il me faut quoi pour utiliser les workflows N8N ?',
+    a: 'Une instance N8N (cloud n8n.cloud ou self-hosted sur votre serveur), et les comptes sur les services utilisés (HubSpot, Gmail, OpenAI…). Tout est détaillé dans les README inclus.'
   },
   {
-    q: 'Je débute sur N8N, ces workflows sont pour moi ?',
-    a: 'Oui. Chaque fichier est commenté et le README explique chaque configuration étape par étape. Si vous bloquez, le support email est là.'
+    q: 'Les AI Agents nécessitent-ils une clé OpenAI payante ?',
+    a: 'Oui. Vous aurez besoin d\'une clé API OpenAI (GPT-4o). Le coût de fonctionnement est très faible — comptez 1 à 5€/mois pour un usage TPE typique. Le guide inclus explique comment créer votre clé et maîtriser les coûts.'
   },
   {
-    q: 'Puis-je revendre ces workflows ?',
-    a: 'Non, la licence est personnelle. Vous pouvez les utiliser pour vos propres projets et clients, mais pas les revendre tels quels.'
+    q: 'Le Pack RGPD est-il valable pour tous les secteurs ?',
+    a: 'Les templates couvrent les obligations RGPD universelles (toute entreprise traitant des données personnelles). Pour des secteurs très spécifiques (santé, finance), un avis juridique complémentaire peut être recommandé.'
+  },
+  {
+    q: 'Je débute sur N8N, est-ce accessible ?',
+    a: 'Oui. Chaque workflow est commenté et le README explique la configuration pas à pas. Le support email 30 jours est inclus pour vous débloquer si besoin.'
+  },
+  {
+    q: 'Puis-je revendre ces ressources ?',
+    a: 'Non, la licence est personnelle. Vous pouvez les utiliser pour vos propres projets et ceux de vos clients, mais pas les revendre tels quels.'
   },
 ]
 
@@ -213,13 +308,15 @@ export default function BoutiquePage() {
             </div>
           ))}
 
-          {/* Produit à venir */}
-          <div style={{ border: '2px dashed #e2e8f0', borderRadius: '20px', padding: '40px', textAlign: 'center', background: '#fafafa' }}>
-            <p style={{ fontSize: '28px', marginBottom: '12px' }}>🔜</p>
-            <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: '20px', fontWeight: 700, color: '#94a3b8', marginBottom: '8px' }}>D&apos;autres ressources arrivent bientôt</h3>
-            <p style={{ fontSize: '14px', color: '#cbd5e1' }}>Templates Notion, guides PDF, packs CRM… Suivez le blog pour être notifié en premier.</p>
-            <Link href="/blog" style={{ display: 'inline-block', marginTop: '16px', textDecoration: 'none', fontSize: '14px', fontWeight: 600, color: '#2563eb', background: '#eff6ff', padding: '10px 20px', borderRadius: '8px', border: '1px solid #dbeafe' }}>
-              Suivre le blog →
+          {/* Calculateur gratuit */}
+          <div style={{ background: 'linear-gradient(135deg, #0f172a, #1e3a5f)', borderRadius: '20px', padding: '40px', textAlign: 'center', color: '#fff' }}>
+            <p style={{ fontSize: '28px', marginBottom: '12px' }}>🧮</p>
+            <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: '22px', fontWeight: 800, marginBottom: '8px' }}>Outil gratuit : calculez vos dépenses SaaS</h3>
+            <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.7)', maxWidth: '480px', margin: '0 auto 24px', lineHeight: 1.6 }}>
+              Entrez vos abonnements, détectez les doublons et voyez vos économies potentielles — en 30 secondes, sans inscription.
+            </p>
+            <Link href="/calculateur-saas" style={{ display: 'inline-block', textDecoration: 'none', fontSize: '15px', fontWeight: 700, color: '#0f172a', background: '#fff', padding: '14px 28px', borderRadius: '12px' }}>
+              Accéder au calculateur gratuit →
             </Link>
           </div>
         </div>
