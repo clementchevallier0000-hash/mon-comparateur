@@ -320,7 +320,7 @@ export default async function Home() {
               Les outils les mieux notés
             </h2>
             <p style={{ fontSize: '16px', color: '#64748b', maxWidth: '500px', lineHeight: 1.6 }}>
-              Notre sélection des solutions les plus plébiscitées par les TPE et PME françaises en 2026.
+              Une sélection des solutions les plus plébiscitées par les TPE et PME françaises en 2026.
             </p>
           </div>
           <div className="comp-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px' }}>
@@ -384,20 +384,20 @@ export default async function Home() {
       <section id="methode" className="section-pad" style={{ padding: '80px 48px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div className="scroll-reveal" style={{ marginBottom: '48px' }}>
-            <p style={{ fontSize: '12px', fontWeight: 700, color: '#2563eb', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '12px' }}>Notre méthode</p>
+            <p style={{ fontSize: '12px', fontWeight: 700, color: '#2563eb', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '12px' }}>Comment je travaille</p>
             <h2 className="section-title" style={{ fontFamily: "'Fraunces', serif", fontSize: '38px', fontWeight: 800, color: '#0f172a', letterSpacing: '-1px', marginBottom: '12px' }}>
-              Comment on compare ?
+              Comment je compare ?
             </h2>
             <p style={{ fontSize: '16px', color: '#64748b', maxWidth: '500px', lineHeight: 1.6 }}>
-              Chaque outil est évalué selon les mêmes critères objectifs, sans influence commerciale sur nos classements.
+              Chaque outil est évalué selon les mêmes critères, sans influence commerciale sur les classements.
             </p>
           </div>
           <div className="method-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '20px' }}>
             {[
-              { icon: '🔍', title: 'Analyse approfondie', desc: "Chaque outil est testé pendant plusieurs semaines sur des cas d'usage réels en conditions TPE/PME." },
+              { icon: '🔍', title: 'Recherche sérieuse', desc: "Chaque fiche est basée sur mes recherches, les données officielles et les avis utilisateurs publics — pas sur des tests internes." },
               { icon: '💶', title: 'Transparence des prix', desc: 'Tous les tarifs sont vérifiés et mis à jour régulièrement. Pas de surprise à la souscription.' },
-              { icon: '🎯', title: 'Adapté à votre profil', desc: "Nos recommandations s'adaptent à votre type d'entreprise, votre budget et vos besoins concrets." },
-              { icon: '🤝', title: 'Affiliation déclarée', desc: "Certains liens sont affiliés. Cela ne change jamais nos classements : nos avis restent basés sur nos tests uniquement." },
+              { icon: '🎯', title: 'Adapté à votre profil', desc: "Les recommandations s'adaptent à votre type d'entreprise, votre budget et vos besoins concrets." },
+              { icon: '🤝', title: 'Affiliation déclarée', desc: "Certains liens sont affiliés — je touche une commission si vous souscrivez, sans surcoût pour vous. Ça n'influence jamais les classements." },
             ].map((item, i) => (
               <div key={i} className={`method-item scroll-reveal stagger-${i + 1}`} style={{ background: '#fff', borderRadius: '16px', padding: '28px', border: '1px solid #e2e8f0' }}>
                 <div style={{ fontSize: '28px', marginBottom: '14px' }}>{item.icon}</div>
@@ -421,10 +421,10 @@ export default async function Home() {
             </div>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               {[
-                { q: 'Comment choisir son logiciel SaaS ?', r: "Définissez d'abord vos besoins précis, votre budget mensuel et le nombre d'utilisateurs. Nos comparatifs vous guident étape par étape selon votre profil d'entreprise." },
-                { q: 'Vos comparatifs sont-ils objectifs malgré l\'affiliation ?', r: "Oui. Nos classements sont basés uniquement sur nos tests et les retours utilisateurs réels. Certains liens sont affiliés — nous le déclarons clairement — mais cela n'influe jamais sur la position d'un outil dans nos comparatifs." },
-                { q: 'Les prix affichés sont-ils à jour ?', r: 'Nous mettons à jour les tarifs régulièrement. Vérifiez toujours le site officiel de l\'éditeur avant de vous abonner car les prix peuvent évoluer.' },
-                { q: 'Puis-je suggérer un outil à comparer ?', r: "Absolument. Contactez-nous et nous l'intégrerons dans notre prochaine mise à jour s'il correspond à notre ligne éditoriale." },
+                { q: 'Comment choisir son logiciel SaaS ?', r: "Définissez d'abord vos besoins précis, votre budget mensuel et le nombre d'utilisateurs. Ce comparatif vous guide étape par étape selon votre profil d'entreprise." },
+                { q: 'Vos comparatifs sont-ils objectifs malgré l\'affiliation ?', r: "Je suis transparent : je suis seul derrière ce site et je ne teste pas tous les outils moi-même. Les fiches sont basées sur mes recherches, les avis utilisateurs publics et les données officielles. Les liens affiliés ne changent pas les classements." },
+                { q: 'Les prix affichés sont-ils à jour ?', r: 'Je mets à jour les tarifs régulièrement. Vérifiez toujours le site officiel de l\'éditeur avant de vous abonner car les prix peuvent évoluer.' },
+                { q: 'Puis-je suggérer un outil à comparer ?', r: "Absolument. Contactez-moi et je l'intégrerai s'il correspond aux besoins des TPE/PME françaises." },
               ].map((faq, i) => (
                 <div key={i} className={`faq-item scroll-reveal stagger-${i + 1}`} style={{ borderBottom: '1px solid #e2e8f0', padding: '20px 0' }}>
                   <h3 style={{ fontSize: '15px', fontWeight: 600, color: '#0f172a', marginBottom: '8px' }}>{faq.q}</h3>
@@ -455,7 +455,7 @@ export default async function Home() {
               <div className="seo-content">
                 <h2>Logiciel entreprise : comparez les meilleurs logiciels pour votre société</h2>
                 <p>Choisir un <strong>logiciel entreprise</strong> adapté est aujourd&apos;hui un levier stratégique pour la performance, la productivité et la croissance. Que vous soyez PME, startup ou indépendant, les outils numériques permettent d&apos;automatiser les tâches, d&apos;optimiser la gestion et d&apos;améliorer la collaboration interne.</p>
-                <p>Mais face à l&apos;explosion des solutions SaaS, comment trouver le bon logiciel professionnel pour votre organisation ? Notre comparateur vous aide à identifier rapidement les meilleurs logiciels entreprise selon votre secteur, vos besoins et votre budget.</p>
+                <p>Mais face à l&apos;explosion des solutions SaaS, comment trouver le bon logiciel professionnel pour votre organisation ? Ce comparatif vous aide à identifier rapidement les meilleurs logiciels entreprise selon votre secteur, vos besoins et votre budget.</p>
 
                 <h2>Pourquoi utiliser un logiciel entreprise aujourd&apos;hui ?</h2>
                 <p>Les entreprises modernes ne peuvent plus fonctionner efficacement sans outils numériques adaptés. Un <strong>logiciel de gestion d&apos;entreprise</strong> centralise les informations, automatise les processus et réduit les erreurs humaines.</p>

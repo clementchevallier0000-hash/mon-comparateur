@@ -163,7 +163,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 href={`/categorie/${cat.slug}`}
                 style={{ display:'inline-flex', alignItems:'center', gap:'8px', background:cat.accent, color:'#fff', padding:'12px 24px', borderRadius:'10px', textDecoration:'none', fontSize:'14px', fontWeight:700 }}
               >
-                Voir notre comparatif {cat.name} complet →
+                Voir le comparatif {cat.name} complet →
               </Link>
             </div>
           )}

@@ -43,9 +43,9 @@ const subToCatAnchors: Record<string, Record<string, string>> = {
     'auto-entrepreneur':    'Voir tous les CRM comparés',
     'tpe':                  "Découvrir l'ensemble des CRM testés",
     'pme':                  'Comparatif CRM sans restriction',
-    'startup':              'Tous les CRM de notre sélection',
+    'startup':              'Voir tous les CRM comparés',
     'artisan':              'Consulter le classement CRM complet',
-    'professions-liberales':'Notre sélection CRM intégrale',
+    'professions-liberales':'Sélection CRM intégrale',
   },
   facturation: {
     'facturation-gratuit':        'Voir tout le comparatif facturation',
@@ -53,18 +53,18 @@ const subToCatAnchors: Record<string, Record<string, string>> = {
     'debutant':                   'Explorer toutes les solutions de facturation',
     'freelance':                  'Retour au comparatif facturation',
     'auto-entrepreneur':          'Voir tous les logiciels de facturation',
-    'tpe':                        'Découvrir notre sélection facturation',
+    'tpe':                        'Découvrir toute la sélection facturation',
     'pme':                        'Comparatif facturation sans filtre',
     'startup':                    'Tous les logiciels de facturation testés',
     'artisan':                    'Classement facturation complet',
-    'professions-liberales':      'Notre sélection facturation intégrale',
+    'professions-liberales':      'Sélection facturation intégrale',
   },
   'gestion-de-projet': {
     'freelance':            'Voir tout le comparatif gestion de projet',
     'auto-entrepreneur':    'Accéder au classement complet',
     'tpe':                  'Explorer tous les outils de projet',
     'pme':                  'Retour au comparatif gestion de projet',
-    'startup':              'Voir notre sélection complète',
+    'startup':              'Voir la sélection complète',
     'artisan':              'Tous les logiciels de gestion testés',
     'professions-liberales':'Comparatif gestion de projet sans filtre',
   },
@@ -73,7 +73,7 @@ const subToCatAnchors: Record<string, Record<string, string>> = {
     'auto-entrepreneur':    'Accéder au classement SEO complet',
     'tpe':                  'Explorer tous les outils SEO',
     'pme':                  'Retour au comparatif SEO',
-    'startup':              'Voir notre sélection SEO complète',
+    'startup':              'Voir la sélection SEO complète',
     'artisan':              'Tous les outils SEO comparés',
     'professions-liberales':'Comparatif SEO sans filtre',
   },
@@ -82,7 +82,7 @@ const subToCatAnchors: Record<string, Record<string, string>> = {
     'auto-entrepreneur':    'Accéder au classement automatisation',
     'tpe':                  "Explorer tous les outils d'automatisation",
     'pme':                  'Retour au comparatif automatisation',
-    'startup':              'Notre sélection automatisation complète',
+    'startup':              'La sélection automatisation complète',
     'artisan':              "Tous les logiciels d'automatisation testés",
     'professions-liberales':"Comparatif automatisation sans filtre",
   },
@@ -159,7 +159,7 @@ function buildMetaTitle(nom: string, usageRaw: string, seed: number): string {
   const templates = [
     `Meilleur ${nom} pour ${usage} — Comparatif 2026`,
     `Meilleur ${nom} pour ${usage} : lequel choisir en 2026 ?`,
-    `Meilleur ${nom} pour ${usage} — Notre sélection 2026`,
+    `Meilleur ${nom} pour ${usage} — Sélection 2026`,
     `Meilleur ${nom} pour ${usage} : guide complet 2026`,
     `Meilleur ${nom} pour ${usage} — Avis experts 2026`,
   ]
@@ -169,11 +169,11 @@ function buildMetaTitle(nom: string, usageRaw: string, seed: number): string {
 function buildMetaDescription(nom: string, usageRaw: string, seed: number): string {
   const usage = normalizeUsage(usageRaw)
   const templates = [
-    `Vous cherchez le meilleur ${nom} pour ${usage} ? Découvrez notre comparatif 2026 : outils testés, prix, avis et recommandation personnalisée.`,
-    `Quel ${nom} choisir pour ${usage} en 2026 ? On a sélectionné et testé les meilleures solutions pour vous faire gagner du temps et de l'argent.`,
-    `Comparatif ${nom} pour ${usage} : notre sélection experte 2026. Fonctionnalités, tarifs et verdict pour chaque outil — sans jargon inutile.`,
-    `Top des ${nom} pour ${usage} en 2026. Trouvez l'outil idéal en moins de 5 minutes grâce à notre comparatif honnête et mis à jour.`,
-    `${nom} pour ${usage} : on a testé les meilleures solutions du marché en 2026. Comparatif complet, prix détaillés et recommandation selon votre profil.`,
+    `Vous cherchez le meilleur ${nom} pour ${usage} ? Découvrez ce comparatif 2026 : outils, prix, avis et recommandation selon votre profil.`,
+    `Quel ${nom} choisir pour ${usage} en 2026 ? J'ai sélectionné les meilleures solutions pour vous faire gagner du temps et de l'argent.`,
+    `Comparatif ${nom} pour ${usage} : ma sélection 2026. Fonctionnalités, tarifs et verdict pour chaque outil — sans jargon inutile.`,
+    `Top des ${nom} pour ${usage} en 2026. Trouvez l'outil idéal en moins de 5 minutes grâce à ce comparatif honnête et mis à jour.`,
+    `${nom} pour ${usage} : j'ai analysé les meilleures solutions du marché en 2026. Comparatif complet, prix détaillés et recommandation selon votre profil.`,
   ]
   return templates[seed % templates.length]
 }
@@ -335,7 +335,7 @@ export default async function MeilleurPage({ params }: { params: Promise<{ categ
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
             <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: '22px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.5px' }}>
-              {icon} Notre sélection pour {usageLabel}
+              {icon} Ma sélection pour {usageLabel}
             </h2>
             <span style={{ fontSize: '12px', color: '#94a3b8', fontWeight: 600, flexShrink: 0 }}>{outilCount} outil{outilCount > 1 ? 's' : ''}</span>
           </div>

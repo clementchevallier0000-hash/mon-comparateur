@@ -348,7 +348,7 @@ Le rapport identifie vos 3 axes prioritaires d'amélioration avec un score effor
     bonus: [
       'Livraison par email en moins de 2 minutes',
       'Rapport PDF partageable avec votre équipe ou expert-comptable',
-      'Basé sur 50+ critères analysés par notre IA',
+      'Analyse de 50+ critères via IA',
     ],
     format: 'Formulaire 5 min · PDF personnalisé livré sous 2 min',
     tag: 'Audit IA',

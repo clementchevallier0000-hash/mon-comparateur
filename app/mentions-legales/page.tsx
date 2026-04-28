@@ -109,7 +109,7 @@ export default function MentionsLegales() {
                 Si vous souscrivez à un abonnement ou achetez un produit via ces liens, TonMeilleurSaaS peut percevoir une commission de la part de l'éditeur du logiciel concerné. Cette commission est sans coût supplémentaire pour vous : vous payez le même prix que si vous aviez accédé directement au site de l'éditeur.
               </p>
               <p>
-                <strong>Indépendance éditoriale :</strong> Cette rémunération potentielle n'influence en aucune façon nos classements, nos notes, ni nos avis. Les comparatifs et recommandations publiés sur TonMeilleurSaaS sont basés uniquement sur une analyse objective des fonctionnalités, tarifs et retours utilisateurs. Tout lien affilié est clairement identifié comme tel.
+                <strong>Indépendance éditoriale :</strong> Cette rémunération potentielle n'influence en aucune façon mes classements, mes notes, ni mes avis. Les fiches publiées sur TonMeilleurSaaS sont basées sur mes recherches, les données officielles et les avis utilisateurs publics. Tout lien affilié est clairement identifié comme tel.
               </p>
             </div>
           </section>
