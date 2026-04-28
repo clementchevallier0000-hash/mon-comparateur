@@ -269,7 +269,7 @@ export default async function Home() {
               Quel logiciel cherchez-vous ?
             </h2>
             <p style={{ fontSize: '16px', color: '#64748b', maxWidth: '500px', lineHeight: 1.6 }}>
-              Chaque catégorie regroupe nos comparatifs détaillés avec avis, prix et recommandations personnalisées.
+              Chaque catégorie regroupe des comparatifs détaillés avec avis, prix et recommandations personnalisées.
             </p>
           </div>
           <div className="cat-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '20px' }}>
@@ -515,7 +515,7 @@ export default async function Home() {
           <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px', flexWrap: 'wrap', gap: '12px' }}>
               <div>
-                <p style={{ fontSize: '12px', fontWeight: 700, color: '#2563eb', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '8px' }}>Nos guides</p>
+                <p style={{ fontSize: '12px', fontWeight: 700, color: '#2563eb', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '8px' }}>Mes guides</p>
                 <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: '32px', fontWeight: 800, color: '#0f172a', letterSpacing: '-1px', margin: 0 }}>Derniers articles du blog</h2>
               </div>
               <Link href="/blog" style={{ textDecoration: 'none', fontSize: '14px', fontWeight: 600, color: '#2563eb', background: '#eff6ff', padding: '10px 20px', borderRadius: '8px', border: '1px solid #dbeafe', whiteSpace: 'nowrap' }}>
@@ -579,7 +579,7 @@ export default async function Home() {
             Trouvez votre outil idéal<br />en moins de 5 minutes.
           </h2>
           <p className="scroll-reveal stagger-1" style={{ fontSize: '17px', color: '#94a3b8', marginBottom: '36px', maxWidth: '460px', margin: '0 auto 36px', lineHeight: 1.6 }}>
-            Nos comparatifs sont conçus pour vous faire gagner du temps et éviter les mauvais choix coûteux.
+            Ces comparatifs sont conçus pour vous faire gagner du temps et éviter les mauvais choix coûteux.
           </p>
           <div className="scroll-reveal stagger-2" style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="#categories" className="cta-btn" style={{ background: 'linear-gradient(135deg, #2563eb, #7c3aed)', color: '#fff', padding: '16px 36px', borderRadius: '12px', textDecoration: 'none', fontSize: '16px', fontWeight: 700, display: 'inline-block', boxShadow: '0 4px 24px rgba(37,99,235,0.4)' }}>
