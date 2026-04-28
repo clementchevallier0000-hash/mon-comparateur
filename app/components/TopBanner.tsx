@@ -2,9 +2,9 @@
 
 const messages = [
   '🏆 Les meilleurs logiciels pour TPE & PME en 2026',
-  '✅ 50+ outils comparés et testés indépendamment',
+  '✅ 50+ outils comparés · fiches basées sur les avis utilisateurs',
   '🔍 CRM, Facturation, SEO, Gestion de projet, Automatisation',
-  '💯 Comparatif transparent · Liens affiliés déclarés · Avis 100% objectifs',
+  '💯 Comparatif transparent · Liens affiliés déclarés · Honnête et indépendant',
   '🚀 Mis à jour en 2026 · Données fraîches et vérifiées',
   '🇫🇷 Le comparatif de référence pour les entreprises françaises',
 ]

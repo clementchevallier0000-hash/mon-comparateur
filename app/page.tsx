@@ -208,7 +208,7 @@ export default async function Home() {
               {/* Badges éditoriaux */}
               <div className="fade-up-3" style={{ marginTop: '24px', display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                 {[
-                  { icon: '🔍', text: '50+ outils testés' },
+                  { icon: '🔍', text: '50+ outils comparés' },
                   { icon: '🤝', text: 'Affiliation déclarée' },
                   { icon: '🇫🇷', text: 'Fait en France' },
                 ].map((badge, i) => (
