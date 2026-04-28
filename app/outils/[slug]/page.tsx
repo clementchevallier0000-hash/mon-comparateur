@@ -15,6 +15,11 @@ function getLogoUrl(lienAffilie: string): string | null {
   }
 }
 
+// Slugs des outils que tu as personnellement utilisés — à compléter
+const OUTILS_PERSO = new Set([
+  // ex: 'notion', 'hubspot', 'ahrefs', 'make'
+])
+
 const catColors: Record<string, { accent: string; bg: string; light: string; gradient: string; emoji: string }> = {
   'crm':               { accent: '#2563eb', bg: '#eff6ff', light: '#dbeafe', gradient: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #1e40af 100%)', emoji: '🤝' },
   'facturation':       { accent: '#ea580c', bg: '#fff7ed', light: '#fed7aa', gradient: 'linear-gradient(135deg, #0f172a 0%, #431407 50%, #9a3412 100%)', emoji: '💰' },
@@ -62,6 +67,7 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
   const c = catColors[catSlug] || { accent: '#2563eb', bg: '#eff6ff', light: '#dbeafe', gradient: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)', emoji: '📦' }
   const isFree = outil.prix_mensuel === 0
   const note = outil.note ?? null
+  const isPerso = OUTILS_PERSO.has(slug)
   const avantages: string[] = outil.avantages ?? []
   const inconvenients: string[] = outil.inconvenients ?? []
 
@@ -137,6 +143,14 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
                 )}
                 <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)' }}>·</span>
                 <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.55)', fontWeight: 500 }}>{c.emoji} {categorie?.nom}</span>
+                {isPerso && (
+                  <>
+                    <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)' }}>·</span>
+                    <span style={{ fontSize: '11px', fontWeight: 700, color: '#4ade80', background: 'rgba(74,222,128,0.15)', border: '1px solid rgba(74,222,128,0.3)', padding: '2px 8px', borderRadius: '999px' }}>
+                      ✓ Utilisé personnellement
+                    </span>
+                  </>
+                )}
               </div>
             </div>
           </div>
@@ -175,7 +189,7 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
         {/* CTA Card */}
         <div className="outil-hero-right" style={{ width: 'min(280px, 100%)', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '20px', padding: '24px', backdropFilter: 'blur(12px)' }}>
           <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', marginBottom: '16px', textAlign: 'center' }}>
-            Synthèse basée sur mes recherches et les avis utilisateurs
+            {isPerso ? '✓ Outil que j\'utilise personnellement' : 'Synthèse basée sur mes recherches et les avis utilisateurs'}
           </p>
           <a
             href={outil.lien_affilie}
@@ -398,7 +412,10 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
                 🙋 Comment je travaille
               </p>
               <p style={{ fontSize: '12px', color: '#94a3b8', lineHeight: 1.65 }}>
-                Je suis seul derrière ce site. Mes fiches sont basées sur mes recherches, les avis utilisateurs publics et les données officielles — pas sur des tests approfondis de chaque outil. Les liens sont affiliés : je touche une petite commission si vous souscrivez, sans aucun surcoût pour vous.
+                {isPerso
+                  ? "J'utilise cet outil personnellement — mon avis est basé sur mon expérience directe. Les autres fiches s'appuient sur mes recherches et les avis utilisateurs publics."
+                  : "Je suis seul derrière ce site. Cette fiche est basée sur mes recherches, les données officielles et les avis utilisateurs réels. Les liens sont affiliés : je touche une petite commission si vous souscrivez, sans surcoût pour vous."
+                }
               </p>
             </div>
 

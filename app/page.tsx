@@ -166,6 +166,7 @@ export default async function Home() {
             <Link href="#categories" style={{ color: '#64748b', fontSize: '14px', textDecoration: 'none', fontWeight: 500 }}>Catégories</Link>
             <Link href="#comparatif" style={{ color: '#64748b', fontSize: '14px', textDecoration: 'none', fontWeight: 500 }}>Comparatif</Link>
             <Link href="/blog" style={{ color: '#64748b', fontSize: '14px', textDecoration: 'none', fontWeight: 500 }}>Blog</Link>
+            <Link href="/a-propos" style={{ color: '#64748b', fontSize: '14px', textDecoration: 'none', fontWeight: 500 }}>À propos</Link>
             <Link href="/boutique" style={{ color: '#d97706', fontSize: '14px', textDecoration: 'none', fontWeight: 700 }}>🛍️ Boutique</Link>
             <span style={{ background: '#f0fdf4', color: '#16a34a', fontSize: '12px', fontWeight: 600, padding: '5px 12px', borderRadius: '999px', border: '1px solid #bbf7d0' }}>
               ✓ Comparatif expert & transparent
