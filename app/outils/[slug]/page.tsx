@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!outil) return { title: 'Outil introuvable' }
   return {
     title: `${outil.nom} : avis, prix et alternatives en 2026`,
-    description: outil.tagline || outil.description || `Découvrez notre avis complet sur ${outil.nom} : fonctionnalités, tarifs, avantages et inconvénients. Comparatif expert pour TPE et PME.`,
+    description: outil.tagline || outil.description || `Fiche complète sur ${outil.nom} : fonctionnalités, prix, avantages et limites — synthèse indépendante pour TPE et PME françaises.`,
     alternates: { canonical: `https://ton-meilleur-saas.fr/outils/${slug}` },
   }
 }
@@ -175,7 +175,7 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
         {/* CTA Card */}
         <div className="outil-hero-right" style={{ width: 'min(280px, 100%)', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '20px', padding: '24px', backdropFilter: 'blur(12px)' }}>
           <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', marginBottom: '16px', textAlign: 'center' }}>
-            Testé et approuvé par notre équipe
+            Synthèse basée sur mes recherches et les avis utilisateurs
           </p>
           <a
             href={outil.lien_affilie}
@@ -187,11 +187,11 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
             Essayer {outil.nom} →
           </a>
           <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.35)', textAlign: 'center', lineHeight: 1.5 }}>
-            Lien affilié — nos avis restent indépendants
+            🤝 Lien affilié — je touche une commission si vous souscrivez, sans surcoût pour vous
           </p>
           {note && (
             <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.1)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.45)' }}>Notre note</span>
+              <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.45)' }}>Ma note</span>
               <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                 <span style={{ fontSize: '18px', fontWeight: 800, color: '#fff', fontFamily: "'Fraunces', serif" }}>{note}</span>
                 <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)' }}>/5</span>
@@ -345,7 +345,7 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
               {note && (
                 <div style={{ background: '#f8fafc', borderRadius: '10px', padding: '12px 14px', marginBottom: '14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div>
-                    <p style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 600, marginBottom: '4px' }}>NOTRE NOTE</p>
+                    <p style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 600, marginBottom: '4px' }}>MA NOTE</p>
                     <div style={{ display: 'flex', gap: '2px' }}>
                       {[1,2,3,4,5].map(s => (
                         <span key={s} style={{ color: s <= Math.round(note) ? '#f59e0b' : '#e2e8f0', fontSize: '15px' }}>★</span>
@@ -367,7 +367,7 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
               </a>
 
               <p style={{ fontSize: '11px', color: '#94a3b8', textAlign: 'center', lineHeight: 1.5 }}>
-                🔗 Lien affilié · nos avis restent indépendants
+                🤝 Lien affilié · je touche une commission, sans surcoût pour vous
               </p>
             </div>
 
@@ -390,6 +390,16 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
                   </div>
                 ))}
               </div>
+            </div>
+
+            {/* Transparence */}
+            <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '14px', padding: '16px 18px' }}>
+              <p style={{ fontSize: '12px', fontWeight: 700, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px' }}>
+                🙋 Comment je travaille
+              </p>
+              <p style={{ fontSize: '12px', color: '#94a3b8', lineHeight: 1.65 }}>
+                Je suis seul derrière ce site. Mes fiches sont basées sur mes recherches, les avis utilisateurs publics et les données officielles — pas sur des tests approfondis de chaque outil. Les liens sont affiliés : je touche une petite commission si vous souscrivez, sans aucun surcoût pour vous.
+              </p>
             </div>
 
             {/* Lien catégorie */}
