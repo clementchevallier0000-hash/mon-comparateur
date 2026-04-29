@@ -26,6 +26,26 @@ body {
   font-family: var(--font-dm-sans), Arial, Helvetica, sans-serif;
 }
 
+/* ── Skeleton loading ── */
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+.skeleton {
+  background: #e2e8f0;
+  border-radius: 6px;
+  animation: skeleton-pulse 1.6s ease-in-out infinite;
+}
+
+/* ── Page transition ── */
+@keyframes page-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-transition {
+  animation: page-fade-in 0.28s ease-out both;
+}
+
 /* ── Page outil – desktop overrides ── */
 @media (min-width: 769px) {
   .outil-hero { gap: 48px !important; }
