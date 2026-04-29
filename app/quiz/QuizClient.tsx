@@ -182,17 +182,13 @@ export default function QuizClient() {
 
   if (done) {
     return (
-      <div style={{ minHeight: '100vh', background: '#f8fafc', fontFamily: "'DM Sans', sans-serif" }}>
-        <header style={{ background: 'rgba(255,255,255,0.96)', borderBottom: '1px solid #e2e8f0', position: 'sticky', top: 0, zIndex: 100, backdropFilter: 'blur(16px)' }}>
-          <div style={{ maxWidth: '700px', margin: '0 auto', padding: '0 24px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <Link href="/" style={{ textDecoration: 'none', fontFamily: "'Fraunces', serif", fontSize: '18px', fontWeight: 800, color: '#0f172a' }}>TonMeilleurSaaS</Link>
-            <Link href="/quiz" onClick={() => { setStep(0); setBesoin(null); setProfil(null); setBudget(null); setNiveau(null); setDone(false) }} style={{ fontSize: '13px', color: '#2563eb', fontWeight: 600, textDecoration: 'none' }}>
+      <div style={{ background: '#f8fafc', fontFamily: "'DM Sans', sans-serif" }}>
+        <div style={{ maxWidth: '700px', margin: '0 auto', padding: '16px 24px 80px' }}>
+          <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '24px' }}>
+            <button onClick={() => { setStep(0); setBesoin(null); setProfil(null); setBudget(null); setNiveau(null); setDone(false) }} style={{ fontSize: '13px', color: '#2563eb', fontWeight: 600, background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}>
               ↩ Recommencer
-            </Link>
+            </button>
           </div>
-        </header>
-
-        <div style={{ maxWidth: '700px', margin: '0 auto', padding: '48px 24px 80px' }}>
           <div style={{ textAlign: 'center', marginBottom: '40px' }}>
             <p style={{ fontSize: '40px', marginBottom: '12px' }}>🎯</p>
             <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(24px,4vw,36px)', fontWeight: 900, color: '#0f172a', letterSpacing: '-1px', marginBottom: '10px' }}>
@@ -252,7 +248,7 @@ export default function QuizClient() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: '#f8fafc', fontFamily: "'DM Sans', sans-serif" }}>
+    <div style={{ background: '#f8fafc', fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
         .quiz-option { transition: all 0.15s ease; cursor: pointer; border: none; background: #fff; font-family: inherit; width: 100%; text-align: left; }
         .quiz-option:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
@@ -260,19 +256,15 @@ export default function QuizClient() {
         .quiz-next:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37,99,235,0.35); }
       `}</style>
 
-      <header style={{ background: 'rgba(255,255,255,0.96)', borderBottom: '1px solid #e2e8f0', position: 'sticky', top: 0, zIndex: 100, backdropFilter: 'blur(16px)' }}>
-        <div style={{ maxWidth: '700px', margin: '0 auto', padding: '0 24px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Link href="/" style={{ textDecoration: 'none', fontFamily: "'Fraunces', serif", fontSize: '18px', fontWeight: 800, color: '#0f172a' }}>TonMeilleurSaaS</Link>
-          <span style={{ fontSize: '13px', color: '#94a3b8', fontWeight: 500 }}>Étape {step + 1} / 4</span>
-        </div>
-      </header>
-
       {/* Barre de progression */}
       <div style={{ height: '4px', background: '#e2e8f0' }}>
         <div style={{ height: '100%', background: 'linear-gradient(90deg, #2563eb, #7c3aed)', width: `${progress}%`, transition: 'width 0.4s ease' }} />
       </div>
+      <div style={{ maxWidth: '700px', margin: '0 auto', padding: '8px 24px 4px', display: 'flex', justifyContent: 'flex-end' }}>
+        <span style={{ fontSize: '13px', color: '#94a3b8', fontWeight: 500 }}>Étape {step + 1} / 4</span>
+      </div>
 
-      <div style={{ maxWidth: '700px', margin: '0 auto', padding: '48px 24px 80px' }}>
+      <div style={{ maxWidth: '700px', margin: '0 auto', padding: '32px 24px 80px' }}>
 
         {/* Étapes nav */}
         <div style={{ display: 'flex', gap: '8px', marginBottom: '40px', flexWrap: 'wrap' }}>
