@@ -25,7 +25,7 @@ export default function SiteHeader() {
       <div className="site-header-inner">
         <Link href="/" style={{ textDecoration: 'none' }}>
           <span style={{ fontFamily: "'Fraunces', serif", fontSize: '20px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.5px' }}>
-            TonMeilleurSaaS
+            🚀 TonMeilleurSaaS
           </span>
         </Link>
 
