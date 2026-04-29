@@ -104,7 +104,7 @@ export default async function Home() {
         .method-item:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
         .content-link { color: #2563eb; text-decoration: none; font-weight: 600; border-bottom: 1px solid #bfdbfe; transition: border-color 0.15s; }
         .content-link:hover { border-color: #2563eb; }
-        .gradient-text { background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .gradient-text { background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; padding-right: 4px; margin-right: -4px; }
         .logo-chip { transition: all 0.15s ease; }
         .logo-chip:hover { background: #f1f5f9 !important; transform: translateY(-1px); }
         .essayer-btn { transition: all 0.2s ease; }
