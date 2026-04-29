@@ -2,6 +2,8 @@ import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
 import SiteHeader from '@/app/components/SiteHeader'
 import type { Metadata } from 'next'
+import SiteFooter from '@/app/components/SiteFooter'
+import BackToTop from '@/app/components/BackToTop'
 
 export const dynamic = 'force-dynamic'
 
@@ -121,24 +123,8 @@ export default async function BlogPage() {
           )}
         </div>
       </section>
-
-      {/* Footer */}
-      <footer style={{ background:'#0f172a', color:'#94a3b8', padding:'40px 48px' }}>
-        <div style={{ maxWidth:'1200px', margin:'0 auto', display:'flex', alignItems:'center', justifyContent:'space-between', flexWrap:'wrap', gap:'16px' }}>
-          <div style={{ display:'flex', alignItems:'center', gap:'8px' }}>
-            <span style={{ fontSize:'20px' }}>🚀</span>
-            <span style={{ fontFamily:"'Fraunces', serif", color:'#fff', fontWeight:800, fontSize:'18px' }}>TonMeilleurSaaS</span>
-          </div>
-          <div style={{ display:'flex', gap:'24px', flexWrap:'wrap' }}>
-            <Link href="/" style={{ color:'#94a3b8', textDecoration:'none', fontSize:'13px' }}>Accueil</Link>
-            <Link href="/blog" style={{ color:'#94a3b8', textDecoration:'none', fontSize:'13px' }}>Blog</Link>
-            {Object.entries(catColors).map(([slug, c]) => (
-              <Link key={slug} href={`/categorie/${slug}`} style={{ color:'#94a3b8', textDecoration:'none', fontSize:'13px' }}>{c.name}</Link>
-            ))}
-          </div>
-          <p style={{ fontSize:'12px' }}>© 2026 TonMeilleurSaaS · Comparatifs indépendants</p>
-        </div>
-      </footer>
+      <SiteFooter />
+      <BackToTop />
     </main>
   )
 }

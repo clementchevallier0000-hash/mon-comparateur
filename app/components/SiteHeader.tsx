@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import SearchModal from './SearchModal'
 import MobileMenu from './MobileMenu'
+import NavLinks from './NavLinks'
 
 export default function SiteHeader() {
   return (
@@ -29,12 +30,7 @@ export default function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="site-header-nav">
-          <Link href="/categorie">Catégories</Link>
-          <Link href="/blog">Blog</Link>
-          <Link href="/quiz">🎯 Quiz</Link>
-          <Link href="/a-propos">À propos</Link>
-        </nav>
+        <NavLinks />
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <SearchModal />

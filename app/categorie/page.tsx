@@ -2,6 +2,8 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import SiteHeader from '@/app/components/SiteHeader'
 import { supabase } from '@/lib/supabase'
+import SiteFooter from '@/app/components/SiteFooter'
+import BackToTop from '@/app/components/BackToTop'
 
 export const dynamic = 'force-dynamic'
 
@@ -234,6 +236,8 @@ export default async function CategoriesPage() {
           </div>
         </div>
       </section>
+      <SiteFooter />
+      <BackToTop />
     </div>
   )
 }

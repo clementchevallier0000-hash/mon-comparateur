@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import SiteHeader from '@/app/components/SiteHeader'
+import Breadcrumb from '@/app/components/Breadcrumb'
+import SiteFooter from '@/app/components/SiteFooter'
+import BackToTop from '@/app/components/BackToTop'
 
 export const metadata: Metadata = {
   title: 'À propos de Clément — Fondateur du comparatif logiciels SaaS TonMeilleurSaaS',
@@ -13,6 +16,9 @@ export default function AProposPage() {
     <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#f8fafc', minHeight: '100vh' }}>
 
       <SiteHeader />
+      <div style={{ maxWidth: '720px', margin: '0 auto', padding: '12px 24px 0' }}>
+        <Breadcrumb crumbs={[{ label: 'À propos' }]} />
+      </div>
 
       {/* Hero */}
       <section style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #1e40af 100%)', padding: '64px 24px 56px', textAlign: 'center' }}>
@@ -112,19 +118,8 @@ export default function AProposPage() {
         </div>
 
       </div>
-
-      {/* Footer */}
-      <footer style={{ background: '#0a0f1a', padding: '28px 24px' }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
-          <span style={{ fontFamily: "'Fraunces', serif", fontSize: '16px', fontWeight: 800, color: '#fff' }}>TonMeilleurSaaS</span>
-          <p style={{ color: '#475569', fontSize: '13px' }}>© 2026 · Comparateur honnête de logiciels SaaS</p>
-          <div style={{ display: 'flex', gap: '20px' }}>
-            <Link href="/blog" style={{ color: '#475569', fontSize: '13px', textDecoration: 'none' }}>Blog</Link>
-            <Link href="/boutique" style={{ color: '#d97706', fontSize: '13px', textDecoration: 'none', fontWeight: 600 }}>Boutique</Link>
-            <Link href="/mentions-legales" style={{ color: '#475569', fontSize: '13px', textDecoration: 'none' }}>Mentions légales</Link>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
+      <BackToTop />
     </main>
   )
 }

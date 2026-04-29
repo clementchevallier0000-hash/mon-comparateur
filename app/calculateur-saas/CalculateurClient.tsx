@@ -2,6 +2,9 @@
 import { useState, useCallback, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import SiteHeader from '@/app/components/SiteHeader'
+import Breadcrumb from '@/app/components/Breadcrumb'
+import SiteFooter from '@/app/components/SiteFooter'
+import BackToTop from '@/app/components/BackToTop'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -261,6 +264,9 @@ export default function CalculateurSaas() {
     <div style={{ minHeight: '100vh', background: '#f8fafc', fontFamily: "'DM Sans', Arial, sans-serif" }}>
 
       <SiteHeader />
+      <div style={{ maxWidth: '700px', margin: '0 auto', padding: '12px 20px 0' }}>
+        <Breadcrumb crumbs={[{ label: 'Calculateur budget SaaS' }]} />
+      </div>
 
       {/* ── Hero ── */}
       <div style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #1e40af 100%)', color: '#fff', padding: '60px 20px 48px' }}>
@@ -357,6 +363,8 @@ export default function CalculateurSaas() {
           />
         )}
       </div>
+      <SiteFooter />
+      <BackToTop />
     </div>
   )
 }

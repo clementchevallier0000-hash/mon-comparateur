@@ -2,6 +2,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import SiteHeader from '@/app/components/SiteHeader'
 import QuizClient from './QuizClient'
+import Breadcrumb from '@/app/components/Breadcrumb'
+import SiteFooter from '@/app/components/SiteFooter'
+import BackToTop from '@/app/components/BackToTop'
 
 export const metadata: Metadata = {
   title: 'Quiz : quel logiciel SaaS choisir ? Trouvez l\'outil fait pour vous',
@@ -59,6 +62,9 @@ export default function QuizPage() {
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Fraunces:wght@700;800;900&display=swap" rel="stylesheet" />
 
       <SiteHeader />
+      <div style={{ maxWidth: '800px', margin: '0 auto', padding: '12px 24px 0' }}>
+        <Breadcrumb crumbs={[{ label: 'Quiz logiciel SaaS' }]} />
+      </div>
 
       {/* ── Hero SEO ── */}
       <section style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)', padding: '56px 24px 64px', textAlign: 'center' }}>
@@ -130,6 +136,8 @@ export default function QuizPage() {
           ))}
         </div>
       </section>
+      <SiteFooter />
+      <BackToTop />
     </div>
   )
 }

@@ -5,6 +5,8 @@ import type { Metadata } from 'next'
 import LogoImg from '@/app/components/LogoImg'
 import ScrollAnimations from '@/app/components/ScrollAnimations'
 import SiteHeader from '@/app/components/SiteHeader'
+import SiteFooter from '@/app/components/SiteFooter'
+import BackToTop from '@/app/components/BackToTop'
 
 function getLogoUrl(lienAffilie: string): string | null {
   try {
@@ -410,23 +412,8 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
           </div>
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="outil-footer flex flex-col gap-3 px-4 py-5 md:flex-row md:justify-between md:items-center md:px-10 md:py-7 flex-wrap" style={{ background: '#0a0f1a', marginTop: '40px' }}>
-        <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}>
-          <span style={{ fontSize: '16px' }}>🚀</span>
-          <span style={{ fontFamily: "'Fraunces', serif", fontSize: '15px', fontWeight: 800, color: '#fff' }}>TonMeilleurSaaS</span>
-        </Link>
-        <p style={{ color: '#475569', fontSize: '13px' }}>© 2026 TonMeilleurSaaS · Comparateur expert de logiciels SaaS</p>
-        <div style={{ display: 'flex', gap: '12px 20px', alignItems: 'center', flexWrap: 'wrap' }}>
-          <Link href="/mentions-legales" style={{ color: '#64748b', fontSize: '13px', textDecoration: 'none' }}>Mentions légales</Link>
-          <Link href="/politique-de-confidentialite" style={{ color: '#64748b', fontSize: '13px', textDecoration: 'none' }}>Confidentialité</Link>
-          <Link href="/cgv" style={{ color: '#64748b', fontSize: '13px', textDecoration: 'none' }}>CGV</Link>
-          {categorie && (
-            <Link href={`/categorie/${catSlug}`} style={{ color: '#64748b', fontSize: '13px', textDecoration: 'none', fontWeight: 500 }}>← {categorie.nom}</Link>
-          )}
-        </div>
-      </footer>
+      <SiteFooter />
+      <BackToTop />
     </main>
   )
 }

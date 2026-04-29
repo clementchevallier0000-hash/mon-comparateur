@@ -1,8 +1,11 @@
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
 import SiteHeader from '@/app/components/SiteHeader'
+import NewsletterInline from '@/app/components/NewsletterInline'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import SiteFooter from '@/app/components/SiteFooter'
+import BackToTop from '@/app/components/BackToTop'
 
 export const dynamic = 'force-dynamic'
 
@@ -131,9 +134,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         <article className="article-content" style={{ flex:1, minWidth:0, padding:'40px 0 80px' }}>
           <div className="article-body" dangerouslySetInnerHTML={{ __html: article.contenu || '' }} />
 
+          {/* Newsletter */}
+          <div style={{ marginTop:'40px' }}>
+            <NewsletterInline accentColor={cat?.accent || '#2563eb'} />
+          </div>
+
           {/* CTA */}
           {cat && (
-            <div style={{ marginTop:'48px', padding:'28px', background:cat.bg, borderRadius:'16px', border:`1px solid ${cat.accent}22` }}>
+            <div style={{ marginTop:'24px', padding:'28px', background:cat.bg, borderRadius:'16px', border:`1px solid ${cat.accent}22` }}>
               <p style={{ fontSize:'14px', fontWeight:700, color:cat.accent, marginBottom:'8px' }}>{cat.emoji} Aller plus loin</p>
               <p style={{ fontSize:'16px', fontWeight:700, color:'#0f172a', marginBottom:'16px' }}>
                 Vous cherchez le meilleur outil {cat.name} ?
@@ -208,24 +216,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
       )}
-
-      {/* Footer */}
-      <footer style={{ background:'#0f172a', color:'#94a3b8', padding:'40px 48px' }}>
-        <div style={{ maxWidth:'1200px', margin:'0 auto', display:'flex', alignItems:'center', justifyContent:'space-between', flexWrap:'wrap', gap:'16px' }}>
-          <div style={{ display:'flex', alignItems:'center', gap:'8px' }}>
-            <span style={{ fontSize:'20px' }}>🚀</span>
-            <span style={{ fontFamily:"'Fraunces', serif", color:'#fff', fontWeight:800, fontSize:'18px' }}>TonMeilleurSaaS</span>
-          </div>
-          <div style={{ display:'flex', gap:'24px', flexWrap:'wrap' }}>
-            <Link href="/" style={{ color:'#94a3b8', textDecoration:'none', fontSize:'13px' }}>Accueil</Link>
-            <Link href="/blog" style={{ color:'#94a3b8', textDecoration:'none', fontSize:'13px' }}>Blog</Link>
-            {Object.entries(catColors).map(([s, c]) => (
-              <Link key={s} href={`/categorie/${s}`} style={{ color:'#94a3b8', textDecoration:'none', fontSize:'13px' }}>{c.name}</Link>
-            ))}
-          </div>
-          <p style={{ fontSize:'12px' }}>© 2026 TonMeilleurSaaS · Comparatifs indépendants</p>
-        </div>
-      </footer>
+      <SiteFooter />
+      <BackToTop />
     </main>
   )
 }

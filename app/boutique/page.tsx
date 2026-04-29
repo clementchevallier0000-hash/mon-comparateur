@@ -1,8 +1,11 @@
 import Link from 'next/link'
 import SiteHeader from '@/app/components/SiteHeader'
 import BuyButton from '@/app/components/BuyButton'
+import Breadcrumb from '@/app/components/Breadcrumb'
 import type { Metadata } from 'next'
 import { products } from './products'
+import SiteFooter from '@/app/components/SiteFooter'
+import BackToTop from '@/app/components/BackToTop'
 
 export const metadata: Metadata = {
   title: 'Boutique — Workflows N8N, RGPD & Ressources premium | TonMeilleurSaaS',
@@ -57,6 +60,9 @@ export default function BoutiquePage() {
       `}</style>
 
       <SiteHeader />
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '12px 40px 0' }}>
+        <Breadcrumb crumbs={[{ label: 'Boutique' }]} />
+      </div>
 
       {/* ── Hero ── */}
       <section className="boutique-hero" style={{ padding: '64px 40px 48px', background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #1e40af 100%)', color: '#fff', textAlign: 'center' }}>
@@ -190,18 +196,8 @@ export default function BoutiquePage() {
           ))}
         </div>
       </section>
-
-      {/* ── Footer ── */}
-      <footer className="boutique-footer" style={{ background: '#0a0f1a', padding: '28px 40px' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
-          <span style={{ fontFamily: "'Fraunces', serif", fontSize: '16px', fontWeight: 800, color: '#fff' }}>TonMeilleurSaaS</span>
-          <p style={{ color: '#475569', fontSize: '13px' }}>© 2026 · Comparateur expert de logiciels SaaS</p>
-          <div style={{ display: 'flex', gap: '20px' }}>
-            <Link href="/blog" style={{ color: '#475569', fontSize: '13px', textDecoration: 'none' }}>Blog</Link>
-            <Link href="/boutique" style={{ color: '#d97706', fontSize: '13px', textDecoration: 'none', fontWeight: 600 }}>Boutique</Link>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
+      <BackToTop />
     </main>
   )
 }

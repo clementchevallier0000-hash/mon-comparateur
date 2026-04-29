@@ -7,6 +7,8 @@ import ScrollAnimations from '@/app/components/ScrollAnimations'
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
 import type { Metadata } from "next";
+import SiteFooter from '@/app/components/SiteFooter'
+import BackToTop from '@/app/components/BackToTop'
 
 export const metadata: Metadata = {
   title: "Logiciel entreprise : les meilleurs logiciels pour TPE PME",
@@ -569,29 +571,8 @@ export default async function Home() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer style={{ background: '#0a0f1a', padding: '40px 48px' }}>
-        <div className="footer-inner" style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '18px' }}>🚀</span>
-            <span style={{ fontFamily: "'Fraunces', serif", fontSize: '16px', fontWeight: 800, color: '#fff' }}>TonMeilleurSaaS</span>
-          </div>
-          <p style={{ color: '#475569', fontSize: '13px' }}>
-            © 2026 TonMeilleurSaaS · Comparateur expert de logiciels SaaS
-          </p>
-          <div className="footer-links" style={{ display: 'flex', gap: '24px', alignItems: 'center', flexWrap: 'wrap' }}>
-            {categories?.map((cat) => (
-              <Link key={cat.id} href={`/categorie/${cat.slug}`} style={{ color: '#475569', fontSize: '13px', textDecoration: 'none' }}>
-                {cat.nom}
-              </Link>
-            ))}
-            <Link href="/mentions-legales" style={{ color: '#475569', fontSize: '13px', textDecoration: 'none' }}>Mentions légales</Link>
-            <Link href="/politique-de-confidentialite" style={{ color: '#475569', fontSize: '13px', textDecoration: 'none' }}>Confidentialité</Link>
-            <Link href="/cgv" style={{ color: '#475569', fontSize: '13px', textDecoration: 'none' }}>CGV</Link>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
+      <BackToTop />
     </main>
   )
 }
