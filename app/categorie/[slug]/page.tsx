@@ -1,10 +1,9 @@
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
 import type { Metadata } from "next";
-import LogoImg from '@/app/components/LogoImg'
 import ScrollAnimations from '@/app/components/ScrollAnimations'
 import SearchModal from '@/app/components/SearchModal'
-import AffiliateButton from '@/app/components/AffiliateButton'
+import CategoryFilters from '@/app/components/CategoryFilters'
 
 function getLogoUrl(lienAffilie: string): string | null {
   try {
@@ -214,121 +213,7 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
             <span style={{ fontSize: '12px', color: '#94a3b8', fontWeight: 600, flexShrink: 0 }}>{outilCount} résultat{outilCount > 1 ? 's' : ''}</span>
           </div>
 
-          {/* Top 3 — grandes cards visuelles */}
-          {outils && outils.length > 0 && (
-            <div className="top3-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '16px' }}>
-              {outils.slice(0, 3).map((outil, index) => {
-                const rank = rankConfig[index]
-                const isFree = outil.prix_mensuel === 0
-                return (
-                  <Link key={outil.id} href={outil.slug ? `/outils/${outil.slug}` : '#'} style={{ textDecoration: 'none' }}>
-                    <div className="outil-row top-card" style={{
-                      background: '#fff',
-                      border: index === 0 ? `2px solid ${c.accent}44` : '1px solid #e2e8f0',
-                      borderTop: `4px solid ${rank?.borderColor || c.accent}`,
-                      borderRadius: '16px',
-                      padding: '22px',
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '14px',
-                      position: 'relative',
-                    }}>
-                      {/* Badge rang */}
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                        {rank && (
-                          <span style={{ fontSize: '10px', fontWeight: 700, padding: '3px 8px', borderRadius: '999px', background: rank.labelBg, color: rank.labelColor, border: `1px solid ${rank.labelBorder}` }}>
-                            {rank.label}
-                          </span>
-                        )}
-                        {isFree && (
-                          <span style={{ fontSize: '10px', fontWeight: 700, padding: '3px 8px', borderRadius: '999px', background: '#f0fdf4', color: '#16a34a', border: '1px solid #bbf7d0' }}>
-                            Gratuit
-                          </span>
-                        )}
-                        <span style={{ fontSize: '22px', marginLeft: 'auto' }}>{rank?.emoji || `#${index + 1}`}</span>
-                      </div>
-
-                      {/* Logo + nom */}
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                        <div style={{ width: '48px', height: '48px', background: c.bg, borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: `1px solid ${c.light}`, flexShrink: 0 }}>
-                          <LogoImg src={getLogoUrl(outil.lien_affilie)} alt={outil.nom} />
-                        </div>
-                        <div>
-                          <h3 style={{ fontSize: '16px', fontWeight: 800, color: '#0f172a', marginBottom: '2px' }}>{outil.nom}</h3>
-                          <span style={{ fontSize: '18px', fontWeight: 800, color: c.accent, fontFamily: "'Fraunces', serif" }}>
-                            {isFree ? 'Gratuit' : `${outil.prix_mensuel}€`}
-                            {!isFree && <span style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 500 }}>/mois</span>}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Description */}
-                      <p style={{ fontSize: '13px', color: '#64748b', lineHeight: 1.6, flex: 1, display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
-                        {outil.description}
-                      </p>
-
-                      {/* CTAs */}
-                      <div style={{ display: 'flex', gap: '8px', marginTop: 'auto' }}>
-                        <span style={{ flex: 1, background: c.bg, color: c.accent, border: `1px solid ${c.light}`, borderRadius: '8px', padding: '8px 12px', fontSize: '12px', fontWeight: 700, textAlign: 'center' }}>
-                          Voir l&apos;avis →
-                        </span>
-                        <AffiliateButton href={outil.lien_affilie} isTop={index === 0} accent={c.accent} />
-                      </div>
-                    </div>
-                  </Link>
-                )
-              })}
-            </div>
-          )}
-
-          {/* Reste des outils — grille 2 colonnes compacte */}
-          {outils && outils.length > 3 && (
-            <>
-              <p style={{ fontSize: '11px', fontWeight: 700, color: '#94a3b8', letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '12px', marginTop: '8px' }}>
-                Autres alternatives
-              </p>
-              <div className="rest-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}>
-                {outils.slice(3).map((outil, index) => {
-                  const isFree = outil.prix_mensuel === 0
-                  const realIndex = index + 3
-                  return (
-                    <Link key={outil.id} href={outil.slug ? `/outils/${outil.slug}` : '#'} style={{ textDecoration: 'none', minWidth: 0 }}>
-                      <div className="outil-row compact-card" style={{
-                        background: '#fff',
-                        border: '1px solid #e2e8f0',
-                        borderRadius: '12px',
-                        padding: '14px 16px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '10px',
-                        overflow: 'hidden',
-                      }}>
-                        <span style={{ fontSize: '11px', fontWeight: 700, color: '#cbd5e1', width: '18px', flexShrink: 0, textAlign: 'center' }}>#{realIndex + 1}</span>
-                        <div style={{ width: '34px', height: '34px', background: c.bg, borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: `1px solid ${c.light}`, flexShrink: 0 }}>
-                          <LogoImg src={getLogoUrl(outil.lien_affilie)} alt={outil.nom} />
-                        </div>
-                        <div style={{ flex: 1, minWidth: 0, overflow: 'hidden' }}>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginBottom: '2px' }}>
-                            <span style={{ fontSize: '13px', fontWeight: 700, color: '#0f172a', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{outil.nom}</span>
-                            {isFree && <span style={{ fontSize: '10px', fontWeight: 700, padding: '1px 6px', borderRadius: '999px', background: '#f0fdf4', color: '#16a34a', border: '1px solid #bbf7d0', flexShrink: 0 }}>Gratuit</span>}
-                          </div>
-                          <p style={{ fontSize: '12px', color: '#64748b', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', margin: 0 }}>{outil.description}</p>
-                        </div>
-                        <div style={{ flexShrink: 0, textAlign: 'right' }}>
-                          <div style={{ fontSize: '13px', fontWeight: 800, color: '#0f172a', fontFamily: "'Fraunces', serif", whiteSpace: 'nowrap' }}>
-                            {isFree ? 'Gratuit' : `${outil.prix_mensuel}€`}
-                          </div>
-                          {!isFree && <div style={{ fontSize: '10px', color: '#94a3b8' }}>/mois</div>}
-                        </div>
-                        <span style={{ color: c.accent, fontSize: '14px', flexShrink: 0 }}>→</span>
-                      </div>
-                    </Link>
-                  )
-                })}
-              </div>
-            </>
-          )}
+          <CategoryFilters outils={outils ?? []} c={c} icon={icon} catSlug={slug} />
         </div>
       </section>
 

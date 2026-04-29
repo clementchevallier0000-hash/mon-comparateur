@@ -40,6 +40,9 @@ export default function MobileMenu() {
               <Link href="/a-propos" onClick={() => setOpen(false)} style={{ flex: 1, textDecoration: 'none', padding: '10px', borderRadius: '8px', fontSize: '14px', fontWeight: 600, color: '#0f172a', textAlign: 'center', border: '1px solid #e2e8f0', background: '#f8fafc' }}>
                 🙋 À propos
               </Link>
+              <Link href="/quiz" onClick={() => setOpen(false)} style={{ flex: 1, textDecoration: 'none', padding: '10px', borderRadius: '8px', fontSize: '14px', fontWeight: 700, color: '#7c3aed', textAlign: 'center', border: '1px solid #e9d5ff', background: '#fdf4ff' }}>
+                🎯 Quiz
+              </Link>
               <Link href="/boutique" onClick={() => setOpen(false)} style={{ flex: 1, textDecoration: 'none', padding: '10px', borderRadius: '8px', fontSize: '14px', fontWeight: 700, color: '#d97706', textAlign: 'center', border: '1px solid #fde68a', background: '#fffbeb' }}>
                 🛍️ Boutique
               </Link>
