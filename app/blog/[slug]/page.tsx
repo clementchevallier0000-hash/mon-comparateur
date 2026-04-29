@@ -1,7 +1,6 @@
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
-import SearchModal from '@/app/components/SearchModal'
-import MobileMenu from '@/app/components/MobileMenu'
+import SiteHeader from '@/app/components/SiteHeader'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
@@ -87,27 +86,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         }
       `}</style>
 
-      {/* Header */}
-      <header style={{ background:'rgba(255,255,255,0.95)', borderBottom:'1px solid #f1f5f9', position:'sticky', top:0, zIndex:100, backdropFilter:'blur(12px)' }}>
-        <div className="header-inner" style={{ maxWidth:'1200px', margin:'0 auto', padding:'0 48px', display:'flex', alignItems:'center', justifyContent:'space-between', height:'68px' }}>
-          <Link href="/" style={{ display:'flex', alignItems:'center', gap:'8px', textDecoration:'none' }}>
-            <span style={{ fontSize:'22px' }}>🚀</span>
-            <span style={{ fontFamily:"'Fraunces', serif", fontSize:'20px', fontWeight:800, color:'#0f172a', letterSpacing:'-0.5px' }}>TonMeilleurSaaS</span>
-          </Link>
-          <nav className="header-nav">
-            <Link href="/" style={{ color:'#64748b', fontSize:'14px', textDecoration:'none', fontWeight:500 }}>Accueil</Link>
-            <Link href="/blog" style={{ color:'#0f172a', fontSize:'14px', textDecoration:'none', fontWeight:700 }}>Blog</Link>
-            <Link href="/boutique" style={{ color:'#d97706', fontSize:'14px', textDecoration:'none', fontWeight:700 }}>🛍️ Boutique</Link>
-            {Object.entries(catColors).map(([s, c]) => (
-              <Link key={s} href={`/categorie/${s}`} style={{ color:'#64748b', fontSize:'14px', textDecoration:'none', fontWeight:500 }}>{c.name}</Link>
-            ))}
-          </nav>
-          <SearchModal />
-          <div className="mobile-menu-btn" style={{ display:'none' }}>
-            <MobileMenu />
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* Article header */}
       <section className="article-header" style={{ padding:'56px 48px 0', background:'linear-gradient(180deg,#f8fafc 0%,#fff 100%)' }}>

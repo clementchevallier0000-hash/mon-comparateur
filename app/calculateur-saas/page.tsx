@@ -1,8 +1,7 @@
 'use client'
 import { useState, useCallback, useRef, useEffect } from 'react'
 import Link from 'next/link'
-import MobileMenu from '@/app/components/MobileMenu'
-import SearchModal from '@/app/components/SearchModal'
+import SiteHeader from '@/app/components/SiteHeader'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -261,18 +260,7 @@ export default function CalculateurSaas() {
   return (
     <div style={{ minHeight: '100vh', background: '#f8fafc', fontFamily: "'DM Sans', Arial, sans-serif" }}>
 
-      {/* ── Header ── */}
-      <header style={{ background: '#fff', borderBottom: '1px solid #e2e8f0', position: 'sticky', top: 0, zIndex: 100 }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 20px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Link href="/" style={{ textDecoration: 'none' }}>
-            <span style={{ fontFamily: "'Fraunces', serif", fontSize: '20px', fontWeight: 800, color: '#0f172a' }}>TonMeilleurSaaS</span>
-          </Link>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <SearchModal />
-            <MobileMenu />
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* ── Hero ── */}
       <div style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #1e40af 100%)', color: '#fff', padding: '60px 20px 48px' }}>

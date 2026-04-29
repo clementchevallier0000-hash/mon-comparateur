@@ -2,8 +2,7 @@ import TopBanner from '@/app/components/TopBanner'
 import NewsletterForm from '@/app/components/NewsletterForm'
 import HeroVisual from '@/app/components/HeroVisual'
 import AnimatedCounter from '@/app/components/AnimatedCounter'
-import MobileMenu from '@/app/components/MobileMenu'
-import SearchModal from '@/app/components/SearchModal'
+import SiteHeader from '@/app/components/SiteHeader'
 import ScrollAnimations from '@/app/components/ScrollAnimations'
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
@@ -155,29 +154,7 @@ export default async function Home() {
 
       <TopBanner />
 
-      {/* Header */}
-      <header style={{ background: 'rgba(255,255,255,0.95)', borderBottom: '1px solid #f1f5f9', position: 'sticky', top: 0, zIndex: 100, backdropFilter: 'blur(12px)' }}>
-        <div className="header-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '68px' }}>
-          <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontFamily: "'Fraunces', serif", fontSize: '20px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.5px' }}>TonMeilleurSaaS</span>
-          </Link>
-          <nav className="header-nav" style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
-            <Link href="#categories" style={{ color: '#64748b', fontSize: '14px', textDecoration: 'none', fontWeight: 500 }}>Catégories</Link>
-            <Link href="/blog" style={{ color: '#64748b', fontSize: '14px', textDecoration: 'none', fontWeight: 500 }}>Blog</Link>
-            <Link href="/quiz" style={{ color: '#64748b', fontSize: '14px', textDecoration: 'none', fontWeight: 500 }}>🎯 Quiz</Link>
-            <Link href="/a-propos" style={{ color: '#64748b', fontSize: '14px', textDecoration: 'none', fontWeight: 500 }}>À propos</Link>
-          </nav>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <SearchModal />
-            <Link href="/boutique" style={{ fontSize: '14px', fontWeight: 700, color: '#d97706', textDecoration: 'none', background: '#fffbeb', padding: '8px 16px', borderRadius: '10px', border: '1px solid #fde68a', whiteSpace: 'nowrap' }}>
-              🛍️ Boutique
-            </Link>
-            <div className="mobile-menu-btn" style={{ display: 'none' }}>
-              <MobileMenu />
-            </div>
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* Hero */}
       <section className="hero-section" style={{ padding: '90px 48px 80px', background: 'linear-gradient(180deg, #f8fafc 0%, #ffffff 100%)', position: 'relative', overflow: 'hidden' }}>

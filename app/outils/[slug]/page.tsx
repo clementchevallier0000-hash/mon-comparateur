@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import LogoImg from '@/app/components/LogoImg'
 import ScrollAnimations from '@/app/components/ScrollAnimations'
-import SearchModal from '@/app/components/SearchModal'
+import SiteHeader from '@/app/components/SiteHeader'
 
 function getLogoUrl(lienAffilie: string): string | null {
   try {
@@ -86,32 +86,7 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
         .back-link:hover { color: ${c.accent} !important; }
       `}</style>
 
-      {/* Header */}
-      <header style={{ background: 'rgba(255,255,255,0.95)', borderBottom: '1px solid #f1f5f9', position: 'sticky', top: 0, zIndex: 100, backdropFilter: 'blur(12px)' }}>
-        <div className="outil-header flex items-center justify-between px-4 md:px-10" style={{ maxWidth: '1100px', margin: '0 auto', height: '64px' }}>
-          <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ fontSize: '20px' }}>🚀</span>
-            <span style={{ fontFamily: "'Fraunces', serif", fontSize: '18px', fontWeight: 800, color: '#0f172a' }}>TonMeilleurSaaS</span>
-          </Link>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <div className="breadcrumb-mob hidden md:flex items-center" style={{ gap: '6px', fontSize: '13px', color: '#64748b' }}>
-              <Link href="/" style={{ color: '#64748b', textDecoration: 'none', fontWeight: 500 }}>Accueil</Link>
-              <span>›</span>
-              {categorie && (
-                <>
-                  <Link href={`/categorie/${catSlug}`} style={{ color: '#64748b', textDecoration: 'none', fontWeight: 500 }}>{categorie.nom}</Link>
-                  <span>›</span>
-                </>
-              )}
-              <span style={{ color: '#0f172a', fontWeight: 600 }}>{outil.nom}</span>
-            </div>
-            <Link href="/boutique" style={{ fontSize: '13px', fontWeight: 700, color: '#d97706', textDecoration: 'none', background: '#fffbeb', padding: '5px 12px', borderRadius: '8px', border: '1px solid #fde68a', whiteSpace: 'nowrap' }}>
-              🛍️ Boutique
-            </Link>
-            <SearchModal />
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* Hero */}
       <div style={{ background: c.gradient, overflow: 'hidden', position: 'relative' }}>

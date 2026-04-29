@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import MobileMenu from '@/app/components/MobileMenu'
-import SearchModal from '@/app/components/SearchModal'
+import SiteHeader from '@/app/components/SiteHeader'
 import BuyButton from '@/app/components/BuyButton'
 import type { Metadata } from 'next'
 import { products } from './products'
@@ -57,18 +56,7 @@ export default function BoutiquePage() {
         }
       `}</style>
 
-      {/* ── Header ── */}
-      <header style={{ background: 'rgba(255,255,255,0.96)', borderBottom: '1px solid #e2e8f0', position: 'sticky', top: 0, zIndex: 100, backdropFilter: 'blur(16px)' }}>
-        <div className="header-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
-            <span style={{ fontFamily: "'Fraunces', serif", fontSize: '20px', fontWeight: 800, color: '#0f172a' }}>TonMeilleurSaaS</span>
-          </Link>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <SearchModal />
-            <MobileMenu />
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* ── Hero ── */}
       <section className="boutique-hero" style={{ padding: '64px 40px 48px', background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #1e40af 100%)', color: '#fff', textAlign: 'center' }}>

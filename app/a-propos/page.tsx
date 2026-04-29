@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import MobileMenu from '@/app/components/MobileMenu'
-import SearchModal from '@/app/components/SearchModal'
+import SiteHeader from '@/app/components/SiteHeader'
 
 export const metadata: Metadata = {
   title: 'À propos — TonMeilleurSaaS',
@@ -13,18 +12,7 @@ export default function AProposPage() {
   return (
     <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#f8fafc', minHeight: '100vh' }}>
 
-      {/* Header */}
-      <header style={{ background: 'rgba(255,255,255,0.96)', borderBottom: '1px solid #e2e8f0', position: 'sticky', top: 0, zIndex: 100, backdropFilter: 'blur(16px)' }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Link href="/" style={{ textDecoration: 'none' }}>
-            <span style={{ fontFamily: "'Fraunces', serif", fontSize: '20px', fontWeight: 800, color: '#0f172a' }}>TonMeilleurSaaS</span>
-          </Link>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <SearchModal />
-            <MobileMenu />
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* Hero */}
       <section style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #1e40af 100%)', padding: '64px 24px 56px', textAlign: 'center' }}>

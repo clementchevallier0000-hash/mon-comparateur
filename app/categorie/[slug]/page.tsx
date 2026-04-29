@@ -2,7 +2,7 @@ import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
 import type { Metadata } from "next";
 import ScrollAnimations from '@/app/components/ScrollAnimations'
-import SearchModal from '@/app/components/SearchModal'
+import SiteHeader from '@/app/components/SiteHeader'
 import CategoryFilters from '@/app/components/CategoryFilters'
 
 function getLogoUrl(lienAffilie: string): string | null {
@@ -148,24 +148,7 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
         }
       `}</style>
 
-      {/* Header */}
-      <header style={{ background: 'rgba(255,255,255,0.95)', borderBottom: '1px solid #f1f5f9', position: 'sticky', top: 0, zIndex: 100, backdropFilter: 'blur(12px)' }}>
-        <div className="cat-header" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
-          <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ fontSize: '20px' }}>🚀</span>
-            <span style={{ fontFamily: "'Fraunces', serif", fontSize: '18px', fontWeight: 800, color: '#0f172a' }}>TonMeilleurSaaS</span>
-          </Link>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <div className="breadcrumb" style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#64748b' }}>
-              <Link href="/" style={{ color: '#64748b', textDecoration: 'none', fontWeight: 500 }}>Accueil</Link>
-              <span>›</span>
-              <span style={{ color: '#0f172a', fontWeight: 600 }}>{categorie?.nom}</span>
-            </div>
-            <Link href="/boutique" style={{ fontSize: '13px', fontWeight: 700, color: '#d97706', textDecoration: 'none', background: '#fffbeb', padding: '5px 12px', borderRadius: '8px', border: '1px solid #fde68a', whiteSpace: 'nowrap' }} className="boutique-link">🛍️ Boutique</Link>
-            <SearchModal />
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* Hero */}
       <section className="cat-hero" style={{ background: c.gradient, padding: '56px 40px 48px', position: 'relative', overflow: 'hidden' }}>
