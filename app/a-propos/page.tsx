@@ -48,10 +48,13 @@ export default function AProposPage() {
             🙋 Qui je suis
           </h2>
           <p style={{ fontSize: '15px', color: '#475569', lineHeight: 1.8, marginBottom: '14px' }}>
-            Je m&apos;appelle Clément. Entrepreneur, je me suis retrouvé à tester et comparer des dizaines de logiciels SaaS pour mes propres projets — et j&apos;ai réalisé que les comparatifs disponibles en français étaient soit trop génériques, soit clairement biaisés par les partenariats commerciaux.
+            Je m&apos;appelle Clément. Je travaille dans le digital depuis plusieurs années — entre SEO, automatisation et growth. Dans mes projets, j&apos;ai eu à choisir, tester et parfois abandonner des dizaines d&apos;outils SaaS : Ahrefs, Semrush, N8N, Make, Brevo, Trello, Semji, SimilarWeb... autant d&apos;expériences qui m&apos;ont donné une vraie opinion sur ce qui fonctionne vraiment pour les petites structures françaises.
+          </p>
+          <p style={{ fontSize: '15px', color: '#475569', lineHeight: 1.8, marginBottom: '14px' }}>
+            À force de chercher des comparatifs honnêtes en français — et de ne trouver que des articles génériques ou visiblement sponsorisés — j&apos;ai décidé de créer TonMeilleurSaaS : un comparatif transparent, tenu par une seule personne, sans prétendre avoir tout testé.
           </p>
           <p style={{ fontSize: '15px', color: '#475569', lineHeight: 1.8 }}>
-            J&apos;ai donc créé TonMeilleurSaaS pour partager ce que j&apos;avais appris, de façon honnête et utile pour les TPE et PME françaises.
+            Je suis basé en France. Ce site est un projet solo que je développe en parallèle de mes autres activités. <em style={{ color: '#94a3b8' }}>(La suite, c&apos;est à moi de la rédiger — je complèterai bientôt !)</em>
           </p>
         </div>
 

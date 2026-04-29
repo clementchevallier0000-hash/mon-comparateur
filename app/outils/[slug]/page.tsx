@@ -15,9 +15,10 @@ function getLogoUrl(lienAffilie: string): string | null {
   }
 }
 
-// Slugs des outils que tu as personnellement utilisés — à compléter
 const OUTILS_PERSO = new Set([
-  // ex: 'notion', 'hubspot', 'ahrefs', 'make'
+  'semrush', 'semji', 'n8n', 'make', 'henrri',
+  'trello', 'brevo', 'ahrefs', 'ubersuggest',
+  'haloscan', 'similarweb',
 ])
 
 const catColors: Record<string, { accent: string; bg: string; light: string; gradient: string; emoji: string }> = {
