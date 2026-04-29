@@ -3,8 +3,8 @@ import type { Metadata } from 'next'
 import SiteHeader from '@/app/components/SiteHeader'
 
 export const metadata: Metadata = {
-  title: 'À propos — TonMeilleurSaaS',
-  description: 'Je suis Clément, seul derrière TonMeilleurSaaS. Je vous explique pourquoi j\'ai créé ce comparatif, comment je travaille et ce que vous pouvez en attendre.',
+  title: 'À propos de Clément — Fondateur du comparatif logiciels SaaS TonMeilleurSaaS',
+  description: 'Je suis Clément, seul derrière TonMeilleurSaaS. Je vous explique pourquoi j\'ai créé ce comparatif de logiciels SaaS, comment je travaille et ce que vous pouvez en attendre.',
   alternates: { canonical: 'https://ton-meilleur-saas.fr/a-propos' },
 }
 
@@ -19,8 +19,11 @@ export default function AProposPage() {
         <div style={{ maxWidth: '620px', margin: '0 auto' }}>
           <p style={{ fontSize: '12px', fontWeight: 700, color: 'rgba(255,255,255,0.5)', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '16px' }}>À propos</p>
           <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(32px,5vw,48px)', fontWeight: 900, color: '#fff', letterSpacing: '-1.5px', lineHeight: 1.1, marginBottom: '20px' }}>
-            Salut, moi c&apos;est Clément
+            Comparatif logiciels SaaS indépendant pour TPE/PME
           </h1>
+          <p style={{ fontSize: '16px', fontWeight: 600, color: 'rgba(255,255,255,0.6)', marginBottom: '12px' }}>
+            Salut, moi c&apos;est Clément 👋
+          </p>
           <p style={{ fontSize: '18px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.65 }}>
             Je suis seul derrière TonMeilleurSaaS. Voici pourquoi j&apos;ai créé ce site, comment je travaille — et ce que vous pouvez en attendre.
           </p>

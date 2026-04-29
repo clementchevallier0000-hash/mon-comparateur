@@ -6,8 +6,8 @@ import type { Metadata } from 'next'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Blog — Guides et conseils logiciels SaaS pour TPE/PME',
-  description: 'Guides pratiques, comparatifs et conseils pour choisir les meilleurs logiciels SaaS. CRM, facturation, SEO, automatisation : on décrypte tout pour les TPE et PME françaises.',
+  title: 'Blog logiciels SaaS TPE PME — Comparatifs, guides et conseils 2026 | TonMeilleurSaaS',
+  description: 'Guides pratiques, comparatifs et conseils pour choisir les meilleurs logiciels SaaS. CRM, facturation, SEO, automatisation : tout ce qu\'il faut savoir pour les TPE et PME françaises.',
   alternates: { canonical: 'https://ton-meilleur-saas.fr/blog' },
 }
 
@@ -69,7 +69,7 @@ export default async function BlogPage() {
             <span style={{ color:'#475569', fontSize:'13px', fontWeight:500 }}>Guides · Conseils · Comparatifs</span>
           </div>
           <h1 style={{ fontFamily:"'Fraunces', serif", fontSize:'52px', fontWeight:800, color:'#0f172a', lineHeight:1.1, letterSpacing:'-2px', marginBottom:'20px' }}>
-            Le blog des logiciels<br /><em style={{ fontStyle:'italic', background:'linear-gradient(135deg,#2563eb,#7c3aed)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}>qui font gagner du temps</em>
+            Comparatifs et guides<br /><em style={{ fontStyle:'italic', background:'linear-gradient(135deg,#2563eb,#7c3aed)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}>logiciels SaaS pour TPE/PME</em>
           </h1>
           <p style={{ fontSize:'18px', color:'#64748b', lineHeight:1.7, fontWeight:300, maxWidth:'560px', margin:'0 auto' }}>
             Guides pratiques et comparatifs experts pour aider les TPE et PME françaises à choisir les bons outils SaaS.

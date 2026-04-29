@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     .single()
   if (!data) return { title: 'Article non trouvé' }
   return {
-    title: data.titre,
+    title: `${data.titre} | TonMeilleurSaaS`,
     description: data.description,
     alternates: { canonical: `https://ton-meilleur-saas.fr/blog/${data.slug}` },
     openGraph: { title: data.titre, description: data.description, type: 'article' },

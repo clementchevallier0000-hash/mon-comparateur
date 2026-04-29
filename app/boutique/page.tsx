@@ -63,7 +63,7 @@ export default function BoutiquePage() {
         <div style={{ maxWidth: '600px', margin: '0 auto' }}>
           <p style={{ fontSize: '12px', fontWeight: 700, color: 'rgba(255,255,255,0.6)', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '14px' }}>Ressources premium</p>
           <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(36px,5vw,52px)', fontWeight: 900, letterSpacing: '-2px', marginBottom: '14px', lineHeight: 1.1 }}>
-            La boutique
+            Ressources SaaS premium
           </h1>
           <p style={{ fontSize: '17px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.6, marginBottom: '28px' }}>
             Workflows N8N, templates, prompts et guides — prêts à l&apos;emploi, livrés instantanément.
