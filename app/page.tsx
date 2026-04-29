@@ -158,24 +158,23 @@ export default async function Home() {
       {/* Header */}
       <header style={{ background: 'rgba(255,255,255,0.95)', borderBottom: '1px solid #f1f5f9', position: 'sticky', top: 0, zIndex: 100, backdropFilter: 'blur(12px)' }}>
         <div className="header-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '68px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '22px' }}>🚀</span>
+          <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span style={{ fontFamily: "'Fraunces', serif", fontSize: '20px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.5px' }}>TonMeilleurSaaS</span>
-          </div>
-          <nav className="header-nav" style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
+          </Link>
+          <nav className="header-nav" style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
             <Link href="#categories" style={{ color: '#64748b', fontSize: '14px', textDecoration: 'none', fontWeight: 500 }}>Catégories</Link>
-            <Link href="#comparatif" style={{ color: '#64748b', fontSize: '14px', textDecoration: 'none', fontWeight: 500 }}>Comparatif</Link>
             <Link href="/blog" style={{ color: '#64748b', fontSize: '14px', textDecoration: 'none', fontWeight: 500 }}>Blog</Link>
-            <Link href="/quiz" style={{ color: '#7c3aed', fontSize: '14px', textDecoration: 'none', fontWeight: 700, background: '#fdf4ff', padding: '5px 12px', borderRadius: '8px', border: '1px solid #e9d5ff' }}>🎯 Quiz</Link>
+            <Link href="/quiz" style={{ color: '#64748b', fontSize: '14px', textDecoration: 'none', fontWeight: 500 }}>🎯 Quiz</Link>
             <Link href="/a-propos" style={{ color: '#64748b', fontSize: '14px', textDecoration: 'none', fontWeight: 500 }}>À propos</Link>
-            <Link href="/boutique" style={{ color: '#d97706', fontSize: '14px', textDecoration: 'none', fontWeight: 700 }}>🛍️ Boutique</Link>
-            <span style={{ background: '#f0fdf4', color: '#16a34a', fontSize: '12px', fontWeight: 600, padding: '5px 12px', borderRadius: '999px', border: '1px solid #bbf7d0' }}>
-              ✓ Comparatif expert & transparent
-            </span>
           </nav>
-          <SearchModal />
-          <div className="mobile-menu-btn" style={{ display: 'none' }}>
-            <MobileMenu />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <SearchModal />
+            <Link href="/boutique" style={{ fontSize: '14px', fontWeight: 700, color: '#d97706', textDecoration: 'none', background: '#fffbeb', padding: '8px 16px', borderRadius: '10px', border: '1px solid #fde68a', whiteSpace: 'nowrap' }}>
+              🛍️ Boutique
+            </Link>
+            <div className="mobile-menu-btn" style={{ display: 'none' }}>
+              <MobileMenu />
+            </div>
           </div>
         </div>
       </header>
