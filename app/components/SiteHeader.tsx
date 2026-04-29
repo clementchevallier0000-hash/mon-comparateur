@@ -18,9 +18,12 @@ export default function SiteHeader() {
         .site-header-nav { display: flex; gap: 24px; align-items: center; }
         .site-header-nav a { color: #64748b; font-size: 14px; text-decoration: none; font-weight: 500; transition: color 0.15s; }
         .site-header-nav a:hover { color: #0f172a; }
+        .mobile-only { display: none; }
         @media (max-width: 768px) {
           .site-header-inner { padding: 0 20px; }
           .site-header-nav { display: none; }
+          .mobile-only { display: flex; }
+          .desktop-only { display: none !important; }
         }
       `}</style>
       <div className="site-header-inner">
@@ -34,7 +37,7 @@ export default function SiteHeader() {
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <SearchModal />
-          <Link href="/boutique" style={{
+          <Link href="/boutique" className="desktop-only" style={{
             fontSize: '14px',
             fontWeight: 700,
             color: '#d97706',
@@ -47,7 +50,9 @@ export default function SiteHeader() {
           }}>
             🛍️ Boutique
           </Link>
-          <MobileMenu />
+          <div className="mobile-only">
+            <MobileMenu />
+          </div>
         </div>
       </div>
     </header>
