@@ -36,6 +36,7 @@ export default async function CategoriesPage() {
   return (
     <div style={{ minHeight: '100vh', background: '#f8fafc', fontFamily: "'DM Sans', Arial, sans-serif" }}>
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Fraunces:wght@700;800;900&display=swap" rel="stylesheet" />
+      <style>{`.cat-card { transition: transform 0.2s ease, box-shadow 0.2s ease; } .cat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }`}</style>
 
       <SiteHeader />
 
@@ -63,20 +64,16 @@ export default async function CategoriesPage() {
             const count = counts[cat.slug] || 0
             return (
               <Link key={cat.slug} href={`/categorie/${cat.slug}`} style={{ textDecoration: 'none' }}>
-                <div style={{
+                <div className="cat-card" style={{
                   background: '#fff',
                   borderRadius: '20px',
                   border: `1.5px solid ${meta.accentLight}`,
                   padding: '28px',
                   height: '100%',
-                  transition: 'transform 0.2s ease, box-shadow 0.2s ease',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '16px',
-                }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)'; (e.currentTarget as HTMLDivElement).style.boxShadow = '0 12px 40px rgba(0,0,0,0.1)' }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.transform = 'none'; (e.currentTarget as HTMLDivElement).style.boxShadow = 'none' }}
-                >
+                }}>
                   {/* Top */}
                   <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '12px' }}>
                     <div style={{ width: '52px', height: '52px', background: meta.bg, borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '26px', flexShrink: 0 }}>
