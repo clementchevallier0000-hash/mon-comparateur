@@ -30,7 +30,7 @@ export default function SiteHeader() {
         </Link>
 
         <nav className="site-header-nav">
-          <Link href="/categorie/crm">Catégories</Link>
+          <Link href="/categorie">Catégories</Link>
           <Link href="/blog">Blog</Link>
           <Link href="/quiz">🎯 Quiz</Link>
           <Link href="/a-propos">À propos</Link>
