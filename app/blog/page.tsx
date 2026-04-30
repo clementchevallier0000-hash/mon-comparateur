@@ -71,7 +71,7 @@ export default async function BlogPage() {
             <span style={{ color:'#475569', fontSize:'13px', fontWeight:500 }}>Guides · Conseils · Comparatifs</span>
           </div>
           <h1 style={{ fontFamily:"'Fraunces', serif", fontSize:'52px', fontWeight:800, color:'#0f172a', lineHeight:1.1, letterSpacing:'-2px', marginBottom:'20px' }}>
-            Comparatifs et guides<br /><em style={{ fontStyle:'italic', background:'linear-gradient(135deg,#2563eb,#7c3aed)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}>logiciels SaaS pour TPE/PME</em>
+            Comparatifs et guides<br /><em style={{ fontStyle:'italic', background:'linear-gradient(135deg,#2563eb,#7c3aed)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', paddingRight:'4px', marginRight:'-4px' }}>logiciels SaaS pour TPE/PME</em>
           </h1>
           <p style={{ fontSize:'18px', color:'#64748b', lineHeight:1.7, fontWeight:300, maxWidth:'560px', margin:'0 auto' }}>
             Guides pratiques et comparatifs experts pour aider les TPE et PME françaises à choisir les bons outils SaaS.

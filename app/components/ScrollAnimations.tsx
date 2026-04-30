@@ -60,6 +60,8 @@ export default function ScrollAnimations() {
         background-clip: text;
         animation: gradientShift 5s ease infinite;
         font-style: italic;
+        padding-right: 4px;
+        margin-right: -4px;
       }
 
       .section-title {
