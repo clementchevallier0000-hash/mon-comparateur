@@ -12,6 +12,7 @@ interface Outil {
   note: number | null
   essai_gratuit: boolean
   version_gratuite: boolean
+  screenshot_url?: string | null
 }
 
 interface Props {
@@ -184,12 +185,23 @@ export default function CategoryFilters({ outils, c, icon }: Props) {
                   border: index === 0 ? `2px solid ${c.accent}44` : '1px solid #e2e8f0',
                   borderTop: `4px solid ${rank?.borderColor || c.accent}`,
                   borderRadius: '16px',
-                  padding: '22px',
+                  overflow: 'hidden',
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '14px',
                 }}>
+                  {/* Screenshot thumbnail */}
+                  {outil.screenshot_url && (
+                    <div style={{ height: '130px', overflow: 'hidden', background: '#f1f5f9', position: 'relative', flexShrink: 0 }}>
+                      <img
+                        src={outil.screenshot_url}
+                        alt={`Interface ${outil.nom}`}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }}
+                      />
+                      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 60%, rgba(255,255,255,0.4) 100%)' }} />
+                    </div>
+                  )}
+                  <div style={{ padding: '18px', flex: 1, display: 'flex', flexDirection: 'column', gap: '14px' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                     {rank && (
                       <span style={{ fontSize: '10px', fontWeight: 700, padding: '3px 8px', borderRadius: '999px', background: rank.labelBg, color: rank.labelColor, border: `1px solid ${rank.labelBorder}` }}>
@@ -227,6 +239,7 @@ export default function CategoryFilters({ outils, c, icon }: Props) {
                   <div style={{ background: c.bg, color: c.accent, border: `1px solid ${c.light}`, borderRadius: '8px', padding: '8px 12px', fontSize: '12px', fontWeight: 700, textAlign: 'center' }}>
                     Voir l&apos;avis →
                   </div>
+                  </div>{/* end inner padding div */}
                 </div>
               </Link>
             )

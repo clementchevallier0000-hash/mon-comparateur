@@ -220,6 +220,35 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
               </div>
             )}
 
+            {/* Screenshot */}
+            {outil.screenshot_url && (
+              <div style={{ background: '#fff', borderRadius: '16px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+                <div style={{ padding: '20px 24px 0' }}>
+                  <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: '20px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.5px', marginBottom: '16px' }}>
+                    Interface
+                  </h2>
+                </div>
+                {/* Browser chrome */}
+                <div style={{ margin: '0 24px 24px', border: '1px solid #e2e8f0', borderRadius: '10px', overflow: 'hidden', boxShadow: '0 8px 32px rgba(0,0,0,0.08)' }}>
+                  <div style={{ background: '#f1f5f9', padding: '8px 14px', display: 'flex', alignItems: 'center', gap: '8px', borderBottom: '1px solid #e2e8f0' }}>
+                    <div style={{ display: 'flex', gap: '5px' }}>
+                      <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ff5f57' }} />
+                      <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#febc2e' }} />
+                      <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#28c840' }} />
+                    </div>
+                    <div style={{ flex: 1, background: '#fff', borderRadius: '6px', height: '22px', display: 'flex', alignItems: 'center', paddingLeft: '10px', fontSize: '11px', color: '#94a3b8', overflow: 'hidden' }}>
+                      {(() => { try { return new URL(outil.lien_affilie).hostname } catch { return outil.nom } })()}
+                    </div>
+                  </div>
+                  <img
+                    src={outil.screenshot_url}
+                    alt={`Interface de ${outil.nom}`}
+                    style={{ width: '100%', display: 'block', maxHeight: '420px', objectFit: 'cover', objectPosition: 'top' }}
+                  />
+                </div>
+              </div>
+            )}
+
             {/* Avantages & Inconvénients */}
             {(avantages.length > 0 || inconvenients.length > 0) && (
               <div style={{ background: '#fff', borderRadius: '16px', border: '1px solid #e2e8f0', padding: '28px' }}>
