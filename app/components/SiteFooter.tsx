@@ -16,6 +16,7 @@ const nav = [
   { label: '🧮 Calculateur SaaS', href: '/calculateur-saas' },
   { label: '🛍️ Boutique', href: '/boutique' },
   { label: 'À propos', href: '/a-propos' },
+  { label: '📬 Contact', href: '/contact' },
 ]
 
 const legal = [
