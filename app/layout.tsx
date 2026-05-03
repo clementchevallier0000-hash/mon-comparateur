@@ -59,6 +59,7 @@ export default function RootLayout({
   return (
     <html lang="fr" suppressHydrationWarning className={`${fraunces.variable} ${dmSans.variable}`}>
       <head>
+        <meta name="impact-site-verification" content="2453d720-a075-445a-a933-8d20845aa29e" />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-HFC34SP8SC"
           strategy="afterInteractive"
