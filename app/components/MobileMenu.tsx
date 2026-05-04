@@ -7,7 +7,6 @@ const mainLinks = [
   { label: '📝 Blog', href: '/blog', color: '#0f172a', bg: '#f8fafc', border: '#e2e8f0' },
   { label: '🎯 Quiz — quel outil pour vous ?', href: '/quiz', color: '#7c3aed', bg: '#fdf4ff', border: '#e9d5ff' },
   { label: '🧮 Calculateur SaaS', href: '/calculateur-saas', color: '#0f172a', bg: '#f8fafc', border: '#e2e8f0' },
-  { label: '🛍️ Boutique premium', href: '/boutique', color: '#d97706', bg: '#fffbeb', border: '#fde68a' },
   { label: '🙋 À propos', href: '/a-propos', color: '#0f172a', bg: '#f8fafc', border: '#e2e8f0' },
   { label: '📬 Contact', href: '/contact', color: '#0f172a', bg: '#f8fafc', border: '#e2e8f0' },
 ]

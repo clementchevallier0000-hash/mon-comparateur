@@ -214,7 +214,22 @@ export default function PolitiqueConfidentialite() {
 
               <h3 style={h3Style}>6.2 Cookies analytiques</h3>
               <p>
-                TonMeilleurSaaS n'utilise <strong>pas</strong> de solution d'analytics tierce (Google Analytics, Hotjar, etc.) nécessitant votre consentement. Les données de navigation (pages vues, durée) sont collectées de manière <strong>anonymisée et agrégée</strong> via les outils de Vercel, sans tracking individuel ni cookie de suivi publicitaire.
+                TonMeilleurSaaS utilise <strong>Google Analytics 4</strong> (Google LLC) pour mesurer l'audience du site de manière agrégée. Google Analytics dépose des cookies de mesure d'audience. Les données collectées (pages vues, durée de session, source de trafic) sont anonymisées et ne permettent pas de vous identifier personnellement.
+              </p>
+              <div style={{ border: '1px solid #e2e8f0', borderRadius: '12px', overflow: 'hidden', marginTop: '8px' }}>
+                {[
+                  { name: '_ga', purpose: 'Distinguer les utilisateurs (Google Analytics)', duration: '2 ans' },
+                  { name: '_ga_*', purpose: 'Maintenir l\'état de session (Google Analytics)', duration: '2 ans' },
+                ].map((c, i) => (
+                  <div key={c.name} style={{ padding: '12px 16px', borderBottom: i < 1 ? '1px solid #f1f5f9' : 'none', display: 'flex', gap: '16px', alignItems: 'center', flexWrap: 'wrap' }}>
+                    <code style={{ fontSize: '12px', background: '#f1f5f9', padding: '2px 8px', borderRadius: '4px', color: '#0f172a', fontFamily: 'monospace', flex: '0 0 auto' }}>{c.name}</code>
+                    <span style={{ fontSize: '14px', color: '#374151', flex: 1 }}>{c.purpose}</span>
+                    <span style={{ fontSize: '13px', color: '#64748b', flex: '0 0 auto' }}>{c.duration}</span>
+                  </div>
+                ))}
+              </div>
+              <p style={{ fontSize: '14px', color: '#64748b', marginTop: '8px' }}>
+                Ces cookies nécessitent votre consentement. En continuant à naviguer sur le site, vous acceptez leur dépôt. Vous pouvez vous opposer à leur utilisation via les paramètres de votre navigateur ou en désactivant JavaScript pour Google Analytics.
               </p>
 
               <h3 style={h3Style}>6.3 Cookies tiers</h3>

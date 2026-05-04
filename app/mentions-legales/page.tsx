@@ -55,8 +55,8 @@ export default function MentionsLegales() {
               <div style={{ background: '#f8fafc', borderRadius: '10px', padding: '16px 20px', marginTop: '8px', display: 'flex', flexDirection: 'column', gap: '4px', border: '1px solid #e2e8f0' }}>
                 <p><strong>Nom :</strong> Clément Chevallier</p>
                 <p><strong>Statut juridique :</strong> Auto-entrepreneur (micro-entreprise)</p>
-                <p><strong>SIRET :</strong> À COMPLÉTER</p>
-                <p><strong>Adresse :</strong> À COMPLÉTER</p>
+                <p><strong>SIRET :</strong> 92410153800016</p>
+                <p><strong>Adresse :</strong> 9 Rue Montesquieu, 17000 La Rochelle</p>
                 <p><strong>Email :</strong> <a href="mailto:contact@ton-meilleur-saas.fr" style={linkStyle}>contact@ton-meilleur-saas.fr</a></p>
               </div>
               <p style={{ marginTop: '8px', fontSize: '14px', color: '#64748b' }}>

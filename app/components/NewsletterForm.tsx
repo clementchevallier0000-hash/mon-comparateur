@@ -60,7 +60,7 @@ export default function NewsletterForm() {
             borderRadius: '12px', padding: '16px 20px',
           }}>
             <p style={{ fontSize: '13px', color: '#92400e', fontWeight: 600, marginBottom: '6px' }}>
-              🎁 Votre code promo boutique (-10%)
+              🎁 Votre code promo (bientôt disponible)
             </p>
             <p style={{
               fontFamily: 'monospace', fontSize: '24px', fontWeight: 800,
@@ -69,7 +69,7 @@ export default function NewsletterForm() {
               {result.promoCode}
             </p>
             <p style={{ fontSize: '12px', color: '#92400e', marginTop: '6px' }}>
-              À utiliser sur <a href="/boutique" style={{ color: '#d97706', fontWeight: 600 }}>la boutique</a> lors du paiement
+              À utiliser lors de votre prochain achat
             </p>
           </div>
         </div>

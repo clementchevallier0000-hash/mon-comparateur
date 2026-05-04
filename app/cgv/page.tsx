@@ -57,7 +57,8 @@ export default function CGV() {
               </p>
               <div style={{ background: '#f8fafc', borderRadius: '10px', padding: '16px 20px', border: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', gap: '4px' }}>
                 <p><strong>Vendeur :</strong> Clément Chevallier, auto-entrepreneur, exploitant le site TonMeilleurSaaS</p>
-                <p><strong>SIRET :</strong> À COMPLÉTER</p>
+                <p><strong>SIRET :</strong> 92410153800016</p>
+                <p><strong>Adresse :</strong> 9 Rue Montesquieu, 17000 La Rochelle</p>
                 <p><strong>Email :</strong> <a href="mailto:contact@ton-meilleur-saas.fr" style={linkStyle}>contact@ton-meilleur-saas.fr</a></p>
               </div>
               <div style={{ background: '#f8fafc', borderRadius: '10px', padding: '16px 20px', border: '1px solid #e2e8f0' }}>
@@ -72,27 +73,27 @@ export default function CGV() {
           <section style={sectionStyle}>
             <h2 style={h2Style}>2. Produits et services proposés</h2>
             <div style={{ ...textStyle, display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              <p>TonMeilleurSaaS commercialise deux types de produits :</p>
+              <p>TonMeilleurSaaS commercialise des ressources numériques et des prestations de conseil :</p>
 
               <div style={{ border: '2px solid #e2e8f0', borderRadius: '14px', overflow: 'hidden' }}>
-                <div style={{ padding: '20px 24px', borderBottom: '1px solid #e2e8f0' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-                    <p style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a' }}>Pack N8N — Automatisation SaaS</p>
-                    <span style={{ fontSize: '16px', fontWeight: 800, color: '#6366f1' }}>39 €</span>
+                {[
+                  { name: 'Pack N8N — 5 Workflows clé en main', price: '39 €', desc: 'Ressource numérique : workflows N8N au format JSON. Livraison instantanée par lien sécurisé.' },
+                  { name: 'Pack RGPD complet pour TPE', price: '59 €', desc: 'Ressource numérique : 6 templates juridiques Word/PDF pour la mise en conformité RGPD. Livraison instantanée.' },
+                  { name: 'Système de fidélisation client N8N', price: '99 €', desc: 'Ressource numérique : 5 workflows N8N de fidélisation. Livraison instantanée par lien sécurisé.' },
+                  { name: 'Pack AI Agents N8N', price: '129 €', desc: 'Ressource numérique : 4 agents IA N8N + GPT-4. Livraison instantanée par lien sécurisé.' },
+                  { name: 'Templates Notion — Agence & Freelance', price: '29 €', desc: 'Ressource numérique : 8 templates Notion avec liens de duplication. Livraison instantanée.' },
+                  { name: 'Kit 100 Prompts métiers GPT', price: '19 €', desc: 'Ressource numérique : 100 prompts GPT organisés par métier en PDF. Livraison instantanée.' },
+                  { name: 'Mini-audit IA personnalisé', price: '29 €', desc: 'Prestation automatisée : rapport PDF généré par IA à partir d\'un formulaire de 12 questions. Livraison sous 2 minutes.' },
+                  { name: 'Audit SaaS personnalisé', price: '79 €', desc: 'Prestation de conseil : audit complet de votre stack SaaS avec recommandations personnalisées. Livraison sous 48h ouvrées.' },
+                ].map((p, i, arr) => (
+                  <div key={p.name} style={{ padding: '16px 24px', borderBottom: i < arr.length - 1 ? '1px solid #e2e8f0' : 'none' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                      <p style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>{p.name}</p>
+                      <span style={{ fontSize: '15px', fontWeight: 800, color: '#6366f1', flexShrink: 0, marginLeft: '12px' }}>{p.price}</span>
+                    </div>
+                    <p style={{ fontSize: '13px', color: '#374151', lineHeight: 1.6 }}>{p.desc}</p>
                   </div>
-                  <p style={{ fontSize: '14px', color: '#374151', lineHeight: 1.6 }}>
-                    Ressource numérique : pack de workflows d'automatisation N8N au format JSON importables directement dans votre instance N8N. Livraison instantanée par lien de téléchargement sécurisé après paiement. Accès à vie au fichier.
-                  </p>
-                </div>
-                <div style={{ padding: '20px 24px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-                    <p style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a' }}>Audit SaaS personnalisé</p>
-                    <span style={{ fontSize: '16px', fontWeight: 800, color: '#6366f1' }}>79 €</span>
-                  </div>
-                  <p style={{ fontSize: '14px', color: '#374151', lineHeight: 1.6 }}>
-                    Prestation de conseil : audit complet de votre stack SaaS actuelle avec recommandations personnalisées (alternatives moins chères, outils manquants, optimisations). Livraison sous 48h ouvrées sous forme de document structuré. Une question de suivi incluse.
-                  </p>
-                </div>
+                ))}
               </div>
 
               <p>

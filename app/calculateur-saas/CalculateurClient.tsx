@@ -633,7 +633,7 @@ function Results({
             Guide gratuit : "La stack SaaS idéale pour TPE"
           </h3>
           <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.7)', marginBottom: '20px' }}>
-            + code promo -10% sur la boutique. Désabonnement en 1 clic.
+            Désabonnement en 1 clic.
           </p>
           <form onSubmit={onEmailSubmit} style={{ display: 'flex', gap: '10px', maxWidth: '440px', margin: '0 auto', flexWrap: 'wrap' }}>
             <input type="email" required value={email} onChange={e => setEmail(e.target.value)} placeholder="votre@email.fr"
@@ -656,8 +656,8 @@ function Results({
         <button onClick={onReset} style={{ flex: '1 1 180px', padding: '14px', borderRadius: '12px', border: '2px solid #e2e8f0', background: '#fff', color: '#0f172a', fontSize: '15px', fontWeight: 700, cursor: 'pointer' }}>
           ← Modifier mes outils
         </button>
-        <Link href="/boutique" style={{ flex: '1 1 180px', padding: '14px', borderRadius: '12px', background: 'linear-gradient(135deg, #2563eb, #7c3aed)', color: '#fff', fontSize: '15px', fontWeight: 700, textDecoration: 'none', textAlign: 'center', display: 'block' }}>
-          Voir la boutique →
+        <Link href="/quiz" style={{ flex: '1 1 180px', padding: '14px', borderRadius: '12px', background: 'linear-gradient(135deg, #2563eb, #7c3aed)', color: '#fff', fontSize: '15px', fontWeight: 700, textDecoration: 'none', textAlign: 'center', display: 'block' }}>
+          Faire le quiz →
         </Link>
       </div>
     </div>

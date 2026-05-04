@@ -20,6 +20,35 @@ const PRODUCT_FILES: Record<string, { bucket?: string; path?: string; label: str
     label: 'Audit SaaS personnalisé',
     tallyUrl: 'https://tally.so/r/xXNWG9',
   },
+  'rgpd-pack': {
+    bucket: 'ressources',
+    path: 'rgpd-pack.zip',
+    label: 'Pack RGPD complet pour TPE',
+  },
+  'fidelisation-pack': {
+    bucket: 'ressources',
+    path: 'fidelisation-pack.zip',
+    label: 'Système de fidélisation client N8N',
+  },
+  'ai-agents-pack': {
+    bucket: 'ressources',
+    path: 'ai-agents-pack.zip',
+    label: 'Pack AI Agents N8N — 4 agents IA',
+  },
+  'notion-templates': {
+    bucket: 'ressources',
+    path: 'notion-templates.zip',
+    label: 'Templates Notion — Agence & Freelance',
+  },
+  'prompts-pack': {
+    bucket: 'ressources',
+    path: 'prompts-pack.zip',
+    label: 'Kit 100 Prompts métiers GPT',
+  },
+  'mini-audit': {
+    label: 'Mini-audit IA personnalisé',
+    tallyUrl: 'https://tally.so/r/xXNWG9',
+  },
 }
 
 export default async function SuccessPage({

@@ -539,7 +539,7 @@ export default async function Home() {
             Les 10 outils indispensables pour automatiser votre business — sélectionnés parmi 50+ alternatives testées.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '32px', flexWrap: 'wrap' }}>
-            {['📘 Guide PDF 7 pages', '🏷️ -10% sur la boutique', '📬 1 conseil SaaS/semaine'].map(item => (
+            {['📘 Guide PDF 7 pages', '📬 1 conseil SaaS/semaine'].map(item => (
               <span key={item} style={{ fontSize: '13px', color: '#374151', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '4px' }}>
                 {item}
               </span>
