@@ -37,6 +37,19 @@ export default function SiteHeader() {
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <SearchModal />
+          <Link href="/boutique" className="desktop-only" style={{
+            fontSize: '14px',
+            fontWeight: 700,
+            color: '#d97706',
+            textDecoration: 'none',
+            background: '#fffbeb',
+            padding: '8px 16px',
+            borderRadius: '10px',
+            border: '1px solid #fde68a',
+            whiteSpace: 'nowrap',
+          }}>
+            🛍️ Boutique
+          </Link>
           <div className="mobile-only">
             <MobileMenu />
           </div>
