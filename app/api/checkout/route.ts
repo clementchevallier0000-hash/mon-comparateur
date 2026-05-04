@@ -36,10 +36,6 @@ const PRODUCTS: Record<string, { priceId: string; description: string }> = {
     priceId: process.env.STRIPE_PRICE_PROMPTS!,
     description: 'Kit 100 Prompts métiers GPT',
   },
-  'mini-audit': {
-    priceId: process.env.STRIPE_PRICE_MINI_AUDIT!,
-    description: 'Mini-audit IA personnalisé',
-  },
 }
 
 export async function POST(req: NextRequest) {

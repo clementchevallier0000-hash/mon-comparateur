@@ -45,10 +45,6 @@ const PRODUCT_FILES: Record<string, { bucket?: string; path?: string; label: str
     path: 'prompts-pack.zip',
     label: 'Kit 100 Prompts métiers GPT',
   },
-  'mini-audit': {
-    label: 'Mini-audit IA personnalisé',
-    tallyUrl: 'https://tally.so/r/xXNWG9',
-  },
 }
 
 export default async function SuccessPage({

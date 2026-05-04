@@ -83,7 +83,6 @@ export default function CGV() {
                   { name: 'Pack AI Agents N8N', price: '129 €', desc: 'Ressource numérique : 4 agents IA N8N + GPT-4. Livraison instantanée par lien sécurisé.' },
                   { name: 'Templates Notion — Agence & Freelance', price: '29 €', desc: 'Ressource numérique : 8 templates Notion avec liens de duplication. Livraison instantanée.' },
                   { name: 'Kit 100 Prompts métiers GPT', price: '19 €', desc: 'Ressource numérique : 100 prompts GPT organisés par métier en PDF. Livraison instantanée.' },
-                  { name: 'Mini-audit IA personnalisé', price: '29 €', desc: 'Prestation automatisée : rapport PDF généré par IA à partir d\'un formulaire de 12 questions. Livraison sous 2 minutes.' },
                   { name: 'Audit SaaS personnalisé', price: '79 €', desc: 'Prestation de conseil : audit complet de votre stack SaaS avec recommandations personnalisées. Livraison sous 48h ouvrées.' },
                 ].map((p, i, arr) => (
                   <div key={p.name} style={{ padding: '16px 24px', borderBottom: i < arr.length - 1 ? '1px solid #e2e8f0' : 'none' }}>

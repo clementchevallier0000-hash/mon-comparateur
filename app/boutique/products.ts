@@ -318,48 +318,6 @@ Ce kit de 100 prompts vous donne des instructions précises, testées sur des ca
       { q: 'Est-ce que les prompts s\'améliorent avec le temps ?', a: 'Oui. Des mises à jour trimestrielles sont envoyées par email avec les nouveaux prompts testés et les ajustements pour les dernières versions de modèles IA.' },
     ],
   },
-  {
-    id: 'mini-audit',
-    badge: '🎯 Scalable',
-    badgeColor: '#f59e0b',
-    badgeBg: '#fffbeb',
-    emoji: '⚡',
-    accentColor: '#f59e0b',
-    accentBg: '#fffbeb',
-    accentLight: '#fde68a',
-    title: 'Mini-audit IA personnalisé — Votre plan d\'action en 5 minutes',
-    seoTitle: 'Mini-audit IA personnalisé — Plan d\'action digital en 5 min pour TPE',
-    description: 'Remplissez un formulaire de 5 minutes. Un rapport PDF personnalisé par IA vous est envoyé dans la minute : axes prioritaires, outils recommandés, quick wins immédiats.',
-    seoDescription: 'Mini-audit IA pour TPE : 5 minutes de formulaire → rapport PDF personnalisé par GPT-4 avec axes prioritaires, outils recommandés et 3 actions immédiates. 29€.',
-    longDescription: `Un audit digital complet par un consultant coûte entre 500€ et 2 000€ et prend plusieurs semaines. Ce mini-audit vous donne un diagnostic ciblé, personnalisé par IA, en 5 minutes et pour 29€.
-
-Vous répondez à 12 questions sur votre activité, votre équipe, vos outils actuels et vos objectifs prioritaires. Un modèle GPT-4 spécialisé analyse vos réponses selon 50+ critères et génère un rapport structuré, personnalisé à votre situation réelle — pas un template générique avec des cases à cocher.
-
-Le rapport identifie vos 3 axes prioritaires d'amélioration avec un score effort/impact, vous recommande une stack SaaS adaptée à votre profil (avec des liens vers les comparatifs du site), et vous donne 3 quick wins à mettre en place cette semaine. Livré en PDF par email en moins de 2 minutes.`,
-    price: 29,
-    originalPrice: null,
-    includes: [
-      { icon: '📝', text: 'Formulaire de 12 questions sur votre activité, équipe et outils actuels' },
-      { icon: '🤖', text: 'Analyse GPT-4 — rapport personnalisé, pas un template générique' },
-      { icon: '🎯', text: '3 axes prioritaires avec score effort / impact estimés' },
-      { icon: '🛠️', text: 'Stack SaaS recommandée pour votre profil (avec liens comparatifs)' },
-      { icon: '⚡', text: '3 quick wins à mettre en place cette semaine' },
-    ],
-    bonus: [
-      'Livraison par email en moins de 2 minutes',
-      'Rapport PDF partageable avec votre équipe ou expert-comptable',
-      'Analyse de 50+ critères via IA',
-    ],
-    format: 'Formulaire 5 min · PDF personnalisé livré sous 2 min',
-    tag: 'Audit IA',
-    tagColor: '#f59e0b',
-    faq: [
-      { q: 'Le rapport est-il vraiment personnalisé ?', a: 'Oui. Le modèle IA reçoit vos réponses complètes et génère un rapport unique à votre situation. Deux entreprises du même secteur avec des équipes différentes recevront des rapports différents.' },
-      { q: 'Que se passe-t-il après le paiement ?', a: 'Vous êtes redirigé vers le formulaire de 12 questions. Une fois soumis, votre rapport est généré et envoyé à votre email en moins de 2 minutes.' },
-      { q: 'Le rapport remplace-t-il un consultant ?', a: 'Il complète un consultant, ou le remplace pour des diagnostics rapides. Il est idéal pour identifier où concentrer vos efforts avant d\'investir dans un accompagnement plus long.' },
-      { q: 'Et si le rapport ne me convient pas ?', a: 'Remboursement garanti sous 14 jours si le rapport ne vous apporte pas de valeur. Un email suffit.' },
-    ],
-  },
 ]
 
 export function getProduct(id: string): Product | undefined {
