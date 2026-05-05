@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
       promoCode: PROMO_CODE,
     })
   } catch (e: unknown) {
-    const msg = e instanceof Error ? e.message : String(e)
+    const msg = e instanceof Error ? e.message : (typeof e === 'object' && e !== null && 'message' in e) ? String((e as { message: unknown }).message) : String(e)
     return NextResponse.json({ error: msg }, { status: 500 })
   }
 }
