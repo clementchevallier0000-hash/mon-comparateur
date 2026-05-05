@@ -108,49 +108,6 @@ Vous remplissez un formulaire de 5 minutes. Dans les 48 heures, vous recevez un 
     ],
   },
   {
-    id: 'rgpd-pack',
-    badge: '🛡️ Indispensable',
-    badgeColor: '#7c3aed',
-    badgeBg: '#faf5ff',
-    emoji: '🔐',
-    accentColor: '#7c3aed',
-    accentBg: '#faf5ff',
-    accentLight: '#e9d5ff',
-    title: 'Pack RGPD complet pour TPE — Mise en conformité clé en main',
-    seoTitle: 'Pack RGPD TPE — 6 templates pour être en conformité en 1 journée',
-    description: '6 templates juridiques rédigés par des experts, prêts à personnaliser. Soyez en conformité RGPD en moins d\'une journée — sans avocat, sans jargon.',
-    seoDescription: 'Pack RGPD complet pour TPE : politique de confidentialité, CGV, registre des traitements, DPA, checklist CNIL. 6 templates Word/PDF prêts à personnaliser. 59€ au lieu de 149€.',
-    longDescription: `Depuis mai 2018, le RGPD impose à toute entreprise traitant des données personnelles de respecter des obligations précises. En cas de contrôle CNIL, l'absence de politique de confidentialité ou de registre des traitements peut entraîner des sanctions significatives — et les contrôles se multiplient depuis 2022.
-
-La mise en conformité RGPD avec un cabinet juridique coûte entre 800€ et 3 000€. Ce pack vous donne les mêmes documents de base — rédigés et vérifiés — que vous personnalisez en moins d'une journée en renseignant vos informations spécifiques.
-
-6 documents couvrent les obligations essentielles d'une TPE : la politique de confidentialité affichée sur votre site, les CGV/CGU, le registre des traitements de données (obligatoire pour toute entreprise), le contrat de sous-traitance à faire signer à vos prestataires SaaS qui traitent des données de vos clients, et une checklist pour vous assurer de n'avoir rien oublié.`,
-    price: 59,
-    originalPrice: 149,
-    includes: [
-      { icon: '📄', text: 'Politique de confidentialité (site web + mentions légales)' },
-      { icon: '📝', text: 'CGV / CGU personnalisables (prestations de services)' },
-      { icon: '📋', text: 'Registre des traitements de données (format Excel + Notion)' },
-      { icon: '✉️', text: 'Template email de notification violation de données (CNIL)' },
-      { icon: '🤝', text: 'Contrat sous-traitant RGPD (DPA) pour vos prestataires SaaS' },
-      { icon: '✅', text: 'Checklist mise en conformité en 10 étapes commentées' },
-    ],
-    bonus: [
-      'Formats Word (.docx) modifiables + PDF final',
-      'Guide CNIL simplifié — ce qui est obligatoire pour une TPE',
-      'Mise à jour incluse si la réglementation évolue',
-    ],
-    format: '6 templates · Word + PDF · Livraison instantanée',
-    tag: 'Juridique',
-    tagColor: '#7c3aed',
-    faq: [
-      { q: 'Ces templates remplacent-ils un avocat ?', a: 'Pour les obligations de base d\'une TPE standard, oui. Ces templates couvrent les exigences RGPD universelles. Pour des secteurs réglementés (santé, finance) ou des traitements de données sensibles, un avis juridique complémentaire reste recommandé.' },
-      { q: 'Le pack est-il à jour avec la réglementation 2024-2025 ?', a: 'Oui. Les templates intègrent les lignes directrices CNIL les plus récentes et les exigences issues du RGPD et de l\'ePrivacy. Les mises à jour sont incluses.' },
-      { q: 'Sous quel format sont livrés les documents ?', a: 'Chaque document est livré en .docx (Word, modifiable) et en PDF final. Le registre des traitements est disponible en Excel et en template Notion.' },
-      { q: 'Est-ce que je peux les utiliser pour plusieurs de mes sociétés ?', a: 'La licence couvre une société. Pour plusieurs entités, contactez-nous pour un tarif groupé.' },
-    ],
-  },
-  {
     id: 'fidelisation-pack',
     badge: '🌱 Nouveau',
     badgeColor: '#16a34a',
@@ -190,47 +147,6 @@ Résultat : vos clients se sentent suivis et accompagnés, même quand vous ête
       { q: 'Avec quels CRM ces workflows sont-ils compatibles ?', a: 'HubSpot (version gratuite incluse), Airtable, Notion, Google Sheets. Pour d\'autres CRM, N8N propose des connecteurs natifs pour Pipedrive, Salesforce, etc.' },
       { q: 'Faut-il N8N Cloud ou peut-on utiliser N8N self-hosted ?', a: 'Les deux. Les fichiers JSON sont compatibles avec toutes les instances N8N 1.0+. N8N Cloud est recommandé pour les non-techniques (aucun serveur à gérer).' },
       { q: 'Les emails envoyés sont-ils personnalisés ou génériques ?', a: 'Personnalisés. Chaque email injecte le prénom du client, le nom de la prestation et la date. Les templates sont modifiables dans le workflow.' },
-    ],
-  },
-  {
-    id: 'ai-agents-pack',
-    badge: '🤖 Exclusif',
-    badgeColor: '#0ea5e9',
-    badgeBg: '#f0f9ff',
-    emoji: '🧠',
-    accentColor: '#0ea5e9',
-    accentBg: '#f0f9ff',
-    accentLight: '#bae6fd',
-    title: 'Pack AI Agents N8N — 4 agents IA qui travaillent à votre place',
-    seoTitle: 'Pack AI Agents N8N + GPT-4 — 4 agents IA autonomes pour TPE/PME',
-    description: '4 agents autonomes basés sur N8N + GPT-4 : prospection, création de contenu, veille concurrentielle et qualification de leads — tout en pilotage automatique.',
-    seoDescription: '4 agents IA autonomes N8N + GPT-4 : prospection qualifiée, création de contenu SEO, veille sectorielle, support client automatique. Clé en main. 129€.',
-    longDescription: `Les agents IA ne remplacent pas votre équipe — ils font les tâches répétitives à leur place, 24h/24, sans erreur ni oubli. Ce pack vous donne 4 agents N8N + GPT-4 qui tournent en autonomie dès leur configuration.
-
-L'Agent Prospection analyse des listes de prospects, qualifie chaque lead selon vos critères (secteur, taille, poste), et rédige un email de premier contact personnalisé en fonction du profil. L'Agent Contenu transforme un sujet en article SEO structuré, puis le reformate automatiquement pour LinkedIn, Twitter et votre newsletter. L'Agent Veille surveille vos sources RSS, les actualités sectorielles et les mentions de vos concurrents, et vous envoie un digest hebdomadaire résumé par IA. L'Agent Support classe les emails entrants, répond automatiquement aux questions fréquentes, et escalade les cas complexes vers vous.
-
-Le coût de fonctionnement (API OpenAI) représente 1 à 5€/mois pour un usage TPE typique. Le guide inclus explique comment créer votre clé API et maîtriser les coûts.`,
-    price: 129,
-    originalPrice: null,
-    includes: [
-      { icon: '🎯', text: 'Agent Prospection : qualification GPT-4 → email personnalisé automatique' },
-      { icon: '✍️', text: 'Agent Contenu : topic → brief SEO → article → reformatage réseaux' },
-      { icon: '🔭', text: 'Agent Veille : RSS + news → résumé IA → digest hebdo par email' },
-      { icon: '💬', text: 'Agent Support : classification email → réponse auto ou escalade humaine' },
-    ],
-    bonus: [
-      'Guide configuration OpenAI API (clé + modèles + maîtrise des coûts)',
-      'README par agent + exemples de résultats réels',
-      'Compatibles N8N Cloud et N8N self-hosted',
-    ],
-    format: '4 fichiers JSON N8N · Nécessite une clé OpenAI',
-    tag: 'Intelligence Artificielle',
-    tagColor: '#0ea5e9',
-    faq: [
-      { q: 'Combien coûte l\'utilisation des agents au quotidien ?', a: 'Le coût dépend de votre usage. Pour une TPE typique (50 prospects/semaine, 2 articles/semaine, veille quotidienne, 20 emails support/jour), comptez 1 à 5€/mois d\'API OpenAI. Le guide inclus explique comment limiter les coûts.' },
-      { q: 'Faut-il un compte OpenAI payant ?', a: 'Oui, une clé API OpenAI avec crédit est nécessaire. L\'offre Pay-as-you-go d\'OpenAI suffit — pas besoin de ChatGPT Plus. Le guide explique comment créer votre compte et charger 10€ de crédit pour commencer.' },
-      { q: 'Les agents fonctionnent-ils sans intervention humaine ?', a: 'Oui pour les tâches routinières. L\'Agent Support escalade les cas complexes vers vous par email. L\'Agent Prospection vous envoie les emails pour validation avant envoi (paramétrable).' },
-      { q: 'Peut-on utiliser Claude ou Gemini à la place de GPT-4 ?', a: 'Oui. Les workflows utilisent des nœuds HTTP génériques et peuvent être adaptés pour appeler l\'API Anthropic (Claude) ou Google (Gemini). La documentation du nœud à modifier est incluse.' },
     ],
   },
   {

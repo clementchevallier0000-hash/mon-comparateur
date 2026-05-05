@@ -16,17 +16,9 @@ const PRODUCTS: Record<string, { priceId: string; description: string }> = {
     priceId: process.env.STRIPE_PRICE_AUDIT!,
     description: 'Audit SaaS personnalisé',
   },
-  'rgpd-pack': {
-    priceId: process.env.STRIPE_PRICE_RGPD!,
-    description: 'Pack RGPD complet pour TPE',
-  },
   'fidelisation-pack': {
     priceId: process.env.STRIPE_PRICE_FIDELISATION!,
     description: 'Système de fidélisation client N8N',
-  },
-  'ai-agents-pack': {
-    priceId: process.env.STRIPE_PRICE_AI_AGENTS!,
-    description: 'Pack AI Agents N8N',
   },
   'notion-templates': {
     priceId: process.env.STRIPE_PRICE_NOTION!,
