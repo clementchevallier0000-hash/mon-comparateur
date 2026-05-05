@@ -20,19 +20,19 @@ const DB: Record<Besoin, Record<Budget, Recommandation[]>> = {
   crm: {
     gratuit:  [
       { nom: 'HubSpot CRM', slug: 'hubspot', prix: 'Gratuit', emoji: '🤝', raison: 'Le CRM gratuit le plus complet du marché. Parfait pour démarrer sans budget.', lien: 'https://hubspot.com' },
-      { nom: 'Folk', slug: 'folk', prix: 'Gratuit', emoji: '📋', raison: 'Ultra-simple, idéal si vous voulez un CRM sans complexité.', lien: 'https://folk.app' },
+      { nom: 'Folk', slug: 'folk', prix: 'Gratuit', emoji: '📋', raison: 'Ultra-simple, idéal si vous voulez un CRM sans complexité.', lien: 'https://try.folk.app/76n5ildmdfyu-s83uu' },
     ],
     '<20':    [
-      { nom: 'Karlia', slug: 'karlia', prix: 'Dès 15€/mois', emoji: '🇫🇷', raison: 'CRM français tout-en-un, conçu pour les TPE. Facturation incluse.', lien: 'https://karlia.fr' },
+      { nom: 'Karlia', slug: 'karlia', prix: 'Dès 15€/mois', emoji: '🇫🇷', raison: 'CRM français tout-en-un, conçu pour les TPE. Facturation incluse.', lien: 'https://karlia.fr/app/partners/share.php?link=1&p=14545xzz87k' },
       { nom: 'HubSpot CRM', slug: 'hubspot', prix: 'Gratuit', emoji: '🤝', raison: 'La version gratuite couvre largement les besoins d\'une petite structure.', lien: 'https://hubspot.com' },
     ],
     '20-50':  [
-      { nom: 'Pipedrive', slug: 'pipedrive', prix: 'Dès 24€/mois', emoji: '🔥', raison: 'Le meilleur CRM orienté vente. Interface claire, pipeline visuel, idéal pour les équipes commerciales.', lien: 'https://pipedrive.com' },
-      { nom: 'Karlia', slug: 'karlia', prix: 'Dès 15€/mois', emoji: '🇫🇷', raison: 'Alternative française avec devis et facturation intégrés.', lien: 'https://karlia.fr' },
+      { nom: 'Pipedrive', slug: 'pipedrive', prix: 'Dès 24€/mois', emoji: '🔥', raison: 'Le meilleur CRM orienté vente. Interface claire, pipeline visuel, idéal pour les équipes commerciales.', lien: 'https://aff.trypipedrive.com/l92tgns1agfa' },
+      { nom: 'Karlia', slug: 'karlia', prix: 'Dès 15€/mois', emoji: '🇫🇷', raison: 'Alternative française avec devis et facturation intégrés.', lien: 'https://karlia.fr/app/partners/share.php?link=1&p=14545xzz87k' },
     ],
     '50-100': [
-      { nom: 'Pipedrive', slug: 'pipedrive', prix: 'Dès 24€/mois', emoji: '🔥', raison: 'Plans avancés avec automatisations et rapports poussés.', lien: 'https://pipedrive.com' },
-      { nom: 'Zoho CRM', slug: 'zoho-crm', prix: 'Dès 20€/mois', emoji: '⚙️', raison: 'Très complet, excellent rapport fonctionnalités/prix.', lien: 'https://zoho.com/crm' },
+      { nom: 'Pipedrive', slug: 'pipedrive', prix: 'Dès 24€/mois', emoji: '🔥', raison: 'Plans avancés avec automatisations et rapports poussés.', lien: 'https://aff.trypipedrive.com/l92tgns1agfa' },
+      { nom: 'Zoho CRM', slug: 'zoho-crm', prix: 'Dès 20€/mois', emoji: '⚙️', raison: 'Très complet, excellent rapport fonctionnalités/prix.', lien: 'https://go.zoho.com/62ec' },
     ],
     '100+':   [
       { nom: 'Salesforce', slug: 'salesforce', prix: 'Sur devis', emoji: '🏆', raison: 'Le standard des grandes équipes commerciales. Puissant mais complexe.', lien: 'https://salesforce.com' },
@@ -41,16 +41,16 @@ const DB: Record<Besoin, Record<Budget, Recommandation[]>> = {
   },
   facturation: {
     gratuit:  [
-      { nom: 'Freebe', slug: 'freebe', prix: 'Gratuit', emoji: '🆓', raison: 'Logiciel de facturation 100% gratuit pour les freelances. Simple et efficace.', lien: 'https://freebe.fr' },
-      { nom: 'Indy', slug: 'indy', prix: 'Dès 0€', emoji: '🇫🇷', raison: 'Idéal pour les indépendants et micro-entrepreneurs. Version gratuite très complète.', lien: 'https://indy.fr' },
+      { nom: 'Freebe', slug: 'freebe', prix: 'Gratuit', emoji: '🆓', raison: 'Logiciel de facturation 100% gratuit pour les freelances. Simple et efficace.', lien: 'https://link.freebe.me/Ton-Meilleur-SaaS' },
+      { nom: 'Indy', slug: 'indy', prix: 'Dès 0€', emoji: '🇫🇷', raison: 'Idéal pour les indépendants et micro-entrepreneurs. Version gratuite très complète.', lien: 'https://www.indy.fr/?ae=1556' },
     ],
     '<20':    [
-      { nom: 'Indy', slug: 'indy', prix: 'Dès 0€', emoji: '🇫🇷', raison: 'Parfait pour les auto-entrepreneurs, avec comptabilité simplifiée incluse.', lien: 'https://indy.fr' },
+      { nom: 'Indy', slug: 'indy', prix: 'Dès 0€', emoji: '🇫🇷', raison: 'Parfait pour les auto-entrepreneurs, avec comptabilité simplifiée incluse.', lien: 'https://www.indy.fr/?ae=1556' },
       { nom: 'Zervant', slug: 'zervant', prix: 'Dès 9€/mois', emoji: '📄', raison: 'Interface épurée, idéale pour débuter avec la facturation professionnelle.', lien: 'https://zervant.com' },
     ],
     '20-50':  [
       { nom: 'Pennylane', slug: 'pennylane', prix: 'Dès 26€/mois', emoji: '💶', raison: 'La référence française : facturation + comptabilité synchronisée avec votre expert-comptable.', lien: 'https://pennylane.tech' },
-      { nom: 'Tiime', slug: 'tiime', prix: 'Dès 19€/mois', emoji: '⏱️', raison: 'Facturation, notes de frais et suivi de trésorerie dans une interface moderne.', lien: 'https://tiime.fr' },
+      { nom: 'Tiime', slug: 'tiime', prix: 'Dès 19€/mois', emoji: '⏱️', raison: 'Facturation, notes de frais et suivi de trésorerie dans une interface moderne.', lien: 'https://lb.affilae.com/r/?p=651c0d1e40e2d575f87b3b27&af=689&lp=https%3A%2F%2Fwww.tiime.fr%2Fhome-page%3Futm_source%3Dother%26utm_medium%3Daffiliation%26utm_campaign%3DTon%2520Meilleur%2520SaaS%26ae%3D689%26program_id%3D651c0d1e40e2d575f87b3b27%26program_name%3DTiime' },
     ],
     '50-100': [
       { nom: 'Pennylane', slug: 'pennylane', prix: 'Dès 26€/mois', emoji: '💶', raison: 'Plans avancés avec rapports financiers complets et multi-utilisateurs.', lien: 'https://pennylane.tech' },
@@ -71,15 +71,15 @@ const DB: Record<Besoin, Record<Budget, Recommandation[]>> = {
       { nom: 'Trello', slug: 'trello', prix: 'Gratuit', emoji: '📋', raison: 'Simple, visuel et efficace. La version gratuite suffit pour la plupart des usages.', lien: 'https://trello.com' },
     ],
     '20-50':  [
-      { nom: 'Monday.com', slug: 'monday', prix: 'Dès 9€/user', emoji: '🗂️', raison: 'Interface très visuelle, idéale pour piloter des projets complexes en équipe.', lien: 'https://monday.com' },
+      { nom: 'Monday.com', slug: 'monday', prix: 'Dès 9€/user', emoji: '🗂️', raison: 'Interface très visuelle, idéale pour piloter des projets complexes en équipe.', lien: 'https://try.monday.com/snl42apxurnu' },
       { nom: 'Notion', slug: 'notion', prix: 'Dès 8€/mois', emoji: '📝', raison: 'Solution flexible adaptable à tous les flux de travail.', lien: 'https://notion.so' },
     ],
     '50-100': [
-      { nom: 'Monday.com', slug: 'monday', prix: 'Dès 9€/user', emoji: '🗂️', raison: 'Plans Pro avec automatisations, intégrations et tableaux de bord avancés.', lien: 'https://monday.com' },
-      { nom: 'Monday CRM', slug: 'monday-crm', prix: 'Dès 9€/user', emoji: '🤝', raison: 'Si vous voulez fusionner gestion de projet et suivi client.', lien: 'https://monday.com/crm' },
+      { nom: 'Monday.com', slug: 'monday', prix: 'Dès 9€/user', emoji: '🗂️', raison: 'Plans Pro avec automatisations, intégrations et tableaux de bord avancés.', lien: 'https://try.monday.com/snl42apxurnu' },
+      { nom: 'Monday CRM', slug: 'monday-crm', prix: 'Dès 9€/user', emoji: '🤝', raison: 'Si vous voulez fusionner gestion de projet et suivi client.', lien: 'https://try.monday.com/snl42apxurnu' },
     ],
     '100+':   [
-      { nom: 'Monday.com', slug: 'monday', prix: 'Dès 9€/user', emoji: '🗂️', raison: 'Idéal pour les grandes équipes avec des projets complexes et multi-départements.', lien: 'https://monday.com' },
+      { nom: 'Monday.com', slug: 'monday', prix: 'Dès 9€/user', emoji: '🗂️', raison: 'Idéal pour les grandes équipes avec des projets complexes et multi-départements.', lien: 'https://try.monday.com/snl42apxurnu' },
       { nom: 'Odoo', slug: 'odoo', prix: 'Dès 8€/user', emoji: '🔧', raison: 'Gestion de projet intégrée à un ERP complet pour les structures ambitieuses.', lien: 'https://odoo.com' },
     ],
   },
@@ -107,23 +107,23 @@ const DB: Record<Besoin, Record<Budget, Recommandation[]>> = {
   },
   automatisation: {
     gratuit:  [
-      { nom: 'Make', slug: 'make', prix: 'Gratuit (1000 ops/mois)', emoji: '⚡', raison: 'Le plus accessible pour débuter l\'automatisation. Interface visuelle, pas de code.', lien: 'https://make.com' },
-      { nom: 'n8n', slug: 'n8n', prix: 'Gratuit (self-hosted)', emoji: '🔧', raison: 'Open source et puissant. Idéal si vous êtes à l\'aise avec le technique.', lien: 'https://n8n.io' },
+      { nom: 'Make', slug: 'make', prix: 'Gratuit (1000 ops/mois)', emoji: '⚡', raison: 'Le plus accessible pour débuter l\'automatisation. Interface visuelle, pas de code.', lien: 'https://www.make.com/en/register?pc=tonmeilleursaasmake' },
+      { nom: 'n8n', slug: 'n8n', prix: 'Gratuit (self-hosted)', emoji: '🔧', raison: 'Open source et puissant. Idéal si vous êtes à l\'aise avec le technique.', lien: 'https://n8n.partnerlinks.io/yp8mmyri5nu9' },
     ],
     '<20':    [
-      { nom: 'Make', slug: 'make', prix: 'Dès 9€/mois', emoji: '⚡', raison: 'Parfait pour automatiser sans coder. Large bibliothèque de connecteurs.', lien: 'https://make.com' },
+      { nom: 'Make', slug: 'make', prix: 'Dès 9€/mois', emoji: '⚡', raison: 'Parfait pour automatiser sans coder. Large bibliothèque de connecteurs.', lien: 'https://www.make.com/en/register?pc=tonmeilleursaasmake' },
     ],
     '20-50':  [
-      { nom: 'Make', slug: 'make', prix: 'Dès 9€/mois', emoji: '⚡', raison: 'Plans intermédiaires avec plus d\'opérations et des scénarios complexes.', lien: 'https://make.com' },
-      { nom: 'n8n', slug: 'n8n', prix: 'Dès 20€/mois (cloud)', emoji: '🔧', raison: 'Plus flexible que Make pour les automatisations avancées. Très apprécié des développeurs.', lien: 'https://n8n.io' },
+      { nom: 'Make', slug: 'make', prix: 'Dès 9€/mois', emoji: '⚡', raison: 'Plans intermédiaires avec plus d\'opérations et des scénarios complexes.', lien: 'https://www.make.com/en/register?pc=tonmeilleursaasmake' },
+      { nom: 'n8n', slug: 'n8n', prix: 'Dès 20€/mois (cloud)', emoji: '🔧', raison: 'Plus flexible que Make pour les automatisations avancées. Très apprécié des développeurs.', lien: 'https://n8n.partnerlinks.io/yp8mmyri5nu9' },
     ],
     '50-100': [
-      { nom: 'n8n', slug: 'n8n', prix: 'Dès 20€/mois', emoji: '🔧', raison: 'Idéal pour les automatisations complexes avec beaucoup d\'intégrations personnalisées.', lien: 'https://n8n.io' },
-      { nom: 'Make', slug: 'make', prix: 'Dès 9€/mois', emoji: '⚡', raison: 'Plans avancés avec des milliers d\'opérations et multi-utilisateurs.', lien: 'https://make.com' },
+      { nom: 'n8n', slug: 'n8n', prix: 'Dès 20€/mois', emoji: '🔧', raison: 'Idéal pour les automatisations complexes avec beaucoup d\'intégrations personnalisées.', lien: 'https://n8n.partnerlinks.io/yp8mmyri5nu9' },
+      { nom: 'Make', slug: 'make', prix: 'Dès 9€/mois', emoji: '⚡', raison: 'Plans avancés avec des milliers d\'opérations et multi-utilisateurs.', lien: 'https://www.make.com/en/register?pc=tonmeilleursaasmake' },
     ],
     '100+':   [
-      { nom: 'n8n', slug: 'n8n', prix: 'Self-hosted ou cloud', emoji: '🔧', raison: 'Solution enterprise avec déploiement on-premise, sécurité avancée et support dédié.', lien: 'https://n8n.io' },
-      { nom: 'Make', slug: 'make', prix: 'Plans entreprise', emoji: '⚡', raison: 'Plans sur mesure pour les grandes équipes avec des volumes d\'automatisation importants.', lien: 'https://make.com' },
+      { nom: 'n8n', slug: 'n8n', prix: 'Self-hosted ou cloud', emoji: '🔧', raison: 'Solution enterprise avec déploiement on-premise, sécurité avancée et support dédié.', lien: 'https://n8n.partnerlinks.io/yp8mmyri5nu9' },
+      { nom: 'Make', slug: 'make', prix: 'Plans entreprise', emoji: '⚡', raison: 'Plans sur mesure pour les grandes équipes avec des volumes d\'automatisation importants.', lien: 'https://www.make.com/en/register?pc=tonmeilleursaasmake' },
     ],
   },
 }
