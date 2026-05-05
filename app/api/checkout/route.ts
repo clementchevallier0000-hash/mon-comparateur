@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
       line_items: [{ price: p.priceId, quantity: 1 }],
       mode: 'payment',
       success_url: `${process.env.NEXT_PUBLIC_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_URL}/boutique`,
+      cancel_url: `${process.env.NEXT_PUBLIC_URL}/`,
       metadata: { product },
       payment_intent_data: { description: p.description },
     })

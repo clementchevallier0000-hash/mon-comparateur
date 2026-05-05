@@ -44,7 +44,7 @@ export default async function SuccessPage({
 }) {
   const { session_id } = await searchParams
 
-  if (!session_id) redirect('/boutique')
+  if (!session_id) redirect('/')
 
   let downloadUrl: string | null = null
   let tallyUrl: string | null = null
@@ -55,7 +55,7 @@ export default async function SuccessPage({
   try {
     const session = await stripe.checkout.sessions.retrieve(session_id)
 
-    if (session.payment_status !== 'paid') redirect('/boutique')
+    if (session.payment_status !== 'paid') redirect('/')
 
     customerEmail = session.customer_email || session.customer_details?.email || ''
     const productKey = (session.metadata?.product as string) || 'n8n-pack'
