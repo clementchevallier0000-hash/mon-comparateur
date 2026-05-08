@@ -63,12 +63,12 @@ const DB: Record<Besoin, Record<Budget, Recommandation[]>> = {
   },
   projet: {
     gratuit:  [
-      { nom: 'Trello', slug: 'trello', prix: 'Gratuit', emoji: '📋', raison: 'Le classique des outils de projet en mode kanban. Gratuit et très intuitif.', lien: 'https://trello.com' },
+      { nom: 'Notion', slug: 'notion', prix: 'Gratuit', emoji: '📝', raison: 'Wiki + gestion de projet dans un seul outil. Très flexible pour les petites équipes.', lien: 'https://notion.so' },
       { nom: 'Notion', slug: 'notion', prix: 'Gratuit', emoji: '📝', raison: 'Wiki + gestion de projet dans un seul outil. Très flexible pour les petites équipes.', lien: 'https://notion.so' },
     ],
     '<20':    [
       { nom: 'Notion', slug: 'notion', prix: 'Dès 8€/mois', emoji: '📝', raison: 'Outil tout-en-un : docs, projet, base de données. Idéal pour les freelances et TPE.', lien: 'https://notion.so' },
-      { nom: 'Trello', slug: 'trello', prix: 'Gratuit', emoji: '📋', raison: 'Simple, visuel et efficace. La version gratuite suffit pour la plupart des usages.', lien: 'https://trello.com' },
+      { nom: 'Notion', slug: 'notion', prix: 'Gratuit', emoji: '📝', raison: 'Simple et puissant. La version gratuite suffit pour la plupart des usages.', lien: 'https://notion.so' },
     ],
     '20-50':  [
       { nom: 'Monday.com', slug: 'monday', prix: 'Dès 9€/user', emoji: '🗂️', raison: 'Interface très visuelle, idéale pour piloter des projets complexes en équipe.', lien: 'https://try.monday.com/snl42apxurnu' },
