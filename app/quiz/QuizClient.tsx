@@ -36,7 +36,7 @@ const DB: Record<Besoin, Record<Budget, Recommandation[]>> = {
     ],
     '100+':   [
       { nom: 'Salesforce', slug: 'salesforce', prix: 'Sur devis', emoji: '🏆', raison: 'Le standard des grandes équipes commerciales. Puissant mais complexe.', lien: 'https://salesforce.com' },
-      { nom: 'Odoo', slug: 'odoo', prix: 'Dès 8€/user', emoji: '🔧', raison: 'ERP complet avec CRM intégré. Très flexible pour les structures qui grandissent.', lien: 'https://odoo.com' },
+      { nom: 'Zoho CRM', slug: 'zoho-crm', prix: 'Dès 20€/mois', emoji: '⚙️', raison: 'Très complet, excellent rapport fonctionnalités/prix pour les structures qui grandissent.', lien: 'https://go.zoho.com/62ec' },
     ],
   },
   facturation: {
@@ -58,7 +58,7 @@ const DB: Record<Besoin, Record<Budget, Recommandation[]>> = {
     ],
     '100+':   [
       { nom: 'Sellsy', slug: 'sellsy', prix: 'Dès 29€/mois', emoji: '🏢', raison: 'Solution complète pour PME avec gestion commerciale et comptabilité avancée.', lien: 'https://sellsy.fr' },
-      { nom: 'Odoo', slug: 'odoo', prix: 'Dès 8€/user', emoji: '🔧', raison: 'ERP complet avec module facturation très puissant pour les structures en croissance.', lien: 'https://odoo.com' },
+      { nom: 'Pennylane', slug: 'pennylane', prix: 'Dès 26€/mois', emoji: '💶', raison: 'Solution complète pour PME avec gestion commerciale et comptabilité avancée.', lien: 'https://pennylane.tech' },
     ],
   },
   projet: {
@@ -80,7 +80,7 @@ const DB: Record<Besoin, Record<Budget, Recommandation[]>> = {
     ],
     '100+':   [
       { nom: 'Monday.com', slug: 'monday', prix: 'Dès 9€/user', emoji: '🗂️', raison: 'Idéal pour les grandes équipes avec des projets complexes et multi-départements.', lien: 'https://try.monday.com/snl42apxurnu' },
-      { nom: 'Odoo', slug: 'odoo', prix: 'Dès 8€/user', emoji: '🔧', raison: 'Gestion de projet intégrée à un ERP complet pour les structures ambitieuses.', lien: 'https://odoo.com' },
+      { nom: 'Monday.com', slug: 'monday', prix: 'Dès 9€/user', emoji: '🗂️', raison: 'Idéal pour les grandes équipes avec des projets complexes et multi-départements.', lien: 'https://try.monday.com/snl42apxurnu' },
     ],
   },
   seo: {
