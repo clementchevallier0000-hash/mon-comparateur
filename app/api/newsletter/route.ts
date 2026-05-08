@@ -15,7 +15,7 @@ const PROMO_CODE = 'BIENVENUE10'
 
 async function sendWelcomeEmail(email: string, downloadUrl: string | null, alreadySubscribed: boolean) {
   await resend.emails.send({
-    from: 'TonMeilleurSaaS <newsletter@ton-meilleur-saas.fr>',
+    from: 'TonMeilleurSaaS <onboarding@resend.dev>',
     to: email,
     subject: alreadySubscribed
       ? '📥 Votre guide Stack SaaS TPE — comme demandé'
