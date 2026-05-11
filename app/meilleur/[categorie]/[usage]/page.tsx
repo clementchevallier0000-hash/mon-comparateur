@@ -7,15 +7,7 @@ import SiteHeader from '@/app/components/SiteHeader'
 import AffiliateButton from '@/app/components/AffiliateButton'
 import SiteFooter from '@/app/components/SiteFooter'
 import BackToTop from '@/app/components/BackToTop'
-
-function getLogoUrl(lienAffilie: string): string | null {
-  try {
-    const hostname = new URL(lienAffilie).hostname.replace('www.', '')
-    return `https://www.google.com/s2/favicons?domain=${hostname}&sz=64`
-  } catch {
-    return null
-  }
-}
+import { getLogoUrl } from '@/lib/logo'
 
 const catColors: Record<string, { accent: string, bg: string, light: string, gradient: string }> = {
   'crm':               { accent: '#2563eb', bg: '#eff6ff', light: '#dbeafe', gradient: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #1e40af 100%)' },

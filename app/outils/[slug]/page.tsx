@@ -7,15 +7,7 @@ import ScrollAnimations from '@/app/components/ScrollAnimations'
 import SiteHeader from '@/app/components/SiteHeader'
 import SiteFooter from '@/app/components/SiteFooter'
 import BackToTop from '@/app/components/BackToTop'
-
-function getLogoUrl(lienAffilie: string): string | null {
-  try {
-    const hostname = new URL(lienAffilie).hostname.replace('www.', '')
-    return `https://www.google.com/s2/favicons?domain=${hostname}&sz=128`
-  } catch {
-    return null
-  }
-}
+import { getLogoUrl, getRealDomain } from '@/lib/logo'
 
 const OUTILS_PERSO = new Set([
   'semrush', 'semji', 'n8n', 'make', 'henrri',
@@ -104,7 +96,7 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
           {/* Logo + nom */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '16px' }}>
             <div style={{ width: '64px', height: '64px', background: 'rgba(255,255,255,0.1)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.15)', flexShrink: 0 }}>
-              <LogoImg src={getLogoUrl(outil.lien_affilie)} alt={outil.nom} />
+              <LogoImg src={getLogoUrl(outil.lien_affilie, 128)} alt={outil.nom} />
             </div>
             <div>
               <h1 className="outil-h1" style={{ fontFamily: "'Fraunces', serif", fontSize: '36px', fontWeight: 800, color: '#fff', letterSpacing: '-1px', lineHeight: 1.1, marginBottom: '4px' }}>
@@ -237,7 +229,7 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
                       <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#28c840' }} />
                     </div>
                     <div style={{ flex: 1, background: '#fff', borderRadius: '6px', height: '22px', display: 'flex', alignItems: 'center', paddingLeft: '10px', fontSize: '11px', color: '#94a3b8', overflow: 'hidden' }}>
-                      {(() => { try { return new URL(outil.lien_affilie).hostname } catch { return outil.nom } })()}
+                      {getRealDomain(outil.lien_affilie) ?? outil.nom}
                     </div>
                   </div>
                   <img
@@ -355,7 +347,7 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
             <div style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '16px', padding: '24px', boxShadow: '0 2px 12px rgba(0,0,0,0.05)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
                 <div style={{ width: '40px', height: '40px', background: c.bg, borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: `1px solid ${c.light}`, flexShrink: 0 }}>
-                  <LogoImg src={getLogoUrl(outil.lien_affilie)} alt={outil.nom} />
+                  <LogoImg src={getLogoUrl(outil.lien_affilie, 128)} alt={outil.nom} />
                 </div>
                 <div>
                   <p style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a' }}>{outil.nom}</p>

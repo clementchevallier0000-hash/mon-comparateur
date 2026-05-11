@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import { getClearbitLogoUrl } from '@/lib/logo'
 
 type Outil = {
   id: number
@@ -24,17 +25,8 @@ const avantages: Record<string, string[]> = {
   'n8n': ['Open source', 'Auto-hébergeable', 'Gratuit en self-hosted', 'Flexibilité maximale'],
 }
 
-function getLogo(lienAffilie: string, size: number = 32) {
-  try {
-    const hostname = new URL(lienAffilie).hostname.replace('www.', '')
-    return `https://logo.clearbit.com/${hostname}`
-  } catch {
-    return null
-  }
-}
-
 function LogoImg({ lienAffilie, nom, size = 32 }: { lienAffilie: string, nom: string, size?: number }) {
-  const src = getLogo(lienAffilie, size)
+  const src = getClearbitLogoUrl(lienAffilie)
   if (!src) return <span style={{ fontSize: size * 0.7 }}>📦</span>
   return (
     <img

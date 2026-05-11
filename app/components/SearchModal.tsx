@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@supabase/supabase-js'
+import { getLogoUrl } from '@/lib/logo'
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -63,12 +64,6 @@ interface Guide {
   href: string
 }
 
-function getLogoUrl(url: string): string | null {
-  try {
-    const hostname = new URL(url).hostname.replace('www.', '')
-    return `https://www.google.com/s2/favicons?domain=${hostname}&sz=64`
-  } catch { return null }
-}
 
 export default function SearchModal() {
   const router = useRouter()

@@ -1,6 +1,7 @@
 'use client'
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
+import { getLogoUrl } from '@/lib/logo'
 
 interface Outil {
   id: number
@@ -22,10 +23,6 @@ interface Props {
   catSlug: string
 }
 
-function getLogoUrl(url: string): string | null {
-  try { return `https://www.google.com/s2/favicons?domain=${new URL(url).hostname.replace('www.', '')}&sz=64` }
-  catch { return null }
-}
 
 const rankConfig: Record<number, { emoji: string; label: string; labelColor: string; labelBg: string; labelBorder: string; borderColor: string }> = {
   0: { emoji: '🥇', label: '🏆 Meilleur choix', labelColor: '#854d0e', labelBg: '#fefce8', labelBorder: '#fde047', borderColor: '#fbbf24' },

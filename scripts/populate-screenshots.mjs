@@ -8,18 +8,36 @@
  */
 
 import { createClient } from '@supabase/supabase-js'
-import * as dotenv from 'dotenv'
-dotenv.config({ path: '.env.local' })
+import { readFileSync } from 'fs'
+
+const env = Object.fromEntries(
+  readFileSync('.env.local', 'utf8').split('\n')
+    .filter(l => l.includes('=') && !l.startsWith('#'))
+    .map(l => { const i = l.indexOf('='); return [l.slice(0, i).trim(), l.slice(i + 1).trim()] })
+)
 
 const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
+  env.NEXT_PUBLIC_SUPABASE_URL,
+  env.SUPABASE_SERVICE_ROLE_KEY
 )
+
+const AFFILIATE_DOMAIN_MAP = {
+  'get.capsulenow.io': 'capsulecrm.com',
+  'try.folk.app': 'folk.app',
+  'link.freebe.me': 'freebe.fr',
+  'n8n.partnerlinks.io': 'n8n.io',
+  'try.monday.com': 'monday.com',
+  'aff.trypipedrive.com': 'pipedrive.com',
+  'lb.affilae.com': 'tiime.fr',
+  'go.zoho.com': 'zoho.com',
+}
 
 function getRootUrl(url) {
   try {
     const u = new URL(url)
-    return `${u.protocol}//${u.hostname}`
+    const hostname = u.hostname.replace('www.', '')
+    const realHostname = AFFILIATE_DOMAIN_MAP[hostname] ?? hostname
+    return `https://${realHostname}`
   } catch {
     return url
   }
