@@ -8,6 +8,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { data: cas_usage } = await supabase.from('cas_usage').select('slug, categorie_id, categories(slug)')
   const { data: types } = await supabase.from('types_entreprise').select('slug')
   const { data: articles } = await supabase.from('articles').select('slug,date_publication')
+  const { data: outils } = await supabase.from('outils').select('slug')
 
   const categoriesUrls = categories?.map((cat) => ({
     url: `${baseUrl}/categorie/${cat.slug}`,
@@ -55,6 +56,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })) || []),
   ]
 
+  const outilsUrls: MetadataRoute.Sitemap = (outils ?? []).map(o => ({
+    url: `${baseUrl}/outils/${o.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }))
+
   return [
     {
       url: baseUrl,
@@ -68,7 +76,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
-...categoriesUrls,
+    ...categoriesUrls,
+    ...outilsUrls,
     ...programmatiquesUrls,
     ...blogUrls,
   ]
