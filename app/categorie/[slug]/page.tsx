@@ -123,6 +123,8 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
         .compact-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); transform: translateY(-1px); border-color: ${c.accent}44 !important; }
         .essayer-btn { transition: all 0.2s ease; }
         .essayer-btn:hover { opacity: 0.85; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+        .quiz-cta-banner { transition: all 0.2s ease; }
+        .quiz-cta-banner:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.1); transform: translateY(-1px); }
 
         @media (max-width: 768px) {
           .cat-header { padding: 0 16px !important; }
@@ -185,6 +187,26 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* CTA Quiz */}
+      <section style={{ padding: '28px 40px 0' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+          <Link href="/quiz" className="quiz-cta-link" style={{ textDecoration: 'none', display: 'block' }}>
+            <div className="quiz-cta-banner" style={{ background: `linear-gradient(135deg, ${c.accent}18 0%, ${c.accent}08 100%)`, border: `1.5px solid ${c.accent}33`, borderRadius: '16px', padding: '18px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap', transition: 'all 0.2s' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                <div style={{ width: '44px', height: '44px', background: c.accent, borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', flexShrink: 0 }}>🎯</div>
+                <div>
+                  <p style={{ fontSize: '14px', fontWeight: 800, color: '#0f172a', marginBottom: '2px' }}>Pas sûr de quel outil choisir ?</p>
+                  <p style={{ fontSize: '13px', color: '#64748b' }}>Faites le quiz en 2 minutes · Recommandation personnalisée selon votre profil et budget</p>
+                </div>
+              </div>
+              <span style={{ fontSize: '13px', fontWeight: 700, color: c.accent, background: `${c.accent}15`, border: `1px solid ${c.accent}33`, borderRadius: '999px', padding: '7px 16px', flexShrink: 0 }}>
+                Démarrer le quiz →
+              </span>
+            </div>
+          </Link>
         </div>
       </section>
 

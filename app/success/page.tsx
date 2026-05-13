@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
+import BackToTop from '@/app/components/BackToTop'
 import Stripe from 'stripe'
 import { createClient } from '@supabase/supabase-js'
 
@@ -75,6 +76,7 @@ export default async function SuccessPage({
   }
 
   return (
+    <>
     <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#f8fafc', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 20px' }}>
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Fraunces:wght@700;800&display=swap" rel="stylesheet" />
 
@@ -154,5 +156,7 @@ export default async function SuccessPage({
         </Link>
       </div>
     </main>
+    <BackToTop />
+    </>
   )
 }

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import BackToTop from '@/app/components/BackToTop'
 
 export const metadata: Metadata = {
   title: 'Conditions Générales de Vente — TonMeilleurSaaS',
@@ -16,6 +17,7 @@ const textStyle = { fontSize: '15px', color: '#374151', lineHeight: 1.7 }
 
 export default function CGV() {
   return (
+    <>
     <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#f8fafc', minHeight: '100vh', padding: '60px 24px' }}>
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Fraunces:wght@700;800&display=swap" rel="stylesheet" />
 
@@ -286,5 +288,7 @@ export default function CGV() {
         </p>
       </div>
     </main>
+    <BackToTop />
+    </>
   )
 }
