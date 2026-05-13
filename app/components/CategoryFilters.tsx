@@ -2,6 +2,7 @@
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import { getLogoUrl } from '@/lib/logo'
+import { NOTE_SOURCES } from '@/lib/noteSources'
 
 interface Outil {
   id: number
@@ -231,7 +232,10 @@ export default function CategoryFilters({ outils, c, icon, catSlug }: Props) {
                     </td>
                     <td style={{ padding: '12px 16px', textAlign: 'center' }}>
                       {outil.note
-                        ? <span style={{ fontSize: '13px', fontWeight: 700, color: '#f59e0b' }}>★ {outil.note}/5</span>
+                        ? <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px' }}>
+                            <span style={{ fontSize: '13px', fontWeight: 700, color: '#f59e0b' }}>★ {outil.note}/5</span>
+                            {NOTE_SOURCES[outil.id] && <span style={{ fontSize: '10px', fontWeight: 600, color: '#94a3b8', background: '#f1f5f9', border: '1px solid #e2e8f0', borderRadius: '4px', padding: '0px 5px' }}>{NOTE_SOURCES[outil.id]}</span>}
+                          </div>
                         : <span style={{ fontSize: '12px', color: '#cbd5e1' }}>—</span>
                       }
                     </td>
@@ -305,6 +309,7 @@ export default function CategoryFilters({ outils, c, icon, catSlug }: Props) {
                               <span key={s} style={{ color: s <= Math.round(outil.note!) ? '#f59e0b' : '#e2e8f0', fontSize: '13px' }}>★</span>
                             ))}
                             <span style={{ fontSize: '12px', color: '#64748b', marginLeft: '4px' }}>{outil.note}/5</span>
+                            {NOTE_SOURCES[outil.id] && <span style={{ fontSize: '10px', fontWeight: 600, color: '#94a3b8', background: '#f1f5f9', border: '1px solid #e2e8f0', borderRadius: '4px', padding: '0px 5px', marginLeft: '2px' }}>{NOTE_SOURCES[outil.id]}</span>}
                           </div>
                         )}
                         <div style={{ background: c.bg, color: c.accent, border: `1px solid ${c.light}`, borderRadius: '8px', padding: '8px 12px', fontSize: '12px', fontWeight: 700, textAlign: 'center' }}>

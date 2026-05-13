@@ -8,6 +8,7 @@ import SiteHeader from '@/app/components/SiteHeader'
 import SiteFooter from '@/app/components/SiteFooter'
 
 import { getLogoUrl, getRealDomain } from '@/lib/logo'
+import { NOTE_SOURCES } from '@/lib/noteSources'
 
 const OUTILS_PERSO = new Set([
   'semrush', 'semji', 'n8n', 'make', 'henrri',
@@ -109,6 +110,7 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
                       <span key={s} style={{ color: s <= Math.round(note) ? '#fbbf24' : 'rgba(255,255,255,0.2)', fontSize: '14px' }}>★</span>
                     ))}
                     <span style={{ fontSize: '13px', fontWeight: 700, color: '#fff', marginLeft: '2px' }}>{note}/5</span>
+                    {NOTE_SOURCES[outil.id] && <span style={{ fontSize: '10px', fontWeight: 700, color: 'rgba(255,255,255,0.5)', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '4px', padding: '1px 6px', marginLeft: '2px' }}>{NOTE_SOURCES[outil.id]}</span>}
                   </div>
                 )}
                 <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)' }}>·</span>
@@ -175,7 +177,10 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
           </p>
           {note && (
             <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.1)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.45)' }}>Ma note</span>
+              <div>
+                <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.45)' }}>Note utilisateurs</span>
+                {NOTE_SOURCES[outil.id] && <div style={{ fontSize: '10px', fontWeight: 600, color: 'rgba(255,255,255,0.3)', marginTop: '2px' }}>Source : {NOTE_SOURCES[outil.id]}</div>}
+              </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                 <span style={{ fontSize: '18px', fontWeight: 800, color: '#fff', fontFamily: "'Fraunces', serif" }}>{note}</span>
                 <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)' }}>/5</span>
