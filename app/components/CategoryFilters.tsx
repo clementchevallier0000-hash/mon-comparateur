@@ -1,7 +1,6 @@
 'use client'
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import { getLogoUrl } from '@/lib/logo'
 
 interface Outil {
@@ -30,14 +29,6 @@ const rankConfig: Record<number, { emoji: string; label: string; labelColor: str
   1: { emoji: '🥈', label: '🥈 2ème choix', labelColor: '#374151', labelBg: '#f9fafb', labelBorder: '#d1d5db', borderColor: '#9ca3af' },
   2: { emoji: '🥉', label: '🥉 3ème choix', labelColor: '#92400e', labelBg: '#fff7ed', labelBorder: '#fcd34d', borderColor: '#f59e0b' },
 }
-
-const profilShortcuts = [
-  { slug: 'freelance', label: '👤 Freelance' },
-  { slug: 'auto-entrepreneur', label: '🧾 Auto-entrepreneur' },
-  { slug: 'tpe', label: '🏪 TPE' },
-  { slug: 'pme', label: '🏢 PME' },
-  { slug: 'startup', label: '🚀 Startup' },
-]
 
 type PrixFilter = 'tous' | 'gratuit' | '<20' | '20-50' | '50-100' | '100+'
 type BonusFilter = 'essai' | 'note4'
@@ -71,7 +62,6 @@ function computeBadge(outil: Outil, allOutils: Outil[], index: number): { label:
 }
 
 export default function CategoryFilters({ outils, c, icon, catSlug }: Props) {
-  const router = useRouter()
   const [prix, setPrix] = useState<PrixFilter>('tous')
   const [bonus, setBonus] = useState<Set<BonusFilter>>(new Set())
   const [annuel, setAnnuel] = useState(false)
@@ -132,33 +122,15 @@ export default function CategoryFilters({ outils, c, icon, catSlug }: Props) {
         .top-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.1); transform: translateY(-3px); }
         .compact-card { transition: all 0.25s ease; }
         .compact-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); transform: translateY(-1px); }
-        .profil-pill { transition: all 0.15s ease; cursor: pointer; border: none; font-family: inherit; }
-        .profil-pill:hover { background: #f1f5f9 !important; border-color: #94a3b8 !important; }
         .logo-img { width: 100%; height: 100%; object-fit: contain; border-radius: 4px; }
         .table-row:hover { background: #f8fafc !important; }
         @media (max-width: 768px) {
           .filter-bar { gap: 6px !important; }
           .top3-grid { grid-template-columns: 1fr !important; }
           .rest-grid { grid-template-columns: 1fr !important; }
-          .profil-bar { gap: 6px !important; }
           .view-table { display: block !important; overflow-x: auto !important; }
         }
       `}</style>
-
-      {/* Raccourcis profil */}
-      <div className="profil-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '16px' }}>
-        <span style={{ fontSize: '12px', color: '#94a3b8', fontWeight: 600, alignSelf: 'center', marginRight: '2px' }}>Je suis :</span>
-        {profilShortcuts.map(p => (
-          <button
-            key={p.slug}
-            className="profil-pill"
-            onClick={() => router.push(`/meilleur/${catSlug}/${p.slug}`)}
-            style={{ padding: '5px 13px', borderRadius: '999px', fontSize: '12px', fontWeight: 600, background: '#fff', color: '#475569', border: '1.5px solid #e2e8f0', cursor: 'pointer' }}
-          >
-            {p.label}
-          </button>
-        ))}
-      </div>
 
       {/* Barre de filtres */}
       <div style={{ marginBottom: '16px' }}>
