@@ -6,7 +6,7 @@ import ScrollAnimations from '@/app/components/ScrollAnimations'
 import SiteHeader from '@/app/components/SiteHeader'
 import AffiliateButton from '@/app/components/AffiliateButton'
 import SiteFooter from '@/app/components/SiteFooter'
-import BackToTop from '@/app/components/BackToTop'
+
 import { getLogoUrl } from '@/lib/logo'
 
 const catColors: Record<string, { accent: string, bg: string, light: string, gradient: string }> = {
@@ -505,7 +505,7 @@ export default async function MeilleurPage({ params }: { params: Promise<{ categ
         </div>
       </section>
       <SiteFooter />
-      <BackToTop />
+
     </main>
   )
 }

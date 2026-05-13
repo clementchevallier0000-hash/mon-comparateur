@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import SiteHeader from '@/app/components/SiteHeader'
 import SiteFooter from '@/app/components/SiteFooter'
-import BackToTop from '@/app/components/BackToTop'
+
 import Breadcrumb from '@/app/components/Breadcrumb'
 import ContactForm from './ContactForm'
 
@@ -107,7 +107,7 @@ export default function ContactPage() {
       `}</style>
 
       <SiteFooter />
-      <BackToTop />
+
     </main>
   )
 }

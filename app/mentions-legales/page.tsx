@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import BackToTop from '@/app/components/BackToTop'
+
 
 export const metadata: Metadata = {
   title: 'Mentions légales — TonMeilleurSaaS',
@@ -155,7 +155,7 @@ export default function MentionsLegales() {
         </p>
       </div>
     </main>
-    <BackToTop />
+
     </>
   )
 }

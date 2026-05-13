@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import BackToTop from '@/app/components/BackToTop'
+
 
 export const metadata: Metadata = {
   title: 'Conditions Générales de Vente — TonMeilleurSaaS',
@@ -288,7 +288,7 @@ export default function CGV() {
         </p>
       </div>
     </main>
-    <BackToTop />
+
     </>
   )
 }

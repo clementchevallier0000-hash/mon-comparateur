@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import BackToTop from '@/app/components/BackToTop'
+
 
 export const metadata: Metadata = {
   title: 'Politique de confidentialité & Cookies — TonMeilleurSaaS',
@@ -295,7 +295,7 @@ export default function PolitiqueConfidentialite() {
         </p>
       </div>
     </main>
-    <BackToTop />
+
     </>
   )
 }

@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import SiteHeader from '@/app/components/SiteHeader'
 import Breadcrumb from '@/app/components/Breadcrumb'
 import SiteFooter from '@/app/components/SiteFooter'
-import BackToTop from '@/app/components/BackToTop'
+
 
 export const metadata: Metadata = {
   title: 'À propos de Clément — Fondateur du comparatif logiciels SaaS TonMeilleurSaaS',
@@ -119,7 +119,7 @@ export default function AProposPage() {
 
       </div>
       <SiteFooter />
-      <BackToTop />
+
     </main>
   )
 }

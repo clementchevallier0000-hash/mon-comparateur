@@ -5,7 +5,7 @@ import ScrollAnimations from '@/app/components/ScrollAnimations'
 import SiteHeader from '@/app/components/SiteHeader'
 import CategoryFilters from '@/app/components/CategoryFilters'
 import SiteFooter from '@/app/components/SiteFooter'
-import BackToTop from '@/app/components/BackToTop'
+
 
 function getLogoUrl(lienAffilie: string): string | null {
   try {
@@ -310,7 +310,7 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
         </div>
       </section>
       <SiteFooter />
-      <BackToTop />
+
     </main>
   )
 }

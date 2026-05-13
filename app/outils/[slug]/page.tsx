@@ -6,7 +6,7 @@ import LogoImg from '@/app/components/LogoImg'
 import ScrollAnimations from '@/app/components/ScrollAnimations'
 import SiteHeader from '@/app/components/SiteHeader'
 import SiteFooter from '@/app/components/SiteFooter'
-import BackToTop from '@/app/components/BackToTop'
+
 import { getLogoUrl, getRealDomain } from '@/lib/logo'
 
 const OUTILS_PERSO = new Set([
@@ -434,7 +434,7 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
         </div>
       </div>
       <SiteFooter />
-      <BackToTop />
+
     </main>
   )
 }

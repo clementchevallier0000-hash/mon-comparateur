@@ -8,7 +8,7 @@ import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
 import type { Metadata } from "next";
 import SiteFooter from '@/app/components/SiteFooter'
-import BackToTop from '@/app/components/BackToTop'
+
 
 export const metadata: Metadata = {
   title: "Logiciel entreprise : les meilleurs logiciels pour TPE PME",
@@ -572,7 +572,7 @@ export default async function Home() {
         </div>
       </section>
       <SiteFooter />
-      <BackToTop />
+
     </main>
   )
 }

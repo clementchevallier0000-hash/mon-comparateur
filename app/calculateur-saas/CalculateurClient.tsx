@@ -4,7 +4,7 @@ import Link from 'next/link'
 import SiteHeader from '@/app/components/SiteHeader'
 import Breadcrumb from '@/app/components/Breadcrumb'
 import SiteFooter from '@/app/components/SiteFooter'
-import BackToTop from '@/app/components/BackToTop'
+
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -364,7 +364,7 @@ export default function CalculateurSaas() {
         )}
       </div>
       <SiteFooter />
-      <BackToTop />
+
     </div>
   )
 }

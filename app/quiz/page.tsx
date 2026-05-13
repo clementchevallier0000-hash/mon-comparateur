@@ -4,7 +4,7 @@ import SiteHeader from '@/app/components/SiteHeader'
 import QuizClient from './QuizClient'
 import Breadcrumb from '@/app/components/Breadcrumb'
 import SiteFooter from '@/app/components/SiteFooter'
-import BackToTop from '@/app/components/BackToTop'
+
 
 export const metadata: Metadata = {
   title: 'Quiz : quel logiciel SaaS choisir ? Trouvez l\'outil fait pour vous',
@@ -137,7 +137,7 @@ export default function QuizPage() {
         </div>
       </section>
       <SiteFooter />
-      <BackToTop />
+
     </div>
   )
 }

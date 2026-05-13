@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
-import BackToTop from '@/app/components/BackToTop'
+
 import Stripe from 'stripe'
 import { createClient } from '@supabase/supabase-js'
 
@@ -156,7 +156,7 @@ export default async function SuccessPage({
         </Link>
       </div>
     </main>
-    <BackToTop />
+
     </>
   )
 }

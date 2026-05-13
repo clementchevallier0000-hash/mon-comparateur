@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Script from "next/script";
+import BackToTop from "@/app/components/BackToTop";
 import { Fraunces, DM_Sans } from "next/font/google";
 
 const fraunces = Fraunces({
@@ -75,6 +76,7 @@ export default function RootLayout({
       </head>
       <body>
         {children}
+        <BackToTop />
       </body>
     </html>
   );

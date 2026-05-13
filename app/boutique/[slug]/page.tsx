@@ -5,7 +5,7 @@ import SiteHeader from '@/app/components/SiteHeader'
 import BuyButton from '@/app/components/BuyButton'
 import { products, getProduct } from '../products'
 import SiteFooter from '@/app/components/SiteFooter'
-import BackToTop from '@/app/components/BackToTop'
+
 
 export function generateStaticParams() {
   return products.map(p => ({ slug: p.id }))
@@ -214,7 +214,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         </div>
       </div>
       <SiteFooter />
-      <BackToTop />
+
     </div>
   )
 }

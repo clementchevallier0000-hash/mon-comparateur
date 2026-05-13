@@ -3,7 +3,7 @@ import Link from 'next/link'
 import SiteHeader from '@/app/components/SiteHeader'
 import type { Metadata } from 'next'
 import SiteFooter from '@/app/components/SiteFooter'
-import BackToTop from '@/app/components/BackToTop'
+
 
 export const dynamic = 'force-dynamic'
 
@@ -124,7 +124,7 @@ export default async function BlogPage() {
         </div>
       </section>
       <SiteFooter />
-      <BackToTop />
+
     </main>
   )
 }

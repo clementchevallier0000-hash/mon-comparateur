@@ -5,7 +5,7 @@ import NewsletterInline from '@/app/components/NewsletterInline'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import SiteFooter from '@/app/components/SiteFooter'
-import BackToTop from '@/app/components/BackToTop'
+
 
 export const dynamic = 'force-dynamic'
 
@@ -217,7 +217,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         </section>
       )}
       <SiteFooter />
-      <BackToTop />
+
     </main>
   )
 }
