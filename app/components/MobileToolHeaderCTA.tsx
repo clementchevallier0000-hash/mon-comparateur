@@ -35,11 +35,15 @@ export default function MobileToolHeaderCTA({ nom, lienAffilie, accent, catSlug 
             align-items: center;
             padding: 0 16px;
             gap: 10px;
-            transform: translateY(-100%);
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
             box-shadow: 0 2px 12px rgba(0,0,0,0.07);
           }
-          .mobile-tool-header.is-visible { transform: translateY(0); }
+          .mobile-tool-header.is-visible {
+            opacity: 1;
+            visibility: visible;
+          }
         }
       `}</style>
       <div className={`mobile-tool-header${visible ? ' is-visible' : ''}`}>
