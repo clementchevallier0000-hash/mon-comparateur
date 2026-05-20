@@ -16,8 +16,8 @@ export default function MobileStickyCTA({ nom, lienAffilie, accent, prix }: Prop
       const scrollY = window.scrollY
       const docHeight = document.documentElement.scrollHeight
       const winHeight = window.innerHeight
-      // Apparaît après 300px, disparaît dans les 300 derniers px (footer)
-      setVisible(scrollY > 300 && scrollY < docHeight - winHeight - 300)
+      // Apparaît après 120px, disparaît seulement dans les 80 derniers px (footer)
+      setVisible(scrollY > 120 && scrollY < docHeight - winHeight - 80)
     }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
