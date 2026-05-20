@@ -111,6 +111,8 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
   const gratuitCount = outils?.filter(o => o.prix_mensuel === 0).length || 0
 
   return (
+    <>
+    <SiteHeader />
     <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#f8fafc', minHeight: '100vh', overflowX: 'hidden' }}>
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
       <ScrollAnimations />
@@ -151,8 +153,6 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
           .section-header { margin-bottom: 16px !important; }
         }
       `}</style>
-
-      <SiteHeader />
 
       {/* Hero */}
       <section className="cat-hero" style={{ background: c.gradient, padding: '56px 40px 48px', position: 'relative', overflow: 'hidden' }}>
@@ -309,8 +309,8 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
           </div>
         </div>
       </section>
-      <SiteFooter />
-
     </main>
+    <SiteFooter />
+    </>
   )
 }
