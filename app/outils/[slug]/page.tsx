@@ -9,6 +9,7 @@ import SiteFooter from '@/app/components/SiteFooter'
 
 import { getLogoUrl, getRealDomain } from '@/lib/logo'
 import { NOTE_SOURCES } from '@/lib/noteSources'
+import MobileStickyCTA from '@/app/components/MobileStickyCTA'
 
 const OUTILS_PERSO = new Set([
   'semrush', 'semji', 'n8n', 'make', 'henrri',
@@ -439,6 +440,13 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
         </div>
       </div>
       <SiteFooter />
+
+      <MobileStickyCTA
+        nom={outil.nom}
+        lienAffilie={outil.lien_affilie}
+        accent={c.accent}
+        prix={isFree ? 'Gratuit' : `À partir de ${outil.prix_mensuel}€/mois`}
+      />
 
     </main>
   )
