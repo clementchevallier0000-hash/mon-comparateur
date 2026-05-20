@@ -4,7 +4,6 @@ import SiteHeader from '@/app/components/SiteHeader'
 import type { Metadata } from 'next'
 import SiteFooter from '@/app/components/SiteFooter'
 
-
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
@@ -35,11 +34,21 @@ interface Article {
   date_publication: string
 }
 
-export default async function BlogPage() {
-  const { data: articles } = await supabase
+export default async function BlogPage({ searchParams }: { searchParams: Promise<{ cat?: string }> }) {
+  const { cat } = await searchParams
+
+  let query = supabase
     .from('articles')
     .select('id,slug,titre,description,categorie_slug,temps_lecture,date_publication')
     .order('date_publication', { ascending: false })
+
+  if (cat && catColors[cat]) {
+    query = query.eq('categorie_slug', cat)
+  }
+
+  const { data: articles } = await query
+
+  const activeCat = cat && catColors[cat] ? cat : null
 
   return (
     <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#fff', minHeight: '100vh' }}>
@@ -49,22 +58,20 @@ export default async function BlogPage() {
         * { margin:0; padding:0; box-sizing:border-box; }
         .article-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
         .article-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.1); }
-        .header-nav { display:flex; gap:32px; align-items:center; }
-        .mobile-menu-btn { display:none; }
+        .filter-pill { transition: all 0.15s ease; cursor: pointer; }
+        .filter-pill:hover { transform: translateY(-1px); }
         @media (max-width:768px) {
-          .header-inner { padding:0 20px !important; }
-          .header-nav { display:none !important; }
-          .mobile-menu-btn { display:flex !important; }
           .blog-hero { padding:48px 20px !important; }
           .blog-grid { grid-template-columns:1fr !important; }
           .blog-section { padding:48px 20px !important; }
+          .filter-bar { padding:0 20px !important; overflow-x: auto; flex-wrap: nowrap !important; }
         }
       `}</style>
 
       <SiteHeader />
 
       {/* Hero */}
-      <section className="blog-hero" style={{ padding:'72px 48px 56px', background:'linear-gradient(180deg,#f8fafc 0%,#fff 100%)' }}>
+      <section className="blog-hero" style={{ padding:'72px 48px 40px', background:'linear-gradient(180deg,#f8fafc 0%,#fff 100%)' }}>
         <div style={{ maxWidth:'800px', margin:'0 auto', textAlign:'center' }}>
           <div style={{ display:'inline-flex', alignItems:'center', gap:'8px', background:'#fff', border:'1px solid #e2e8f0', borderRadius:'999px', padding:'6px 16px', marginBottom:'24px', boxShadow:'0 1px 4px rgba(0,0,0,0.06)' }}>
             <span style={{ fontSize:'14px' }}>✍️</span>
@@ -79,37 +86,59 @@ export default async function BlogPage() {
         </div>
       </section>
 
+      {/* Category filter */}
+      <div className="filter-bar" style={{ padding:'0 48px', maxWidth:'1296px', margin:'0 auto', display:'flex', gap:'10px', flexWrap:'wrap', paddingTop:'32px', paddingBottom:'8px' }}>
+        <Link
+          href="/blog"
+          className="filter-pill"
+          style={{ display:'inline-flex', alignItems:'center', gap:'6px', padding:'8px 18px', borderRadius:'999px', fontSize:'13px', fontWeight:600, textDecoration:'none', background: !activeCat ? '#0f172a' : '#f1f5f9', color: !activeCat ? '#fff' : '#475569', border: !activeCat ? '1px solid #0f172a' : '1px solid #e2e8f0' }}
+        >
+          Tous les articles
+        </Link>
+        {Object.entries(catColors).map(([slug, c]) => (
+          <Link
+            key={slug}
+            href={`/blog?cat=${slug}`}
+            className="filter-pill"
+            style={{ display:'inline-flex', alignItems:'center', gap:'6px', padding:'8px 18px', borderRadius:'999px', fontSize:'13px', fontWeight:600, textDecoration:'none', background: activeCat === slug ? c.accent : c.bg, color: activeCat === slug ? '#fff' : c.accent, border: `1px solid ${c.accent}22` }}
+          >
+            {c.emoji} {c.name}
+          </Link>
+        ))}
+      </div>
+
       {/* Articles */}
-      <section className="blog-section" style={{ padding:'56px 48px 80px' }}>
+      <section className="blog-section" style={{ padding:'32px 48px 80px' }}>
         <div style={{ maxWidth:'1200px', margin:'0 auto' }}>
+          {activeCat && (
+            <p style={{ fontSize:'13px', color:'#94a3b8', marginBottom:'24px' }}>
+              {articles?.length ?? 0} article{(articles?.length ?? 0) > 1 ? 's' : ''} dans la catégorie <strong style={{ color: catColors[activeCat].accent }}>{catColors[activeCat].emoji} {catColors[activeCat].name}</strong>
+            </p>
+          )}
           {!articles?.length ? (
             <p style={{ textAlign:'center', color:'#94a3b8', fontSize:'16px' }}>Aucun article pour le moment. Revenez bientôt !</p>
           ) : (
             <div className="blog-grid" style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(340px,1fr))', gap:'28px' }}>
               {(articles as Article[]).map(article => {
-                const cat = catColors[article.categorie_slug] || { accent:'#64748b', bg:'#f8fafc', emoji:'📝', name:'Guide' }
+                const c = catColors[article.categorie_slug] || { accent:'#64748b', bg:'#f8fafc', emoji:'📝', name:'Guide' }
                 return (
                   <Link key={article.id} href={`/blog/${article.slug}`} style={{ textDecoration:'none' }}>
                     <article className="article-card" style={{ background:'#fff', border:'1px solid #e2e8f0', borderRadius:'20px', padding:'28px', height:'100%', display:'flex', flexDirection:'column', gap:'16px' }}>
-                      {/* Top meta */}
                       <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', flexWrap:'wrap', gap:'8px' }}>
-                        <span style={{ fontSize:'11px', fontWeight:700, padding:'3px 10px', borderRadius:'999px', background:cat.bg, color:cat.accent, border:`1px solid ${cat.accent}22` }}>
-                          {cat.emoji} {cat.name}
+                        <span style={{ fontSize:'11px', fontWeight:700, padding:'3px 10px', borderRadius:'999px', background:c.bg, color:c.accent, border:`1px solid ${c.accent}22` }}>
+                          {c.emoji} {c.name}
                         </span>
                         <span style={{ fontSize:'11px', color:'#94a3b8' }}>
                           {article.temps_lecture} min · {formatDate(article.date_publication)}
                         </span>
                       </div>
-                      {/* Title */}
                       <h2 style={{ fontSize:'18px', fontWeight:700, color:'#0f172a', lineHeight:1.35, fontFamily:"'DM Sans',sans-serif" }}>
                         {article.titre}
                       </h2>
-                      {/* Description */}
                       <p style={{ fontSize:'14px', color:'#64748b', lineHeight:1.6, flex:1, fontWeight:400 }}>
                         {article.description}
                       </p>
-                      {/* CTA */}
-                      <div style={{ display:'flex', alignItems:'center', gap:'6px', color:cat.accent, fontSize:'13px', fontWeight:700, marginTop:'auto' }}>
+                      <div style={{ display:'flex', alignItems:'center', gap:'6px', color:c.accent, fontSize:'13px', fontWeight:700, marginTop:'auto' }}>
                         Lire l&apos;article
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M5 12h14M12 5l7 7-7 7"/>

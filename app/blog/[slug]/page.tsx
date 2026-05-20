@@ -2,6 +2,7 @@ import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
 import SiteHeader from '@/app/components/SiteHeader'
 import NewsletterInline from '@/app/components/NewsletterInline'
+import ReadingProgressBar from '@/app/components/ReadingProgressBar'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import SiteFooter from '@/app/components/SiteFooter'
@@ -58,6 +59,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     .order('date_publication', { ascending: false })
     .limit(3)
 
+  const { data: topOutils } = await supabase
+    .from('outils')
+    .select('id,nom,slug,tagline')
+    .eq('categorie_slug', article.categorie_slug)
+    .not('note', 'is', null)
+    .order('note', { ascending: false })
+    .limit(4)
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -79,6 +88,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
   return (
     <main style={{ fontFamily:"'DM Sans',sans-serif", background:'#fff', minHeight:'100vh' }}>
+      <ReadingProgressBar color={cat?.accent || '#2563eb'} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800;1,9..40,300&family=Fraunces:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
 
@@ -189,6 +199,31 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               ))}
             </div>
           </div>
+
+          {/* Top outils */}
+          {topOutils && topOutils.length > 0 && (
+            <div style={{ background:'#f8fafc', borderRadius:'16px', padding:'20px', marginBottom:'20px', border:'1px solid #e2e8f0' }}>
+              <p style={{ fontSize:'11px', fontWeight:700, color:'#94a3b8', letterSpacing:'1.5px', textTransform:'uppercase', marginBottom:'14px' }}>Top outils {cat?.name}</p>
+              <div style={{ display:'flex', flexDirection:'column', gap:'8px' }}>
+                {topOutils.map((o, i) => (
+                  <Link key={o.id} href={`/outils/${o.slug}`} style={{ textDecoration:'none' }}>
+                    <div className="related-card" style={{ display:'flex', alignItems:'center', gap:'10px', padding:'10px 12px', borderRadius:'10px', background:'#fff', border:'1px solid #e2e8f0', cursor:'pointer' }}>
+                      <span style={{ fontSize:'11px', fontWeight:800, color: cat?.accent || '#64748b', background: cat?.bg || '#f1f5f9', borderRadius:'6px', padding:'2px 7px', flexShrink:0 }}>#{i+1}</span>
+                      <div style={{ minWidth:0 }}>
+                        <p style={{ fontSize:'12px', color:'#0f172a', fontWeight:700, lineHeight:1.3, marginBottom:'2px' }}>{o.nom}</p>
+                        {o.tagline && <p style={{ fontSize:'11px', color:'#94a3b8', lineHeight:1.3, overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap' }}>{o.tagline}</p>}
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+              {cat && (
+                <Link href={`/categorie/${cat.slug}`} style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:'4px', marginTop:'12px', fontSize:'12px', fontWeight:700, color: cat.accent, textDecoration:'none' }}>
+                  Voir tout le comparatif →
+                </Link>
+              )}
+            </div>
+          )}
 
           {/* Related articles */}
           {related && related.length > 0 && (
