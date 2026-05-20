@@ -9,7 +9,6 @@ import SiteFooter from '@/app/components/SiteFooter'
 
 import { getLogoUrl, getRealDomain } from '@/lib/logo'
 import { NOTE_SOURCES } from '@/lib/noteSources'
-import MobileToolHeaderCTA from '@/app/components/MobileToolHeaderCTA'
 
 const OUTILS_PERSO = new Set([
   'semrush', 'semji', 'n8n', 'make', 'henrri',
@@ -441,12 +440,6 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
       </div>
       <SiteFooter />
 
-      <MobileToolHeaderCTA
-        nom={outil.nom}
-        lienAffilie={outil.lien_affilie}
-        accent={c.accent}
-        catSlug={catSlug}
-      />
 
     </main>
   )
