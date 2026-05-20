@@ -110,8 +110,25 @@ export default async function CategoriePage({ params }: { params: Promise<{ slug
   const outilCount = outils?.length || 0
   const gratuitCount = outils?.filter(o => o.prix_mensuel === 0).length || 0
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: categorie?.h1 || `Meilleur ${categorie?.nom}`,
+    description: categorie?.description || '',
+    url: `https://ton-meilleur-saas.fr/categorie/${slug}`,
+    numberOfItems: outilCount,
+    itemListElement: outils?.slice(0, 10).map((o, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: o.nom,
+      url: `https://ton-meilleur-saas.fr/outils/${o.slug}`,
+      description: o.tagline || o.description || '',
+    })) ?? [],
+  }
+
   return (
     <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     <SiteHeader />
     <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#f8fafc', minHeight: '100vh', overflowX: 'hidden' }}>
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />

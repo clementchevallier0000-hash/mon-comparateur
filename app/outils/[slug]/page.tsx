@@ -67,8 +67,43 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
   const avantages: string[] = outil.avantages ?? []
   const inconvenients: string[] = outil.inconvenients ?? []
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: outil.nom,
+    description: outil.tagline || outil.description || '',
+    url: `https://ton-meilleur-saas.fr/outils/${slug}`,
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web, SaaS',
+    offers: {
+      '@type': 'Offer',
+      price: outil.prix_mensuel ?? 0,
+      priceCurrency: 'EUR',
+      availability: 'https://schema.org/InStock',
+    },
+    ...(note ? {
+      review: {
+        '@type': 'Review',
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: note,
+          bestRating: 5,
+        },
+        author: { '@type': 'Organization', name: 'TonMeilleurSaaS', url: 'https://ton-meilleur-saas.fr' },
+      },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: note,
+        bestRating: 5,
+        worstRating: 1,
+        ratingCount: 1,
+      },
+    } : {}),
+  }
+
   return (
     <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#f8fafc', minHeight: '100vh' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
       <ScrollAnimations />
 

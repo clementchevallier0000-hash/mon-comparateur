@@ -58,8 +58,28 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     .order('date_publication', { ascending: false })
     .limit(3)
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.titre,
+    description: article.description || '',
+    url: `https://ton-meilleur-saas.fr/blog/${article.slug}`,
+    datePublished: article.date_publication,
+    dateModified: article.date_publication,
+    author: { '@type': 'Organization', name: 'TonMeilleurSaaS', url: 'https://ton-meilleur-saas.fr' },
+    publisher: {
+      '@type': 'Organization',
+      name: 'TonMeilleurSaaS',
+      url: 'https://ton-meilleur-saas.fr',
+      logo: { '@type': 'ImageObject', url: 'https://ton-meilleur-saas.fr/favicon.ico' },
+    },
+    inLanguage: 'fr-FR',
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://ton-meilleur-saas.fr/blog/${article.slug}` },
+  }
+
   return (
     <main style={{ fontFamily:"'DM Sans',sans-serif", background:'#fff', minHeight:'100vh' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800;1,9..40,300&family=Fraunces:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
 
       <style>{`
