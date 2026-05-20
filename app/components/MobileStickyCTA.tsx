@@ -33,20 +33,19 @@ export default function MobileStickyCTA({ nom, lienAffilie, accent, prix }: Prop
           .mobile-sticky-cta {
             display: flex;
             position: fixed;
-            bottom: 0;
+            top: 68px;
             left: 0;
             right: 0;
-            z-index: 200;
-            padding: 12px 16px;
-            padding-bottom: calc(12px + env(safe-area-inset-bottom));
+            z-index: 99;
+            padding: 10px 16px;
             background: rgba(255,255,255,0.97);
-            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
             backdrop-filter: blur(12px);
             align-items: center;
             gap: 12px;
-            transform: translateY(100%);
+            transform: translateY(-100%);
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 -4px 24px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.07);
           }
           .mobile-sticky-cta.is-visible {
             transform: translateY(0);
