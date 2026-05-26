@@ -35,7 +35,7 @@ const DB: Record<Besoin, Record<Budget, Recommandation[]>> = {
       { nom: 'Zoho CRM', slug: 'zoho-crm', prix: 'Dès 20€/mois', emoji: '⚙️', raison: 'Très complet, excellent rapport fonctionnalités/prix.', lien: 'https://go.zoho.com/62ec' },
     ],
     '100+':   [
-      { nom: 'Salesforce', slug: 'salesforce', prix: 'Sur devis', emoji: '🏆', raison: 'Le standard des grandes équipes commerciales. Puissant mais complexe.', lien: 'https://salesforce.com' },
+      { nom: 'Creatio', slug: 'creatio', prix: 'Sur devis', emoji: '🏆', raison: 'CRM enterprise avec automatisation avancée des ventes et marketing. Idéal pour les équipes qui grandissent vite.', lien: 'https://creatio.com' },
       { nom: 'Zoho CRM', slug: 'zoho-crm', prix: 'Dès 20€/mois', emoji: '⚙️', raison: 'Très complet, excellent rapport fonctionnalités/prix pour les structures qui grandissent.', lien: 'https://go.zoho.com/62ec' },
     ],
   },
@@ -46,7 +46,7 @@ const DB: Record<Besoin, Record<Budget, Recommandation[]>> = {
     ],
     '<20':    [
       { nom: 'Indy', slug: 'indy', prix: 'Dès 0€', emoji: '🇫🇷', raison: 'Parfait pour les auto-entrepreneurs, avec comptabilité simplifiée incluse.', lien: 'https://www.indy.fr/?ae=1556' },
-      { nom: 'Zervant', slug: 'zervant', prix: 'Dès 9€/mois', emoji: '📄', raison: 'Interface épurée, idéale pour débuter avec la facturation professionnelle.', lien: 'https://zervant.com' },
+      { nom: 'Henrri', slug: 'henrri', prix: 'Gratuit', emoji: '📊', raison: 'Logiciel de facturation français 100% gratuit. Simple et efficace pour les petites structures.', lien: 'https://henrri.com' },
     ],
     '20-50':  [
       { nom: 'Pennylane', slug: 'pennylane', prix: 'Dès 26€/mois', emoji: '💶', raison: 'La référence française : facturation + comptabilité synchronisée avec votre expert-comptable.', lien: 'https://pennylane.tech' },
@@ -63,34 +63,34 @@ const DB: Record<Besoin, Record<Budget, Recommandation[]>> = {
   },
   projet: {
     gratuit:  [
-      { nom: 'Notion', slug: 'notion', prix: 'Gratuit', emoji: '📝', raison: 'Wiki + gestion de projet dans un seul outil. Très flexible pour les petites équipes.', lien: 'https://notion.so' },
-      { nom: 'Notion', slug: 'notion', prix: 'Gratuit', emoji: '📝', raison: 'Wiki + gestion de projet dans un seul outil. Très flexible pour les petites équipes.', lien: 'https://notion.so' },
+      { nom: 'Monday.com', slug: 'monday', prix: 'Gratuit (2 users)', emoji: '🗂️', raison: 'Interface visuelle très intuitive. La version gratuite convient pour démarrer seul ou en binôme.', lien: 'https://try.monday.com/snl42apxurnu' },
+      { nom: 'Monday CRM', slug: 'monday-crm', prix: 'Gratuit (2 users)', emoji: '🤝', raison: 'Si vous cherchez à combiner gestion de tâches et suivi de vos clients dès le départ.', lien: 'https://try.monday.com/snl42apxurnu' },
     ],
     '<20':    [
-      { nom: 'Notion', slug: 'notion', prix: 'Dès 8€/mois', emoji: '📝', raison: 'Outil tout-en-un : docs, projet, base de données. Idéal pour les freelances et TPE.', lien: 'https://notion.so' },
-      { nom: 'Notion', slug: 'notion', prix: 'Gratuit', emoji: '📝', raison: 'Simple et puissant. La version gratuite suffit pour la plupart des usages.', lien: 'https://notion.so' },
+      { nom: 'Monday.com', slug: 'monday', prix: 'Dès 9€/user', emoji: '🗂️', raison: 'Interface très visuelle et accessible, idéale pour les freelances et petites équipes.', lien: 'https://try.monday.com/snl42apxurnu' },
+      { nom: 'Monday CRM', slug: 'monday-crm', prix: 'Dès 9€/user', emoji: '🤝', raison: 'Pour combiner gestion de projet et suivi client dans un outil unique abordable.', lien: 'https://try.monday.com/snl42apxurnu' },
     ],
     '20-50':  [
       { nom: 'Monday.com', slug: 'monday', prix: 'Dès 9€/user', emoji: '🗂️', raison: 'Interface très visuelle, idéale pour piloter des projets complexes en équipe.', lien: 'https://try.monday.com/snl42apxurnu' },
-      { nom: 'Notion', slug: 'notion', prix: 'Dès 8€/mois', emoji: '📝', raison: 'Solution flexible adaptable à tous les flux de travail.', lien: 'https://notion.so' },
+      { nom: 'Monday CRM', slug: 'monday-crm', prix: 'Dès 9€/user', emoji: '🤝', raison: 'Si vous voulez fusionner gestion de projet et suivi client dans un seul outil.', lien: 'https://try.monday.com/snl42apxurnu' },
     ],
     '50-100': [
       { nom: 'Monday.com', slug: 'monday', prix: 'Dès 9€/user', emoji: '🗂️', raison: 'Plans Pro avec automatisations, intégrations et tableaux de bord avancés.', lien: 'https://try.monday.com/snl42apxurnu' },
-      { nom: 'Monday CRM', slug: 'monday-crm', prix: 'Dès 9€/user', emoji: '🤝', raison: 'Si vous voulez fusionner gestion de projet et suivi client.', lien: 'https://try.monday.com/snl42apxurnu' },
+      { nom: 'Monday CRM', slug: 'monday-crm', prix: 'Dès 9€/user', emoji: '🤝', raison: 'Si vous voulez fusionner gestion de projet et suivi client dans un seul outil.', lien: 'https://try.monday.com/snl42apxurnu' },
     ],
     '100+':   [
       { nom: 'Monday.com', slug: 'monday', prix: 'Dès 9€/user', emoji: '🗂️', raison: 'Idéal pour les grandes équipes avec des projets complexes et multi-départements.', lien: 'https://try.monday.com/snl42apxurnu' },
-      { nom: 'Monday.com', slug: 'monday', prix: 'Dès 9€/user', emoji: '🗂️', raison: 'Idéal pour les grandes équipes avec des projets complexes et multi-départements.', lien: 'https://try.monday.com/snl42apxurnu' },
+      { nom: 'Monday CRM', slug: 'monday-crm', prix: 'Dès 9€/user', emoji: '🤝', raison: 'Pour les équipes qui veulent piloter projets et relation client depuis une même plateforme.', lien: 'https://try.monday.com/snl42apxurnu' },
     ],
   },
   seo: {
     gratuit:  [
       { nom: 'Ubersuggest', slug: 'ubersuggest', prix: 'Gratuit limité', emoji: '🔍', raison: 'Bon point de départ gratuit pour la recherche de mots-clés et l\'analyse de site.', lien: 'https://neilpatel.com/ubersuggest' },
-      { nom: 'Cocolyze', slug: 'cocolyze', prix: 'Dès 0€', emoji: '🐙', raison: 'Outil SEO français avec version gratuite. Suivi de positions et audit technique.', lien: 'https://cocolyze.com' },
+      { nom: 'SimilarWeb', slug: 'similarweb', prix: 'Gratuit (limité)', emoji: '🌐', raison: 'Outil gratuit pour analyser le trafic de vos concurrents et identifier vos opportunités.', lien: 'https://similarweb.com' },
     ],
     '<20':    [
       { nom: 'Ubersuggest', slug: 'ubersuggest', prix: 'Dès 12€/mois', emoji: '🔍', raison: 'Plan payant abordable avec audit de site, mots-clés et suivi de positions.', lien: 'https://neilpatel.com/ubersuggest' },
-      { nom: 'Cocolyze', slug: 'cocolyze', prix: 'Dès 9€/mois', emoji: '🐙', raison: 'Solution SEO française accessible pour les petites structures.', lien: 'https://cocolyze.com' },
+      { nom: 'Haloscan', slug: 'haloscan', prix: 'Dès 9€/mois', emoji: '🔗', raison: 'Outil SEO français accessible pour le suivi de positions et l\'analyse de backlinks.', lien: 'https://haloscan.io' },
     ],
     '20-50':  [
       { nom: 'Semrush', slug: 'semrush', prix: 'Dès 119€/mois', emoji: '📊', raison: 'La référence mondiale du SEO. Si le budget le permet, c\'est l\'outil le plus complet.', lien: 'https://semrush.com' },
