@@ -1,7 +1,6 @@
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
 import SiteHeader from '@/app/components/SiteHeader'
-import NewsletterInline from '@/app/components/NewsletterInline'
 import ReadingProgressBar from '@/app/components/ReadingProgressBar'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
@@ -164,10 +163,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         <article className="article-content" style={{ flex:1, minWidth:0, padding:'40px 0 80px' }}>
           <div className="article-body" dangerouslySetInnerHTML={{ __html: article.contenu || '' }} />
 
-          {/* Newsletter */}
-          <div style={{ marginTop:'40px' }}>
-            <NewsletterInline accentColor={cat?.accent || '#2563eb'} />
-          </div>
+          {/* Newsletter — désactivée temporairement */}
 
           {/* CTA */}
           {cat && (

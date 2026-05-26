@@ -625,31 +625,7 @@ function Results({
         </div>
       </div>
 
-      {/* ── Newsletter ── */}
-      {!emailSent ? (
-        <div style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)', borderRadius: '20px', padding: '28px', color: '#fff', textAlign: 'center' }}>
-          <p style={{ fontSize: '28px', marginBottom: '8px' }}>📬</p>
-          <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: '20px', fontWeight: 800, marginBottom: '8px' }}>
-            Guide gratuit : "La stack SaaS idéale pour TPE"
-          </h3>
-          <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.7)', marginBottom: '20px' }}>
-            Désabonnement en 1 clic.
-          </p>
-          <form onSubmit={onEmailSubmit} style={{ display: 'flex', gap: '10px', maxWidth: '440px', margin: '0 auto', flexWrap: 'wrap' }}>
-            <input type="email" required value={email} onChange={e => setEmail(e.target.value)} placeholder="votre@email.fr"
-              style={{ flex: '1 1 200px', padding: '14px 18px', borderRadius: '12px', border: 'none', fontSize: '15px', minWidth: 0 }} />
-            <button type="submit" disabled={emailLoading}
-              style={{ flex: '0 0 auto', padding: '14px 20px', borderRadius: '12px', border: 'none', background: 'linear-gradient(135deg, #d97706, #b45309)', color: '#fff', fontSize: '15px', fontWeight: 700, cursor: emailLoading ? 'not-allowed' : 'pointer' }}>
-              {emailLoading ? '...' : 'Je veux le guide →'}
-            </button>
-          </form>
-        </div>
-      ) : (
-        <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '16px', padding: '20px', textAlign: 'center' }}>
-          <p style={{ fontSize: '24px', marginBottom: '8px' }}>🎉</p>
-          <p style={{ fontWeight: 700, color: '#15803d', fontSize: '16px' }}>Guide envoyé ! Vérifiez votre boîte mail.</p>
-        </div>
-      )}
+      {/* ── Newsletter — désactivée temporairement ── */}
 
       {/* ── Actions ── */}
       <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
