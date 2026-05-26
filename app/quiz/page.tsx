@@ -4,6 +4,9 @@ import SiteHeader from '@/app/components/SiteHeader'
 import QuizClient from './QuizClient'
 import Breadcrumb from '@/app/components/Breadcrumb'
 import SiteFooter from '@/app/components/SiteFooter'
+import { supabase } from '@/lib/supabase'
+
+export const dynamic = 'force-dynamic'
 
 
 export const metadata: Metadata = {
@@ -55,7 +58,10 @@ const jsonLd = {
   })),
 }
 
-export default function QuizPage() {
+export default async function QuizPage() {
+  const { data: outils } = await supabase
+    .from('outils')
+    .select('slug,nom,prix_mensuel,note,essai_gratuit,lien_affilie')
   return (
     <div style={{ minHeight: '100vh', background: '#f8fafc', fontFamily: "'DM Sans', Arial, sans-serif" }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
@@ -91,7 +97,7 @@ export default function QuizPage() {
 
       {/* ── Quiz interactif ── */}
       <section style={{ padding: '0 0 16px' }}>
-        <QuizClient />
+        <QuizClient outils={outils ?? []} />
       </section>
 
       {/* ── Intro texte SEO ── */}
