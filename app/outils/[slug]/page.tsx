@@ -9,6 +9,7 @@ import SiteFooter from '@/app/components/SiteFooter'
 
 import { getLogoUrl, getRealDomain } from '@/lib/logo'
 import { NOTE_SOURCES } from '@/lib/noteSources'
+import { TARIFS } from '@/lib/tarifs'
 
 const OUTILS_PERSO = new Set([
   'semrush', 'semji', 'n8n', 'make', 'henrri',
@@ -321,6 +322,97 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
                 </div>
               </div>
             )}
+
+            {/* Tableau de tarifs */}
+            {TARIFS[slug] && (() => {
+              const tarifs = TARIFS[slug]
+              const devise = tarifs.devise ?? '€'
+              const hasMensuel = tarifs.plans.some(p => p.mensuel != null && !p.gratuit)
+              const hasAnnuel  = tarifs.plans.some(p => p.annuel  != null)
+              const hasBoth    = hasMensuel && hasAnnuel
+
+              return (
+                <div style={{ background: '#fff', borderRadius: '16px', border: '1px solid #e2e8f0', padding: '28px' }}>
+                  <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: '20px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.5px', marginBottom: '20px' }}>
+                    💰 Tarifs {outil.nom}
+                  </h2>
+
+                  <div style={{ overflowX: 'auto' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
+                      <thead>
+                        <tr style={{ borderBottom: '2px solid #f1f5f9' }}>
+                          <th style={{ textAlign: 'left', padding: '10px 14px', color: '#64748b', fontWeight: 700, fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Plan</th>
+                          {hasMensuel && <th style={{ textAlign: 'right', padding: '10px 14px', color: '#64748b', fontWeight: 700, fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.5px', whiteSpace: 'nowrap' }}>Mensuel</th>}
+                          {hasAnnuel  && <th style={{ textAlign: 'right', padding: '10px 14px', color: '#64748b', fontWeight: 700, fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.5px', whiteSpace: 'nowrap' }}>Annuel /mois</th>}
+                          {hasBoth    && <th style={{ textAlign: 'right', padding: '10px 14px', color: '#64748b', fontWeight: 700, fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.5px', whiteSpace: 'nowrap' }}>Économie</th>}
+                          {tarifs.plans.some(p => p.description) && <th style={{ textAlign: 'left', padding: '10px 14px', color: '#64748b', fontWeight: 700, fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Détail</th>}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {tarifs.plans.map((plan, i) => {
+                          const eco = hasBoth && plan.mensuel && plan.annuel
+                            ? Math.round((1 - plan.annuel / plan.mensuel) * 100)
+                            : null
+                          const ecoAn = hasBoth && plan.mensuel && plan.annuel
+                            ? Math.round((plan.mensuel - plan.annuel) * 12)
+                            : null
+                          const bg = plan.mise_en_avant ? c.bg : i % 2 === 0 ? '#fff' : '#fafafa'
+                          return (
+                            <tr key={plan.nom} style={{ background: bg, borderBottom: '1px solid #f1f5f9' }}>
+                              <td style={{ padding: '12px 14px' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                  {plan.mise_en_avant && (
+                                    <span style={{ fontSize: '10px', fontWeight: 700, color: c.accent, background: c.bg, border: `1px solid ${c.light}`, borderRadius: '999px', padding: '2px 7px', whiteSpace: 'nowrap' }}>
+                                      ⭐ Recommandé
+                                    </span>
+                                  )}
+                                  <span style={{ fontWeight: plan.mise_en_avant ? 700 : 500, color: '#0f172a' }}>{plan.nom}</span>
+                                </div>
+                              </td>
+                              {hasMensuel && (
+                                <td style={{ padding: '12px 14px', textAlign: 'right', fontWeight: 600, color: '#0f172a', whiteSpace: 'nowrap' }}>
+                                  {plan.gratuit ? <span style={{ color: '#16a34a', fontWeight: 700 }}>Gratuit</span>
+                                    : plan.mensuel != null ? `${plan.mensuel}${devise}/mois`
+                                    : <span style={{ color: '#94a3b8' }}>—</span>}
+                                </td>
+                              )}
+                              {hasAnnuel && (
+                                <td style={{ padding: '12px 14px', textAlign: 'right', fontWeight: 600, color: plan.annuel != null ? c.accent : '#94a3b8', whiteSpace: 'nowrap' }}>
+                                  {plan.gratuit ? <span style={{ color: '#16a34a', fontWeight: 700 }}>Gratuit</span>
+                                    : plan.annuel != null ? `${plan.annuel}${devise}/mois`
+                                    : plan.mensuel != null ? `${plan.mensuel}${devise}/mois`
+                                    : <span style={{ color: '#94a3b8' }}>—</span>}
+                                </td>
+                              )}
+                              {hasBoth && (
+                                <td style={{ padding: '12px 14px', textAlign: 'right', whiteSpace: 'nowrap' }}>
+                                  {eco != null && eco > 0 ? (
+                                    <span style={{ fontSize: '12px', fontWeight: 700, color: '#16a34a', background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '999px', padding: '3px 8px' }}>
+                                      -{eco}% · {ecoAn}{devise}/an
+                                    </span>
+                                  ) : <span style={{ color: '#94a3b8', fontSize: '12px' }}>—</span>}
+                                </td>
+                              )}
+                              {tarifs.plans.some(p => p.description) && (
+                                <td style={{ padding: '12px 14px', fontSize: '12px', color: '#64748b' }}>
+                                  {plan.description ?? ''}
+                                </td>
+                              )}
+                            </tr>
+                          )
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  {tarifs.note && (
+                    <p style={{ marginTop: '14px', fontSize: '12px', color: '#94a3b8', borderTop: '1px solid #f1f5f9', paddingTop: '12px' }}>
+                      ℹ️ {tarifs.note}
+                    </p>
+                  )}
+                </div>
+              )
+            })()}
 
             {/* Contenu SEO long-form */}
             {outil.contenu && (
