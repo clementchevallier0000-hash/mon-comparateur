@@ -25,6 +25,18 @@ interface Props {
   catSlug: string
 }
 
+function isTracked(url: string): boolean {
+  if (!url) return false
+  try {
+    const u = new URL(url)
+    const affiliateParams = ['a', 'ae', 'pc', 'p', 'af', 'id_affiliate', 'link']
+    if (u.search.length > 1 && affiliateParams.some(p => u.searchParams.has(p))) return true
+    if (['affilae.com', 'partnerlinks.io', 'yuccanlead.com'].some(d => u.hostname.includes(d))) return true
+    if (['aff.', 'try.', 'get.', 'go.', 'link.'].some(p => u.hostname.startsWith(p))) return true
+    return false
+  } catch { return false }
+}
+
 const rankConfig: Record<number, { emoji: string; label: string; labelColor: string; labelBg: string; labelBorder: string; borderColor: string }> = {
   0: { emoji: '🥇', label: '🏆 Meilleur choix', labelColor: '#854d0e', labelBg: '#fefce8', labelBorder: '#fde047', borderColor: '#fbbf24' },
   1: { emoji: '🥈', label: '🥈 2ème choix', labelColor: '#374151', labelBg: '#f9fafb', labelBorder: '#d1d5db', borderColor: '#9ca3af' },
@@ -77,7 +89,7 @@ export default function CategoryFilters({ outils, c, icon, catSlug }: Props) {
   }
 
   const filtered = useMemo(() => {
-    return outils.filter(o => {
+    const arr = outils.filter(o => {
       if (prix === 'gratuit' && o.prix_mensuel !== 0) return false
       if (prix === '<20' && (o.prix_mensuel === 0 || o.prix_mensuel >= 20)) return false
       if (prix === '20-50' && (o.prix_mensuel < 20 || o.prix_mensuel > 50)) return false
@@ -87,6 +99,8 @@ export default function CategoryFilters({ outils, c, icon, catSlug }: Props) {
       if (bonus.has('note4') && (!o.note || o.note < 4)) return false
       return true
     })
+    // Outils avec lien tracké en premier (tri stable — ordre initial préservé dans chaque groupe)
+    return [...arr].sort((a, b) => (isTracked(a.lien_affilie) ? 0 : 1) - (isTracked(b.lien_affilie) ? 0 : 1))
   }, [outils, prix, bonus])
 
   const prixOptions: { val: PrixFilter; label: string }[] = [
@@ -212,6 +226,7 @@ export default function CategoryFilters({ outils, c, icon, catSlug }: Props) {
                 const logo = getLogoUrl(outil.lien_affilie)
                 const price = displayPrice(outil)
                 const badge = computeBadge(outil, outils, i)
+                const tracked = isTracked(outil.lien_affilie)
                 return (
                   <tr key={outil.id} className="table-row" style={{ borderBottom: '1px solid #f1f5f9', background: '#fff' }}>
                     <td style={{ padding: '12px 16px' }}>
@@ -222,7 +237,10 @@ export default function CategoryFilters({ outils, c, icon, catSlug }: Props) {
                         </div>
                         <div>
                           <p style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a', margin: 0 }}>{outil.nom}</p>
-                          {badge && <span style={{ fontSize: '10px', fontWeight: 700, color: badge.color, background: badge.bg, border: `1px solid ${badge.border}`, borderRadius: '999px', padding: '1px 7px' }}>{badge.label}</span>}
+                          <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
+                            {tracked && <span style={{ fontSize: '10px', fontWeight: 700, color: '#065f46', background: '#f0fdf4', border: '1px solid #a7f3d0', borderRadius: '999px', padding: '1px 7px' }}>🤝 Partenaire</span>}
+                            {badge && <span style={{ fontSize: '10px', fontWeight: 700, color: badge.color, background: badge.bg, border: `1px solid ${badge.border}`, borderRadius: '999px', padding: '1px 7px' }}>{badge.label}</span>}
+                          </div>
                         </div>
                       </div>
                     </td>
@@ -270,6 +288,7 @@ export default function CategoryFilters({ outils, c, icon, catSlug }: Props) {
                 const logo = getLogoUrl(outil.lien_affilie)
                 const badge = computeBadge(outil, outils, index)
                 const price = displayPrice(outil)
+                const tracked = isTracked(outil.lien_affilie)
                 return (
                   <Link key={outil.id} href={`/outils/${outil.slug}`} style={{ textDecoration: 'none' }}>
                     <div className="top-card" style={{ background: '#fff', border: index === 0 ? `2px solid ${c.accent}44` : '1px solid #e2e8f0', borderTop: `4px solid ${rank?.borderColor || c.accent}`, borderRadius: '16px', overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}>
@@ -285,6 +304,7 @@ export default function CategoryFilters({ outils, c, icon, catSlug }: Props) {
                             {rank && <span style={{ fontSize: '10px', fontWeight: 700, padding: '3px 8px', borderRadius: '999px', background: rank.labelBg, color: rank.labelColor, border: `1px solid ${rank.labelBorder}` }}>{rank.label}</span>}
                             {badge && <span style={{ fontSize: '10px', fontWeight: 700, padding: '3px 8px', borderRadius: '999px', background: badge.bg, color: badge.color, border: `1px solid ${badge.border}` }}>{badge.label}</span>}
                             {isFree && <span style={{ fontSize: '10px', fontWeight: 700, padding: '3px 8px', borderRadius: '999px', background: '#f0fdf4', color: '#16a34a', border: '1px solid #bbf7d0' }}>Gratuit</span>}
+                            {tracked && <span style={{ fontSize: '10px', fontWeight: 700, padding: '3px 8px', borderRadius: '999px', background: '#f0fdf4', color: '#065f46', border: '1px solid #a7f3d0' }}>🤝 Partenaire</span>}
                           </div>
                           <span style={{ fontSize: '22px' }}>{rank?.emoji || `#${index + 1}`}</span>
                         </div>
@@ -335,6 +355,7 @@ export default function CategoryFilters({ outils, c, icon, catSlug }: Props) {
                   const logo = getLogoUrl(outil.lien_affilie)
                   const badge = computeBadge(outil, outils, index + 3)
                   const price = displayPrice(outil)
+                  const tracked = isTracked(outil.lien_affilie)
                   return (
                     <Link key={outil.id} href={`/outils/${outil.slug}`} style={{ textDecoration: 'none', minWidth: 0 }}>
                       <div className="compact-card" style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '14px 16px', display: 'flex', alignItems: 'center', gap: '10px', overflow: 'hidden' }}>
@@ -346,6 +367,7 @@ export default function CategoryFilters({ outils, c, icon, catSlug }: Props) {
                           <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginBottom: '2px', flexWrap: 'wrap' }}>
                             <span style={{ fontSize: '13px', fontWeight: 700, color: '#0f172a', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{outil.nom}</span>
                             {isFree && <span style={{ fontSize: '10px', fontWeight: 700, padding: '1px 6px', borderRadius: '999px', background: '#f0fdf4', color: '#16a34a', border: '1px solid #bbf7d0', flexShrink: 0 }}>Gratuit</span>}
+                            {tracked && <span style={{ fontSize: '10px', fontWeight: 700, padding: '1px 6px', borderRadius: '999px', background: '#f0fdf4', color: '#065f46', border: '1px solid #a7f3d0', flexShrink: 0 }}>🤝 Partenaire</span>}
                             {badge && <span style={{ fontSize: '10px', fontWeight: 700, padding: '1px 6px', borderRadius: '999px', background: badge.bg, color: badge.color, border: `1px solid ${badge.border}`, flexShrink: 0 }}>{badge.label}</span>}
                           </div>
                           <p style={{ fontSize: '12px', color: '#64748b', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', margin: 0 }}>{outil.description}</p>
