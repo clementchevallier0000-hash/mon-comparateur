@@ -169,9 +169,9 @@ export default async function Home() {
                 <span style={{ color: '#475569', fontSize: '13px', fontWeight: 500 }}>Mis à jour en 2026 · 50+ outils comparés</span>
               </div>
               <h1 className="fade-up-2 hero-title" style={{ fontFamily: "'Fraunces', serif", fontSize: '62px', fontWeight: 800, color: '#0f172a', lineHeight: 1.05, letterSpacing: '-2px', marginBottom: '24px' }}>
-                Trouvez le logiciel<br />
-                entreprise <em style={{ fontStyle: 'italic' }} className="gradient-text">idéal</em><br />
-                pour votre société.
+                Comparez les <em style={{ fontStyle: 'italic' }} className="gradient-text">meilleurs</em><br />
+                logiciels entreprise<br />
+                pour TPE et PME.
               </h1>
               <p className="fade-up-3" style={{ fontSize: '19px', color: '#475569', lineHeight: 1.7, marginBottom: '40px', fontWeight: 300, maxWidth: '500px' }}>
                 Des comparatifs <strong style={{ fontWeight: 600, color: '#0f172a' }}>experts et honnêtes</strong> pour aider les TPE et PME françaises à choisir les bons outils. Analyses rigoureuses, transparence totale.
