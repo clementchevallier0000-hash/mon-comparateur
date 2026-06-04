@@ -4,14 +4,20 @@ const CUSTOM_LOGO_URLS: Record<string, string> = {
 }
 
 const AFFILIATE_DOMAIN_MAP: Record<string, string> = {
-  'get.capsulenow.io': 'capsulecrm.com',
-  'try.folk.app': 'folk.app',
-  'link.freebe.me': 'freebe.fr',
-  'n8n.partnerlinks.io': 'n8n.io',
-  'try.monday.com': 'monday.com',
-  'aff.trypipedrive.com': 'pipedrive.com',
-  'lb.affilae.com': 'tiime.fr',
-  'go.zoho.com': 'zoho.com',
+  'get.capsulenow.io':        'capsulecrm.com',
+  'try.folk.app':             'folk.app',
+  'link.freebe.me':           'freebe.fr',
+  'n8n.partnerlinks.io':      'n8n.io',
+  'try.monday.com':           'monday.com',
+  'aff.trypipedrive.com':     'pipedrive.com',
+  'lb.affilae.com':           'tiime.fr',
+  'go.zoho.com':              'zoho.com',
+  // liens affiliés mis à jour
+  'get.brevo.com':            'brevo.com',
+  'try.activecampaign.com':   'activecampaign.com',
+  'www.yuccanlead.com':       'henrri.com',
+  'similarweb.partnerlinks.io': 'similarweb.com',
+  'app.semjuice.com':         'semjuice.com',
 }
 
 export function getRealDomain(lienAffilie: string): string | null {
