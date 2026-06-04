@@ -52,22 +52,22 @@ export default async function Home() {
 
   const comparatif = [
     {
-      nom: 'HubSpot CRM', categorie: 'CRM', slug: 'crm', prix: 'Gratuit',
-      note: 4.4, emoji: '🤝', badge: '🏆 N°1 CRM gratuit', accent: '#2563eb', bg: '#eff6ff',
-      best: 'Idéal pour débuter',
-      points: ['Pipeline visuel intuitif', 'Plan gratuit très complet', '1 000+ intégrations natives'],
+      nom: 'Pipedrive', categorie: 'CRM', slug: 'crm', prix: '14€/mois',
+      note: 4.2, emoji: '🔥', badge: '🏆 Top CRM ventes', accent: '#2563eb', bg: '#eff6ff',
+      best: 'Idéal équipes commerciales',
+      points: ['Pipeline visuel par glisser-déposer', 'Relances automatiques', 'Rapports de performance'],
     },
     {
-      nom: 'Pennylane', categorie: 'Facturation', slug: 'facturation', prix: '26€/mois',
-      note: 4.7, emoji: '💰', badge: '🇫🇷 Favori PME', accent: '#ea580c', bg: '#fff7ed',
-      best: 'Compta + facturation',
-      points: ['Synchro bancaire temps réel', 'Collaboration expert-comptable', 'Interface pensée PME'],
+      nom: 'Qonto', categorie: 'Facturation', slug: 'facturation', prix: '9€/mois',
+      note: 4.7, emoji: '💰', badge: '🇫🇷 N°1 néobanque pro', accent: '#ea580c', bg: '#fff7ed',
+      best: 'Banque pro + facturation',
+      points: ['IBAN français inclus', 'Facturation électronique', 'Gestion des dépenses en temps réel'],
     },
     {
-      nom: 'Semrush', categorie: 'SEO', slug: 'seo', prix: '129€/mois',
-      note: 4.5, emoji: '🔍', badge: '⭐ Référence SEO', accent: '#9333ea', bg: '#fdf4ff',
-      best: 'Référence du marché',
-      points: ['Base de données mondiale', 'Audit technique complet', 'Analyse de la concurrence'],
+      nom: 'Monday.com', categorie: 'Gestion de projet', slug: 'gestion-de-projet', prix: '9€/user/mois',
+      note: 4.7, emoji: '📋', badge: '⭐ Meilleur visuel', accent: '#16a34a', bg: '#f0fdf4',
+      best: 'Idéal équipes & projets',
+      points: ['Tableaux kanban & Gantt', 'Automatisations intégrées', '200+ templates prêts à l\'emploi'],
     },
     {
       nom: 'Make', categorie: 'Automatisation', slug: 'automatisation', prix: '9€/mois',
