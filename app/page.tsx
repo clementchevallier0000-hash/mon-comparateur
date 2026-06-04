@@ -52,25 +52,25 @@ export default async function Home() {
 
   const comparatif = [
     {
-      nom: 'Pipedrive', categorie: 'CRM', slug: 'crm', prix: '14€/mois',
+      nom: 'Pipedrive', categorie: 'CRM', slug: 'crm', outilSlug: 'pipedrive', prix: '14€/mois',
       note: 4.2, emoji: '🔥', badge: '🏆 Top CRM ventes', accent: '#2563eb', bg: '#eff6ff',
       best: 'Idéal équipes commerciales',
       points: ['Pipeline visuel par glisser-déposer', 'Relances automatiques', 'Rapports de performance'],
     },
     {
-      nom: 'Qonto', categorie: 'Facturation', slug: 'facturation', prix: '9€/mois',
+      nom: 'Qonto', categorie: 'Facturation', slug: 'facturation', outilSlug: 'qonto', prix: '9€/mois',
       note: 4.7, emoji: '💰', badge: '🇫🇷 N°1 néobanque pro', accent: '#ea580c', bg: '#fff7ed',
       best: 'Banque pro + facturation',
       points: ['IBAN français inclus', 'Facturation électronique', 'Gestion des dépenses en temps réel'],
     },
     {
-      nom: 'Monday.com', categorie: 'Gestion de projet', slug: 'gestion-de-projet', prix: '9€/user/mois',
+      nom: 'Monday.com', categorie: 'Gestion de projet', slug: 'gestion-de-projet', outilSlug: 'monday', prix: '9€/user/mois',
       note: 4.7, emoji: '📋', badge: '⭐ Meilleur visuel', accent: '#16a34a', bg: '#f0fdf4',
       best: 'Idéal équipes & projets',
       points: ['Tableaux kanban & Gantt', 'Automatisations intégrées', '200+ templates prêts à l\'emploi'],
     },
     {
-      nom: 'Make', categorie: 'Automatisation', slug: 'automatisation', prix: '9€/mois',
+      nom: 'Make', categorie: 'Automatisation', slug: 'automatisation', outilSlug: 'make', prix: '9€/mois',
       note: 4.7, emoji: '⚡', badge: '💡 Meilleur rapport Q/P', accent: '#d97706', bg: '#fffbeb',
       best: 'Alternative à Zapier',
       points: ['1 800+ intégrations', 'Interface no-code visuelle', 'Scénarios sans limite'],
@@ -304,7 +304,7 @@ export default async function Home() {
           </div>
           <div className="comp-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px' }}>
             {comparatif.map((outil, i) => (
-              <Link key={i} href={`/categorie/${outil.slug}`} style={{ textDecoration: 'none' }}>
+              <Link key={i} href={`/outils/${outil.outilSlug}`} style={{ textDecoration: 'none' }}>
                 <div className={`comp-card scroll-reveal stagger-${i + 1}`} style={{ background: '#fff', border: `1px solid ${i === 0 ? outil.accent + '40' : '#e2e8f0'}`, borderRadius: '20px', padding: '24px', height: '100%', position: 'relative', overflow: 'hidden' }}>
                   {/* Accent top bar */}
                   <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: `linear-gradient(90deg, ${outil.accent}, ${outil.accent}66)` }} />
