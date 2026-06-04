@@ -44,8 +44,8 @@ export const metadata: Metadata = {
     description: "Comparez les meilleurs logiciels SaaS pour votre entreprise.",
   },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
   },
   alternates: {
     canonical: "https://ton-meilleur-saas.fr"
