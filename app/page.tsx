@@ -78,12 +78,24 @@ export default async function Home() {
   ]
 
   const logoCloud = [
-    { name: 'HubSpot', emoji: '🤝' }, { name: 'Pennylane', emoji: '💰' },
-    { name: 'Semrush', emoji: '🔍' }, { name: 'Make', emoji: '⚡' },
-    { name: 'Notion', emoji: '📋' }, { name: 'Brevo', emoji: '📧' },
-    { name: 'ActiveCampaign', emoji: '🎯' }, { name: 'n8n', emoji: '🔗' },
-    { name: 'Ahrefs', emoji: '🌐' }, { name: 'Axonaut', emoji: '📊' },
-    { name: 'Sarbacane', emoji: '✉️' }, { name: 'Pipedrive', emoji: '🚀' },
+    { name: 'Pipedrive',      slug: 'pipedrive',      emoji: '🚀' },
+    { name: 'Qonto',          slug: 'qonto',          emoji: '💰' },
+    { name: 'Monday.com',     slug: 'monday',         emoji: '📋' },
+    { name: 'Make',           slug: 'make',           emoji: '⚡' },
+    { name: 'Brevo',          slug: 'brevo',          emoji: '📧' },
+    { name: 'ActiveCampaign', slug: 'activecampaign', emoji: '🎯' },
+    { name: 'n8n',            slug: 'n8n',            emoji: '🔗' },
+    { name: 'Capsule',        slug: 'capsule',        emoji: '🤝' },
+    { name: 'Folk',           slug: 'folk',           emoji: '👥' },
+    { name: 'Freebe',         slug: 'freebe',         emoji: '🧾' },
+    { name: 'Tiime',          slug: 'tiime',          emoji: '⏱️' },
+    { name: 'Axonaut',        slug: 'axonaut',        emoji: '📊' },
+    { name: 'SimilarWeb',     slug: 'similarweb',     emoji: '🌐' },
+    { name: 'Zoho CRM',       slug: 'zoho-crm',       emoji: '💼' },
+    { name: 'Karlia',         slug: 'karlia',         emoji: '📞' },
+    { name: 'Henrri',         slug: 'henrri',         emoji: '🧮' },
+    { name: 'Indy',           slug: 'indy',           emoji: '📑' },
+    { name: 'SemJuice',       slug: 'semjuice',       emoji: '🔍' },
   ]
 
   return (
@@ -221,20 +233,19 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Logo cloud */}
+      {/* Logo cloud — partenaires */}
       <section style={{ padding: '20px 48px', borderTop: '1px solid #f1f5f9', borderBottom: '1px solid #f1f5f9', background: '#fff' }}>
         <div className="logo-cloud-inner" style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap' }}>
           <span style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', whiteSpace: 'nowrap', flexShrink: 0 }}>
-            Outils couverts
+            🤝 Partenaires
           </span>
           <div style={{ width: '1px', height: '20px', background: '#e2e8f0', flexShrink: 0 }} />
           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
             {logoCloud.map((tool, i) => (
-              <span key={i} className="logo-chip" style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '5px 12px', fontSize: '13px', color: '#475569', fontWeight: 500, cursor: 'default' }}>
+              <Link key={i} href={`/outils/${tool.slug}`} className="logo-chip" style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '8px', padding: '5px 12px', fontSize: '13px', color: '#15803d', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
                 {tool.emoji} {tool.name}
-              </span>
+              </Link>
             ))}
-            <span style={{ fontSize: '13px', color: '#94a3b8', fontWeight: 600 }}>+40 outils</span>
           </div>
         </div>
       </section>
