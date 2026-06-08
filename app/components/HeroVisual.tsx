@@ -3,59 +3,59 @@ import { useState, useEffect } from 'react'
 
 const outils = [
   {
-    nom: 'HubSpot CRM', emoji: '🤝', categorie: 'CRM', prix: 'Gratuit',
+    nom: 'Pipedrive', emoji: '🚀', categorie: 'CRM', prix: '14€/mois',
     color: '#2563eb', bg: '#eff6ff',
     stats: [
-      { label: "Facilité d'utilisation", val: 95 },
-      { label: 'Rapport qualité/prix', val: 98 },
-      { label: 'Support client', val: 88 },
+      { label: 'Pipeline commercial', val: 97 },
+      { label: 'Facilité de prise en main', val: 94 },
+      { label: 'Rapport qualité/prix', val: 91 },
     ],
-    tags: ['Pipeline', 'Email', 'Analytics', 'Mobile'],
-    badge: '⭐ #1 CRM'
+    tags: ['Pipeline', 'Relances', 'Reporting', 'Mobile'],
+    badge: '🏆 Top CRM ventes'
   },
   {
-    nom: 'Pennylane', emoji: '💰', categorie: 'Facturation', prix: '26€/mois',
+    nom: 'Qonto', emoji: '💰', categorie: 'Facturation', prix: '9€/mois',
     color: '#ea580c', bg: '#fff7ed',
     stats: [
-      { label: 'Automatisation', val: 92 },
-      { label: 'Intégration bancaire', val: 97 },
-      { label: 'Interface', val: 90 },
+      { label: 'Gestion des dépenses', val: 96 },
+      { label: 'Intégration bancaire', val: 99 },
+      { label: 'Interface', val: 93 },
     ],
-    tags: ['Devis', 'Factures', 'Compta', 'Banque'],
-    badge: '🏆 Top Facturation'
+    tags: ['IBAN FR', 'Factures', 'Dépenses', 'Cartes'],
+    badge: '🇫🇷 N°1 néobanque pro'
   },
   {
-    nom: 'Semrush', emoji: '🔍', categorie: 'SEO', prix: '129€/mois',
+    nom: 'Monday.com', emoji: '📋', categorie: 'Gestion de projet', prix: '9€/user/mois',
+    color: '#16a34a', bg: '#f0fdf4',
+    stats: [
+      { label: 'Personnalisation', val: 98 },
+      { label: 'Collaboration', val: 95 },
+      { label: 'Automatisations', val: 92 },
+    ],
+    tags: ['Kanban', 'Gantt', 'Templates', 'Dashboards'],
+    badge: '⭐ Meilleur visuel'
+  },
+  {
+    nom: 'SimilarWeb', emoji: '🌐', categorie: 'SEO', prix: 'Sur devis',
     color: '#9333ea', bg: '#fdf4ff',
     stats: [
-      { label: 'Base de mots-clés', val: 99 },
-      { label: 'Analyse concurrents', val: 96 },
-      { label: 'Audit technique', val: 93 },
+      { label: 'Analyse de trafic', val: 99 },
+      { label: 'Benchmark concurrents', val: 97 },
+      { label: 'Sources marketing', val: 94 },
     ],
-    tags: ['Mots-clés', 'Backlinks', 'Audit', 'Positions'],
-    badge: '🔥 Référence SEO'
+    tags: ['Trafic', 'Concurrents', 'Canaux', 'Tendances'],
+    badge: '🔥 Référence analytics'
   },
   {
     nom: 'Make', emoji: '⚡', categorie: 'Automatisation', prix: '9€/mois',
     color: '#d97706', bg: '#fffbeb',
     stats: [
       { label: 'Intégrations', val: 98 },
-      { label: 'Facilité', val: 85 },
+      { label: 'Facilité no-code', val: 85 },
       { label: 'Rapport qualité/prix', val: 97 },
     ],
-    tags: ['Workflows', 'API', 'No-code', 'Zapier-like'],
-    badge: '⚡ Meilleure valeur'
-  },
-  {
-    nom: 'Notion', emoji: '📋', categorie: 'Gestion de projet', prix: 'Gratuit',
-    color: '#16a34a', bg: '#f0fdf4',
-    stats: [
-      { label: 'Flexibilité', val: 99 },
-      { label: 'Collaboration', val: 94 },
-      { label: 'Templates', val: 91 },
-    ],
-    tags: ['Wiki', 'Projets', 'Bases de données', 'IA'],
-    badge: '🌟 Ultra flexible'
+    tags: ['Workflows', 'API', 'No-code', '1800+ applis'],
+    badge: '💡 Meilleur rapport Q/P'
   },
 ]
 
