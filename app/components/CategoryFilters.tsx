@@ -33,6 +33,7 @@ function isTracked(url: string): boolean {
     if (u.search.length > 1 && affiliateParams.some(p => u.searchParams.has(p))) return true
     if (['affilae.com', 'partnerlinks.io', 'yuccanlead.com'].some(d => u.hostname.includes(d))) return true
     if (['aff.', 'try.', 'get.', 'go.', 'link.'].some(p => u.hostname.startsWith(p))) return true
+    if (u.searchParams.get('utm_campaign')?.includes('tonmeilleursaas')) return true
     return false
   } catch { return false }
 }
