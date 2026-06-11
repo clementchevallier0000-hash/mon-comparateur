@@ -13,6 +13,7 @@ const AFFILIATE_DOMAIN_MAP: Record<string, string> = {
   'lb.affilae.com':           'tiime.fr',
   'go.zoho.com':              'zoho.com',
   // liens affiliés mis à jour
+  'go.sellsy.com':            'sellsy.fr',
   'get.brevo.com':            'brevo.com',
   'try.activecampaign.com':   'activecampaign.com',
   'www.yuccanlead.com':       'henrri.com',
