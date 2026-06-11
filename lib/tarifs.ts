@@ -186,4 +186,13 @@ export const TARIFS: Record<string, Tarifs> = {
     ],
     note: 'Prix HT en facturation annuelle · base 1 000 contacts',
   },
+
+  sellsy: {
+    plans: [
+      { nom: 'Standard',  mensuel: 35, annuel: 29, annuel_total: 348, description: 'Facturation, CRM, relances, signature électronique' },
+      { nom: 'Evolution', mensuel: 59, annuel: 49, annuel_total: 588, description: 'Rapprochement 3 banques, suivi commercial, Sellsy IA', mise_en_avant: true },
+      { nom: 'Elite',     mensuel: 95, annuel: 79, annuel_total: 948, description: 'Accompagnement croissance, fonctions avancées' },
+    ],
+    note: 'Prix HT · par utilisateur · tarifs avec offre Réforme Facturation Électronique · engagement 12 mois',
+  },
 }
