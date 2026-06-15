@@ -12,14 +12,14 @@ export const FAQ_AUTOMATISATION_MEILLEUR: FaqItem[] = [
 <h2>Les outils selon leur accessibilité</h2>
 <table>
 <tr><th>Outil</th><th>Prix/mois</th><th>Note</th><th>Niveau recommandé</th></tr>
-<tr><td><strong>Make</strong></td><td>dès 9$</td><td>4.7/5</td><td>⭐ Intermédiaire — visuel et puissant, gratuit pour commencer</td></tr>
+<tr><td><strong>Make</strong></td><td>dès 9€</td><td>4.7/5</td><td>⭐ Intermédiaire — visuel et puissant, gratuit pour commencer</td></tr>
 <tr><td><strong>Brevo</strong></td><td>Gratuit → payant</td><td>4.5/5</td><td>⭐ Débutant — automatisation email facile d'accès</td></tr>
-<tr><td><strong>ActiveCampaign</strong></td><td>dès 15$</td><td>4.6/5</td><td>Intermédiaire — marketing automation guidé</td></tr>
+<tr><td><strong>ActiveCampaign</strong></td><td>dès 15€</td><td>4.6/5</td><td>Intermédiaire — marketing automation guidé</td></tr>
 <tr><td><strong>n8n</strong></td><td>dès 20€</td><td>4.7/5</td><td>Avancé — open-source, pour profils techniques</td></tr>
 </table>
 
 <h2>Make : le meilleur rapport puissance/accessibilité</h2>
-<p><strong>Make</strong> (note 4.7/5, dès 9$/mois) est "La plateforme d'automatisation visuelle no-code — connectez vos apps et automatisez vos workflows sans coder." Son interface par glisser-déposer en fait l'un des outils les plus intuitifs. Le plan gratuit inclut 1 000 opérations/mois — suffisant pour créer ses premiers scénarios.</p>
+<p><strong>Make</strong> (note 4.7/5, dès 9€/mois) est "La plateforme d'automatisation visuelle no-code — connectez vos apps et automatisez vos workflows sans coder." Son interface par glisser-déposer en fait l'un des outils les plus intuitifs. Le plan gratuit inclut 1 000 opérations/mois — suffisant pour créer ses premiers scénarios.</p>
 
 <h2>Brevo : l'automatisation email pour les non-techniciens</h2>
 <p><strong>Brevo</strong> (note 4.5/5, plan gratuit disponible) propose un constructeur d'automatisation email avec des templates prêts à l'emploi : email de bienvenue, série de nurturing, relance après panier abandonné. Idéal pour démarrer l'automatisation marketing sans configuration complexe.</p>
@@ -37,7 +37,7 @@ export const FAQ_AUTOMATISATION_MEILLEUR: FaqItem[] = [
 <h2>Comparatif marketing automation</h2>
 <table>
 <tr><th>Outil</th><th>Prix/mois</th><th>Note</th><th>Positionnement</th></tr>
-<tr><td><strong>ActiveCampaign</strong></td><td>dès 15$</td><td>4.6/5</td><td>PME et TPE, CRM + email automation intégrés</td></tr>
+<tr><td><strong>ActiveCampaign</strong></td><td>dès 15€</td><td>4.6/5</td><td>PME et TPE, CRM + email automation intégrés</td></tr>
 <tr><td><strong>Brevo</strong></td><td>Gratuit → payant</td><td>4.5/5</td><td>Entrée de gamme, multicanal (email, SMS, WhatsApp)</td></tr>
 <tr><td><strong>Sarbacane</strong></td><td>dès 69€</td><td>4.5/5</td><td>Solution française, email + SMS + landing pages</td></tr>
 <tr><td><strong>ActiveTrail</strong></td><td>dès 13€</td><td>4.4/5</td><td>Campagnes email et SMS, automatisation simple</td></tr>
@@ -45,7 +45,7 @@ export const FAQ_AUTOMATISATION_MEILLEUR: FaqItem[] = [
 </table>
 
 <h2>ActiveCampaign : le rapport fonctionnalités/prix le plus équilibré</h2>
-<p><strong>ActiveCampaign</strong> (note 4.6/5, dès 15$/mois) est "La plateforme de marketing automation tout-en-un pour PME — email, CRM et automatisation intelligente." Ses automations visuelles sont considérées comme parmi les plus puissantes du marché dans cette gamme de prix : conditions multiples, scoring de leads, actions CRM déclenchées automatiquement.</p>
+<p><strong>ActiveCampaign</strong> (note 4.6/5, dès 15€/mois) est "La plateforme de marketing automation tout-en-un pour PME — email, CRM et automatisation intelligente." Ses automations visuelles sont considérées comme parmi les plus puissantes du marché dans cette gamme de prix : conditions multiples, scoring de leads, actions CRM déclenchées automatiquement.</p>
 
 <h2>Marketo et Pardot : pour les grands comptes</h2>
 <p><strong>Marketo</strong> (4.1/5, dès 895€/mois) et <strong>Pardot</strong> (3.9/5, dès 1 250€/mois) s'adressent aux grandes entreprises avec des cycles de vente longs et des équipes marketing structurées. Leur complexité et leur coût sont inadaptés aux TPE/PME.</p>
@@ -62,7 +62,7 @@ export const FAQ_AUTOMATISATION_MEILLEUR: FaqItem[] = [
 
 <h2>Make vs n8n : les deux leaders de l'automatisation de workflows</h2>
 <table>
-<tr><th>Critère</th><th>Make (4.7/5 — 9$/mois)</th><th>n8n (4.7/5 — 20€/mois)</th></tr>
+<tr><th>Critère</th><th>Make (4.7/5 — 9€/mois)</th><th>n8n (4.7/5 — 20€/mois)</th></tr>
 <tr><td>Interface</td><td>Visuelle no-code, drag & drop</td><td>Visuelle mais plus technique</td></tr>
 <tr><td>Connecteurs</td><td>2 000+ applications</td><td>400+ intégrations + API illimitées</td></tr>
 <tr><td>Auto-hébergement</td><td>❌ Cloud uniquement</td><td>✅ Open-source, self-host possible</td></tr>
@@ -71,7 +71,7 @@ export const FAQ_AUTOMATISATION_MEILLEUR: FaqItem[] = [
 </table>
 
 <h2>Make : le meilleur pour les équipes non-techniques</h2>
-<p><strong>Make</strong> (note 4.7/5) est idéal pour les équipes ops et marketing qui veulent automatiser sans développeur : son interface est la plus intuitive pour des workflows complexes à plusieurs étapes et conditions. Dès 9$/mois, il couvre la majorité des besoins des PME.</p>
+<p><strong>Make</strong> (note 4.7/5) est idéal pour les équipes ops et marketing qui veulent automatiser sans développeur : son interface est la plus intuitive pour des workflows complexes à plusieurs étapes et conditions. Dès 9€/mois, il couvre la majorité des besoins des PME.</p>
 
 <h2>n8n : le meilleur pour les équipes techniques</h2>
 <p><strong>n8n</strong> (note 4.7/5, dès 20€/mois) est "La plateforme d'automatisation open-source pour développeurs — workflows flexibles avec code ou no-code." L'option self-hosted permet de garder toutes les données en interne — crucial pour les workflows qui manipulent des données sensibles.</p>
@@ -89,7 +89,7 @@ export const FAQ_AUTOMATISATION_MEILLEUR: FaqItem[] = [
 <h2>Les outils d'automatisation email</h2>
 <table>
 <tr><th>Outil</th><th>Prix/mois</th><th>Note</th><th>Capacité automation email</th></tr>
-<tr><td><strong>ActiveCampaign</strong></td><td>dès 15$</td><td>4.6/5</td><td>Automations visuelles avancées, scoring, CRM intégré</td></tr>
+<tr><td><strong>ActiveCampaign</strong></td><td>dès 15€</td><td>4.6/5</td><td>Automations visuelles avancées, scoring, CRM intégré</td></tr>
 <tr><td><strong>Brevo</strong></td><td>Gratuit → payant</td><td>4.5/5</td><td>Workflows email, SMS, WhatsApp — très accessible</td></tr>
 <tr><td><strong>ActiveTrail</strong></td><td>dès 13€</td><td>4.4/5</td><td>Autorépondeurs, séquences email, SMS inclus</td></tr>
 <tr><td><strong>Sarbacane</strong></td><td>dès 69€</td><td>4.5/5</td><td>Solution française RGPD, email + SMS automatisés</td></tr>
@@ -114,14 +114,14 @@ export const FAQ_AUTOMATISATION_MEILLEUR: FaqItem[] = [
 <h2>Les outils les mieux adaptés aux TPE/PME</h2>
 <table>
 <tr><th>Outil</th><th>Prix/mois</th><th>Note</th><th>Cas d'usage TPE/PME</th></tr>
-<tr><td><strong>Make</strong></td><td>dès 9$</td><td>4.7/5</td><td>Connexion apps métier, automatisations multi-étapes</td></tr>
-<tr><td><strong>ActiveCampaign</strong></td><td>dès 15$</td><td>4.6/5</td><td>Email automation + CRM pour équipes commerciales</td></tr>
+<tr><td><strong>Make</strong></td><td>dès 9€</td><td>4.7/5</td><td>Connexion apps métier, automatisations multi-étapes</td></tr>
+<tr><td><strong>ActiveCampaign</strong></td><td>dès 15€</td><td>4.6/5</td><td>Email automation + CRM pour équipes commerciales</td></tr>
 <tr><td><strong>Brevo</strong></td><td>Gratuit → payant</td><td>4.5/5</td><td>Email marketing automatisé, accessible dès le premier jour</td></tr>
 <tr><td><strong>ActiveTrail</strong></td><td>dès 13€</td><td>4.4/5</td><td>Email + SMS, interface simple, tarif abordable</td></tr>
 </table>
 
 <h2>Commencer avec Make : l'investissement le plus rentable</h2>
-<p><strong>Make</strong> (note 4.7/5, dès 9$/mois) est le meilleur rapport qualité/prix pour automatiser les workflows entre vos applications métier : CRM, facturation, email, tableurs, Slack, Google Drive. Un scénario bien conçu peut économiser plusieurs heures par semaine à l'équipe.</p>
+<p><strong>Make</strong> (note 4.7/5, dès 9€/mois) est le meilleur rapport qualité/prix pour automatiser les workflows entre vos applications métier : CRM, facturation, email, tableurs, Slack, Google Drive. Un scénario bien conçu peut économiser plusieurs heures par semaine à l'équipe.</p>
 
 <div class="encart-warning">⚠️ L'automatisation demande un investissement initial de configuration. Commencez par un seul processus répétitif avant d'automatiser en masse.</div>
 
@@ -148,7 +148,7 @@ export const FAQ_AUTOMATISATION_MEILLEUR: FaqItem[] = [
 </table>
 
 <h2>Make vs n8n : lequel choisir ?</h2>
-<p><strong>Make</strong> (4.7/5, dès 9$/mois) n'est pas open-source mais est plus accessible aux non-développeurs avec son interface no-code. <strong>n8n</strong> (4.7/5) offre plus de flexibilité technique et la souveraineté des données. Si vous avez un profil technique ou une contrainte de confidentialité, n8n l'emporte.</p>
+<p><strong>Make</strong> (4.7/5, dès 9€/mois) n'est pas open-source mais est plus accessible aux non-développeurs avec son interface no-code. <strong>n8n</strong> (4.7/5) offre plus de flexibilité technique et la souveraineté des données. Si vous avez un profil technique ou une contrainte de confidentialité, n8n l'emporte.</p>
 
 <div class="encart">👉 Comparez n8n et Make dans notre <a href="/categorie/automatisation">comparatif d'automatisation</a>.</div>`,
   },
@@ -163,7 +163,7 @@ export const FAQ_AUTOMATISATION_MEILLEUR: FaqItem[] = [
 <h2>Comparatif marketing automation B2B</h2>
 <table>
 <tr><th>Outil</th><th>Prix/mois</th><th>Note</th><th>Positionnement B2B</th></tr>
-<tr><td><strong>ActiveCampaign</strong></td><td>dès 15$</td><td>4.6/5</td><td>⭐ PME B2B — CRM + automation + scoring, abordable</td></tr>
+<tr><td><strong>ActiveCampaign</strong></td><td>dès 15€</td><td>4.6/5</td><td>⭐ PME B2B — CRM + automation + scoring, abordable</td></tr>
 <tr><td><strong>Marketo</strong></td><td>dès 895€</td><td>4.1/5</td><td>Grandes entreprises B2B — leader historique du segment</td></tr>
 <tr><td><strong>Eloqua</strong></td><td>dès 2 000€</td><td>3.9/5</td><td>Très grandes entreprises — Oracle Marketing Cloud</td></tr>
 <tr><td><strong>SharpSpring</strong></td><td>dès 449€</td><td>4.3/5</td><td>Agences B2B — revenue growth platform avec CRM</td></tr>
@@ -171,7 +171,7 @@ export const FAQ_AUTOMATISATION_MEILLEUR: FaqItem[] = [
 </table>
 
 <h2>ActiveCampaign : le meilleur rapport qualité-prix en B2B PME</h2>
-<p><strong>ActiveCampaign</strong> (note 4.6/5, dès 15$/mois) offre des fonctionnalités B2B avancées à un prix accessible : lead scoring, segmentation comportementale, CRM intégré, et attribution multi-touch. C'est la plateforme qui offre le meilleur rapport fonctionnalités/coût pour les PME B2B.</p>
+<p><strong>ActiveCampaign</strong> (note 4.6/5, dès 15€/mois) offre des fonctionnalités B2B avancées à un prix accessible : lead scoring, segmentation comportementale, CRM intégré, et attribution multi-touch. C'est la plateforme qui offre le meilleur rapport fonctionnalités/coût pour les PME B2B.</p>
 
 <h2>Marketo et Eloqua : pour les équipes structurées</h2>
 <p><strong>Marketo</strong> (4.1/5, 895€+) et <strong>Eloqua</strong> (3.9/5, 2 000€+) sont réservés aux grandes entreprises avec des équipes marketing dédiées, des budgets importants et des besoins d'intégration complexes avec des CRM enterprise (Salesforce, SAP).</p>
@@ -191,7 +191,7 @@ export const FAQ_AUTOMATISATION_MEILLEUR: FaqItem[] = [
 <tr><th>Outil</th><th>Prix/mois</th><th>Note</th><th>Point fort emailing</th></tr>
 <tr><td><strong>Brevo</strong></td><td>Gratuit → payant</td><td>4.5/5</td><td>300 emails/jour gratuit, multicanal, RGPD EU</td></tr>
 <tr><td><strong>Sarbacane</strong></td><td>dès 69€</td><td>4.5/5</td><td>Solution française, délivrabilité premium, support FR</td></tr>
-<tr><td><strong>ActiveCampaign</strong></td><td>dès 15$</td><td>4.6/5</td><td>Segmentation avancée, automation comportementale</td></tr>
+<tr><td><strong>ActiveCampaign</strong></td><td>dès 15€</td><td>4.6/5</td><td>Segmentation avancée, automation comportementale</td></tr>
 <tr><td><strong>ActiveTrail</strong></td><td>dès 13€</td><td>4.4/5</td><td>Email + SMS, interface accessible, prix compétitif</td></tr>
 </table>
 
@@ -214,14 +214,14 @@ export const FAQ_AUTOMATISATION_MEILLEUR: FaqItem[] = [
 <h2>Les meilleurs outils d'automatisation no-code</h2>
 <table>
 <tr><th>Outil</th><th>Prix/mois</th><th>Note</th><th>Niveau no-code</th></tr>
-<tr><td><strong>Make</strong></td><td>dès 9$</td><td>4.7/5</td><td>⭐ Interface drag & drop, 2 000+ apps, très visuel</td></tr>
+<tr><td><strong>Make</strong></td><td>dès 9€</td><td>4.7/5</td><td>⭐ Interface drag & drop, 2 000+ apps, très visuel</td></tr>
 <tr><td><strong>Brevo</strong></td><td>Gratuit → payant</td><td>4.5/5</td><td>Workflows email no-code avec templates prêts à l'emploi</td></tr>
-<tr><td><strong>ActiveCampaign</strong></td><td>dès 15$</td><td>4.6/5</td><td>Automations marketing visuelles, constructeur intuitif</td></tr>
+<tr><td><strong>ActiveCampaign</strong></td><td>dès 15€</td><td>4.6/5</td><td>Automations marketing visuelles, constructeur intuitif</td></tr>
 <tr><td><strong>ActiveTrail</strong></td><td>dès 13€</td><td>4.4/5</td><td>Parcours clients visuels, prise en main rapide</td></tr>
 </table>
 
 <h2>Make : la référence no-code pour connecter ses applications</h2>
-<p><strong>Make</strong> (note 4.7/5, dès 9$/mois) est "La plateforme d'automatisation visuelle no-code — connectez vos apps et automatisez vos workflows sans coder." Son éditeur de scénarios en drag & drop est le plus intuitif pour créer des automatisations multi-étapes entre des dizaines d'applications (Google Sheets, HubSpot, Slack, Stripe, Notion…).</p>
+<p><strong>Make</strong> (note 4.7/5, dès 9€/mois) est "La plateforme d'automatisation visuelle no-code — connectez vos apps et automatisez vos workflows sans coder." Son éditeur de scénarios en drag & drop est le plus intuitif pour créer des automatisations multi-étapes entre des dizaines d'applications (Google Sheets, HubSpot, Slack, Stripe, Notion…).</p>
 
 <h2>Différence Make / n8n pour le no-code</h2>
 <p><strong>n8n</strong> (4.7/5, dès 20€) est aussi no-code mais plus technique — il s'adresse à des profils qui ne codent pas mais qui sont à l'aise avec les concepts techniques (JSON, webhooks, APIs). <strong>Make</strong> est plus accessible pour des profils métier non-techniques.</p>

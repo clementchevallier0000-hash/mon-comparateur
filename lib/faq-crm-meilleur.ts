@@ -70,7 +70,7 @@ export const FAQ_CRM_MEILLEUR: FaqItem[] = [
 <tr><td><strong>Axonaut</strong></td><td>dès 58€</td><td>4.9/5</td><td>CRM/ERP français tout-en-un, de la prospection à la compta</td></tr>
 <tr><td><strong>Pipedrive</strong></td><td>dès 14€/user</td><td>4.2/5</td><td>Pipeline commercial ultra-intuitif, le CRM des commerciaux</td></tr>
 <tr><td><strong>Sellsy</strong></td><td>dès 35€/user</td><td>4.2/5</td><td>Suite française CRM + facturation + comptabilité</td></tr>
-<tr><td><strong>Karlia</strong></td><td>dès 35€/user</td><td>4.0/5</td><td>CRM français tout-en-un avec support client intégré</td></tr>
+<tr><td><strong>Karlia</strong></td><td>dès 29€/user</td><td>4.0/5</td><td>CRM français tout-en-un avec support client intégré</td></tr>
 </table>
 
 <h2>Le critère décisif : besoin d'un outil tout-en-un ?</h2>
@@ -178,7 +178,7 @@ export const FAQ_CRM_MEILLEUR: FaqItem[] = [
 <tr><th>CRM</th><th>Prix/mois</th><th>Note</th><th>Positionnement</th></tr>
 <tr><td><strong>Axonaut</strong></td><td>dès 58€</td><td>4.9/5</td><td>CRM/ERP tout-en-un pour TPE et PME, de la prospection à la compta</td></tr>
 <tr><td><strong>Sellsy</strong></td><td>dès 35€/user</td><td>4.2/5</td><td>Suite française CRM + facturation + comptabilité pour PME</td></tr>
-<tr><td><strong>Karlia</strong></td><td>dès 35€/user</td><td>4.0/5</td><td>CRM français tout-en-un avec prospection, devis et support client</td></tr>
+<tr><td><strong>Karlia</strong></td><td>dès 29€/user</td><td>4.0/5</td><td>CRM français tout-en-un avec prospection, devis et support client</td></tr>
 </table>
 
 <h2>Axonaut : le mieux noté des CRM français</h2>
@@ -211,7 +211,7 @@ export const FAQ_CRM_MEILLEUR: FaqItem[] = [
 <tr><td><strong>Axonaut</strong></td><td>dès 58€</td><td>4.9/5</td><td>✅ Tout-en-un avec devis, facturation et CRM</td></tr>
 <tr><td><strong>Sellsy</strong></td><td>dès 35€/user</td><td>4.2/5</td><td>✅ Devis complexes, situations travaux, signature électronique</td></tr>
 <tr><td><strong>Capsule</strong></td><td>dès 15€/user</td><td>4.7/5</td><td>✅ Simple, app mobile, suivi client sans fioritures</td></tr>
-<tr><td><strong>Karlia</strong></td><td>dès 35€/user</td><td>4.0/5</td><td>✅ CRM français avec gestion devis et facturation</td></tr>
+<tr><td><strong>Karlia</strong></td><td>dès 29€/user</td><td>4.0/5</td><td>✅ CRM français avec gestion devis et facturation</td></tr>
 </table>
 
 <h2>Artisan du bâtiment : pensez aussi aux outils spécialisés</h2>
