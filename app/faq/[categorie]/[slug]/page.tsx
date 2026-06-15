@@ -23,6 +23,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${item.question} | FAQ TonMeilleurSaaS`,
     description: `Réponse complète : ${item.question}. Tout savoir sur les logiciels ${item.categorieLabel} pour les entreprises françaises.`,
+    alternates: {
+      canonical: `https://ton-meilleur-saas.fr/faq/${categorie}/${slug}`,
+    },
   }
 }
 

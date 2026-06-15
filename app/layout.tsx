@@ -46,9 +46,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-  },
-  alternates: {
-    canonical: "https://ton-meilleur-saas.fr"
   }
 };
 

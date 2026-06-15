@@ -7,6 +7,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'FAQ — Questions fréquentes sur les logiciels SaaS | TonMeilleurSaaS',
   description: 'Retrouvez toutes les réponses à vos questions sur les CRM, logiciels de facturation, gestion de projet, SEO et automatisation. 100 questions expertisées.',
+  alternates: {
+    canonical: 'https://ton-meilleur-saas.fr/faq',
+  },
 }
 
 const catColors: Record<string, { bg: string; border: string; text: string; dot: string }> = {
