@@ -1,5 +1,6 @@
 import { supabase } from '@/lib/supabase'
 import { MetadataRoute } from 'next'
+import { FAQ_ITEMS } from '@/lib/faq'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://ton-meilleur-saas.fr'
@@ -63,6 +64,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }))
 
+  const faqUrls: MetadataRoute.Sitemap = [
+    { url: `${baseUrl}/faq`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.8 },
+    ...FAQ_ITEMS.map(item => ({
+      url: `${baseUrl}/faq/${item.categorie}/${item.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    })),
+  ]
+
   return [
     { url: baseUrl,                          lastModified: new Date(), changeFrequency: 'daily'   as const, priority: 1.0 },
     { url: `${baseUrl}/quiz`,                lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
@@ -73,5 +84,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...outilsUrls,
     ...programmatiquesUrls,
     ...blogUrls,
+    ...faqUrls,
   ]
 }
