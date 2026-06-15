@@ -19,6 +19,11 @@ import { FAQ_FACTURATION } from './faq-facturation'
 import { FAQ_GESTION_PROJET } from './faq-gestion-projet'
 import { FAQ_SEO } from './faq-seo'
 import { FAQ_AUTOMATISATION } from './faq-automatisation'
+import { FAQ_CRM_MEILLEUR } from './faq-crm-meilleur'
+import { FAQ_FACTURATION_MEILLEUR } from './faq-facturation-meilleur'
+import { FAQ_GESTION_PROJET_MEILLEUR } from './faq-gestion-projet-meilleur'
+import { FAQ_SEO_MEILLEUR } from './faq-seo-meilleur'
+import { FAQ_AUTOMATISATION_MEILLEUR } from './faq-automatisation-meilleur'
 
 export const FAQ_ITEMS: FaqItem[] = [
   ...FAQ_CRM,
@@ -26,6 +31,11 @@ export const FAQ_ITEMS: FaqItem[] = [
   ...FAQ_GESTION_PROJET,
   ...FAQ_SEO,
   ...FAQ_AUTOMATISATION,
+  ...FAQ_CRM_MEILLEUR,
+  ...FAQ_FACTURATION_MEILLEUR,
+  ...FAQ_GESTION_PROJET_MEILLEUR,
+  ...FAQ_SEO_MEILLEUR,
+  ...FAQ_AUTOMATISATION_MEILLEUR,
 ]
 
 export function getFaqByCategorie(categorie: string): FaqItem[] {
