@@ -493,7 +493,7 @@ export const FAQ_GESTION_PROJET: FaqItem[] = [
 <tbody>
 <tr><td><strong>Monday.com</strong></td><td>Généraliste adapté</td><td>9€/user/mois</td><td>PME BTP, planning simple</td></tr>
 <tr><td><strong>Axonaut</strong></td><td>ERP léger</td><td>58€/mois global</td><td>Artisans et PME : projet + facturation</td></tr>
-<tr><td><strong>Obat</strong></td><td>Spécialisé BTP</td><td>59€/mois</td><td>Devis BTP + situations de travaux</td></tr>
+<tr><td><strong>Obat</strong></td><td>Spécialisé BTP</td><td>32€/mois</td><td>Devis BTP + situations de travaux</td></tr>
 <tr><td><strong>Batigest</strong></td><td>ERP BTP</td><td>Sur devis</td><td>PME BTP avec besoins complexes</td></tr>
 <tr><td><strong>PlanRadar</strong></td><td>Gestion chantier</td><td>Sur devis</td><td>Grands chantiers, défauts et réserves</td></tr>
 </tbody>

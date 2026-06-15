@@ -61,7 +61,7 @@ export const FAQ_FACTURATION_MEILLEUR: FaqItem[] = [
 <tr><th>Logiciel</th><th>Prix/mois</th><th>Note</th><th>Ce qui convient aux TPE</th></tr>
 <tr><td><strong>Tiime</strong></td><td>dès 18€</td><td>4.8/5</td><td>Collaboration avec l'expert-comptable, zéro paperasse</td></tr>
 <tr><td><strong>Pennylane</strong></td><td>dès 24€</td><td>4.4/5</td><td>Plateforme comptable moderne, lien direct avec votre expert-comptable</td></tr>
-<tr><td><strong>Sellsy</strong></td><td>dès 29€/user</td><td>4.2/5</td><td>CRM + facturation + relances automatiques dans un seul outil</td></tr>
+<tr><td><strong>Sellsy</strong></td><td>dès 35€/user</td><td>4.2/5</td><td>CRM + facturation + relances automatiques dans un seul outil</td></tr>
 <tr><td><strong>Henrri</strong></td><td>Gratuit → 19€</td><td>4.6/5</td><td>Facturation illimitée gratuite, option Expert pour les fonctions avancées</td></tr>
 </table>
 
@@ -81,7 +81,7 @@ export const FAQ_FACTURATION_MEILLEUR: FaqItem[] = [
 <h2>Les logiciels de facturation pour PME</h2>
 <table>
 <tr><th>Logiciel</th><th>Prix/mois</th><th>Note</th><th>Point fort PME</th></tr>
-<tr><td><strong>Sellsy</strong></td><td>dès 29€/user</td><td>4.2/5</td><td>CRM + facturation + comptabilité + relances auto dans un seul outil</td></tr>
+<tr><td><strong>Sellsy</strong></td><td>dès 35€/user</td><td>4.2/5</td><td>CRM + facturation + comptabilité + relances auto dans un seul outil</td></tr>
 <tr><td><strong>Pennylane</strong></td><td>dès 24€</td><td>4.4/5</td><td>Connexion temps réel avec l'expert-comptable, tableau de bord financier</td></tr>
 <tr><td><strong>Qonto</strong></td><td>dès 9€</td><td>4.7/5</td><td>Néobanque pro + facturation intégrée, gestion des dépenses équipe</td></tr>
 <tr><td><strong>Tiime</strong></td><td>dès 18€</td><td>4.8/5</td><td>Synchronisation comptable native avec l'expert-comptable</td></tr>
@@ -129,7 +129,7 @@ export const FAQ_FACTURATION_MEILLEUR: FaqItem[] = [
 <tr><th>Logiciel</th><th>Prix/mois</th><th>Note</th><th>Spécificité artisan</th></tr>
 <tr><td><strong>Tolteck</strong></td><td>dès 19€</td><td>4.8/5</td><td>Conçu spécialement pour les artisans du bâtiment — 33 000+ utilisateurs</td></tr>
 <tr><td><strong>Obat</strong></td><td>dès 32€</td><td>4.9/5</td><td>Bibliothèque Batichiffrage intégrée, devis BTP professionnels</td></tr>
-<tr><td><strong>Sellsy</strong></td><td>dès 29€/user</td><td>4.2/5</td><td>Devis complexes, signature électronique, gestion situations d'avancement</td></tr>
+<tr><td><strong>Sellsy</strong></td><td>dès 35€/user</td><td>4.2/5</td><td>Devis complexes, signature électronique, gestion situations d'avancement</td></tr>
 </table>
 
 <h2>Tolteck et Obat : les spécialistes bâtiment</h2>
@@ -197,14 +197,14 @@ export const FAQ_FACTURATION_MEILLEUR: FaqItem[] = [
 <table>
 <tr><th>Logiciel</th><th>Prix/mois</th><th>Note</th><th>Statut e-invoicing</th></tr>
 <tr><td><strong>Pennylane</strong></td><td>dès 24€</td><td>4.4/5</td><td>✅ Connecté aux PDP agréées, e-facture native</td></tr>
-<tr><td><strong>Sellsy</strong></td><td>dès 29€/user</td><td>4.2/5</td><td>✅ Offre dédiée réforme facturation électronique incluse</td></tr>
+<tr><td><strong>Sellsy</strong></td><td>dès 35€/user</td><td>4.2/5</td><td>✅ Offre dédiée réforme facturation électronique incluse</td></tr>
 <tr><td><strong>Tiime</strong></td><td>dès 18€</td><td>4.8/5</td><td>✅ Développé avec des experts-comptables, conformité native</td></tr>
 <tr><td><strong>Indy</strong></td><td>dès 9€</td><td>4.8/5</td><td>✅ E-facture incluse dès le plan gratuit</td></tr>
 <tr><td><strong>Qonto</strong></td><td>dès 9€</td><td>4.7/5</td><td>✅ IBAN FR, facturation et e-facture intégrés</td></tr>
 </table>
 
 <h2>Sellsy : une offre spéciale réforme e-invoicing</h2>
-<p><strong>Sellsy</strong> a créé une offre tarifaire spécifique à la réforme de la facturation électronique : les prix affichés (Standard à 29€/mois en annuel, Evolution à 49€/mois) intègrent la conformité e-invoicing. C'est l'un des premiers logiciels français à avoir anticipé la réforme avec une offre dédiée.</p>
+<p><strong>Sellsy</strong> a créé une offre tarifaire spécifique à la réforme de la facturation électronique : les prix affichés (Standard à 35€/mois, Evolution à 49€/mois) intègrent la conformité e-invoicing. C'est l'un des premiers logiciels français à avoir anticipé la réforme avec une offre dédiée.</p>
 
 <div class="encart">👉 Voir le <a href="/categorie/facturation">comparatif complet</a> des logiciels conformes à la réforme e-invoicing 2026.</div>`,
   },
@@ -222,7 +222,7 @@ export const FAQ_FACTURATION_MEILLEUR: FaqItem[] = [
 <tr><td><strong>Indy</strong></td><td>dès 9€ (gratuit)</td><td>4.8/5</td><td>Facturation + comptabilité auto + déclarations + compta bancaire</td></tr>
 <tr><td><strong>Tiime</strong></td><td>dès 18€</td><td>4.8/5</td><td>Facturation + comptabilité collaborative avec expert-comptable</td></tr>
 <tr><td><strong>Pennylane</strong></td><td>dès 24€</td><td>4.4/5</td><td>Facturation + comptabilité temps réel + lien expert-comptable</td></tr>
-<tr><td><strong>Sellsy</strong></td><td>dès 29€/user</td><td>4.2/5</td><td>CRM + facturation + rapprochement bancaire + comptabilité</td></tr>
+<tr><td><strong>Sellsy</strong></td><td>dès 35€/user</td><td>4.2/5</td><td>CRM + facturation + rapprochement bancaire + comptabilité</td></tr>
 <tr><td><strong>Qonto</strong></td><td>dès 9€</td><td>4.7/5</td><td>Néobanque + facturation + gestion des dépenses + export compta</td></tr>
 </table>
 

@@ -67,10 +67,10 @@ export const FAQ_CRM: FaqItem[] = [
 <thead><tr><th>Outil</th><th>Prix mensuel</th><th>Point fort</th><th>Idéal pour</th></tr></thead>
 <tbody>
 <tr><td><strong>Pipedrive</strong></td><td>14€/user (annuel)</td><td>Pipeline commercial</td><td>Équipes commerciales</td></tr>
-<tr><td><strong>Folk</strong></td><td>21€/user (annuel)</td><td>Interface moderne</td><td>Réseaux et relations</td></tr>
+<tr><td><strong>Folk</strong></td><td>27€/user (annuel)</td><td>Interface moderne</td><td>Réseaux et relations</td></tr>
 <tr><td><strong>Capsule</strong></td><td>15€/user (annuel)</td><td>Simplicité</td><td>Débutants CRM</td></tr>
 <tr><td><strong>Zoho CRM</strong></td><td>14€/user (annuel)</td><td>Rapport qualité/prix</td><td>TPE avec budget serré</td></tr>
-<tr><td><strong>Sellsy</strong></td><td>29€/user (annuel)</td><td>CRM + facturation</td><td>Tout-en-un français</td></tr>
+<tr><td><strong>Sellsy</strong></td><td>35€/user (annuel)</td><td>CRM + facturation</td><td>Tout-en-un français</td></tr>
 </tbody>
 </table>
 
@@ -366,7 +366,7 @@ export const FAQ_CRM: FaqItem[] = [
 <table>
 <thead><tr><th>Outil</th><th>Localisation</th><th>Positionnement</th><th>Prix de départ</th></tr></thead>
 <tbody>
-<tr><td><strong>Sellsy</strong></td><td>La Rochelle</td><td>CRM + facturation + trésorerie</td><td>29€/user/mois (annuel)</td></tr>
+<tr><td><strong>Sellsy</strong></td><td>La Rochelle</td><td>CRM + facturation + trésorerie</td><td>35€/user/mois (annuel)</td></tr>
 <tr><td><strong>Axonaut</strong></td><td>Toulouse</td><td>CRM + ERP léger tout-en-un</td><td>58€/mois (global)</td></tr>
 <tr><td><strong>Karlia</strong></td><td>France</td><td>CRM + gestion de projet</td><td>29€/user/mois</td></tr>
 <tr><td><strong>Henrri</strong></td><td>France</td><td>CRM + facturation (indépendants)</td><td>Gratuit / 17€/mois</td></tr>
@@ -736,7 +736,7 @@ export const FAQ_CRM: FaqItem[] = [
 <thead><tr><th>Solution</th><th>Type</th><th>Prix</th><th>Avantage</th></tr></thead>
 <tbody>
 <tr><td><strong>Pipedrive</strong></td><td>Généraliste adapté</td><td>14€/mois</td><td>Pipeline visuel, champs personnalisés pour les biens</td></tr>
-<tr><td><strong>Folk</strong></td><td>Généraliste adapté</td><td>21€/mois</td><td>Flexible, tags et filtres puissants</td></tr>
+<tr><td><strong>Folk</strong></td><td>Généraliste adapté</td><td>27€/mois</td><td>Flexible, tags et filtres puissants</td></tr>
 <tr><td><strong>Yanport</strong></td><td>Spécialisé immo</td><td>Sur devis</td><td>Modules immo natifs, portails connectés</td></tr>
 <tr><td><strong>Hektor</strong></td><td>Spécialisé immo</td><td>Sur devis</td><td>Gestion de mandats, diffusion portails</td></tr>
 </tbody>
@@ -777,11 +777,11 @@ export const FAQ_CRM: FaqItem[] = [
 <table>
 <thead><tr><th>Outil</th><th>Prix solo</th><th>Avantage clé</th><th>Inclut facturation ?</th></tr></thead>
 <tbody>
-<tr><td><strong>Folk</strong></td><td>21€/mois</td><td>Interface moderne, LinkedIn</td><td>Non</td></tr>
+<tr><td><strong>Folk</strong></td><td>27€/mois</td><td>Interface moderne, LinkedIn</td><td>Non</td></tr>
 <tr><td><strong>Capsule</strong></td><td>Gratuit (250 contacts)</td><td>Très simple</td><td>Non</td></tr>
 <tr><td><strong>Freebe</strong></td><td>10–15€/mois</td><td>CRM + facturation intégré</td><td>✅ Oui</td></tr>
-<tr><td><strong>Axonaut</strong></td><td>39€/mois</td><td>CRM + facturation + compta</td><td>✅ Oui</td></tr>
-<tr><td><strong>Sellsy</strong></td><td>29€/mois</td><td>CRM + facturation pro</td><td>✅ Oui</td></tr>
+<tr><td><strong>Axonaut</strong></td><td>58€/mois</td><td>CRM + facturation + compta</td><td>✅ Oui</td></tr>
+<tr><td><strong>Sellsy</strong></td><td>35€/mois</td><td>CRM + facturation pro</td><td>✅ Oui</td></tr>
 </tbody>
 </table>
 

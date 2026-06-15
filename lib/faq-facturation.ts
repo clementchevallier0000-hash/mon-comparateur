@@ -205,7 +205,7 @@ export const FAQ_FACTURATION: FaqItem[] = [
 <tr><td><strong>Indy</strong></td><td>Gratuit / 9€</td><td>Plan gratuit complet, e-facture</td><td>Démarrage ou petit budget</td></tr>
 <tr><td><strong>Tiime</strong></td><td>Gratuit / 18€</td><td>Expert-comptable intégré disponible</td><td>Besoin d'accompagnement compta</td></tr>
 <tr><td><strong>Henrri</strong></td><td>Gratuit / 17€</td><td>CRM + facturation dans l'outil gratuit</td><td>Facturation + suivi clients léger</td></tr>
-<tr><td><strong>Sellsy</strong></td><td>29€</td><td>Facturation pro + CRM + signature électronique</td><td>Auto-entrepreneur avec gros volume</td></tr>
+<tr><td><strong>Sellsy</strong></td><td>35€</td><td>Facturation pro + CRM + signature électronique</td><td>Auto-entrepreneur avec gros volume</td></tr>
 </tbody>
 </table>
 
@@ -282,7 +282,7 @@ export const FAQ_FACTURATION: FaqItem[] = [
 <tbody>
 <tr><td>Indy Plus</td><td>9€/mois</td><td>Facturation avancée, accompagnement</td></tr>
 <tr><td>Tiime Smart</td><td>18€/mois</td><td>Rapprochement bancaire, TVA</td></tr>
-<tr><td>Freebe Micro</td><td>10€/mois</td><td>Spécifique indépendants, cotisations sociales</td></tr>
+<tr><td>Freebe Micro</td><td>13€/mois</td><td>Spécifique indépendants, cotisations sociales</td></tr>
 </tbody>
 </table>
 <div class="encart">💡 <strong>Conseil :</strong> Le plan gratuit Indy couvre 80% des besoins d'un micro-entrepreneur. Restez en gratuit le temps de valider votre activité, puis investissez dans un plan payant quand votre CA le justifie.</div>
@@ -936,10 +936,10 @@ export const FAQ_FACTURATION: FaqItem[] = [
 <table>
 <thead><tr><th>Logiciel</th><th>Prix</th><th>Avantage BTP</th><th>Limite</th></tr></thead>
 <tbody>
-<tr><td><strong>Sellsy</strong></td><td>29€/mois</td><td>Devis complexes, situations, signature électronique</td><td>Pas de module métrés avancés</td></tr>
+<tr><td><strong>Sellsy</strong></td><td>35€/mois</td><td>Devis complexes, situations, signature électronique</td><td>Pas de module métrés avancés</td></tr>
 <tr><td><strong>Axonaut</strong></td><td>58€/mois</td><td>Gestion de projet + facturation intégrés</td><td>Généraliste, pas spécialisé BTP</td></tr>
 <tr><td><strong>Batigest</strong></td><td>Sur devis</td><td>Spécialisé BTP (métrés, DPGF, sous-traitance)</td><td>Cher, complexe</td></tr>
-<tr><td><strong>Obat</strong></td><td>59€/mois</td><td>Devis BTP détaillés, situations de travaux</td><td>Moins de fonctions CRM</td></tr>
+<tr><td><strong>Obat</strong></td><td>32€/mois</td><td>Devis BTP détaillés, situations de travaux</td><td>Moins de fonctions CRM</td></tr>
 </tbody>
 </table>
 

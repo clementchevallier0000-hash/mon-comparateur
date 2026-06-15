@@ -27,7 +27,7 @@ export const FAQ_CRM_MEILLEUR: FaqItem[] = [
 </ul>
 
 <h2>Freelance avec facturation : pensez tout-en-un</h2>
-<p>Si vous voulez aussi gérer vos devis et factures depuis le même outil, <strong>Sellsy</strong> (dès 29€/mois en annuel) combine CRM + facturation + signature électronique dans une suite française. <strong>Axonaut</strong> va encore plus loin avec la comptabilité intégrée (dès 58€/mois en annuel).</p>
+<p>Si vous voulez aussi gérer vos devis et factures depuis le même outil, <strong>Sellsy</strong> (dès 35€/mois) combine CRM + facturation + signature électronique dans une suite française. <strong>Axonaut</strong> va encore plus loin avec la comptabilité intégrée (dès 58€/mois en annuel).</p>
 
 <div class="encart">👉 Comparez tous les CRM sur <a href="/categorie/crm">notre comparatif CRM complet</a> ou découvrez la sélection spéciale <a href="/meilleur/crm/freelance">CRM pour freelance</a>.</div>`,
   },
@@ -52,7 +52,7 @@ export const FAQ_CRM_MEILLEUR: FaqItem[] = [
 <p>Si votre activité est récente ou votre volume de prospects limité, commencez avec <strong>HubSpot CRM gratuit</strong> : c'est le plan gratuit le plus complet du marché (note 4.4/5), sans limite de contacts. Vous pourrez passer à un plan payant quand votre activité grandira.</p>
 
 <h2>Auto-entrepreneur avec besoin de facturation</h2>
-<p>Si vous cherchez à gérer à la fois vos clients ET votre facturation dans un seul outil, tournez-vous vers <strong>Sellsy</strong> (CRM + facturation, dès 29€/mois) ou <strong>Axonaut</strong> — la solution française tout-en-un notée 4.9/5 par ses utilisateurs.</p>
+<p>Si vous cherchez à gérer à la fois vos clients ET votre facturation dans un seul outil, tournez-vous vers <strong>Sellsy</strong> (CRM + facturation, dès 35€/mois) ou <strong>Axonaut</strong> — la solution française tout-en-un notée 4.9/5 par ses utilisateurs.</p>
 
 <div class="encart">👉 Voir la sélection complète <a href="/meilleur/crm/auto-entrepreneur">CRM pour auto-entrepreneur</a> sur notre comparatif.</div>`,
   },
@@ -69,8 +69,8 @@ export const FAQ_CRM_MEILLEUR: FaqItem[] = [
 <tr><th>CRM</th><th>Prix/mois</th><th>Note</th><th>Atout principal</th></tr>
 <tr><td><strong>Axonaut</strong></td><td>dès 58€</td><td>4.9/5</td><td>CRM/ERP français tout-en-un, de la prospection à la compta</td></tr>
 <tr><td><strong>Pipedrive</strong></td><td>dès 14€/user</td><td>4.2/5</td><td>Pipeline commercial ultra-intuitif, le CRM des commerciaux</td></tr>
-<tr><td><strong>Sellsy</strong></td><td>dès 29€/user</td><td>4.2/5</td><td>Suite française CRM + facturation + comptabilité</td></tr>
-<tr><td><strong>Karlia</strong></td><td>dès 29€/user</td><td>4.0/5</td><td>CRM français tout-en-un avec support client intégré</td></tr>
+<tr><td><strong>Sellsy</strong></td><td>dès 35€/user</td><td>4.2/5</td><td>Suite française CRM + facturation + comptabilité</td></tr>
+<tr><td><strong>Karlia</strong></td><td>dès 35€/user</td><td>4.0/5</td><td>CRM français tout-en-un avec support client intégré</td></tr>
 </table>
 
 <h2>Le critère décisif : besoin d'un outil tout-en-un ?</h2>
@@ -102,7 +102,7 @@ export const FAQ_CRM_MEILLEUR: FaqItem[] = [
 <h2>PME française : pensez RGPD et support local</h2>
 <p>Si la souveraineté des données et le support en français sont prioritaires :</p>
 <ul>
-<li><strong>Sellsy</strong> (note 4.2/5) : CRM + facturation + comptabilité 100% français, dès 29€/mois/utilisateur en annuel</li>
+<li><strong>Sellsy</strong> (note 4.2/5) : CRM + facturation + comptabilité 100% français, dès 35€/mois/utilisateur</li>
 <li><strong>Axonaut</strong> (note 4.9/5) : ERP/CRM français très complet, dès 58€/mois pour un utilisateur (prix dégressif par volume)</li>
 </ul>
 
@@ -177,15 +177,15 @@ export const FAQ_CRM_MEILLEUR: FaqItem[] = [
 <table>
 <tr><th>CRM</th><th>Prix/mois</th><th>Note</th><th>Positionnement</th></tr>
 <tr><td><strong>Axonaut</strong></td><td>dès 58€</td><td>4.9/5</td><td>CRM/ERP tout-en-un pour TPE et PME, de la prospection à la compta</td></tr>
-<tr><td><strong>Sellsy</strong></td><td>dès 29€/user</td><td>4.2/5</td><td>Suite française CRM + facturation + comptabilité pour PME</td></tr>
-<tr><td><strong>Karlia</strong></td><td>dès 29€/user</td><td>4.0/5</td><td>CRM français tout-en-un avec prospection, devis et support client</td></tr>
+<tr><td><strong>Sellsy</strong></td><td>dès 35€/user</td><td>4.2/5</td><td>Suite française CRM + facturation + comptabilité pour PME</td></tr>
+<tr><td><strong>Karlia</strong></td><td>dès 35€/user</td><td>4.0/5</td><td>CRM français tout-en-un avec prospection, devis et support client</td></tr>
 </table>
 
 <h2>Axonaut : le mieux noté des CRM français</h2>
 <p><strong>Axonaut</strong> obtient la note de <strong>4.9/5</strong> — la plus haute de tous les CRM comparés sur le site. Son tagline résume bien son positionnement : "Le CRM/ERP français tout-en-un pour TPE et PME — de la prospection à la comptabilité en passant par la facturation." C'est la solution la plus complète pour une entreprise qui veut tout gérer dans un outil français.</p>
 
 <h2>Sellsy : CRM + facturation + comptabilité</h2>
-<p><strong>Sellsy</strong> (note 4.2/5) est "La suite française CRM + facturation + comptabilité pour PME". Disponible dès 29€/mois par utilisateur en annuel, avec signature électronique et module IA (Sellsy IA) sur le plan Evolution.</p>
+<p><strong>Sellsy</strong> (note 4.2/5) est "La suite française CRM + facturation + comptabilité pour PME". Disponible dès 35€/mois par utilisateur, avec signature électronique et module IA (Sellsy IA) sur le plan Evolution.</p>
 
 <div class="encart">👉 Retrouvez la sélection des <a href="/categorie/crm">meilleurs CRM français</a> dans notre comparatif.</div>`,
   },
@@ -209,9 +209,9 @@ export const FAQ_CRM_MEILLEUR: FaqItem[] = [
 <table>
 <tr><th>CRM</th><th>Prix/mois</th><th>Note</th><th>Adapté artisan ?</th></tr>
 <tr><td><strong>Axonaut</strong></td><td>dès 58€</td><td>4.9/5</td><td>✅ Tout-en-un avec devis, facturation et CRM</td></tr>
-<tr><td><strong>Sellsy</strong></td><td>dès 29€/user</td><td>4.2/5</td><td>✅ Devis complexes, situations travaux, signature électronique</td></tr>
+<tr><td><strong>Sellsy</strong></td><td>dès 35€/user</td><td>4.2/5</td><td>✅ Devis complexes, situations travaux, signature électronique</td></tr>
 <tr><td><strong>Capsule</strong></td><td>dès 15€/user</td><td>4.7/5</td><td>✅ Simple, app mobile, suivi client sans fioritures</td></tr>
-<tr><td><strong>Karlia</strong></td><td>dès 29€/user</td><td>4.0/5</td><td>✅ CRM français avec gestion devis et facturation</td></tr>
+<tr><td><strong>Karlia</strong></td><td>dès 35€/user</td><td>4.0/5</td><td>✅ CRM français avec gestion devis et facturation</td></tr>
 </table>
 
 <h2>Artisan du bâtiment : pensez aussi aux outils spécialisés</h2>
@@ -238,7 +238,7 @@ export const FAQ_CRM_MEILLEUR: FaqItem[] = [
 <h2>Les CRM adaptés aux professions libérales</h2>
 <table>
 <tr><th>CRM</th><th>Prix/mois</th><th>Note</th><th>Avantage</th></tr>
-<tr><td><strong>Sellsy</strong></td><td>dès 29€/user</td><td>4.2/5</td><td>CRM + facturation des honoraires, 100% français</td></tr>
+<tr><td><strong>Sellsy</strong></td><td>dès 35€/user</td><td>4.2/5</td><td>CRM + facturation des honoraires, 100% français</td></tr>
 <tr><td><strong>Axonaut</strong></td><td>dès 58€</td><td>4.9/5</td><td>Tout-en-un français, gestion de dossiers avancée</td></tr>
 <tr><td><strong>Capsule</strong></td><td>dès 15€/user</td><td>4.7/5</td><td>Simple, notes par client, rappels, très bon rapport qualité/prix</td></tr>
 <tr><td><strong>Folk</strong></td><td>dès 27€/user</td><td>4.5/5</td><td>Excellent pour les cabinets qui gèrent beaucoup de contacts</td></tr>
