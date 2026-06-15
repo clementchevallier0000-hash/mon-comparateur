@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import { FAQ_ITEMS, FAQ_CATEGORIES } from '@/lib/faq'
+import SiteHeader from '@/app/components/SiteHeader'
+import SiteFooter from '@/app/components/SiteFooter'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -25,6 +27,8 @@ const catEmojis: Record<string, string> = {
 
 export default function FaqPage() {
   return (
+    <>
+    <SiteHeader />
     <main style={{ maxWidth: '900px', margin: '0 auto', padding: '40px 24px 80px' }}>
 
       {/* Hero */}
@@ -98,5 +102,7 @@ export default function FaqPage() {
         .faq-link:hover { border-color: #94a3b8; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
       `}</style>
     </main>
+    <SiteFooter />
+    </>
   )
 }
