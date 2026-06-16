@@ -100,7 +100,8 @@ export default async function AlternativePage({ params }: { params: Promise<{ sl
         .compact-card { transition: all 0.2s ease; }
         .compact-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); transform: translateY(-1px); border-color: ${c.accent}44 !important; }
         .essayer-btn { transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 6px; }
-        .essayer-btn:hover { opacity: 0.85; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+        .essayer-btn:hover { opacity: 0.85; }
+        .stretched-link { position: absolute; inset: 0; z-index: 0; }
         @media (max-width: 768px) {
           .hero-section { padding: 28px 16px 32px !important; }
           .hero-h1 { font-size: 26px !important; letter-spacing: -0.5px !important; }
@@ -108,6 +109,7 @@ export default async function AlternativePage({ params }: { params: Promise<{ sl
           .section-inner { padding: 24px 16px !important; }
           .top3-grid { grid-template-columns: 1fr !important; }
           .ref-card { flex-direction: column !important; gap: 12px !important; }
+          .compact-right { gap: 10px !important; }
         }
       `}</style>
 
@@ -123,7 +125,7 @@ export default async function AlternativePage({ params }: { params: Promise<{ sl
           <nav style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: 'rgba(255,255,255,0.5)', marginBottom: '20px', flexWrap: 'wrap' }}>
             <Link href="/" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Accueil</Link>
             <span>›</span>
-            <Link href={`/categorie/${ref.categorie_slug}`} style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>{catLabel}</Link>
+            <Link href="/alternative" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Comparer</Link>
             <span>›</span>
             <span style={{ color: 'rgba(255,255,255,0.8)' }}>Alternatives à {ref.nom}</span>
           </nav>
@@ -213,71 +215,71 @@ export default async function AlternativePage({ params }: { params: Promise<{ sl
                 const rank = rankConfig[index]
                 const isFree = outil.prix_mensuel === 0
                 return (
-                  <Link key={outil.id} href={`/outils/${outil.slug}`} style={{ textDecoration: 'none' }}>
-                    <div className="outil-card" style={{
-                      background: '#fff',
-                      border: index === 0 ? `2px solid ${c.accent}44` : '1px solid #e2e8f0',
-                      borderTop: `4px solid ${rank.borderColor}`,
-                      borderRadius: '16px',
-                      padding: '20px',
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '12px',
-                    }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                        <span style={{ fontSize: '10px', fontWeight: 700, padding: '3px 8px', borderRadius: '999px', background: rank.labelBg, color: rank.labelColor, border: `1px solid ${rank.labelBorder}` }}>
-                          {rank.label}
-                        </span>
-                        <span style={{ fontSize: '20px' }}>{rank.emoji}</span>
+                  <div key={outil.id} className="outil-card" style={{
+                    background: '#fff',
+                    border: index === 0 ? `2px solid ${c.accent}44` : '1px solid #e2e8f0',
+                    borderTop: `4px solid ${rank.borderColor}`,
+                    borderRadius: '16px',
+                    padding: '20px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '12px',
+                    position: 'relative',
+                  }}>
+                    {/* Stretched link vers la fiche outil */}
+                    <Link href={`/outils/${outil.slug}`} className="stretched-link" aria-label={`Voir la fiche ${outil.nom}`} style={{ textDecoration: 'none' }} />
+
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', position: 'relative', zIndex: 1 }}>
+                      <span style={{ fontSize: '10px', fontWeight: 700, padding: '3px 8px', borderRadius: '999px', background: rank.labelBg, color: rank.labelColor, border: `1px solid ${rank.labelBorder}` }}>
+                        {rank.label}
+                      </span>
+                      <span style={{ fontSize: '20px' }}>{rank.emoji}</span>
+                    </div>
+
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', position: 'relative', zIndex: 1 }}>
+                      <div style={{ width: '44px', height: '44px', background: c.bg, borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: `1px solid ${c.light}`, flexShrink: 0 }}>
+                        <LogoImg src={getLogoUrl(outil.lien_affilie)} alt={outil.nom} />
                       </div>
-
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <div style={{ width: '44px', height: '44px', background: c.bg, borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: `1px solid ${c.light}`, flexShrink: 0 }}>
-                          <LogoImg src={getLogoUrl(outil.lien_affilie)} alt={outil.nom} />
-                        </div>
-                        <div>
-                          <div style={{ fontWeight: 700, color: '#0f172a', fontSize: '15px' }}>{outil.nom}</div>
-                          {outil.note && (
-                            <div style={{ fontSize: '12px', color: '#64748b' }}>⭐ {outil.note}/5</div>
-                          )}
-                        </div>
-                      </div>
-
-                      <p style={{ fontSize: '13px', color: '#475569', lineHeight: 1.5, flex: 1, margin: 0 }}>
-                        {outil.tagline ?? outil.description}
-                      </p>
-
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto' }}>
-                        <div>
-                          <span style={{ fontSize: '20px', fontWeight: 800, color: '#0f172a' }}>
-                            {isFree ? 'Gratuit' : `${outil.prix_mensuel}€`}
-                          </span>
-                          {!isFree && <span style={{ fontSize: '11px', color: '#94a3b8', marginLeft: '3px' }}>/mois</span>}
-                        </div>
-                        {outil.lien_affilie && (
-                          <a
-                            href={outil.lien_affilie}
-                            target="_blank"
-                            rel="noopener noreferrer nofollow"
-                            onClick={e => e.stopPropagation()}
-                            className="essayer-btn"
-                            style={{
-                              background: index === 0 ? c.accent : '#0f172a',
-                              color: '#fff',
-                              borderRadius: '10px',
-                              padding: '9px 16px',
-                              textDecoration: 'none',
-                              fontSize: '13px',
-                              fontWeight: 700,
-                            }}
-                          >
-                            Essayer →
-                          </a>
-                        )}
+                      <div>
+                        <div style={{ fontWeight: 700, color: '#0f172a', fontSize: '15px' }}>{outil.nom}</div>
+                        {outil.note && <div style={{ fontSize: '12px', color: '#64748b' }}>⭐ {outil.note}/5</div>}
                       </div>
                     </div>
-                  </Link>
+
+                    <p style={{ fontSize: '13px', color: '#475569', lineHeight: 1.5, flex: 1, margin: 0, position: 'relative', zIndex: 1 }}>
+                      {outil.tagline ?? outil.description}
+                    </p>
+
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto', position: 'relative', zIndex: 1 }}>
+                      <div>
+                        <span style={{ fontSize: '20px', fontWeight: 800, color: '#0f172a' }}>
+                          {isFree ? 'Gratuit' : `${outil.prix_mensuel}€`}
+                        </span>
+                        {!isFree && <span style={{ fontSize: '11px', color: '#94a3b8', marginLeft: '3px' }}>/mois</span>}
+                      </div>
+                      {outil.lien_affilie && (
+                        <a
+                          href={outil.lien_affilie}
+                          target="_blank"
+                          rel="noopener noreferrer nofollow"
+                          className="essayer-btn"
+                          style={{
+                            background: index === 0 ? c.accent : '#0f172a',
+                            color: '#fff',
+                            borderRadius: '10px',
+                            padding: '9px 16px',
+                            textDecoration: 'none',
+                            fontSize: '13px',
+                            fontWeight: 700,
+                            position: 'relative',
+                            zIndex: 2,
+                          }}
+                        >
+                          Essayer →
+                        </a>
+                      )}
+                    </div>
+                  </div>
                 )
               })}
             </div>
@@ -296,54 +298,57 @@ export default async function AlternativePage({ params }: { params: Promise<{ sl
               {rest.map((outil) => {
                 const isFree = outil.prix_mensuel === 0
                 return (
-                  <Link key={outil.id} href={`/outils/${outil.slug}`} style={{ textDecoration: 'none' }}>
-                    <div className="compact-card" style={{
-                      background: '#fff',
-                      border: '1px solid #e2e8f0',
-                      borderRadius: '12px',
-                      padding: '16px 20px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '16px',
-                    }}>
-                      <div style={{ width: '40px', height: '40px', background: c.bg, borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: `1px solid ${c.light}`, flexShrink: 0 }}>
-                        <LogoImg src={getLogoUrl(outil.lien_affilie)} alt={outil.nom} />
-                      </div>
-                      <div style={{ flex: 1, minWidth: 0 }}>
-                        <div style={{ fontWeight: 700, color: '#0f172a', fontSize: '14px' }}>{outil.nom}</div>
-                        <div style={{ fontSize: '12px', color: '#64748b', marginTop: '2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                          {outil.tagline ?? outil.description}
-                        </div>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexShrink: 0 }}>
-                        {outil.note && <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 600 }}>⭐ {outil.note}</span>}
-                        <span style={{ fontSize: '15px', fontWeight: 800, color: '#0f172a', minWidth: '60px', textAlign: 'right' }}>
-                          {isFree ? 'Gratuit' : `${outil.prix_mensuel}€`}
-                          {!isFree && <span style={{ fontSize: '10px', color: '#94a3b8', fontWeight: 400, marginLeft: '2px' }}>/mois</span>}
-                        </span>
-                        {outil.lien_affilie && (
-                          <a
-                            href={outil.lien_affilie}
-                            target="_blank"
-                            rel="noopener noreferrer nofollow"
-                            onClick={e => e.stopPropagation()}
-                            className="essayer-btn"
-                            style={{
-                              background: '#0f172a',
-                              color: '#fff',
-                              borderRadius: '8px',
-                              padding: '7px 14px',
-                              textDecoration: 'none',
-                              fontSize: '12px',
-                              fontWeight: 700,
-                            }}
-                          >
-                            Essayer →
-                          </a>
-                        )}
+                  <div key={outil.id} className="compact-card" style={{
+                    background: '#fff',
+                    border: '1px solid #e2e8f0',
+                    borderRadius: '12px',
+                    padding: '16px 20px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '16px',
+                    position: 'relative',
+                  }}>
+                    {/* Stretched link */}
+                    <Link href={`/outils/${outil.slug}`} className="stretched-link" aria-label={`Voir la fiche ${outil.nom}`} style={{ textDecoration: 'none' }} />
+
+                    <div style={{ width: '40px', height: '40px', background: c.bg, borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: `1px solid ${c.light}`, flexShrink: 0, position: 'relative', zIndex: 1 }}>
+                      <LogoImg src={getLogoUrl(outil.lien_affilie)} alt={outil.nom} />
+                    </div>
+                    <div style={{ flex: 1, minWidth: 0, position: 'relative', zIndex: 1 }}>
+                      <div style={{ fontWeight: 700, color: '#0f172a', fontSize: '14px' }}>{outil.nom}</div>
+                      <div style={{ fontSize: '12px', color: '#64748b', marginTop: '2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        {outil.tagline ?? outil.description}
                       </div>
                     </div>
-                  </Link>
+                    <div className="compact-right" style={{ display: 'flex', alignItems: 'center', gap: '20px', flexShrink: 0, position: 'relative', zIndex: 1 }}>
+                      {outil.note && <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 600 }}>⭐ {outil.note}</span>}
+                      <span style={{ fontSize: '15px', fontWeight: 800, color: '#0f172a', minWidth: '60px', textAlign: 'right' }}>
+                        {isFree ? 'Gratuit' : `${outil.prix_mensuel}€`}
+                        {!isFree && <span style={{ fontSize: '10px', color: '#94a3b8', fontWeight: 400, marginLeft: '2px' }}>/mois</span>}
+                      </span>
+                      {outil.lien_affilie && (
+                        <a
+                          href={outil.lien_affilie}
+                          target="_blank"
+                          rel="noopener noreferrer nofollow"
+                          className="essayer-btn"
+                          style={{
+                            background: '#0f172a',
+                            color: '#fff',
+                            borderRadius: '8px',
+                            padding: '7px 14px',
+                            textDecoration: 'none',
+                            fontSize: '12px',
+                            fontWeight: 700,
+                            position: 'relative',
+                            zIndex: 2,
+                          }}
+                        >
+                          Essayer →
+                        </a>
+                      )}
+                    </div>
+                  </div>
                 )
               })}
             </div>
