@@ -463,9 +463,12 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
                     </Link>
                   ))}
                 </div>
-                <div style={{ marginTop: '14px', textAlign: 'center' }}>
+                <div style={{ marginTop: '14px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
                   <Link href={`/categorie/${catSlug}`} style={{ fontSize: '13px', color: c.accent, fontWeight: 600, textDecoration: 'none' }}>
                     Voir tous les {categorie?.nom} comparés →
+                  </Link>
+                  <Link href={`/alternative/${outil.slug}`} style={{ fontSize: '13px', color: '#475569', fontWeight: 600, textDecoration: 'none', background: '#f1f5f9', borderRadius: '8px', padding: '6px 12px' }}>
+                    🔄 Toutes les alternatives à {outil.nom} →
                   </Link>
                 </div>
               </div>

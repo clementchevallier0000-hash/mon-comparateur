@@ -4,6 +4,7 @@ import Link from 'next/link'
 
 const mainLinks = [
   { label: '📂 Toutes les catégories', href: '/categorie', color: '#2563eb', bg: '#eff6ff', border: '#bfdbfe' },
+  { label: '🔄 Comparer — trouver une alternative', href: '/alternative', color: '#0f172a', bg: '#f8fafc', border: '#e2e8f0' },
   { label: '📝 Blog', href: '/blog', color: '#0f172a', bg: '#f8fafc', border: '#e2e8f0' },
   { label: '❓ FAQ', href: '/faq', color: '#0f172a', bg: '#f8fafc', border: '#e2e8f0' },
   { label: '🎯 Quiz — quel outil pour vous ?', href: '/quiz', color: '#7c3aed', bg: '#fdf4ff', border: '#e9d5ff' },

@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation'
 
 const links = [
   { href: '/categorie', label: 'Catégories' },
+  { href: '/alternative', label: 'Comparer' },
   { href: '/blog', label: 'Blog' },
   { href: '/faq', label: 'FAQ' },
   { href: '/quiz', label: '🎯 Quiz' },
