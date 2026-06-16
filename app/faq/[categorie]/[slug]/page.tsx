@@ -208,7 +208,7 @@ export default async function FaqItemPage({ params }: Props) {
           .faq-content li { margin-bottom: 8px; line-height: 1.7; }
           .faq-content p { margin-bottom: 16px; line-height: 1.8; font-size: 16px; color: #334155; }
           .faq-content strong { color: #0f172a; }
-          .faq-content table { width: 100%; border-collapse: collapse; margin: 20px 0 28px; font-size: 14px; }
+          .faq-content table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-collapse: collapse; margin: 20px 0 28px; font-size: 14px; }
           .faq-content th { background: #f1f5f9; padding: 10px 14px; text-align: left; font-weight: 700; color: #0f172a; border: 1px solid #e2e8f0; }
           .faq-content td { padding: 10px 14px; border: 1px solid #e2e8f0; color: #334155; vertical-align: top; }
           .faq-content tr:nth-child(even) td { background: #f8fafc; }
