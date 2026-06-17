@@ -116,31 +116,30 @@ export default async function AlternativePage({ params }: { params: Promise<{ sl
       <SiteHeader />
 
       {/* Hero */}
-      <section className="hero-section" style={{ background: c.gradient, padding: '52px 40px 44px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', top: '-100px', right: '-100px', width: '500px', height: '500px', background: `radial-gradient(circle, ${c.accent}30 0%, transparent 70%)`, pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', bottom: '-80px', left: '-80px', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <section className="hero-section" style={{ background: c.bg, borderBottom: `1px solid ${c.light}`, padding: '52px 40px 44px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', top: '-80px', right: '-80px', width: '400px', height: '400px', background: `radial-gradient(circle, ${c.accent}18 0%, transparent 70%)`, pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative' }}>
 
           {/* Breadcrumb */}
-          <nav style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: 'rgba(255,255,255,0.5)', marginBottom: '20px', flexWrap: 'wrap' }}>
-            <Link href="/" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Accueil</Link>
+          <nav style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: '#94a3b8', marginBottom: '20px', flexWrap: 'wrap' }}>
+            <Link href="/" style={{ color: '#94a3b8', textDecoration: 'none' }}>Accueil</Link>
             <span>›</span>
-            <Link href="/alternative" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Comparer</Link>
+            <Link href="/alternative" style={{ color: '#94a3b8', textDecoration: 'none' }}>Comparer</Link>
             <span>›</span>
-            <span style={{ color: 'rgba(255,255,255,0.8)' }}>Alternatives à {ref.nom}</span>
+            <span style={{ color: '#475569', fontWeight: 600 }}>Alternatives à {ref.nom}</span>
           </nav>
 
           {/* Badge */}
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '999px', padding: '5px 14px', marginBottom: '18px', backdropFilter: 'blur(8px)' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', background: '#fff', border: `1px solid ${c.light}`, borderRadius: '999px', padding: '5px 14px', marginBottom: '18px' }}>
             <span style={{ width: '6px', height: '6px', background: '#4ade80', borderRadius: '50%', display: 'inline-block' }} />
-            <span style={{ color: 'rgba(255,255,255,0.85)', fontSize: '12px', fontWeight: 500 }}>Comparatif {catLabel} · Mis à jour en 2026</span>
+            <span style={{ color: c.accent, fontSize: '12px', fontWeight: 600 }}>Comparatif {catLabel} · Mis à jour en 2026</span>
           </div>
 
-          <h1 className="hero-h1" style={{ fontFamily: "'Fraunces', serif", fontSize: '40px', fontWeight: 800, color: '#fff', letterSpacing: '-1.5px', marginBottom: '12px', lineHeight: 1.15 }}>
+          <h1 className="hero-h1" style={{ fontFamily: "'Fraunces', serif", fontSize: '40px', fontWeight: 800, color: '#0f172a', letterSpacing: '-1.5px', marginBottom: '12px', lineHeight: 1.15 }}>
             Meilleures alternatives<br />
-            <span style={{ opacity: 0.75 }}>à {ref.nom} en 2026</span>
+            <span style={{ color: c.accent }}>à {ref.nom}</span> en 2026
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px', maxWidth: '520px', lineHeight: 1.6, marginBottom: '28px' }}>
+          <p style={{ color: '#475569', fontSize: '16px', maxWidth: '520px', lineHeight: 1.6, marginBottom: '28px' }}>
             {alts.length} solution{alts.length > 1 ? 's' : ''} {catLabel} testée{alts.length > 1 ? 's' : ''} pour remplacer {ref.nom} — prix réels, avis indépendants, classées par note.
           </p>
 
@@ -152,12 +151,12 @@ export default async function AlternativePage({ params }: { params: Promise<{ sl
               { val: '2026', label: 'données à jour', icon: '✅' },
             ].map((stat, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '9px' }}>
-                <div style={{ width: '32px', height: '32px', background: 'rgba(255,255,255,0.1)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', border: '1px solid rgba(255,255,255,0.15)', flexShrink: 0 }}>
+                <div style={{ width: '32px', height: '32px', background: '#fff', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', border: `1px solid ${c.light}`, flexShrink: 0 }}>
                   {stat.icon}
                 </div>
                 <div>
-                  <div style={{ fontFamily: "'Fraunces', serif", fontSize: '18px', fontWeight: 800, color: '#fff', lineHeight: 1 }}>{stat.val}</div>
-                  <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.5)', fontWeight: 500 }}>{stat.label}</div>
+                  <div style={{ fontFamily: "'Fraunces', serif", fontSize: '18px', fontWeight: 800, color: '#0f172a', lineHeight: 1 }}>{stat.val}</div>
+                  <div style={{ fontSize: '10px', color: '#94a3b8', fontWeight: 500 }}>{stat.label}</div>
                 </div>
               </div>
             ))}
