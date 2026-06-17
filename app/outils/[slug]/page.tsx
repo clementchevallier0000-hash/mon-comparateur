@@ -10,6 +10,7 @@ import SiteFooter from '@/app/components/SiteFooter'
 import { getLogoUrl, getRealDomain } from '@/lib/logo'
 import { NOTE_SOURCES } from '@/lib/noteSources'
 import { TARIFS } from '@/lib/tarifs'
+import StickyCTA from '@/app/components/StickyCTA'
 
 const OUTILS_PERSO = new Set([
   'semrush', 'semji', 'n8n', 'make', 'henrri',
@@ -574,7 +575,14 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
       </div>
       <SiteFooter />
 
-
+      <StickyCTA
+        nom={outil.nom}
+        logoSrc={getLogoUrl(outil.lien_affilie)}
+        prixMensuel={outil.prix_mensuel}
+        essaiGratuit={outil.essai_gratuit}
+        lienAffilie={outil.lien_affilie}
+        accent={c.accent}
+      />
     </main>
   )
 }
