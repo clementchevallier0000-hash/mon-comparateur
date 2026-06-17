@@ -64,6 +64,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }))
 
+  const alternativesUrls: MetadataRoute.Sitemap = [
+    { url: `${baseUrl}/alternative`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.8 },
+    ...(outils ?? []).map(o => ({
+      url: `${baseUrl}/alternative/${o.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    })),
+  ]
+
   const faqUrls: MetadataRoute.Sitemap = [
     { url: `${baseUrl}/faq`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.8 },
     ...FAQ_ITEMS.map(item => ({
@@ -82,6 +92,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/contact`,             lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.5 },
     ...categoriesUrls,
     ...outilsUrls,
+    ...alternativesUrls,
     ...programmatiquesUrls,
     ...blogUrls,
     ...faqUrls,

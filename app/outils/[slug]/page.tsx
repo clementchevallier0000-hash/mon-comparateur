@@ -204,13 +204,15 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
             target="_blank"
             rel="noopener noreferrer nofollow"
             className="essayer-main"
-            style={{ display: 'block', background: `linear-gradient(135deg, ${c.accent}, ${c.accent}cc)`, color: '#fff', textDecoration: 'none', textAlign: 'center', padding: '14px 20px', borderRadius: '12px', fontSize: '15px', fontWeight: 700, marginBottom: '12px' }}
+            style={{ display: 'block', background: `linear-gradient(135deg, ${c.accent}, ${c.accent}cc)`, color: '#fff', textDecoration: 'none', textAlign: 'center', padding: '14px 20px', borderRadius: '12px', fontSize: '15px', fontWeight: 700, marginBottom: '8px' }}
           >
-            Essayer {outil.nom} →
+            {outil.essai_gratuit ? `Essai gratuit →` : `Essayer ${outil.nom} →`}
           </a>
-          <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.35)', textAlign: 'center', lineHeight: 1.5 }}>
-            🤝 Lien affilié — je touche une commission si vous souscrivez, sans surcoût pour vous
-          </p>
+          {outil.essai_gratuit && (
+            <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.6)', textAlign: 'center', marginBottom: '8px' }}>
+              ✓ Gratuit · Sans engagement · Sans CB
+            </p>
+          )}
           {note && (
             <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.1)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div>
@@ -509,14 +511,16 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
                 target="_blank"
                 rel="noopener noreferrer nofollow"
                 className="essayer-main"
-                style={{ display: 'block', background: `linear-gradient(135deg, ${c.accent}, ${c.accent}cc)`, color: '#fff', textDecoration: 'none', textAlign: 'center', padding: '14px 20px', borderRadius: '12px', fontSize: '15px', fontWeight: 700, marginBottom: '10px' }}
+                style={{ display: 'block', background: `linear-gradient(135deg, ${c.accent}, ${c.accent}cc)`, color: '#fff', textDecoration: 'none', textAlign: 'center', padding: '14px 20px', borderRadius: '12px', fontSize: '15px', fontWeight: 700, marginBottom: '8px' }}
               >
-                Essayer {outil.nom} →
+                {outil.essai_gratuit ? `Essai gratuit →` : `Essayer ${outil.nom} →`}
               </a>
 
-              <p style={{ fontSize: '11px', color: '#94a3b8', textAlign: 'center', lineHeight: 1.5 }}>
-                🤝 Lien affilié · je touche une commission, sans surcoût pour vous
-              </p>
+              {outil.essai_gratuit && (
+                <p style={{ fontSize: '12px', color: '#64748b', textAlign: 'center', marginBottom: '8px' }}>
+                  ✓ Gratuit · Sans engagement · Sans CB
+                </p>
+              )}
             </div>
 
             {/* Infos rapides */}
