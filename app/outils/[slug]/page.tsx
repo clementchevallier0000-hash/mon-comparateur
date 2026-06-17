@@ -523,6 +523,13 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
                   ✓ Gratuit · Sans engagement · Sans CB
                 </p>
               )}
+
+              {outil.nb_clients && (
+                <p style={{ fontSize: '12px', color: '#94a3b8', textAlign: 'center', marginBottom: '0', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px' }}>
+                  <span>👥</span>
+                  <span>{outil.nb_clients} l&apos;utilisent déjà</span>
+                </p>
+              )}
             </div>
 
             {/* Infos rapides */}
