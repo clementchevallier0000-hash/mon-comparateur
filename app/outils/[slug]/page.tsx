@@ -508,6 +508,7 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
               )}
 
               <a
+                id="main-cta-btn"
                 href={outil.lien_affilie}
                 target="_blank"
                 rel="noopener noreferrer nofollow"

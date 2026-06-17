@@ -18,10 +18,20 @@ export default function StickyCTA({ nom, logoSrc, prixMensuel, essaiGratuit, lie
 
   useEffect(() => {
     setMounted(true)
-    const check = () => setVisible(window.scrollY > 380)
-    check()
-    window.addEventListener('scroll', check, { passive: true })
-    return () => window.removeEventListener('scroll', check)
+    const target = document.getElementById('main-cta-btn')
+    if (target) {
+      const observer = new IntersectionObserver(
+        ([entry]) => setVisible(!entry.isIntersecting),
+        { threshold: 0 }
+      )
+      observer.observe(target)
+      return () => observer.disconnect()
+    } else {
+      const check = () => setVisible(window.scrollY > 380)
+      check()
+      window.addEventListener('scroll', check, { passive: true })
+      return () => window.removeEventListener('scroll', check)
+    }
   }, [])
 
   if (!mounted || !visible || closed || !lienAffilie) return null
