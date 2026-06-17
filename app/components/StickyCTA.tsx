@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 
 interface Props {
   nom: string
@@ -13,39 +14,42 @@ interface Props {
 export default function StickyCTA({ nom, logoSrc, prixMensuel, essaiGratuit, lienAffilie, accent }: Props) {
   const [visible, setVisible] = useState(false)
   const [closed, setClosed] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 380)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    setMounted(true)
+    const check = () => setVisible(window.scrollY > 380)
+    check()
+    window.addEventListener('scroll', check, { passive: true })
+    return () => window.removeEventListener('scroll', check)
   }, [])
 
-  if (!visible || closed || !lienAffilie) return null
+  if (!mounted || !visible || closed || !lienAffilie) return null
 
   const isFree = prixMensuel === 0
 
-  return (
+  return createPortal(
     <div style={{
       position: 'fixed',
       bottom: 0,
       left: 0,
       right: 0,
-      zIndex: 100,
+      zIndex: 9999,
       background: '#fff',
       borderTop: `3px solid ${accent}`,
       boxShadow: '0 -4px 24px rgba(0,0,0,0.14)',
       padding: '12px 20px',
-      animation: 'slideUp 0.25s ease',
+      fontFamily: "'DM Sans', sans-serif",
     }}>
       <style>{`
-        @keyframes slideUp {
-          from { transform: translateY(100%); opacity: 0; }
-          to   { transform: translateY(0);    opacity: 1; }
+        @keyframes stickyCTAUp {
+          from { transform: translateY(100%); }
+          to   { transform: translateY(0); }
         }
+        .sticky-cta-inner { animation: stickyCTAUp 0.25s ease; }
       `}</style>
-      <div style={{ maxWidth: '900px', margin: '0 auto', display: 'flex', alignItems: 'center', gap: '16px', justifyContent: 'space-between' }}>
+      <div className="sticky-cta-inner" style={{ maxWidth: '900px', margin: '0 auto', display: 'flex', alignItems: 'center', gap: '16px', justifyContent: 'space-between' }}>
 
-        {/* Gauche : logo + nom + prix */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
           {logoSrc && (
             <img src={logoSrc} alt={nom} width={32} height={32} style={{ borderRadius: '8px', objectFit: 'contain', flexShrink: 0 }} />
@@ -56,7 +60,6 @@ export default function StickyCTA({ nom, logoSrc, prixMensuel, essaiGratuit, lie
           </div>
         </div>
 
-        {/* Droite : CTA + fermer */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0 }}>
           <div style={{ textAlign: 'right' }}>
             <a
@@ -91,7 +94,9 @@ export default function StickyCTA({ nom, logoSrc, prixMensuel, essaiGratuit, lie
             ✕
           </button>
         </div>
+
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
