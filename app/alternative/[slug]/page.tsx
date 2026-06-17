@@ -60,7 +60,7 @@ export default async function AlternativePage({ params }: { params: Promise<{ sl
 
   const { data: alternatives } = await supabase
     .from('outils')
-    .select('id, nom, slug, categorie_slug, prix_mensuel, note, tagline, lien_affilie, description')
+    .select('id, nom, slug, categorie_slug, prix_mensuel, note, tagline, lien_affilie, description, essai_gratuit')
     .eq('categorie_slug', ref.categorie_slug)
     .neq('id', ref.id)
     .order('note', { ascending: false })
@@ -161,6 +161,40 @@ export default async function AlternativePage({ params }: { params: Promise<{ sl
               </div>
             ))}
           </div>
+
+          {/* Recommandation #1 */}
+          {top3[0] && (
+            <div style={{ marginTop: '28px', background: '#fff', border: `1px solid ${c.light}`, borderLeft: `4px solid ${c.accent}`, borderRadius: '14px', padding: '14px 20px', display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+              <span style={{ fontSize: '11px', fontWeight: 700, color: c.accent, textTransform: 'uppercase', letterSpacing: '0.05em', flexShrink: 0 }}>🏆 Notre recommandation</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flex: 1, minWidth: '160px' }}>
+                <div style={{ width: '34px', height: '34px', background: c.bg, borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: `1px solid ${c.light}`, flexShrink: 0 }}>
+                  <LogoImg src={getLogoUrl(top3[0].lien_affilie)} alt={top3[0].nom} />
+                </div>
+                <div style={{ minWidth: 0 }}>
+                  <div style={{ fontWeight: 700, color: '#0f172a', fontSize: '14px' }}>{top3[0].nom}</div>
+                  <div style={{ fontSize: '12px', color: '#64748b', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    {top3[0].tagline ?? top3[0].description}
+                  </div>
+                </div>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexShrink: 0 }}>
+                {top3[0].note && <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 600 }}>⭐ {top3[0].note}/5</span>}
+                <span style={{ fontSize: '14px', fontWeight: 800, color: '#0f172a' }}>
+                  {top3[0].prix_mensuel === 0 ? 'Gratuit' : `${top3[0].prix_mensuel}€/mois`}
+                </span>
+                {top3[0].lien_affilie && (
+                  <a
+                    href={top3[0].lien_affilie}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                    style={{ background: c.accent, color: '#fff', borderRadius: '10px', padding: '10px 18px', textDecoration: 'none', fontSize: '13px', fontWeight: 700, whiteSpace: 'nowrap' }}
+                  >
+                    {top3[0].essai_gratuit ? 'Essai gratuit →' : 'Essayer →'}
+                  </a>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -257,25 +291,30 @@ export default async function AlternativePage({ params }: { params: Promise<{ sl
                         {!isFree && <span style={{ fontSize: '11px', color: '#94a3b8', marginLeft: '3px' }}>/mois</span>}
                       </div>
                       {outil.lien_affilie && (
-                        <a
-                          href={outil.lien_affilie}
-                          target="_blank"
-                          rel="noopener noreferrer nofollow"
-                          className="essayer-btn"
-                          style={{
-                            background: index === 0 ? c.accent : '#0f172a',
-                            color: '#fff',
-                            borderRadius: '10px',
-                            padding: '9px 16px',
-                            textDecoration: 'none',
-                            fontSize: '13px',
-                            fontWeight: 700,
-                            position: 'relative',
-                            zIndex: 2,
-                          }}
-                        >
-                          Essayer →
-                        </a>
+                        <div style={{ position: 'relative', zIndex: 2, textAlign: 'right' }}>
+                          <a
+                            href={outil.lien_affilie}
+                            target="_blank"
+                            rel="noopener noreferrer nofollow"
+                            className="essayer-btn"
+                            style={{
+                              background: index === 0 ? c.accent : '#0f172a',
+                              color: '#fff',
+                              borderRadius: '10px',
+                              padding: '9px 16px',
+                              textDecoration: 'none',
+                              fontSize: '13px',
+                              fontWeight: 700,
+                            }}
+                          >
+                            {outil.essai_gratuit ? 'Essai gratuit →' : 'Essayer →'}
+                          </a>
+                          {outil.essai_gratuit && (
+                            <p style={{ fontSize: '10px', color: '#16a34a', margin: '4px 0 0', fontWeight: 600 }}>
+                              ✓ Gratuit · Sans CB
+                            </p>
+                          )}
+                        </div>
                       )}
                     </div>
                   </div>
@@ -343,7 +382,7 @@ export default async function AlternativePage({ params }: { params: Promise<{ sl
                             zIndex: 2,
                           }}
                         >
-                          Essayer →
+                          {outil.essai_gratuit ? 'Essai gratuit →' : 'Essayer →'}
                         </a>
                       )}
                     </div>

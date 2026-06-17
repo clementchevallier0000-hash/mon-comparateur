@@ -291,15 +291,16 @@ export default function CategoryFilters({ outils, c, icon, catSlug }: Props) {
                 const price = displayPrice(outil)
                 const tracked = isTracked(outil.lien_affilie)
                 return (
-                  <Link key={outil.id} href={`/outils/${outil.slug}`} style={{ textDecoration: 'none' }}>
+                  <div key={outil.id} style={{ position: 'relative', height: '100%' }}>
+                    <Link href={`/outils/${outil.slug}`} style={{ position: 'absolute', inset: 0, zIndex: 0, textDecoration: 'none' }} aria-label={`Voir la fiche ${outil.nom}`} />
                     <div className="top-card" style={{ background: '#fff', border: index === 0 ? `2px solid ${c.accent}44` : '1px solid #e2e8f0', borderTop: `4px solid ${rank?.borderColor || c.accent}`, borderRadius: '16px', overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}>
                       {outil.screenshot_url && (
-                        <div style={{ height: '130px', overflow: 'hidden', background: '#f1f5f9', position: 'relative', flexShrink: 0 }}>
+                        <div style={{ height: '130px', overflow: 'hidden', background: '#f1f5f9', position: 'relative', zIndex: 1, flexShrink: 0 }}>
                           <img src={outil.screenshot_url} alt={`Interface ${outil.nom}`} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }} />
                           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 60%, rgba(255,255,255,0.4) 100%)' }} />
                         </div>
                       )}
-                      <div style={{ padding: '18px', flex: 1, display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                      <div style={{ padding: '18px', flex: 1, display: 'flex', flexDirection: 'column', gap: '12px', position: 'relative', zIndex: 1 }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '4px' }}>
                           <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}>
                             {rank && <span style={{ fontSize: '10px', fontWeight: 700, padding: '3px 8px', borderRadius: '999px', background: rank.labelBg, color: rank.labelColor, border: `1px solid ${rank.labelBorder}` }}>{rank.label}</span>}
@@ -333,12 +334,30 @@ export default function CategoryFilters({ outils, c, icon, catSlug }: Props) {
                             {NOTE_SOURCES[outil.id] && <span style={{ fontSize: '10px', fontWeight: 600, color: '#94a3b8', background: '#f1f5f9', border: '1px solid #e2e8f0', borderRadius: '4px', padding: '0px 5px', marginLeft: '2px' }}>{NOTE_SOURCES[outil.id]}</span>}
                           </div>
                         )}
-                        <div style={{ background: c.bg, color: c.accent, border: `1px solid ${c.light}`, borderRadius: '8px', padding: '8px 12px', fontSize: '12px', fontWeight: 700, textAlign: 'center' }}>
-                          Voir l&apos;avis →
-                        </div>
+                        {outil.lien_affilie ? (
+                          <div style={{ position: 'relative', zIndex: 2 }}>
+                            <a
+                              href={outil.lien_affilie}
+                              target="_blank"
+                              rel="noopener noreferrer nofollow"
+                              style={{ display: 'block', background: c.accent, color: '#fff', borderRadius: '8px', padding: '9px 12px', fontSize: '13px', fontWeight: 700, textAlign: 'center', textDecoration: 'none' }}
+                            >
+                              {outil.essai_gratuit ? 'Essai gratuit →' : 'Essayer →'}
+                            </a>
+                            {outil.essai_gratuit && (
+                              <p style={{ fontSize: '10px', color: '#16a34a', textAlign: 'center', margin: '5px 0 0', fontWeight: 600 }}>
+                                ✓ Gratuit · Sans CB · Sans engagement
+                              </p>
+                            )}
+                          </div>
+                        ) : (
+                          <div style={{ background: c.bg, color: c.accent, border: `1px solid ${c.light}`, borderRadius: '8px', padding: '8px 12px', fontSize: '12px', fontWeight: 700, textAlign: 'center' }}>
+                            Voir l&apos;avis →
+                          </div>
+                        )}
                       </div>
                     </div>
-                  </Link>
+                  </div>
                 )
               })}
             </div>
