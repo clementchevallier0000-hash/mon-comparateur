@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Script from "next/script";
 import BackToTop from "@/app/components/BackToTop";
+import ScrollToTop from "@/app/components/ScrollToTop";
 import { Fraunces, DM_Sans } from "next/font/google";
 
 const fraunces = Fraunces({
@@ -72,6 +73,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body>
+        <ScrollToTop />
         {children}
         <BackToTop />
       </body>
