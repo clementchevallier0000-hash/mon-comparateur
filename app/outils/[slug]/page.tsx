@@ -69,6 +69,83 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
   const avantages: string[] = outil.avantages ?? []
   const inconvenients: string[] = outil.inconvenients ?? []
 
+  // Verdict auto-généré depuis les données réelles
+  const verdictPhrases: Record<string, Record<string, string>> = {
+    'crm': {
+      'free':           'CRM gratuit idéal pour démarrer',
+      'free-top':       'Le CRM gratuit le mieux noté',
+      'affordable':     'CRM accessible pour freelances et TPE',
+      'affordable-top': 'CRM top noté et accessible',
+      'mid':            'CRM complet pour équipes commerciales',
+      'mid-top':        'Référence CRM pour les équipes de vente',
+      'premium':        'CRM puissant pour structures ambitieuses',
+      'premium-top':    'La référence CRM pour les PME',
+    },
+    'facturation': {
+      'free':           'Facturation 100% gratuite',
+      'free-top':       'Le logiciel de facturation gratuit le mieux noté',
+      'affordable':     'Facturation simple et abordable',
+      'affordable-top': 'Le logiciel de facturation le plus recommandé',
+      'mid':            'Solution de facturation et comptabilité complète',
+      'mid-top':        'Référence facturation pour TPE et PME',
+      'premium':        'Facturation, comptabilité et gestion intégrées',
+      'premium-top':    'La suite de gestion financière la plus complète',
+    },
+    'gestion-de-projet': {
+      'free':           'Gestion de projet sans budget',
+      'free-top':       "L'outil de gestion de projet gratuit le mieux noté",
+      'affordable':     'Pilotage de projets visuel et accessible',
+      'affordable-top': 'Gestion de projet top noté et abordable',
+      'mid':            'Outil de gestion de projet polyvalent et puissant',
+      'mid-top':        "La référence en gestion de projet d'équipe",
+      'premium':        'Solution de gestion de projet avancée',
+      'premium-top':    "L'outil de gestion de projet le mieux noté",
+    },
+    'seo': {
+      'free':           'SEO accessible pour débuter',
+      'free-top':       "L'outil SEO gratuit le mieux noté",
+      'affordable':     'Suite SEO efficace et abordable',
+      'affordable-top': 'SEO abordable et très bien noté',
+      'mid':            'Suite SEO complète pour progresser',
+      'mid-top':        'La référence SEO pour les équipes marketing',
+      'premium':        'Suite SEO professionnelle tout-en-un',
+      'premium-top':    'La suite SEO la plus complète du marché',
+    },
+    'automatisation': {
+      'free':           'Automatisation visuelle sans budget',
+      'free-top':       "L'outil d'automatisation gratuit le mieux noté",
+      'affordable':     'Automatisation accessible sans code',
+      'affordable-top': 'Automatisation abordable et très appréciée',
+      'mid':            'Automatisation puissante pour équipes',
+      'mid-top':        'Référence en automatisation no-code',
+      'premium':        'Automatisation avancée pour structures tech',
+      'premium-top':    "La suite d'automatisation la plus puissante",
+    },
+  }
+  const verdictEmojis: Record<string, string> = {
+    'free': '🆓', 'free-top': '🏆',
+    'affordable': '✅', 'affordable-top': '🏆',
+    'mid': '✨', 'mid-top': '🏆',
+    'premium': '💎', 'premium-top': '🏆',
+  }
+  const priceKey = isFree ? 'free' : (outil.prix_mensuel ?? 0) < 25 ? 'affordable' : (outil.prix_mensuel ?? 0) < 60 ? 'mid' : 'premium'
+  const isTopRated = (note ?? 0) >= 4.5
+  const verdictKey = isTopRated ? `${priceKey}-top` : priceKey
+  const vCat = catSlug in verdictPhrases ? catSlug : 'crm'
+  const verdictMain = verdictPhrases[vCat][verdictKey] ?? verdictPhrases[vCat][priceKey]
+  const verdictEmoji = verdictEmojis[verdictKey] ?? '✅'
+  const verdictDetail = outil.nb_clients
+    ? `${outil.nb_clients} l'utilisent déjà`
+    : isTopRated && note
+      ? `Note ${note}/5 — parmi les mieux notés de la catégorie`
+      : outil.essai_gratuit
+        ? 'Essai gratuit disponible — sans CB, sans engagement'
+        : avantages[0]
+          ? (avantages[0].length > 65 ? avantages[0].substring(0, 62) + '…' : avantages[0])
+          : outil.version_gratuite
+            ? 'Version gratuite disponible sans limite de temps'
+            : null
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
@@ -236,6 +313,29 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
 
           {/* Colonne principale */}
           <div style={{ flex: '1 1 360px', minWidth: 0, display: 'flex', flexDirection: 'column', gap: '24px' }}>
+
+            {/* Notre verdict */}
+            <div style={{ background: c.bg, border: `1px solid ${c.light}`, borderLeft: `4px solid ${c.accent}`, borderRadius: '16px', padding: '20px 24px' }}>
+              <p style={{ fontSize: '11px', fontWeight: 700, color: c.accent, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
+                Notre verdict
+              </p>
+              <p style={{ fontSize: '19px', fontWeight: 800, color: '#0f172a', lineHeight: 1.35, marginBottom: verdictDetail ? '8px' : note ? '10px' : '0' }}>
+                {verdictEmoji} {verdictMain}
+              </p>
+              {verdictDetail && (
+                <p style={{ fontSize: '13px', color: '#475569', lineHeight: 1.6, marginBottom: note ? '10px' : '0' }}>
+                  {verdictDetail}
+                </p>
+              )}
+              {note && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  {[1,2,3,4,5].map(s => (
+                    <span key={s} style={{ color: s <= Math.round(note) ? '#f59e0b' : '#e2e8f0', fontSize: '15px' }}>★</span>
+                  ))}
+                  <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 600, marginLeft: '4px' }}>{note}/5</span>
+                </div>
+              )}
+            </div>
 
             {/* Description complète */}
             {outil.description && (
