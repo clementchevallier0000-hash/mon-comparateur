@@ -261,45 +261,81 @@ export default function QuizClient({ outils }: Props) {
             </p>
           </div>
 
-          {/* Recommandations principales */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '32px' }}>
-            {recommendations.map((r, i) => {
-              const info = outils.find(o => o.slug === r.slug)
-              const lien = info?.lien_affilie || r.lien
-              return (
-                <div key={r.slug} style={{ background: '#fff', borderRadius: '20px', border: i === 0 ? '2px solid #2563eb' : '1px solid #e2e8f0', padding: '24px', position: 'relative', overflow: 'hidden' }}>
-                  {i === 0 && <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg,#2563eb,#7c3aed)' }} />}
-                  <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap' }}>
-                    <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px', flexWrap: 'wrap' }}>
-                        <span style={{ fontSize: '26px' }}>{r.emoji}</span>
-                        <div>
-                          {i === 0 && <span style={{ fontSize: '10px', fontWeight: 700, color: '#2563eb', background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '999px', padding: '2px 8px', display: 'block', marginBottom: '4px' }}>⭐ Meilleur choix</span>}
-                          <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: '20px', fontWeight: 800, color: '#0f172a', margin: 0 }}>
-                            {info?.nom ?? r.slug}
-                          </h2>
-                        </div>
-                      </div>
-                      <p style={{ fontSize: '14px', color: '#475569', lineHeight: 1.65, marginBottom: '10px' }}>{r.raison}</p>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
-                        <span style={{ fontSize: '13px', fontWeight: 700, color: '#0f172a' }}>{formatPrix(info?.prix_mensuel ?? null)}</span>
-                        {info?.note && <span style={{ fontSize: '12px', color: '#f59e0b', fontWeight: 700 }}>★ {info.note}/5</span>}
-                        {info?.essai_gratuit && <span style={{ fontSize: '11px', fontWeight: 700, color: '#16a34a', background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '999px', padding: '2px 8px' }}>Essai gratuit</span>}
-                      </div>
+          {/* Recommandation #1 — hero */}
+          {recommendations[0] && (() => {
+            const r = recommendations[0]
+            const info = outils.find(o => o.slug === r.slug)
+            const lien = info?.lien_affilie || r.lien
+            return (
+              <div style={{ background: 'linear-gradient(135deg,#0f172a 0%,#1e3a5f 60%,#1e40af 100%)', borderRadius: '24px', padding: '28px', marginBottom: '16px', position: 'relative', overflow: 'hidden' }}>
+                <div style={{ position: 'absolute', top: '-60px', right: '-60px', width: '220px', height: '220px', background: 'radial-gradient(circle, rgba(99,102,241,0.35) 0%, transparent 70%)', pointerEvents: 'none' }} />
+                <div style={{ position: 'relative', zIndex: 1 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
+                    <span style={{ fontSize: '11px', fontWeight: 700, color: '#fbbf24', textTransform: 'uppercase', letterSpacing: '1.5px' }}>⭐ Notre recommandation</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
+                    <span style={{ fontSize: '28px' }}>{r.emoji}</span>
+                    <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: '26px', fontWeight: 900, color: '#fff', margin: 0, letterSpacing: '-0.5px' }}>
+                      {info?.nom ?? r.slug}
+                    </h2>
+                  </div>
+                  <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.65, marginBottom: '16px' }}>{r.raison}</p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '20px', flexWrap: 'wrap' }}>
+                    <span style={{ fontSize: '20px', fontWeight: 800, color: '#fff' }}>{formatPrix(info?.prix_mensuel ?? null)}</span>
+                    {info?.note && <span style={{ fontSize: '13px', color: '#fbbf24', fontWeight: 700 }}>★ {info.note}/5</span>}
+                    {info?.essai_gratuit && <span style={{ fontSize: '11px', fontWeight: 700, color: '#4ade80', background: 'rgba(74,222,128,0.15)', border: '1px solid rgba(74,222,128,0.3)', borderRadius: '999px', padding: '3px 10px' }}>Essai gratuit disponible</span>}
+                  </div>
+                  <a
+                    href={lien}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                    style={{ display: 'block', textAlign: 'center', background: 'linear-gradient(135deg,#2563eb,#7c3aed)', color: '#fff', borderRadius: '14px', padding: '16px 24px', textDecoration: 'none', fontSize: '16px', fontWeight: 700, marginBottom: '8px' }}
+                  >
+                    {info?.essai_gratuit ? `Commencer l'essai gratuit →` : `Essayer ${info?.nom ?? r.slug} →`}
+                  </a>
+                  {info?.essai_gratuit && (
+                    <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.45)', textAlign: 'center', margin: 0 }}>✓ Gratuit · Sans CB · Sans engagement</p>
+                  )}
+                  <Link href={`/outils/${r.slug}`} style={{ display: 'block', textAlign: 'center', fontSize: '12px', color: 'rgba(255,255,255,0.45)', textDecoration: 'none', marginTop: '10px', fontWeight: 500 }}>
+                    Lire l&apos;avis complet →
+                  </Link>
+                </div>
+              </div>
+            )
+          })()}
+
+          {/* Recommandation #2 — secondaire */}
+          {recommendations[1] && (() => {
+            const r = recommendations[1]
+            const info = outils.find(o => o.slug === r.slug)
+            const lien = info?.lien_affilie || r.lien
+            return (
+              <div style={{ background: '#fff', borderRadius: '16px', border: '1px solid #e2e8f0', padding: '20px', marginBottom: '32px' }}>
+                <p style={{ fontSize: '10px', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '10px' }}>🥈 Alternative conseillée</p>
+                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap' }}>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+                      <span style={{ fontSize: '20px' }}>{r.emoji}</span>
+                      <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: '17px', fontWeight: 800, color: '#0f172a', margin: 0 }}>
+                        {info?.nom ?? r.slug}
+                      </h3>
+                      {info?.note && <span style={{ fontSize: '12px', color: '#f59e0b', fontWeight: 700 }}>★ {info.note}</span>}
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', flexShrink: 0 }}>
-                      <Link href={`/outils/${r.slug}`} style={{ display: 'block', textAlign: 'center', padding: '10px 18px', borderRadius: '10px', fontSize: '13px', fontWeight: 700, textDecoration: 'none', background: '#f8fafc', color: '#0f172a', border: '1px solid #e2e8f0' }}>
-                        Voir la fiche →
-                      </Link>
-                      <a href={lien} target="_blank" rel="noopener noreferrer nofollow" style={{ display: 'block', textAlign: 'center', padding: '10px 18px', borderRadius: '10px', fontSize: '13px', fontWeight: 700, textDecoration: 'none', background: i === 0 ? 'linear-gradient(135deg,#2563eb,#7c3aed)' : '#f8fafc', color: i === 0 ? '#fff' : '#475569', border: i === 0 ? 'none' : '1px solid #e2e8f0' }}>
-                        Essayer →
-                      </a>
-                    </div>
+                    <p style={{ fontSize: '13px', color: '#475569', lineHeight: 1.6, marginBottom: '8px' }}>{r.raison}</p>
+                    <span style={{ fontSize: '13px', fontWeight: 700, color: '#0f172a' }}>{formatPrix(info?.prix_mensuel ?? null)}</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', flexShrink: 0 }}>
+                    <a href={lien} target="_blank" rel="noopener noreferrer nofollow" style={{ display: 'block', textAlign: 'center', padding: '10px 18px', borderRadius: '10px', fontSize: '13px', fontWeight: 700, textDecoration: 'none', background: '#0f172a', color: '#fff' }}>
+                      {info?.essai_gratuit ? 'Essai gratuit →' : 'Essayer →'}
+                    </a>
+                    <Link href={`/outils/${r.slug}`} style={{ display: 'block', textAlign: 'center', padding: '8px 14px', borderRadius: '10px', fontSize: '12px', fontWeight: 600, textDecoration: 'none', background: '#f8fafc', color: '#64748b', border: '1px solid #e2e8f0' }}>
+                      Voir la fiche
+                    </Link>
                   </div>
                 </div>
-              )
-            })}
-          </div>
+              </div>
+            )
+          })()}
 
           {/* Stack complémentaire */}
           {complementReco && (
@@ -319,11 +355,13 @@ export default function QuizClient({ outils }: Props) {
                   <p style={{ fontSize: '13px', color: '#78350f', lineHeight: 1.6 }}>{complementReco.raison}</p>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', flexShrink: 0 }}>
-                  <Link href={`/outils/${complementReco.slug}`} style={{ display: 'block', textAlign: 'center', padding: '8px 16px', borderRadius: '10px', fontSize: '12px', fontWeight: 700, textDecoration: 'none', background: '#fff', color: '#92400e', border: '1px solid #fde68a' }}>
+                  {(complementInfo?.lien_affilie || complementReco.lien) && (
+                    <a href={complementInfo?.lien_affilie || complementReco.lien} target="_blank" rel="noopener noreferrer nofollow" style={{ display: 'block', textAlign: 'center', padding: '9px 16px', borderRadius: '10px', fontSize: '13px', fontWeight: 700, textDecoration: 'none', background: '#d97706', color: '#fff' }}>
+                      {complementInfo?.essai_gratuit ? 'Essai gratuit →' : 'Essayer →'}
+                    </a>
+                  )}
+                  <Link href={`/outils/${complementReco.slug}`} style={{ display: 'block', textAlign: 'center', padding: '8px 16px', borderRadius: '10px', fontSize: '12px', fontWeight: 600, textDecoration: 'none', background: '#fff', color: '#92400e', border: '1px solid #fde68a' }}>
                     Voir la fiche →
-                  </Link>
-                  <Link href={`/categorie/${complement.catSlug}`} style={{ display: 'block', textAlign: 'center', padding: '8px 16px', borderRadius: '10px', fontSize: '12px', fontWeight: 700, textDecoration: 'none', background: '#d97706', color: '#fff' }}>
-                    Comparer {complement.label} →
                   </Link>
                 </div>
               </div>
