@@ -349,6 +349,9 @@ export default function CategoryFilters({ outils, c, icon, catSlug }: Props) {
                                 ✓ Gratuit · Sans CB · Sans engagement
                               </p>
                             )}
+                            <p style={{ fontSize: '11px', color: '#94a3b8', textAlign: 'center', margin: '6px 0 0', fontWeight: 500 }}>
+                              ou <span style={{ textDecoration: 'underline' }}>lire l&apos;avis complet</span>
+                            </p>
                           </div>
                         ) : (
                           <div style={{ background: c.bg, color: c.accent, border: `1px solid ${c.light}`, borderRadius: '8px', padding: '8px 12px', fontSize: '12px', fontWeight: 700, textAlign: 'center' }}>
