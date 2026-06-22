@@ -335,24 +335,29 @@ export default function CategoryFilters({ outils, c, icon, catSlug }: Props) {
                           </div>
                         )}
                         {outil.lien_affilie ? (
-                          <div style={{ position: 'relative', zIndex: 2 }}>
-                            <a
-                              href={outil.lien_affilie}
-                              target="_blank"
-                              rel="noopener noreferrer nofollow"
-                              style={{ display: 'block', background: c.accent, color: '#fff', borderRadius: '8px', padding: '9px 12px', fontSize: '13px', fontWeight: 700, textAlign: 'center', textDecoration: 'none' }}
+                          <>
+                            <div style={{ position: 'relative', zIndex: 2 }}>
+                              <a
+                                href={outil.lien_affilie}
+                                target="_blank"
+                                rel="noopener noreferrer nofollow"
+                                style={{ display: 'block', background: c.accent, color: '#fff', borderRadius: '8px', padding: '9px 12px', fontSize: '13px', fontWeight: 700, textAlign: 'center', textDecoration: 'none' }}
+                              >
+                                {outil.essai_gratuit ? 'Essai gratuit →' : 'Essayer →'}
+                              </a>
+                              {outil.essai_gratuit && (
+                                <p style={{ fontSize: '10px', color: '#16a34a', textAlign: 'center', margin: '5px 0 0', fontWeight: 600 }}>
+                                  ✓ Gratuit · Sans CB · Sans engagement
+                                </p>
+                              )}
+                            </div>
+                            <Link
+                              href={`/outils/${outil.slug}`}
+                              style={{ display: 'block', fontSize: '11px', color: '#94a3b8', textAlign: 'center', margin: '6px 0 0', fontWeight: 500, position: 'relative', zIndex: 2, textDecoration: 'underline' }}
                             >
-                              {outil.essai_gratuit ? 'Essai gratuit →' : 'Essayer →'}
-                            </a>
-                            {outil.essai_gratuit && (
-                              <p style={{ fontSize: '10px', color: '#16a34a', textAlign: 'center', margin: '5px 0 0', fontWeight: 600 }}>
-                                ✓ Gratuit · Sans CB · Sans engagement
-                              </p>
-                            )}
-                            <p style={{ fontSize: '11px', color: '#94a3b8', textAlign: 'center', margin: '6px 0 0', fontWeight: 500 }}>
-                              ou <span style={{ textDecoration: 'underline' }}>lire l&apos;avis complet</span>
-                            </p>
-                          </div>
+                              Lire l&apos;avis complet
+                            </Link>
+                          </>
                         ) : (
                           <div style={{ background: c.bg, color: c.accent, border: `1px solid ${c.light}`, borderRadius: '8px', padding: '8px 12px', fontSize: '12px', fontWeight: 700, textAlign: 'center' }}>
                             Voir l&apos;avis →
