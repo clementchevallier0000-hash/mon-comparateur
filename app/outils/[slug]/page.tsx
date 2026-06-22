@@ -26,6 +26,11 @@ const catColors: Record<string, { accent: string; bg: string; light: string; gra
   'automatisation':    { accent: '#d97706', bg: '#fffbeb', light: '#fde68a', gradient: 'linear-gradient(135deg, #0f172a 0%, #451a03 50%, #92400e 100%)', emoji: '⚡' },
 }
 
+export async function generateStaticParams() {
+  const { data } = await supabase.from('outils').select('slug')
+  return (data || []).map(o => ({ slug: o.slug }))
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
   const { data: outil } = await supabase.from('outils').select('nom, tagline, description, categorie_slug').eq('slug', slug).single()

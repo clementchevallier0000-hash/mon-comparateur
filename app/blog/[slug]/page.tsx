@@ -7,7 +7,10 @@ import { notFound } from 'next/navigation'
 import SiteFooter from '@/app/components/SiteFooter'
 
 
-export const dynamic = 'force-dynamic'
+export async function generateStaticParams() {
+  const { data } = await supabase.from('articles').select('slug')
+  return (data || []).map(a => ({ slug: a.slug }))
+}
 
 const catColors: Record<string, { accent: string; bg: string; emoji: string; name: string; slug: string }> = {
   'crm':               { accent: '#2563eb', bg: '#eff6ff', emoji: '🤝', name: 'CRM',               slug: 'crm' },

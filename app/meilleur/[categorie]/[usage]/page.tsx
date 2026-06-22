@@ -172,6 +172,25 @@ function buildMetaDescription(nom: string, usageRaw: string, seed: number): stri
   return templates[seed % templates.length]
 }
 
+export async function generateStaticParams() {
+  const { data: cats } = await supabase.from('categories').select('slug, id')
+  const { data: casUsage } = await supabase.from('cas_usage').select('slug, categorie_id, categories(slug)')
+  const { data: types } = await supabase.from('types_entreprise').select('slug')
+  const params: { categorie: string; usage: string }[] = []
+  for (const cat of (cats || [])) {
+    for (const type of (types || [])) {
+      params.push({ categorie: cat.slug, usage: type.slug })
+    }
+    for (const cas of (casUsage || [])) {
+      const catSlug = (cas.categories as any)?.slug
+      if (catSlug === cat.slug) {
+        params.push({ categorie: cat.slug, usage: cas.slug })
+      }
+    }
+  }
+  return params
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ categorie: string, usage: string }> }): Promise<Metadata> {
   const { categorie, usage } = await params
   const { data: cat } = await supabase.from('categories').select('*').eq('slug', categorie).single()

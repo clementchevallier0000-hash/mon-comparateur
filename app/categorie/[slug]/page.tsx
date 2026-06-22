@@ -88,6 +88,11 @@ const catToSubAnchors: Record<string, Record<string, string>> = {
   },
 }
 
+export async function generateStaticParams() {
+  const { data } = await supabase.from('categories').select('slug')
+  return (data || []).map(c => ({ slug: c.slug }))
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
   const { data: categorie } = await supabase.from('categories').select('*').eq('slug', slug).single()
