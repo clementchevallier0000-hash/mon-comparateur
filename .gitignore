@@ -39,3 +39,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# scripts locaux (contiennent des clés API ou données sensibles)
+update-*.mjs
+content-*.mjs
+create-*.mjs
+check-*.mjs
+fix-*.mjs
+ping-indexnow.mjs
+scripts/
+.claude/
