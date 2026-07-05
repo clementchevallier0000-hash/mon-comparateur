@@ -78,7 +78,6 @@ export default async function SuccessPage({
   return (
     <>
     <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#f8fafc', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 20px' }}>
-      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Fraunces:wght@700;800&display=swap" rel="stylesheet" />
 
       <div style={{ maxWidth: '520px', width: '100%', background: '#fff', borderRadius: '24px', padding: '48px 40px', boxShadow: '0 8px 48px rgba(0,0,0,0.08)', textAlign: 'center' }}>
         {error ? (

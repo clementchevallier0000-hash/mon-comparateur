@@ -19,7 +19,6 @@ export default function CGV() {
   return (
     <>
     <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#f8fafc', minHeight: '100vh', padding: '60px 24px' }}>
-      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Fraunces:wght@700;800&display=swap" rel="stylesheet" />
 
       <div style={{ maxWidth: '760px', margin: '0 auto' }}>
 

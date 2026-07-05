@@ -92,7 +92,6 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     <main style={{ fontFamily:"'DM Sans',sans-serif", background:'#fff', minHeight:'100vh' }}>
       <ReadingProgressBar color={cat?.accent || '#2563eb'} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800;1,9..40,300&family=Fraunces:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
 
       <style>{`
         * { margin:0; padding:0; box-sizing:border-box; }

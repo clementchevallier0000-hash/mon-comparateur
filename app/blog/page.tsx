@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Blog logiciels SaaS TPE PME — Comparatifs, guides et conseils 2026',
-  description: 'Guides pratiques, comparatifs et conseils pour choisir les meilleurs logiciels SaaS. CRM, facturation, SEO, automatisation : tout ce qu\'il faut savoir pour les TPE et PME françaises.',
+  description: 'Comparatifs et guides pour choisir les meilleurs logiciels SaaS : CRM, facturation, SEO, automatisation. Conseils pratiques pour TPE et PME françaises.',
   alternates: { canonical: 'https://ton-meilleur-saas.fr/blog' },
 }
 
@@ -52,7 +52,6 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
 
   return (
     <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#fff', minHeight: '100vh' }}>
-      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800;1,9..40,300&family=Fraunces:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
 
       <style>{`
         * { margin:0; padding:0; box-sizing:border-box; }

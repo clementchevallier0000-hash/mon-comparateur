@@ -9,7 +9,7 @@ export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Toutes les catégories de logiciels SaaS — Comparatifs TPE/PME 2026',
-  description: 'Comparez les meilleurs logiciels SaaS par catégorie : CRM, facturation, gestion de projet, SEO, automatisation. Comparatifs honnêtes et mis à jour en 2026 pour TPE et PME françaises.',
+  description: 'Comparatifs SaaS par catégorie : CRM, facturation, gestion de projet, SEO, automatisation. Honnêtes et mis à jour 2026 pour TPE et PME françaises.',
   alternates: { canonical: 'https://ton-meilleur-saas.fr/categorie' },
 }
 
@@ -49,7 +49,6 @@ export default async function CategoriesPage() {
   return (
     <div style={{ minHeight: '100vh', background: '#f8fafc', fontFamily: "'DM Sans', Arial, sans-serif" }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Fraunces:wght@700;800;900&display=swap" rel="stylesheet" />
       <style>{`.cat-card { transition: transform 0.2s ease, box-shadow 0.2s ease; } .cat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }`}</style>
 
       <SiteHeader />

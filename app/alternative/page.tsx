@@ -8,7 +8,7 @@ import { getLogoUrl } from '@/lib/logo'
 
 export const metadata: Metadata = {
   title: 'Comparer les alternatives SaaS en 2026',
-  description: 'Vous cherchez à remplacer votre logiciel ? Comparez les meilleures alternatives pour chaque outil SaaS — CRM, facturation, SEO, automatisation et gestion de projet.',
+  description: 'Trouvez la meilleure alternative à votre logiciel SaaS : CRM, facturation, SEO, automatisation, gestion de projet. Comparatifs indépendants.',
   alternates: { canonical: 'https://ton-meilleur-saas.fr/alternative' },
 }
 
@@ -44,7 +44,6 @@ export default async function AlternativesPage() {
 
   return (
     <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#f8fafc', minHeight: '100vh' }}>
-      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:wght@700;800&display=swap" rel="stylesheet" />
       <SiteHeader />
 
       <style>{`

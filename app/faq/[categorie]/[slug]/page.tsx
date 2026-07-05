@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { FAQ_ITEMS, FAQ_CATEGORIES, getFaqBySlug, getFaqByCategorie } from '@/lib/faq'
+import { supabase } from '@/lib/supabase'
 import SiteHeader from '@/app/components/SiteHeader'
 import SiteFooter from '@/app/components/SiteFooter'
 import type { Metadata } from 'next'
@@ -77,6 +78,14 @@ export default async function FaqItemPage({ params }: Props) {
   const siblings = getFaqByCategorie(categorie).filter(q => q.slug !== slug)
   const c = catColors[categorie] ?? { bg: '#f8fafc', border: '#e2e8f0', text: '#475569' }
   const relatedArticle = relatedArticles[slug]
+
+  const { data: outilsLies } = await supabase
+    .from('outils')
+    .select('id, nom, slug')
+    .eq('categorie_slug', categorie)
+    .not('note', 'is', null)
+    .order('note', { ascending: false })
+    .limit(3)
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -160,6 +169,27 @@ export default async function FaqItemPage({ params }: Props) {
               <Link href={`/blog/${relatedArticle.slug}`} style={{ fontSize: '15px', fontWeight: 600, color: '#2563eb', textDecoration: 'none' }}>
                 {relatedArticle.titre} →
               </Link>
+            </div>
+          </div>
+        )}
+
+        {/* Outils recommandés */}
+        {outilsLies && outilsLies.length > 0 && (
+          <div style={{ marginTop: '20px', padding: '20px 24px', background: '#fff', borderRadius: '12px', border: `1px solid ${c.border}` }}>
+            <div style={{ fontSize: '12px', color: '#64748b', fontWeight: 600, marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              🛠️ Outils {item.categorieLabel} recommandés
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {outilsLies.map(o => (
+                <Link
+                  key={o.id}
+                  href={`/outils/${o.slug}`}
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 16px', background: c.bg, borderRadius: '8px', textDecoration: 'none', color: '#0f172a', fontSize: '14px', fontWeight: 600, border: `1px solid ${c.border}` }}
+                >
+                  {o.nom}
+                  <span style={{ color: c.text, fontSize: '13px', fontWeight: 500 }}>Voir la fiche →</span>
+                </Link>
+              ))}
             </div>
           </div>
         )}

@@ -65,7 +65,6 @@ export default async function QuizPage() {
   return (
     <div style={{ minHeight: '100vh', background: '#f8fafc', fontFamily: "'DM Sans', Arial, sans-serif" }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Fraunces:wght@700;800;900&display=swap" rel="stylesheet" />
 
       <SiteHeader />
       <div style={{ maxWidth: '800px', margin: '0 auto', padding: '12px 24px 0' }}>
