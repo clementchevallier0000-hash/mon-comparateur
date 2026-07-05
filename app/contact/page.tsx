@@ -6,7 +6,7 @@ import Breadcrumb from '@/app/components/Breadcrumb'
 import ContactForm from './ContactForm'
 
 export const metadata: Metadata = {
-  title: 'Contact — TonMeilleurSaaS',
+  title: 'Contact',
   description: 'Une question, une suggestion d\'outil, une erreur à signaler ? Écrivez à Clément, le fondateur de TonMeilleurSaaS. Réponse sous 48h.',
   alternates: { canonical: 'https://ton-meilleur-saas.fr/contact' },
 }

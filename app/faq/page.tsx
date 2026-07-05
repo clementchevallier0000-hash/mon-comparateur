@@ -5,7 +5,7 @@ import SiteFooter from '@/app/components/SiteFooter'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'FAQ — Questions fréquentes sur les logiciels SaaS | TonMeilleurSaaS',
+  title: 'FAQ — Questions fréquentes sur les logiciels SaaS',
   description: 'Retrouvez toutes les réponses à vos questions sur les CRM, logiciels de facturation, gestion de projet, SEO et automatisation. 100 questions expertisées.',
   alternates: {
     canonical: 'https://ton-meilleur-saas.fr/faq',

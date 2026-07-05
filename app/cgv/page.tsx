@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 
 
 export const metadata: Metadata = {
-  title: 'Conditions Générales de Vente — TonMeilleurSaaS',
+  title: 'Conditions Générales de Vente',
   description: 'Conditions générales de vente de TonMeilleurSaaS : ressources numériques (pack N8N) et audit SaaS personnalisé. Tarifs, livraison, droit de rétractation.',
   alternates: { canonical: 'https://ton-meilleur-saas.fr/cgv' },
   robots: { index: false },

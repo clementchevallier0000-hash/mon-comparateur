@@ -6,7 +6,7 @@ import SiteFooter from '@/app/components/SiteFooter'
 
 
 export const metadata: Metadata = {
-  title: 'À propos de Clément — Fondateur du comparatif logiciels SaaS TonMeilleurSaaS',
+  title: 'À propos de Clément — Fondateur du comparatif logiciels SaaS',
   description: 'Je suis Clément, seul derrière TonMeilleurSaaS. Je vous explique pourquoi j\'ai créé ce comparatif de logiciels SaaS, comment je travaille et ce que vous pouvez en attendre.',
   alternates: { canonical: 'https://ton-meilleur-saas.fr/a-propos' },
 }

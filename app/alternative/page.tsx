@@ -7,7 +7,7 @@ import SiteFooter from '@/app/components/SiteFooter'
 import { getLogoUrl } from '@/lib/logo'
 
 export const metadata: Metadata = {
-  title: 'Comparer les alternatives SaaS en 2026 — TonMeilleurSaaS',
+  title: 'Comparer les alternatives SaaS en 2026',
   description: 'Vous cherchez à remplacer votre logiciel ? Comparez les meilleures alternatives pour chaque outil SaaS — CRM, facturation, SEO, automatisation et gestion de projet.',
   alternates: { canonical: 'https://ton-meilleur-saas.fr/alternative' },
 }

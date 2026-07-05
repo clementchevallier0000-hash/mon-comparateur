@@ -1,0 +1,28 @@
+# TonMeilleurSaaS
+
+> Comparateur indépendant de logiciels SaaS pour TPE et PME françaises. Fiches basées sur les avis utilisateurs (G2, Capterra). Liens affiliés déclarés. Fondé par Clément Chevallier.
+
+## À propos
+
+TonMeilleurSaaS est un comparateur éditorial indépendant, créé et maintenu par une seule personne. Les avis sont basés sur des tests, des données tierces (G2, Capterra, EmailToolTester) et des données fournisseurs vérifiées. Aucun outil ne paie pour être mieux classé.
+
+## Catégories couvertes
+
+- CRM (HubSpot, Pipedrive, Salesforce, Monday, Karlia…)
+- Facturation (Pennylane, Qonto, Indy, Sellsy, Tiime…)
+- Gestion de projet (Notion, Asana, Trello, Monday, ClickUp…)
+- SEO (Semrush, Ahrefs, SimilarWeb, Ubersuggest, Moz…)
+- Automatisation (Make, n8n, Zapier, ActiveCampaign, Brevo…)
+
+## Pages principales
+
+- [Accueil](https://ton-meilleur-saas.fr/)
+- [Toutes les catégories](https://ton-meilleur-saas.fr/categorie)
+- [Blog comparatifs](https://ton-meilleur-saas.fr/blog)
+- [Comparer des alternatives](https://ton-meilleur-saas.fr/alternative)
+- [FAQ logiciels SaaS](https://ton-meilleur-saas.fr/faq)
+- [À propos](https://ton-meilleur-saas.fr/a-propos)
+
+## Transparence
+
+Les fiches outils contiennent des liens affiliés clairement identifiés. La rémunération affiliée ne modifie pas les classements ni les avis. Les prix affichés sont vérifiés régulièrement et datés.

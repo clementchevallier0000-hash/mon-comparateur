@@ -4,7 +4,7 @@ import SiteFooter from '@/app/components/SiteFooter'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Page introuvable — TonMeilleurSaaS',
+  title: 'Page introuvable',
 }
 
 export default function NotFound() {

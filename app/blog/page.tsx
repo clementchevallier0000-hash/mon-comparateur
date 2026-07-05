@@ -7,7 +7,7 @@ import SiteFooter from '@/app/components/SiteFooter'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Blog logiciels SaaS TPE PME — Comparatifs, guides et conseils 2026 | TonMeilleurSaaS',
+  title: 'Blog logiciels SaaS TPE PME — Comparatifs, guides et conseils 2026',
   description: 'Guides pratiques, comparatifs et conseils pour choisir les meilleurs logiciels SaaS. CRM, facturation, SEO, automatisation : tout ce qu\'il faut savoir pour les TPE et PME françaises.',
   alternates: { canonical: 'https://ton-meilleur-saas.fr/blog' },
 }
