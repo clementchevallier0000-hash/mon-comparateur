@@ -98,8 +98,34 @@ export default async function Home() {
     { name: 'SemJuice',       slug: 'semjuice',       emoji: '🔍' },
   ]
 
+  const schemaWebSite = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'TonMeilleurSaaS',
+    url: 'https://ton-meilleur-saas.fr',
+    description: 'Comparateur indépendant de logiciels SaaS pour TPE et PME françaises.',
+    inLanguage: 'fr-FR',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: { '@type': 'EntryPoint', urlTemplate: 'https://ton-meilleur-saas.fr/search?q={search_term_string}' },
+      'query-input': 'required name=search_term_string',
+    },
+  }
+
+  const schemaOrg = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'TonMeilleurSaaS',
+    url: 'https://ton-meilleur-saas.fr',
+    description: 'Comparateur indépendant de logiciels SaaS pour TPE et PME françaises.',
+    founder: { '@type': 'Person', name: 'Clément Chevallier' },
+    knowsAbout: ['CRM', 'Logiciel de facturation', 'SEO', 'Automatisation', 'Gestion de projet'],
+  }
+
   return (
     <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#ffffff', minHeight: '100vh' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebSite) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }} />
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Fraunces:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
       <ScrollAnimations />
 

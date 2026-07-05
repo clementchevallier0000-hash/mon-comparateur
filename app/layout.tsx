@@ -20,6 +20,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://ton-meilleur-saas.fr'),
   title: {
     default: "TonMeilleurSaaS — Comparateur de logiciels SaaS pour TPE et PME françaises",
     template: "%s | TonMeilleurSaaS"
