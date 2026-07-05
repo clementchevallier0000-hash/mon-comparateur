@@ -56,17 +56,31 @@ const catDescriptions: Record<string, string> = {
 
 // Liens vers articles de blog pertinents selon la FAQ concernée
 const relatedArticles: Record<string, { titre: string; slug: string }> = {
-  'facturation-auto-entrepreneur':     { titre: 'Meilleur logiciel de facturation pour auto-entrepreneur en 2026', slug: 'meilleur-logiciel-facturation-auto-entrepreneur-2026' },
-  'logiciel-facturation-gratuit':      { titre: 'Comment choisir son logiciel de facturation en 2026', slug: 'comment-choisir-logiciel-facturation-2026' },
+  // Facturation — FAQ générales
+  'facturation-auto-entrepreneur':                 { titre: 'Meilleur logiciel de facturation pour auto-entrepreneur en 2026', slug: 'meilleur-logiciel-facturation-auto-entrepreneur-2026' },
+  'logiciel-facturation-gratuit':                  { titre: 'Meilleur logiciel de facturation gratuit en 2026', slug: 'meilleur-logiciel-facturation-gratuit-2026' },
+  'facturation-electronique-obligatoire':          { titre: 'Facture électronique obligatoire en 2026 : tout comprendre', slug: 'facture-electronique-obligatoire-2026-guide' },
+  'mentions-obligatoires-facture':                 { titre: 'Mentions obligatoires sur une facture en 2026 : le guide', slug: 'mentions-obligatoires-facture-2026' },
+  // Facturation — FAQ meilleur (maillage vers article guide dédié)
+  'meilleur-logiciel-facturation-auto-entrepreneur': { titre: 'Meilleur logiciel de facturation pour auto-entrepreneur en 2026', slug: 'meilleur-logiciel-facturation-auto-entrepreneur-2026' },
+  'meilleur-logiciel-facturation-gratuit':           { titre: 'Meilleur logiciel de facturation gratuit en 2026', slug: 'meilleur-logiciel-facturation-gratuit-2026' },
+  'meilleur-logiciel-facturation-artisan':           { titre: 'Meilleur logiciel de facturation pour artisan en 2026', slug: 'meilleur-logiciel-facturation-artisan-2026' },
+  'meilleur-logiciel-facturation-pme':               { titre: 'Top 5 des logiciels de facturation pour PME en 2026', slug: 'top-5-logiciels-facturation-pme-2026' },
+  'meilleur-logiciel-facturation-e-invoicing':       { titre: 'Facture électronique obligatoire en 2026 : tout comprendre', slug: 'facture-electronique-obligatoire-2026-guide' },
+  'meilleur-logiciel-facturation-avec-comptabilite': { titre: 'Indy vs Pennylane en 2026 : quel logiciel comptable choisir ?', slug: 'indy-vs-pennylane-2026' },
+  // Automatisation
   'make-vs-n8n-comparaison':           { titre: 'Make vs n8n en 2026 : quel outil choisir ?', slug: 'make-vs-n8n-2026' },
   'automatisation-email-marketing':    { titre: 'Marketing automation pour débutants : par où commencer ?', slug: 'marketing-automation-debutants-2026' },
   'automatiser-relances-clients':      { titre: 'Comment automatiser ses relances clients en 2026', slug: 'automatiser-relances-clients-2026' },
   'crm-automatisation-relances':       { titre: 'Comment automatiser ses relances clients en 2026', slug: 'automatiser-relances-clients-2026' },
+  'automatisation-email-rgpd':         { titre: 'RGPD et email marketing en 2026 : les règles à respecter', slug: 'rgpd-email-marketing-2026' },
+  // CRM
   'crm-freelance-independant':         { titre: 'Meilleur CRM pour freelance en 2026', slug: 'meilleur-crm-freelance-2026' },
-  'gestion-projet-freelance':          { titre: 'Meilleur logiciel de gestion de projet pour freelance en 2026', slug: 'meilleur-gestion-projet-freelance-2026' },
   'crm-b2b-vs-b2c':                    { titre: 'HubSpot vs Zoho CRM en 2026 : lequel choisir ?', slug: 'hubspot-vs-zoho-crm-2026' },
   'crm-reporting-ventes':              { titre: 'Les 10 fonctionnalités indispensables dans un CRM pour PME', slug: '10-fonctionnalites-indispensables-crm-pme' },
-  'automatisation-email-rgpd':         { titre: 'RGPD et email marketing en 2026 : les règles à respecter', slug: 'rgpd-email-marketing-2026' },
+  // Gestion de projet
+  'gestion-projet-freelance':          { titre: 'Meilleur logiciel de gestion de projet pour freelance en 2026', slug: 'meilleur-gestion-projet-freelance-2026' },
+  // SEO
   'seo-vs-sea-difference':             { titre: 'Marketing automation pour débutants : par où commencer ?', slug: 'marketing-automation-debutants-2026' },
 }
 
