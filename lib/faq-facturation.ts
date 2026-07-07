@@ -195,46 +195,40 @@ export const FAQ_FACTURATION: FaqItem[] = [
     categorieLabel: 'Facturation',
     question: "Quel logiciel de facturation pour auto-entrepreneur ?",
     reponse: `
-<p>En tant qu'auto-entrepreneur (ou micro-entrepreneur), vos besoins de facturation sont spécifiques : des factures conformes simples à créer, un suivi de votre chiffre d'affaires pour ne pas dépasser les seuils, et si possible la gestion des cotisations sociales. Voici les meilleures options.</p>
+<p>Facturer en tant qu'auto-entrepreneur oblige à respecter des règles précises que les logiciels généralistes ne gèrent pas toujours correctement. Voici ce qu'il faut vérifier avant de choisir — et ce que votre logiciel doit absolument faire pour vous.</p>
 
-<h2>Comparatif logiciels de facturation pour auto-entrepreneurs</h2>
+<h2>Les mentions obligatoires spécifiques aux auto-entrepreneurs</h2>
+<p>En franchise de TVA, chaque facture doit impérativement inclure :</p>
+<ul>
+<li><strong>La mention franchise TVA</strong> : "TVA non applicable — article 293B du CGI" (non négociable)</li>
+<li>Votre numéro SIRET (14 chiffres)</li>
+<li>Un numéro de facture séquentiel et continu</li>
+<li>La date de prestation et la date de facturation</li>
+<li>La description précise de la prestation ou du produit</li>
+</ul>
+<div class="encart-warning">⚠️ <strong>Piège fréquent :</strong> un logiciel généraliste qui calcule la TVA par défaut peut vous induire en erreur si vous n'avez pas activé manuellement le mode "franchise TVA".</div>
+
+<h2>Les seuils de CA à surveiller en 2026</h2>
 <table>
-<thead><tr><th>Logiciel</th><th>Prix/mois</th><th>Points forts</th><th>Idéal si</th></tr></thead>
+<thead><tr><th>Activité</th><th>Seuil franchise TVA</th><th>Seuil micro-entreprise</th></tr></thead>
 <tbody>
-<tr><td><strong>Freebe</strong></td><td>10–15€</td><td>Conçu pour les indépendants FR, cotisations sociales</td><td>Micro-entrepreneur, EI, SASU</td></tr>
-<tr><td><strong>Indy</strong></td><td>Gratuit / 9€</td><td>Plan gratuit complet, e-facture</td><td>Démarrage ou petit budget</td></tr>
-<tr><td><strong>Tiime</strong></td><td>Gratuit / 18€</td><td>Expert-comptable intégré disponible</td><td>Besoin d'accompagnement compta</td></tr>
-<tr><td><strong>Henrri</strong></td><td>Gratuit / 17€</td><td>CRM + facturation dans l'outil gratuit</td><td>Facturation + suivi clients léger</td></tr>
-<tr><td><strong>Sellsy</strong></td><td>35€</td><td>Facturation pro + CRM + signature électronique</td><td>Auto-entrepreneur avec gros volume</td></tr>
+<tr><td>Vente de marchandises</td><td>91 900€</td><td>188 700€</td></tr>
+<tr><td>Prestations de services (BIC)</td><td>36 800€</td><td>77 700€</td></tr>
+<tr><td>Professions libérales (BNC)</td><td>36 800€</td><td>77 700€</td></tr>
 </tbody>
 </table>
+<p>Un bon logiciel vous alerte quand vous approchez de ces seuils — ce n'est pas une option, c'est une nécessité.</p>
 
-<h2>Freebe : la référence pour les indépendants français</h2>
-<p>Freebe est l'outil le plus complet spécifiquement conçu pour les indépendants français. Au-delà de la facturation, il gère :</p>
+<h2>Ce que votre logiciel doit gérer pour vous</h2>
 <ul>
-<li>Le suivi du CA mensuel et annuel par rapport aux seuils de franchise TVA</li>
-<li>Le calcul automatique des cotisations sociales URSSAF</li>
-<li>Les frais kilométriques et notes de frais</li>
-<li>Les différents statuts : micro-entrepreneur, EI, SASU, SARL</li>
+<li>Insertion automatique de la mention franchise TVA sur chaque facture</li>
+<li>Numérotation séquentielle et continue (obligatoire fiscalement)</li>
+<li>Suivi du CA cumulé en temps réel par rapport aux seuils</li>
+<li>Export PDF professionnel envoyable directement par email</li>
+<li>Conformité e-facture : obligatoire pour toutes les entreprises à terme</li>
 </ul>
 
-<h2>Indy : le meilleur rapport qualité/prix (plan gratuit solide)</h2>
-<p>Indy propose un plan Essentiel entièrement gratuit qui inclut :</p>
-<ul>
-<li>Création de factures et devis illimités</li>
-<li>Envoi par email</li>
-<li>Compte professionnel intégré</li>
-<li>E-facture (conforme à la réforme 2026)</li>
-</ul>
-<p>Le plan Plus à 9€/mois ajoute la facturation avancée et un accompagnement personnalisé.</p>
-
-<h2>Ce qu'un auto-entrepreneur doit vérifier</h2>
-<ul>
-<li><strong>Mention franchise TVA</strong> : si vous êtes en franchise, votre logiciel doit l'inclure automatiquement ("TVA non applicable, article 293B du CGI")</li>
-<li><strong>Suivi du seuil de CA</strong> : alerte quand vous approchez des seuils (77 700€ pour les services en 2026)</li>
-<li><strong>Numérotation conforme</strong> : séquentielle et continue</li>
-</ul>
-<div class="encart">💡 <strong>Recommandation :</strong> Commencez avec Indy gratuit si vous démarrez. Passez à Freebe quand vous avez besoin du suivi des cotisations sociales et de fonctions plus complètes pour les indépendants.</div>
+<div class="encart">💡 Pour comparer les logiciels les mieux adaptés aux auto-entrepreneurs avec notes et prix, consultez notre <a href="/faq/facturation/meilleur-logiciel-facturation-auto-entrepreneur">sélection des meilleurs logiciels de facturation pour auto-entrepreneur →</a></div>
 `,
   },
   {
@@ -243,49 +237,40 @@ export const FAQ_FACTURATION: FaqItem[] = [
     categorieLabel: 'Facturation',
     question: "Existe-t-il un logiciel de facturation gratuit ?",
     reponse: `
-<p>Oui, plusieurs logiciels sérieux proposent des plans gratuits utilisables professionnellement — pas seulement en version d'essai. Voici les meilleurs et leurs limites réelles.</p>
+<p>Oui — et ce n'est pas des essais de 30 jours. Plusieurs logiciels proposent des plans gratuits à vie sérieux. Mais avant de vous lancer, il faut savoir exactement ce que "gratuit" couvre et ce qu'il ne couvre pas.</p>
 
-<h2>Meilleurs logiciels de facturation gratuits en 2026</h2>
+<h2>Ce que les plans gratuits incluent (et n'incluent pas)</h2>
 <table>
-<thead><tr><th>Logiciel</th><th>Plan gratuit</th><th>Limites</th><th>Fonctions incluses</th></tr></thead>
+<thead><tr><th>Fonction</th><th>Inclus en gratuit ?</th></tr></thead>
 <tbody>
-<tr><td><strong>Indy Essentiel</strong></td><td>Gratuit à vie</td><td>Fonctions avancées payantes</td><td>Factures illimitées, devis, e-facture, compte pro</td></tr>
-<tr><td><strong>Tiime Free</strong></td><td>Gratuit à vie</td><td>1 employé max</td><td>Factures, devis, catalogue produits</td></tr>
-<tr><td><strong>Henrri Pro</strong></td><td>Gratuit à vie</td><td>Fonctions CRM basiques</td><td>Factures, devis, CRM simple</td></tr>
-<tr><td><strong>Zoho Invoice</strong></td><td>Gratuit à vie</td><td>1 utilisateur max</td><td>Factures illimitées, 5 clients actifs</td></tr>
+<tr><td>Création de factures et devis illimités</td><td>✅ Oui (Indy, Tiime, Henrri)</td></tr>
+<tr><td>Envoi par email et PDF professionnel</td><td>✅ Oui</td></tr>
+<tr><td>Conformité e-facture (réforme 2026)</td><td>✅ Oui (Indy, Tiime)</td></tr>
+<tr><td>Relances automatiques d'impayés</td><td>❌ Non — payant partout</td></tr>
+<tr><td>Gestion de la TVA et états de TVA</td><td>❌ Non — payant</td></tr>
+<tr><td>Export comptable FEC</td><td>❌ Non — payant</td></tr>
+<tr><td>Signature électronique des devis</td><td>❌ Non — payant</td></tr>
+<tr><td>Accès multi-utilisateurs (comptable, collaborateur)</td><td>❌ Non</td></tr>
 </tbody>
 </table>
 
-<h2>Indy Essentiel : le plus complet des plans gratuits</h2>
-<p>Le plan Essentiel d'Indy est exceptionnel par sa générosité :</p>
+<h2>Le plan gratuit suffit si…</h2>
 <ul>
-<li>Factures et devis en nombre illimité</li>
-<li>Conformité e-facture (réforme 2026)</li>
-<li>Compte professionnel intégré avec IBAN français</li>
-<li>Rapprochement bancaire basique</li>
-<li>Catalogue de produits et services</li>
-</ul>
-<p>Les fonctions payantes (à partir de 9€/mois) ajoutent la TVA, les déclarations et l'accompagnement personnalisé.</p>
-
-<h2>Quand le gratuit ne suffit plus</h2>
-<ul>
-<li>Vous avez plusieurs utilisateurs (comptable, assistante)</li>
-<li>Vous avez besoin de relances automatiques d'impayés</li>
-<li>Vous voulez la signature électronique des devis</li>
-<li>Vous déclarez la TVA et voulez les états de TVA automatiques</li>
-<li>Vous avez besoin d'un export comptable FEC</li>
+<li>Vous êtes auto-entrepreneur en franchise TVA (pas de gestion TVA nécessaire)</li>
+<li>Vous facturez seul, sans collaborateur ni comptable qui a besoin d'accès</li>
+<li>Vous relancez vous-même vos impayés par email</li>
+<li>Vous n'avez pas encore besoin d'un export FEC complet</li>
 </ul>
 
-<h2>Outils payants à petit prix pour aller plus loin</h2>
-<table>
-<thead><tr><th>Logiciel</th><th>Prix d'entrée</th><th>Ce que ça apporte vs gratuit</th></tr></thead>
-<tbody>
-<tr><td>Indy Plus</td><td>9€/mois</td><td>Facturation avancée, accompagnement</td></tr>
-<tr><td>Tiime Smart</td><td>18€/mois</td><td>Rapprochement bancaire, TVA</td></tr>
-<tr><td>Freebe Micro</td><td>13€/mois</td><td>Spécifique indépendants, cotisations sociales</td></tr>
-</tbody>
-</table>
-<div class="encart">💡 <strong>Conseil :</strong> Le plan gratuit Indy couvre 80% des besoins d'un micro-entrepreneur. Restez en gratuit le temps de valider votre activité, puis investissez dans un plan payant quand votre CA le justifie.</div>
+<h2>Le plan gratuit ne suffit plus si…</h2>
+<ul>
+<li>Vous êtes assujetti à la TVA (déclarations CA3/CA12 nécessaires)</li>
+<li>Vous avez des impayés récurrents à relancer automatiquement</li>
+<li>Votre expert-comptable veut un accès direct à votre logiciel</li>
+<li>Vous avez besoin d'un bilan comptable ou d'un export structuré</li>
+</ul>
+
+<div class="encart">💡 Pour savoir quel plan gratuit est le plus complet en 2026 (avec comparatif des fonctions incluses), consultez notre <a href="/faq/facturation/meilleur-logiciel-facturation-gratuit">sélection du meilleur logiciel de facturation gratuit →</a></div>
 `,
   },
   {
