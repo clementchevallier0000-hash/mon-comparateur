@@ -28,11 +28,18 @@ const catColors: Record<string, { accent: string; bg: string; emoji: string }> =
 export default async function Home() {
   const { data: categories } = await supabase.from('categories').select('*')
   const { data: toolCountsRaw } = await supabase.from('outils').select('categorie_id')
-  const { data: latestArticles } = await supabase
+  const strategicSlugs = [
+    'pipedrive-vs-hubspot-vs-salesforce-2026',
+    'top-5-logiciels-facturation-pme-2026',
+    'meilleur-outil-seo-debutant-2026',
+  ]
+  const { data: strategicArticlesRaw } = await supabase
     .from('articles')
     .select('id,slug,titre,description,categorie_slug,temps_lecture,date_publication')
-    .order('date_publication', { ascending: false })
-    .limit(3)
+    .in('slug', strategicSlugs)
+  const latestArticles = strategicSlugs
+    .map(s => strategicArticlesRaw?.find(a => a.slug === s))
+    .filter(Boolean)
 
   const toolCounts: Record<number, number> = {}
   toolCountsRaw?.forEach((o: { categorie_id: number }) => {
@@ -530,8 +537,8 @@ export default async function Home() {
           <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px', flexWrap: 'wrap', gap: '12px' }}>
               <div>
-                <p style={{ fontSize: '12px', fontWeight: 700, color: '#2563eb', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '8px' }}>Mes guides</p>
-                <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: '32px', fontWeight: 800, color: '#0f172a', letterSpacing: '-1px', margin: 0 }}>Derniers articles du blog</h2>
+                <p style={{ fontSize: '12px', fontWeight: 700, color: '#2563eb', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '8px' }}>Guides essentiels</p>
+                <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: '32px', fontWeight: 800, color: '#0f172a', letterSpacing: '-1px', margin: 0 }}>Les guides à lire en priorité</h2>
               </div>
               <Link href="/blog" style={{ textDecoration: 'none', fontSize: '14px', fontWeight: 600, color: '#2563eb', background: '#eff6ff', padding: '10px 20px', borderRadius: '8px', border: '1px solid #dbeafe', whiteSpace: 'nowrap' }}>
                 Voir tous les articles →
