@@ -7,7 +7,7 @@ import SiteFooter from '@/app/components/SiteFooter'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Blog logiciels SaaS TPE PME — Comparatifs, guides et conseils 2026',
+  title: 'Blog SaaS — Guides et comparatifs',
   description: 'Comparatifs et guides pour choisir les meilleurs logiciels SaaS : CRM, facturation, SEO, automatisation. Conseils pratiques pour TPE et PME françaises.',
   alternates: { canonical: 'https://ton-meilleur-saas.fr/blog' },
 }
@@ -50,8 +50,18 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
 
   const activeCat = cat && catColors[cat] ? cat : null
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Blog TonMeilleurSaaS — Comparatifs et guides logiciels SaaS',
+    description: 'Comparatifs et guides pour choisir les meilleurs logiciels SaaS : CRM, facturation, SEO, automatisation.',
+    url: 'https://ton-meilleur-saas.fr/blog',
+    publisher: { '@type': 'Organization', name: 'TonMeilleurSaaS', url: 'https://ton-meilleur-saas.fr' },
+  }
+
   return (
     <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#fff', minHeight: '100vh' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <style>{`
         * { margin:0; padding:0; box-sizing:border-box; }

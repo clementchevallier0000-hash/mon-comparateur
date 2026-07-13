@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const item = getFaqBySlug(categorie, slug)
   if (!item) return {}
   return {
-    title: item.question,
+    title: { absolute: item.question },
     description: `Réponse complète : ${item.question}. Tout savoir sur les logiciels ${item.categorieLabel} pour les entreprises françaises.`,
     alternates: {
       canonical: `https://ton-meilleur-saas.fr/faq/${categorie}/${slug}`,

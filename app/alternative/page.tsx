@@ -42,8 +42,18 @@ export default async function AlternativesPage() {
     byCategorie[o.categorie_slug]!.push(o)
   }
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Alternatives SaaS — TonMeilleurSaaS',
+    description: 'Trouvez la meilleure alternative à votre logiciel SaaS : CRM, facturation, SEO, automatisation, gestion de projet.',
+    url: 'https://ton-meilleur-saas.fr/alternative',
+    publisher: { '@type': 'Organization', name: 'TonMeilleurSaaS', url: 'https://ton-meilleur-saas.fr' },
+  }
+
   return (
     <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#f8fafc', minHeight: '100vh' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <SiteHeader />
 
       <style>{`

@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { data: outil } = await supabase.from('outils').select('nom, tagline, description, categorie_slug').eq('slug', slug).single()
   if (!outil) return { title: 'Outil introuvable' }
   return {
-    title: `${outil.nom} : avis, prix et alternatives en 2026`,
+    title: { absolute: `${outil.nom} : avis, prix et alternatives en 2026` },
     description: outil.tagline || outil.description || `Fiche complète sur ${outil.nom} : fonctionnalités, prix, avantages et limites — synthèse indépendante pour TPE et PME françaises.`,
     alternates: { canonical: `https://ton-meilleur-saas.fr/outils/${slug}` },
   }

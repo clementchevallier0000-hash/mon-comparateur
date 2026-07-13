@@ -5,7 +5,7 @@ import SiteFooter from '@/app/components/SiteFooter'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'FAQ — Questions fréquentes sur les logiciels SaaS',
+  title: 'FAQ logiciels SaaS — 100 questions',
   description: 'Retrouvez toutes les réponses à vos questions sur les CRM, logiciels de facturation, gestion de projet, SEO et automatisation. 100 questions expertisées.',
   alternates: {
     canonical: 'https://ton-meilleur-saas.fr/faq',
@@ -29,8 +29,26 @@ const catEmojis: Record<string, string> = {
 }
 
 export default function FaqPage() {
+  const schemaFaq = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: Object.keys(FAQ_CATEGORIES).map(cat => {
+      const item = FAQ_ITEMS.find(q => q.categorie === cat)
+      if (!item) return null
+      return {
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.reponse.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 500),
+        },
+      }
+    }).filter(Boolean),
+  }
+
   return (
     <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }} />
     <SiteHeader />
     <main style={{ maxWidth: '900px', margin: '0 auto', padding: '40px 24px 80px' }}>
 
