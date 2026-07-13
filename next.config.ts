@@ -10,6 +10,16 @@ const securityHeaders = [
 ]
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: '/(.*)',
+        has: [{ type: 'host', value: 'www.ton-meilleur-saas.fr' }],
+        destination: 'https://ton-meilleur-saas.fr/:path*',
+        permanent: true,
+      },
+    ]
+  },
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'logo.clearbit.com' },

@@ -11,7 +11,7 @@ import SiteFooter from '@/app/components/SiteFooter'
 
 export const metadata: Metadata = {
   title: "Logiciel entreprise : les meilleurs logiciels pour TPE PME",
-  description: "Comparez les meilleurs logiciels entreprise pour votre société. CRM, facturation, gestion de projet, SEO et automatisation. Comparatifs experts, honnêtes et mis à jour en 2026.",
+  description: "Comparez les meilleurs logiciels SaaS pour TPE et PME : CRM, facturation, gestion de projet, SEO, automatisation. Comparatifs indépendants 2026.",
   alternates: {
     canonical: "https://ton-meilleur-saas.fr"
   }
