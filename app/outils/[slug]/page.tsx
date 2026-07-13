@@ -33,11 +33,16 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
-  const { data: outil } = await supabase.from('outils').select('nom, tagline, description, categorie_slug').eq('slug', slug).single()
+  const { data: outil } = await supabase.from('outils').select('nom, tagline, description, categorie_slug, note, prix_mensuel').eq('slug', slug).single()
   if (!outil) return { title: 'Outil introuvable' }
+  const noteStr = outil.note ? `${outil.note}/5` : ''
+  const prixStr = outil.prix_mensuel === 0 ? 'gratuit' : outil.prix_mensuel ? `dès ${outil.prix_mensuel}€/mois` : ''
+  const taglineShort = (outil.tagline || '').slice(0, 70)
+  const parts = [`Avis ${outil.nom}`, noteStr, prixStr].filter(Boolean).join(' · ')
+  const description = taglineShort ? `${parts} — ${taglineShort}.` : `${parts}. Comparatif indépendant, prix et alternatives 2026.`
   return {
     title: { absolute: `${outil.nom} : avis, prix et alternatives en 2026` },
-    description: outil.tagline || outil.description || `Fiche complète sur ${outil.nom} : fonctionnalités, prix, avantages et limites — synthèse indépendante pour TPE et PME françaises.`,
+    description: description.slice(0, 155),
     alternates: { canonical: `https://ton-meilleur-saas.fr/outils/${slug}` },
   }
 }
@@ -219,7 +224,7 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
             </div>
             <div>
               <h1 className="outil-h1" style={{ fontFamily: "'Fraunces', serif", fontSize: '36px', fontWeight: 800, color: '#fff', letterSpacing: '-1px', lineHeight: 1.1, marginBottom: '4px' }}>
-                {outil.nom}
+                {outil.nom} : avis, prix et alternatives
               </h1>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 {note && (
