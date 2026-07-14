@@ -39,7 +39,7 @@ export default async function Home() {
     .in('slug', strategicSlugs)
   const latestArticles = strategicSlugs
     .map(s => strategicArticlesRaw?.find(a => a.slug === s))
-    .filter(Boolean)
+    .filter((a): a is NonNullable<typeof a> => a != null)
 
   const toolCounts: Record<number, number> = {}
   toolCountsRaw?.forEach((o: { categorie_id: number }) => {
