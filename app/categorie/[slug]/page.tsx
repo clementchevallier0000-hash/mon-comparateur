@@ -97,7 +97,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const { data: categorie } = await supabase.from('categories').select('*').eq('slug', slug).single()
   return {
-    title: `Comparatif ${categorie?.h1 || `meilleur ${categorie?.nom}`} 2026 — Lequel choisir pour votre TPE/PME ?`,
+    title: `${categorie?.h1 || `Meilleur ${categorie?.nom}`} 2026 — Comparatif`,
     description: `Comparatif des meilleurs ${categorie?.nom}. Trouvez le logiciel adapté à votre entreprise parmi ma sélection 2026, basée sur les avis utilisateurs et les données officielles.`,
     alternates: { canonical: `https://ton-meilleur-saas.fr/categorie/${slug}` }
   }
